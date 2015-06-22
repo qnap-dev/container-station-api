@@ -1,0 +1,822 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Application &mdash; Container Station 1.0.0 beta documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Container Station 1.0.0 beta documentation" href="index.html"/>
+        <link rel="next" title="Resource" href="resource.html"/>
+        <link rel="prev" title="Container" href="container.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Container Station
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-information">System Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-port">System Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#certificate-file">Certificate file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#template">Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-s-application">User&#8217;s application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#auto-start">Auto start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#inspect-tags">Inspect &amp; tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#download">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#registry">Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="import.html#export">Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="log.html#log">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html#event">Event</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">1.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Container Station</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Application</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/application.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="application">
+<h1>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h1>
+<p></p>
+<div class="section" id="template">
+<span id="id1"></span><h2>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v1-template">
+<code class="descname">GET </code><code class="descname">/api/v1/template</code><a class="headerlink" href="#get--api-v1-template" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all application template information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filter_text</strong> &#8211; (optional) filter application by name and description</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+      <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Dockerized gitlab web server.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/app_gitlab.png&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.hub.docker.com/u/sameersbn/gitlab/&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gitlab&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;GitLab - Beta&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;7.11.4&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Dockerized redmine app server.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/app_redmine.png&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.hub.docker.com/u/sameersbn/redmine/&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Redmine - Beta&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0.3&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Dockerized registry server.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/app_registry.png&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://registry.hub.docker.com/_/registry/&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;registry&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Registry - Beta&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.9.1&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-template-(string-application)-description">
+<code class="descname">GET </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/description</code><a class="headerlink" href="#get--api-v1-template-(string-application)-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get application full description with markdown format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>application</strong> &#8211; Application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/description&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-text"><div class="highlight"><pre>GitLab with PostgrSQL + Redis
+=============================
+
+## System requirements
+Recommend 2GB of RAM for your Host and 2 Cores for best performance!
+
+## Setup
+The values of environemental variables for both PostgreSQL and GitLab need to match. The Keys cannot change. Also, the aliases used in the links to Redis and Posatgres from GHitLab cannot change.
+
+If the GitLab service does not start up, try the **Rebuild App** function on the application details page to kick start it. Watch the journal for output.
+
+To view the GUI after launching the template, browse to http://NAS_IP:10080.
+
+## Running
+__NOTE__: Please allow a few minutes for the GitLab service to start. Watch the journal output for the message:
+
+`Checking GitLab ... Finished`
+
+Login using the default username and password:
+
+username: **root**
+
+password: **5iveL!fe**
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-template-(string-application)-definition">
+<code class="descname">GET </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/definition</code><a class="headerlink" href="#get--api-v1-template-(string-application)-definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get application full YAML definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>application</strong> &#8211; Application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/definition&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;gitlab&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;GITLAB_PORT=10080&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;GITLAB_SSH_PORT=10022&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/gitlab:7.11.4&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;redis:redisio&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;postgresql:postgresql&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;10080:80&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;10022:22&quot;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;DB_USER=gitlab&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DB_PASS=password&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DB_NAME=gitlabhq_production&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;redis&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redis:latest&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-v1-template-(string-application)-pull">
+<code class="descname">POST </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/pull</code><a class="headerlink" href="#post--api-v1-template-(string-application)-pull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pulls images for containers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>application</strong> &#8211; Application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/redmine/pull&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-template-(string-application)-(string-lang)-wizard">
+<code class="descname">GET </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>lang</em><span class="sig-paren">)</span><code class="descname">/wizard</code><a class="headerlink" href="#get--api-v1-template-(string-application)-(string-lang)-wizard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the wizard config file, and return html tags of each step and language tags (default: english).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>application</strong> &#8211; Application name</li>
+<li><strong>lang</strong> &#8211; Wizard language</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/eng/wizard&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;app&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;app.gitlab.ports.80&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;web&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;env&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;gitlab&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;GITLAB_HOST&quot;</span><span class="p">:</span> <span class="s2">&quot;custom.host&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;GITLAB_PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;app.gitlab.ports.80&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;GITLAB_SSH_PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;app.gitlab.ports.22&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;html&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;&lt;div class=\&quot;step1\&quot;&gt;\n    &lt;div class=\&quot;step_title\&quot;&gt;\n    {{&#39;CONFIGURE_GITLAB&#39; | translate}}\n    &lt;/div&gt;\n    &lt;form class=\&quot;form-horizontal items\&quot;&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        {{&#39;GITLAB_PASSWORD_DESC&#39; | translate}}\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;PASSWORD&#39; | translate}}\n            &lt;/label&gt;\n&lt;input type=\&quot;text\&quot; class=\&quot;col-sm-10\&quot; name=\&quot;app.gitlab.environment.GITLAB_ROOT_PASSWORD\&quot; ng-model=\&quot;app.gitlab.environment.GITLAB_ROOT_PASSWORD\&quot; ngMinlength=\&quot;2\&quot; ngMaxlength=\&quot;10\&quot;&gt;\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        {{&#39;GITLAB_WEB_HOST_PORT_DESC&#39; | translate}}\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;PORT&#39; | translate}}\n            &lt;/label&gt;\n&lt;input type=\&quot;text\&quot; class=\&quot;col-sm-10\&quot; name=\&quot;app.gitlab.ports[&#39;80&#39;]\&quot; ng-model=\&quot;app.gitlab.ports[&#39;80&#39;]\&quot;&gt;\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        {{&#39;GITLAB_SSH_HOST_PORT_DESC&#39; | translate}}\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;PORT&#39; | translate}}\n            &lt;/label&gt;\n&lt;input type=\&quot;text\&quot; class=\&quot;col-sm-10\&quot; name=\&quot;app.gitlab.ports[&#39;22&#39;]\&quot; ng-model=\&quot;app.gitlab.ports[&#39;22&#39;]\&quot;&gt;\n        &lt;/div&gt;\n    &lt;/form&gt;\n&lt;/div&gt;\n&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;&lt;div class=\&quot;step2\&quot;&gt;\n    &lt;div class=\&quot;step_title\&quot;&gt;\n    {{&#39;SERVICE_MANAGEMENT&#39; | translate}}\n    &lt;/div&gt;\n    &lt;form class=\&quot;form-horizontal items\&quot;&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        \n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;START_ONBOOT&#39; | translate}}\n            &lt;/label&gt;\n            &lt;input type=\&quot;checkbox\&quot; ng-model=\&quot;custom.autostart\&quot;&gt;        &lt;/div&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        \n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;SERVICE_ENTRY&#39; | translate}}\n            &lt;/label&gt;\n&lt;input type=\&quot;text\&quot; class=\&quot;col-sm-10\&quot; name=\&quot;custom.entrypoint\&quot; ng-model=\&quot;custom.entrypoint\&quot;&gt;\n        &lt;/div&gt;\n    &lt;/form&gt;\n&lt;/div&gt;\n&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;lang&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;CONFIGURE_GITLAB&quot;</span><span class="p">:</span> <span class="s2">&quot;Configure Gitlab&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CONTEXT_PATH&quot;</span><span class="p">:</span> <span class="s2">&quot;Context path&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;GITLAB_PASSWORD_DESC&quot;</span><span class="p">:</span> <span class="s2">&quot;The password for the root user. Defaults to 5iveL!fe.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;GITLAB_SSH_HOST_PORT_DESC&quot;</span><span class="p">:</span> <span class="s2">&quot;The ssh port number. Defaults to 22.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;GITLAB_WEB_HOST_PORT_DESC&quot;</span><span class="p">:</span> <span class="s2">&quot;The port of the GitLab server. Defaults to 80.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;PASSWORD&quot;</span><span class="p">:</span> <span class="s2">&quot;Password&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;Port&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SERVICE_ENTRY&quot;</span><span class="p">:</span> <span class="s2">&quot;Service entrypoint&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SERVICE_MANAGEMENT&quot;</span><span class="p">:</span> <span class="s2">&quot;Service Management&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SERVICE_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;Service URL&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;START_ONBOOT&quot;</span><span class="p">:</span> <span class="s2">&quot;Start on boot&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;total_steps&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="user-s-application">
+<h2>User&#8217;s application<a class="headerlink" href="#user-s-application" title="Permalink to this headline">¶</a></h2>
+<dl class="post">
+<dt id="post--api-v1-apps">
+<code class="descname">POST </code><code class="descname">/api/v1/apps</code><a class="headerlink" href="#post--api-v1-apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and start containers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>template</strong> (<em>string</em>) &#8211; Application name</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; Custom application name</li>
+<li><strong>autostart</strong> (<em>boolean</em>) &#8211; Start application when container-station started</li>
+<li><strong>virtual_path</strong> (<em>string</em>) &#8211; Start application when container-station started</li>
+<li><strong>port</strong> (<em>string</em>) &#8211; </li>
+<li><strong>definition</strong> (<em>object</em>) &#8211; Application definition</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;custom&quot;: {</span>
+<span class="s1">            &quot;name&quot;: &quot;test&quot;,</span>
+<span class="s1">            &quot;autostart&quot;: true,</span>
+<span class="s1">            &quot;virtual_path&quot;: &quot;redmine&quot;,</span>
+<span class="s1">            &quot;port&quot;: &quot;5555&quot;,</span>
+<span class="s1">            &quot;template&quot;: &quot;redmine&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        &quot;definition&quot;: {</span>
+<span class="s1">            &quot;postgresql&quot;: {</span>
+<span class="s1">                &quot;environment&quot;: [</span>
+<span class="s1">                    &quot;DB_USER=redmine&quot;,</span>
+<span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
+<span class="s1">                    &quot;DB_NAME=myredmine&quot;</span>
+<span class="s1">                ],</span>
+<span class="s1">                &quot;image&quot;: &quot;sameersbn/postgresql:9.4&quot;</span>
+<span class="s1">            },</span>
+<span class="s1">            &quot;redmine&quot;: {</span>
+<span class="s1">                &quot;environment&quot;: [</span>
+<span class="s1">                    &quot;DB_USER=redmine&quot;,</span>
+<span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
+<span class="s1">                    &quot;DB_NAME=myredmine&quot;</span>
+<span class="s1">                ],</span>
+<span class="s1">                &quot;image&quot;: &quot;sameersbn/redmine:3.0.2&quot;,</span>
+<span class="s1">                &quot;links&quot;: [</span>
+<span class="s1">                    &quot;postgresql:postgresql&quot;</span>
+<span class="s1">                ],</span>
+<span class="s1">                &quot;ports&quot;: [</span>
+<span class="s1">                    &quot;22234:80&quot;</span>
+<span class="s1">                ]</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/apps
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;test_postgresql_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_redmine_1&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-apps">
+<code class="descname">GET </code><code class="descname">/api/v1/apps</code><a class="headerlink" href="#get--api-v1-apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all custom application information.</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;postgresql&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-apps-(string-name)-definition">
+<code class="descname">GET </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><code class="descname">/definition</code><a class="headerlink" href="#get--api-v1-apps-(string-name)-definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get custom application definition.</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/definition&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.0.2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;postgresql:postgresql&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;22234:80&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-apps-(string-name)">
+<code class="descname">GET </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-apps-(string-name)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get custom application information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Custom application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;custom&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;5555&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;virtual_path&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;definition&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.0.2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;postgresql:postgresql&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;22234:80&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--api-v1-apps-(string-name)-restart">
+<code class="descname">PUT </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><code class="descname">/restart</code><a class="headerlink" href="#put--api-v1-apps-(string-name)-restart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restart running application.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Custom application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/restart&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;test_postgresql_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_redmine_1&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--api-v1-apps-(string-name)-kill">
+<code class="descname">PUT </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><code class="descname">/kill</code><a class="headerlink" href="#put--api-v1-apps-(string-name)-kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force stop application containers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Custom application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/kill&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;test_redmine_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_postgresql_1&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--api-v1-apps-(string-name)-start">
+<code class="descname">PUT </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><code class="descname">/start</code><a class="headerlink" href="#put--api-v1-apps-(string-name)-start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start existing application.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Custom application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/start&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;test_postgresql_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_redmine_1&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--api-v1-apps-(string-name)-stop">
+<code class="descname">PUT </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><code class="descname">/stop</code><a class="headerlink" href="#put--api-v1-apps-(string-name)-stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop running application without removing them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Custom application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/stop&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;test_redmine_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_postgresql_1&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-apps-(string-name)">
+<code class="descname">DELETE </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-apps-(string-name)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove stopped application containers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Custom application name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;test_postgresql_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test_redmine_1&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="resource.html" class="btn btn-neutral float-right" title="Resource" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="container.html" class="btn btn-neutral" title="Container" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, QNAP System, Inc.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0 beta',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/extension.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

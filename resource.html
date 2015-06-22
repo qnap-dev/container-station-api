@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Resource &mdash; Container Station 1.0.0 beta documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Container Station 1.0.0 beta documentation" href="index.html"/>
+        <link rel="next" title="Image" href="image.html"/>
+        <link rel="prev" title="Application" href="application.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Container Station
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-information">System Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-port">System Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#certificate-file">Certificate file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Resource</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#auto-start">Auto start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#port-forwarding">Port Forwarding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#devices">Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limit">Limit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#inspect-tags">Inspect &amp; tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#download">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#registry">Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="import.html#export">Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="log.html#log">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html#event">Event</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">1.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Container Station</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Resource</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/resource.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="resource">
+<h1><a class="toc-backref" href="#id1">Resource</a><a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h1>
+<p></p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#resource" id="id1">Resource</a><ul>
+<li><a class="reference internal" href="#auto-start" id="id2">Auto start</a></li>
+<li><a class="reference internal" href="#port-forwarding" id="id3">Port Forwarding</a></li>
+<li><a class="reference internal" href="#devices" id="id4">Devices</a></li>
+<li><a class="reference internal" href="#limit" id="id5">Limit</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<dl class="get">
+<dt id="get--api-v1-container-(string-container_type)-(string-container_id)-all">
+<code class="descname">GET </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/all</code><a class="headerlink" href="#get--api-v1-container-(string-container_type)-(string-container_id)-all" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>resource list</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/all
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="auto-start">
+<h2><a class="toc-backref" href="#id2">Auto start</a><a class="headerlink" href="#auto-start" title="Permalink to this headline">¶</a></h2>
+<dl class="put">
+<dt id="put--api-v1-container-(string-container_type)-(string-container_id)-autostart-(string-state)">
+<code class="descname">PUT </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/autostart/</code><span class="sig-paren">(</span><em class="property">string: </em><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#put--api-v1-container-(string-container_type)-(string-container_id)-autostart-(string-state)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update container auto start setting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+<li><strong>state</strong> &#8211; <code class="docutils literal"><span class="pre">on</span></code>, <code class="docutils literal"><span class="pre">off</span></code></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/autostart/on
+<span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/autostart/off
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="port-forwarding">
+<h2><a class="toc-backref" href="#id3">Port Forwarding</a><a class="headerlink" href="#port-forwarding" title="Permalink to this headline">¶</a></h2>
+<dl class="post">
+<dt id="post--api-v1-container-(string-container_type)-(string-container_id)-network-port">
+<code class="descname">POST </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/network/port</code><a class="headerlink" href="#post--api-v1-container-(string-container_type)-(string-container_id)-network-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add port forwarding.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[12345, 12345, &quot;tcp&quot;]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/port
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="mi">12345</span><span class="p">,</span>
+                <span class="mi">12345</span><span class="p">,</span>
+                <span class="s2">&quot;tcp&quot;</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-container-(string-container_type)-(string-container_id)-network-port">
+<code class="descname">DELETE </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/network/port</code><a class="headerlink" href="#delete--api-v1-container-(string-container_type)-(string-container_id)-network-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete port forwarding.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;[12345, 12345, &quot;tcp&quot;]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/port
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="devices">
+<h2><a class="toc-backref" href="#id4">Devices</a><a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v1-resource-device">
+<code class="descname">GET </code><code class="descname">/api/v1/resource/device</code><a class="headerlink" href="#get--api-v1-resource-device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get available device list.
+The device allows access inside container.</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -b cookies.txt -XGET http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/resource/device
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;Direct_Render_Infrastructure_(226)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Input_(13)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;video4linux_(81)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sound_and_ALSA_(14,_116)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;TTY_(4)&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-v1-container-(string-container_type)-(string-container_id)-resource-device">
+<code class="descname">POST </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/resource/device</code><a class="headerlink" href="#post--api-v1-container-(string-container_type)-(string-container_id)-resource-device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add device permission with the specified device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Access is a sequence of one or more of the following letters:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">r — allows tasks to read from the specified device</p>
+<p>w — allows tasks to write to the specified device</p>
+<p class="last">m — allows tasks to create device files that do not yet exist <strong>[required]</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/device
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;allow&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Input_(13)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rwm&quot;</span>
+            <span class="p">]</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-container-(string-container_type)-(string-container_id)-resource-device">
+<code class="descname">DELETE </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/resource/device</code><a class="headerlink" href="#delete--api-v1-container-(string-container_type)-(string-container_id)-resource-device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete device permission with the specified device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/device
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-v1-container-(string-container_type)-(string-container_id)-resource-devices">
+<code class="descname">POST </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/resource/devices</code><a class="headerlink" href="#post--api-v1-container-(string-container_type)-(string-container_id)-resource-devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add multiple devices permission in one request. It will automatically remove original settings before add it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Access is a sequence of one or more of the following letters:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">r — allows tasks to read from the specified device</p>
+<p>w — allows tasks to write to the specified device</p>
+<p class="last">m — allows tasks to create device files that do not yet exist <strong>[required]</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;], [&quot;allow&quot;, &quot;TTY_(4)&quot;, &quot;rwm&quot;]]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/devices
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;allow&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Input_(13)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rwm&quot;</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;allow&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;TTY_(4)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rwm&quot;</span>
+            <span class="p">]</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example request: remove all settings</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/devices
+</pre></div>
+</div>
+<p><strong>Example response: remove all settings</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="limit">
+<h2><a class="toc-backref" href="#id5">Limit</a><a class="headerlink" href="#limit" title="Permalink to this headline">¶</a></h2>
+<dl class="post">
+<dt id="post--api-v1-container-(string-container_type)-(string-container_id)-resource-limit">
+<code class="descname">POST </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/resource/limit</code><a class="headerlink" href="#post--api-v1-container-(string-container_type)-(string-container_id)-resource-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add resource limitation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>cputime</strong> (<em>int</em>) &#8211; (optional) [10-999]. cpu usage time in milliseconds(ms)</li>
+<li><strong>cpuweight</strong> (<em>int</em>) &#8211; (optional) [2-1024]. relative cpu usage</li>
+<li><strong>memory</strong> (<em>string</em>) &#8211; (optional) Unit in MB. Must higher than 64m</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;{&quot;cputime&quot;: 100, &quot;cpuweight&quot;: 600, &quot;memory&quot;: &quot;512m&quot;}&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/limit
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;cputime&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="nt">&quot;cpuweight&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+            <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="s2">&quot;512m&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-container-(string-container_type)-(string-container_id)-resource-limit">
+<code class="descname">DELETE </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/resource/limit</code><a class="headerlink" href="#delete--api-v1-container-(string-container_type)-(string-container_id)-resource-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete resource limitation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;{&quot;cputime&quot;: 0}&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/limit
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="image.html" class="btn btn-neutral float-right" title="Image" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="application.html" class="btn btn-neutral" title="Application" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, QNAP System, Inc.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0 beta',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/extension.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

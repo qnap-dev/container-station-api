@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HTTP Routing Table &mdash; Container Station 1.0.0 beta documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Container Station 1.0.0 beta documentation" href="index.html"/>
+ 
+
+    <script type="text/javascript">
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Container Station
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-information">System Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-port">System Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#certificate-file">Certificate file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#auto-start">Auto start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#inspect-tags">Inspect &amp; tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#download">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#registry">Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="import.html#export">Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="log.html#log">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html#event">Event</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">1.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Container Station</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li></li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+
+   <h1>HTTP Routing Table</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-/api"><strong>/api</strong></a>
+   </div>
+
+   <table class="indextable modindextable" cellspacing="0" cellpadding="2">
+     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+     <tr class="cap" id="cap-/api"><td></td><td>
+       <strong>/api</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#get--api-v1-apps"><code class="xref">GET /api/v1/apps</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#get--api-v1-apps-(string-name)"><code class="xref">GET /api/v1/apps/(string:name)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#get--api-v1-apps-(string-name)-definition"><code class="xref">GET /api/v1/apps/(string:name)/definition</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#get--api-v1-container"><code class="xref">GET /api/v1/container</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#get--api-v1-container-(string-container_type)-(string-container_id)"><code class="xref">GET /api/v1/container/(string:container_type)/(string:container_id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#get--api-v1-container-(string-container_type)-(string-container_id)-all"><code class="xref">GET /api/v1/container/(string:container_type)/(string:container_id)/all</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#get--api-v1-container-(string-container_type)-(string-container_id)-inspect"><code class="xref">GET /api/v1/container/(string:container_type)/(string:container_id)/inspect</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#get--api-v1-container-(string-container_type)-(string-container_id)-logs"><code class="xref">GET /api/v1/container/(string:container_type)/(string:container_id)/logs</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="log.html#get--api-v1-event"><code class="xref">GET /api/v1/event</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="log.html#get--api-v1-event-wait-(string-container_type)-(string-container_id)-(string-state)"><code class="xref">GET /api/v1/event/wait/(string:container_type)/(string:container_id)/(string:state)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#get--api-v1-export-"><code class="xref">GET /api/v1/export/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#get--api-v1-export-progress"><code class="xref">GET /api/v1/export/progress</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#get--api-v1-image-"><code class="xref">GET /api/v1/image/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#get--api-v1-image-(string-image_name)-tags"><code class="xref">GET /api/v1/image/(string:image_name)/tags</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#get--api-v1-image-(string-image_type)-(string-image_name)-(string-image_tag)-inspect"><code class="xref">GET /api/v1/image/(string:image_type)/(string:image_name)/(string:image_tag)/inspect</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#get--api-v1-image-(string-image_type)-(string-image_name)-(string-image_tag)-remote_inspect"><code class="xref">GET /api/v1/image/(string:image_type)/(string:image_name)/(string:image_tag)/remote_inspect</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#get--api-v1-image-downloadstatus"><code class="xref">GET /api/v1/image/downloadstatus</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#get--api-v1-import-"><code class="xref">GET /api/v1/import/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#get--api-v1-import-(string-dirpath)-"><code class="xref">GET /api/v1/import/(string:dirpath)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#get--api-v1-import-progress"><code class="xref">GET /api/v1/import/progress</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="log.html#get--api-v1-log"><code class="xref">GET /api/v1/log</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="log.html#get--api-v1-log-export"><code class="xref">GET /api/v1/log/export</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="system.html#get--api-v1-login_refresh"><code class="xref">GET /api/v1/login_refresh</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#get--api-v1-preference-"><code class="xref">GET /api/v1/preference/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#get--api-v1-preference-(string-key)"><code class="xref">GET /api/v1/preference/(string:key)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#get--api-v1-preference-folder"><code class="xref">GET /api/v1/preference/folder</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#get--api-v1-preference-network"><code class="xref">GET /api/v1/preference/network</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#get--api-v1-registry"><code class="xref">GET /api/v1/registry</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#get--api-v1-registry-ping"><code class="xref">GET /api/v1/registry/ping</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#get--api-v1-resource-device"><code class="xref">GET /api/v1/resource/device</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#get--api-v1-sharefolder-(string-path)"><code class="xref">GET /api/v1/sharefolder/(string:path)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="system.html#get--api-v1-system"><code class="xref">GET /api/v1/system</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="system.html#get--api-v1-system-port-(string-protocol)-(string-port)"><code class="xref">GET /api/v1/system/port/(string:protocol)/(string:port)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="system.html#get--api-v1-system-resource"><code class="xref">GET /api/v1/system/resource</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#get--api-v1-template"><code class="xref">GET /api/v1/template</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#get--api-v1-template-(string-application)-(string-lang)-wizard"><code class="xref">GET /api/v1/template/(string:application)/(string:lang)/wizard</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#get--api-v1-template-(string-application)-definition"><code class="xref">GET /api/v1/template/(string:application)/definition</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#get--api-v1-template-(string-application)-description"><code class="xref">GET /api/v1/template/(string:application)/description</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="system.html#get--api-v1-tls-export"><code class="xref">GET /api/v1/tls/export</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#post--api-v1-apps"><code class="xref">POST /api/v1/apps</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#post--api-v1-container"><code class="xref">POST /api/v1/container</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#post--api-v1-container-(string-container_type)-(string-container_id)-export"><code class="xref">POST /api/v1/container/(string:container_type)/(string:container_id)/export</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#post--api-v1-container-(string-container_type)-(string-container_id)-network-port"><code class="xref">POST /api/v1/container/(string:container_type)/(string:container_id)/network/port</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#post--api-v1-container-(string-container_type)-(string-container_id)-resource-device"><code class="xref">POST /api/v1/container/(string:container_type)/(string:container_id)/resource/device</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#post--api-v1-container-(string-container_type)-(string-container_id)-resource-devices"><code class="xref">POST /api/v1/container/(string:container_type)/(string:container_id)/resource/devices</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#post--api-v1-container-(string-container_type)-(string-container_id)-resource-limit"><code class="xref">POST /api/v1/container/(string:container_type)/(string:container_id)/resource/limit</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#post--api-v1-image-(string-repository)-(string-image_type)-(string-image_name)-(string-image_tag)-download"><code class="xref">POST /api/v1/image/(string:repository)/(string:image_type)/(string:image_name)/(string:image_tag)/download</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#post--api-v1-import-(string-dirpath)-"><code class="xref">POST /api/v1/import/(string:dirpath)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="system.html#post--api-v1-login"><code class="xref">POST /api/v1/login</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#post--api-v1-preference-(string-key)"><code class="xref">POST /api/v1/preference/(string:key)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#post--api-v1-registry"><code class="xref">POST /api/v1/registry</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#post--api-v1-sharefolder-(string-dirname)-(string-basename)-"><code class="xref">POST /api/v1/sharefolder/(string:dirname)/(string:basename)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#post--api-v1-template-(string-application)-pull"><code class="xref">POST /api/v1/template/(string:application)/pull</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#put--api-v1-apps-(string-name)-kill"><code class="xref">PUT /api/v1/apps/(string:name)/kill</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#put--api-v1-apps-(string-name)-restart"><code class="xref">PUT /api/v1/apps/(string:name)/restart</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#put--api-v1-apps-(string-name)-start"><code class="xref">PUT /api/v1/apps/(string:name)/start</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#put--api-v1-apps-(string-name)-stop"><code class="xref">PUT /api/v1/apps/(string:name)/stop</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#put--api-v1-container-(string-container_type)-(string-container_id)-autostart-(string-state)"><code class="xref">PUT /api/v1/container/(string:container_type)/(string:container_id)/autostart/(string:state)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#put--api-v1-container-(string-container_type)-(string-container_id)-restart"><code class="xref">PUT /api/v1/container/(string:container_type)/(string:container_id)/restart</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#put--api-v1-container-(string-container_type)-(string-container_id)-start"><code class="xref">PUT /api/v1/container/(string:container_type)/(string:container_id)/start</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#put--api-v1-container-(string-container_type)-(string-container_id)-stop"><code class="xref">PUT /api/v1/container/(string:container_type)/(string:container_id)/stop</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="system.html#put--api-v1-logout"><code class="xref">PUT /api/v1/logout</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#put--api-v1-preference-(string-key)"><code class="xref">PUT /api/v1/preference/(string:key)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#put--api-v1-preference-folder"><code class="xref">PUT /api/v1/preference/folder</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#put--api-v1-preference-network"><code class="xref">PUT /api/v1/preference/network</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#delete--api-v1-apps-(string-name)"><code class="xref">DELETE /api/v1/apps/(string:name)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="container.html#delete--api-v1-container-(string-container_type)-(string-container_id)"><code class="xref">DELETE /api/v1/container/(string:container_type)/(string:container_id)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#delete--api-v1-container-(string-container_type)-(string-container_id)-network-port"><code class="xref">DELETE /api/v1/container/(string:container_type)/(string:container_id)/network/port</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#delete--api-v1-container-(string-container_type)-(string-container_id)-resource-device"><code class="xref">DELETE /api/v1/container/(string:container_type)/(string:container_id)/resource/device</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="resource.html#delete--api-v1-container-(string-container_type)-(string-container_id)-resource-limit"><code class="xref">DELETE /api/v1/container/(string:container_type)/(string:container_id)/resource/limit</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#delete--api-v1-export-"><code class="xref">DELETE /api/v1/export/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#delete--api-v1-image-(string-repository)-(string-image_type)-(string-image_name)"><code class="xref">DELETE /api/v1/image/(string:repository)/(string:image_type)/(string:image_name)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#delete--api-v1-import-"><code class="xref">DELETE /api/v1/import/</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="log.html#delete--api-v1-log"><code class="xref">DELETE /api/v1/log</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#delete--api-v1-preference-(string-key)"><code class="xref">DELETE /api/v1/preference/(string:key)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#delete--api-v1-registry"><code class="xref">DELETE /api/v1/registry</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#delete--api-v1-sharefolder-(string-dirname)-(string-basename)"><code class="xref">DELETE /api/v1/sharefolder/(string:dirname)/(string:basename)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="import.html#delete--api-v1-sharefolder-(string-dirname)-(string-basename)-"><code class="xref">DELETE /api/v1/sharefolder/(string:dirname)/(string:basename)/</code></a></td><td>
+       <em></em></td></tr>
+   </table>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, QNAP System, Inc.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0 beta',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/extension.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

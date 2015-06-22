@@ -1,0 +1,40 @@
+.. container_station documentation master file, created by
+   sphinx-quickstart on Mon Jul 21 07:28:38 2014.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+QNAP Container Station
+======================
+
+*QNAP Container Station* is a application on QNAP NAS providing container technology (operating system-level virtualization [1]_). It's mainly included a web UI, a back-end RESTful API server and essential utilities, such as commands lxc-* and docker. 
+
+.. exec::
+    import subprocess as sp
+    try:
+        print('Version: ' + str(sp.check_output('git describe --tags --dirty | awk \'{split($0, a, "-"); printf a[1]; if (length(a) > 2) {printf "."a[2]}}\' ', shell=True)))
+    except sp.CalledProcessError:
+        print('Unknown version')
+
+Content
+-------
+
+.. toctree::
+    :maxdepth: 2
+
+    system
+    container
+    background 
+    application
+    resource
+    image
+    import
+    backup
+    log
+    preference
+    draft
+    changelog
+
+
+.. [1]
+   Source: `Wikipedia Operating system-level virtualization <http://en.wikipedia.org/wiki/Operating_system-level_virtualization>`_
+

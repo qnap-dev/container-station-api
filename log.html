@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Log and Event &mdash; Container Station 1.0.0 beta documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Container Station 1.0.0 beta documentation" href="index.html"/>
+        <link rel="next" title="Preference" href="preference.html"/>
+        <link rel="prev" title="Import and Export" href="import.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Container Station
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-information">System Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-port">System Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#certificate-file">Certificate file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#auto-start">Auto start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#inspect-tags">Inspect &amp; tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#download">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#registry">Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="import.html#export">Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Log and Event</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#log">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event">Event</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">1.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Container Station</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Log and Event</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/log.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="log-and-event">
+<h1>Log and Event<a class="headerlink" href="#log-and-event" title="Permalink to this headline">¶</a></h1>
+<p></p>
+<div class="section" id="log">
+<h2>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v1-log">
+<code class="descname">GET </code><code class="descname">/api/v1/log</code><a class="headerlink" href="#get--api-v1-log" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>time_start</strong> &#8211; (optional) Time stamp of system logs start time (epoch). <strong>Default is 0.</strong></li>
+<li><strong>time_end</strong> &#8211; (optional) Time stamp of system logs end time (epoch). <strong>Default is 0.</strong></li>
+<li><strong>limit</strong> &#8211; (optional) Number of system log records. <strong>Default is 20.</strong></li>
+<li><strong>offset</strong> &#8211; (optional) Response logs start with.</li>
+<li><strong>user</strong> &#8211; (optional) User name who login.</li>
+<li><strong>level</strong> &#8211; (optional) Log level like <code class="docutils literal"><span class="pre">INFO</span></code>, <code class="docutils literal"><span class="pre">WARN</span></code>, <code class="docutils literal"><span class="pre">ERROR</span></code>. Append with comma(,) if you want to filter with more than two levels.</li>
+<li><strong>category</strong> &#8211; (optional) Function category like <code class="docutils literal"><span class="pre">container</span></code>, <code class="docutils literal"><span class="pre">image</span></code>, <code class="docutils literal"><span class="pre">import</span></code>, <code class="docutils literal"><span class="pre">export</span></code>, <code class="docutils literal"><span class="pre">backup</span></code>, <code class="docutils literal"><span class="pre">system</span></code>. Append with comma(,) if you want to filter with more than two categories.</li>
+<li><strong>text</strong> &#8211; (optional) Filter text</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/log?limit=5&amp;category=image,export&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;export&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">51</span><span class="p">,</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Failed to export container (docker, c931a3918afc, DockerTestAPI) to /test/d.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1434972060</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;export&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Export error for c931a3918afcef4d50da6c0e0d85300d373b443d1cc8262714f1a70fb63c6f0b: (127,)&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1434972060</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">49</span><span class="p">,</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Finished to download image from dockerhub (docker, lgsd/diamond:latest)&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1434972059</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;export&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Start to export container (docker, c931a3918afc, DockerTestAPI) to /test/d.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1434972058</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;export&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">47</span><span class="p">,</span>
+        <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Failed to export container (lxc, utest) to /test/c.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1434972058</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-log-export">
+<code class="descname">GET </code><code class="descname">/api/v1/log/export</code><a class="headerlink" href="#get--api-v1-log-export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export logs to csv format.</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/log/export
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-text"><div class="highlight"><pre>Date,Level,Category,User,Message
+2015-06-22 11:14:17.671004,INFO,system,system,Stop Container Station
+2015-06-22 11:14:19.297650,INFO,system,system,Start Container Station: v0.93.9
+2015-06-22 11:14:22.834930,INFO,system,system,Update image list successfully
+2015-06-22 11:14:23.133445,INFO,system,system,Update application metadata successfully
+2015-06-22 11:18:35.995727,INFO,container,admin,Create a new redmine application: test
+2015-06-22 11:18:44.260773,INFO,container,admin,Restart application: test
+2015-06-22 11:19:05.527760,INFO,container,admin,Kill application: test
+2015-06-22 11:19:06.251786,INFO,container,admin,Start application: test
+2015-06-22 11:19:19.707382,INFO,container,admin,Stop application: test
+2015-06-22 11:19:19.836794,INFO,system,system,Update image list successfully
+2015-06-22 11:19:25.466509,INFO,container,admin,Destroy application: test
+2015-06-22 11:19:25.605122,INFO,system,system,Update application metadata successfully
+2015-06-22 11:19:26.256333,INFO,image,admin,&quot;Start to download image from qnap (lxc, ubuntu-trusty:latest)&quot;
+2015-06-22 11:19:26.984629,INFO,system,system,Update image list successfully
+2015-06-22 11:19:27.334323,INFO,system,system,Update application metadata successfully
+2015-06-22 11:19:40.723345,INFO,image,admin,&quot;Finished to download image from qnap (lxc, ubuntu-trusty:latest)&quot;
+2015-06-22 11:19:43.945399,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
+2015-06-22 11:19:49.789992,INFO,container,admin,&quot;Destroy container (lxc, utest)&quot;
+2015-06-22 11:19:52.739041,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
+2015-06-22 11:19:53.027691,INFO,image,admin,&quot;Start to download image from dockerhub (docker, library/ubuntu:latest)&quot;
+2015-06-22 11:20:15.586679,INFO,image,admin,&quot;Finished to download image from dockerhub (docker, library/ubuntu:latest)&quot;
+2015-06-22 11:20:20.092509,INFO,container,admin,&quot;Create container (docker, c931a3918afc, DockerTestAPI)&quot;
+2015-06-22 11:20:22.244940,INFO,container,admin,&quot;Create container (docker, 2126cab89ef3, DockerTestAPI2)&quot;
+2015-06-22 11:20:24.485972,INFO,container,admin,&quot;Stop container (lxc, utest)&quot;
+2015-06-22 11:20:24.808091,INFO,container,admin,&quot;Start container (lxc, utest)&quot;
+2015-06-22 11:20:25.062759,INFO,container,admin,&quot;Stop container (docker, c931a3918afc, DockerTestAPI)&quot;
+2015-06-22 11:20:25.366729,INFO,container,admin,&quot;Start container (docker, c931a3918afc, DockerTestAPI)&quot;
+2015-06-22 11:20:27.830524,INFO,container,admin,&quot;Restart container (lxc, utest)&quot;
+2015-06-22 11:20:28.194249,INFO,container,admin,&quot;Restart container (docker, c931a3918afc, DockerTestAPI)&quot;
+2015-06-22 11:20:29.264411,INFO,container,admin,&quot;Stop container (lxc, utest)&quot;
+2015-06-22 11:20:29.409310,INFO,container,admin,&quot;Stop container (docker, c931a3918afc, DockerTestAPI)&quot;
+2015-06-22 11:20:29.817068,INFO,container,admin,&quot;Destroy container (lxc, utest)&quot;
+2015-06-22 11:20:30.120041,INFO,container,admin,&quot;Stop container (docker, 2126cab89ef3, DockerTestAPI2)&quot;
+2015-06-22 11:20:32.090744,INFO,container,admin,&quot;Destroy container (docker, 2126cab89ef3, DockerTestAPI2)&quot;
+2015-06-22 11:20:33.411202,INFO,system,system,Update image list successfully
+2015-06-22 11:20:33.571319,INFO,system,system,Update application metadata successfully
+2015-06-22 11:20:42.116153,INFO,image,admin,&quot;Start to download image from dockerhub (docker, lgsd/diamond:latest)&quot;
+2015-06-22 11:20:48.024084,INFO,image,admin,Registry add: test
+2015-06-22 11:20:48.266468,INFO,image,admin,Registry edit: new_test
+2015-06-22 11:20:48.575532,INFO,image,admin,Registry remove: new_test
+2015-06-22 11:20:51.453203,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
+2015-06-22 11:20:52.176888,INFO,export,admin,&quot;Start to export container (lxc, utest) to /test/c.tgz&quot;
+2015-06-22 11:20:53.283500,INFO,system,system,Update image list successfully
+2015-06-22 11:20:53.612236,INFO,system,system,Update application metadata successfully
+2015-06-22 11:20:55.997008,INFO,export,admin,Export task logs are cleared
+2015-06-22 11:20:58.078384,ERROR,export,admin,&quot;Export error for utest: (1,)&quot;
+2015-06-22 11:20:58.470912,ERROR,export,admin,&quot;Failed to export container (lxc, utest) to /test/c.tgz&quot;
+2015-06-22 11:20:58.906306,INFO,export,admin,&quot;Start to export container (docker, c931a3918afc, DockerTestAPI) to /test/d.tgz&quot;
+2015-06-22 11:20:59.082248,INFO,image,admin,&quot;Finished to download image from dockerhub (docker, lgsd/diamond:latest)&quot;
+2015-06-22 11:21:00.439568,ERROR,export,admin,&quot;Export error for c931a3918afcef4d50da6c0e0d85300d373b443d1cc8262714f1a70fb63c6f0b: (127,)&quot;
+2015-06-22 11:21:00.709146,ERROR,export,admin,&quot;Failed to export container (docker, c931a3918afc, DockerTestAPI) to /test/d.tgz&quot;
+2015-06-22 11:21:10.648221,INFO,import,admin,&quot;Start to import container (lxc, utest_import) from /test/c.tgz&quot;
+2015-06-22 11:21:12.323477,INFO,import,admin,Import task logs are cleared
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-log">
+<code class="descname">DELETE </code><code class="descname">/api/v1/log</code><a class="headerlink" href="#delete--api-v1-log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all system logs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>records</strong> (<em>int</em>) &#8211; Returns the number of rows deleted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/log
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-text"><div class="highlight"><pre>{&quot;records&quot;: 54}
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="event">
+<h2>Event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v1-event">
+<code class="descname">GET </code><code class="descname">/api/v1/event</code><a class="headerlink" href="#get--api-v1-event" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>index</strong> &#8211; start from. default returns the latest 20</li>
+<li><strong>offset</strong> &#8211; the newest one</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response format</strong></p>
+<p>Category:User:Timestamp:JSON</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="5%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Category</th>
+<th class="head">User</th>
+<th class="head">JSON</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>image</td>
+<td>user</td>
+<td><dl class="first last docutils">
+<dt>action: <code class="docutils literal"><span class="pre">download</span></code></dt>
+<dd><ul class="first last simple">
+<li>name: image name</li>
+<li>repository: <code class="docutils literal"><span class="pre">dockerhub</span></code>, <code class="docutils literal"><span class="pre">qnap</span></code></li>
+<li>type: <code class="docutils literal"><span class="pre">docker</span></code>, <code class="docutils literal"><span class="pre">lxc</span></code></li>
+<li>state: <code class="docutils literal"><span class="pre">success</span></code>, <code class="docutils literal"><span class="pre">error</span></code></li>
+</ul>
+</dd>
+<dt>action: <code class="docutils literal"><span class="pre">delete</span></code></dt>
+<dd><ul class="first last simple">
+<li>name: image name</li>
+<li>type: <code class="docutils literal"><span class="pre">docker</span></code>, <code class="docutils literal"><span class="pre">lxc</span></code></li>
+<li>state: <code class="docutils literal"><span class="pre">success</span></code>, <code class="docutils literal"><span class="pre">error</span></code></li>
+</ul>
+</dd>
+<dt>action: <code class="docutils literal"><span class="pre">update</span></code></dt>
+<dd><ul class="first last simple">
+<li>category: <code class="docutils literal"><span class="pre">local</span></code></li>
+<li>type: <code class="docutils literal"><span class="pre">docker</span></code>, <code class="docutils literal"><span class="pre">lxc</span></code></li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>container</td>
+<td>user</td>
+<td><ul class="first last simple">
+<li>container: container name</li>
+<li>id: container ID</li>
+<li>type: <code class="docutils literal"><span class="pre">docker</span></code>, <code class="docutils literal"><span class="pre">lxc</span></code></li>
+<li>state: <code class="docutils literal"><span class="pre">create</span></code>, <code class="docutils literal"><span class="pre">start</span></code>, <code class="docutils literal"><span class="pre">stop</span></code>, <code class="docutils literal"><span class="pre">restart</span></code>, <code class="docutils literal"><span class="pre">destroy</span></code>, <code class="docutils literal"><span class="pre">pause</span></code>, <code class="docutils literal"><span class="pre">unpause</span></code></li>
+<li>port: <code class="docutils literal"><span class="pre">add</span></code>, <code class="docutils literal"><span class="pre">remove</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>export</td>
+<td>user</td>
+<td><ul class="first last simple">
+<li>type: <code class="docutils literal"><span class="pre">docker</span></code>, <code class="docutils literal"><span class="pre">lxc</span></code></li>
+<li>container: container name</li>
+<li>cid: container ID</li>
+<li>path: export to</li>
+<li>compress: <code class="docutils literal"><span class="pre">true</span></code>, <code class="docutils literal"><span class="pre">false</span></code></li>
+<li>state: <code class="docutils literal"><span class="pre">running</span></code>, <code class="docutils literal"><span class="pre">completed</span></code>, <code class="docutils literal"><span class="pre">aborted</span></code></li>
+<li>result: if not <code class="docutils literal"><span class="pre">0</span></code>, means something wrong.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>import</td>
+<td>user</td>
+<td><ul class="first last simple">
+<li>type: <code class="docutils literal"><span class="pre">docker</span></code>, <code class="docutils literal"><span class="pre">lxc</span></code></li>
+<li>cid: container name</li>
+<li>path: import from</li>
+<li>state: <code class="docutils literal"><span class="pre">running</span></code>, <code class="docutils literal"><span class="pre">completed</span></code>, <code class="docutils literal"><span class="pre">aborted</span></code></li>
+<li>result: if not <code class="docutils literal"><span class="pre">0</span></code>, means something wrong.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/event
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">61</span><span class="p">,</span>
+    <span class="nt">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;import:admin:1434968470:{\&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/test/c.tgz\&quot;, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;, \&quot;cid\&quot;: \&quot;utest_import\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export:admin:1434968461:{\&quot;container\&quot;: \&quot;DockerTestAPI\&quot;, \&quot;cid\&quot;: \&quot;c931a3918afcef4d50da6c0e0d85300d373b443d1cc8262714f1a70fb63c6f0b\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;error\&quot;, \&quot;result\&quot;: -2, \&quot;tid\&quot;: 2, \&quot;path\&quot;: \&quot;/test/d.tgz\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:admin:1434968459:{\&quot;name\&quot;: \&quot;lgsd/diamond\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;state\&quot;: \&quot;success\&quot;, \&quot;tag\&quot;: \&quot;latest\&quot;, \&quot;action\&quot;: \&quot;download\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export:admin:1434968459:{\&quot;container\&quot;: \&quot;DockerTestAPI\&quot;, \&quot;cid\&quot;: \&quot;c931a3918afcef4d50da6c0e0d85300d373b443d1cc8262714f1a70fb63c6f0b\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;tid\&quot;: 2, \&quot;path\&quot;: \&quot;/test/d.tgz\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1434968458:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;category\&quot;: \&quot;local\&quot;, \&quot;state\&quot;: \&quot;pull\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;lgsd/diamond:latest\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export:admin:1434968458:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;cid\&quot;: \&quot;utest\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;error\&quot;, \&quot;result\&quot;: -2, \&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/test/c.tgz\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1434968453:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;from\&quot;: \&quot;qnap\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1434968453:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;from\&quot;: \&quot;application\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1434968452:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;from\&quot;: \&quot;dockerhub\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export:admin:1434968452:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;cid\&quot;: \&quot;utest\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/test/c.tgz\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1434968451:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;state\&quot;: \&quot;start\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1434968451:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;state\&quot;: \&quot;create\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:admin:1434968442:{\&quot;action\&quot;: \&quot;delete\&quot;, \&quot;state\&quot;: \&quot;error\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;name\&quot;: \&quot;lgsd/diamond\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1434968433:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;from\&quot;: \&quot;qnap\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1434968433:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;from\&quot;: \&quot;application\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1434968433:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;from\&quot;: \&quot;dockerhub\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1434968432:{\&quot;container\&quot;: \&quot;DockerTestAPI2\&quot;, \&quot;state\&quot;: \&quot;destroy\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;2126cab89ef38e2e42a13220b57965464772550d316669406293828474ca831c\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1434968430:{\&quot;container\&quot;: \&quot;DockerTestAPI2\&quot;, \&quot;state\&quot;: \&quot;die\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;2126cab89ef38e2e42a13220b57965464772550d316669406293828474ca831c\&quot;}&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;offset&quot;</span><span class="p">:</span> <span class="mi">81</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-event-wait-(string-container_type)-(string-container_id)-(string-state)">
+<code class="descname">GET </code><code class="descname">/api/v1/event/wait/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-event-wait-(string-container_type)-(string-container_id)-(string-state)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+<li><strong>state</strong> &#8211; <code class="docutils literal"><span class="pre">running</span></code>, <code class="docutils literal"><span class="pre">stopped</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>duration</strong> &#8211; timeout in seconds (default: 60)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/event/wait/lxc/utest/stopped?duration=5&quot;</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">10883072</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;tx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="preference.html" class="btn btn-neutral float-right" title="Preference" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="import.html" class="btn btn-neutral" title="Import and Export" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, QNAP System, Inc.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0 beta',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/extension.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

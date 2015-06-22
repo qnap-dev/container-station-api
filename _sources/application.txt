@@ -1,0 +1,382 @@
+Application
+===================
+
+.. exec::
+    import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    try:
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+.. _application:
+
+
+Template
+------------------
+
+.. http:get:: /api/v1/template
+
+    List all application template information. 
+
+    :param filter_text: (optional) filter application by name and description
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+              "http://${QIP}:${QPORT}/api/v1/template"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt
+            "http://${QIP}:${QPORT}/api/v1/template"
+            | python -m json.tool
+
+
+.. http:get:: /api/v1/template/(string:application)/description
+
+    Get application full description with markdown format.
+
+    :param application: Application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/description"
+
+    **Example response**
+
+    .. runcode:: text
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/description"
+
+
+.. http:get:: /api/v1/template/(string:application)/definition
+
+    Get application full YAML definition.
+
+    :param application: Application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/definition"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/definition" | python -m json.tool
+
+
+.. http:post:: /api/v1/template/(string:application)/pull
+
+    Pulls images for containers.
+
+    :param application: Application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/template/redmine/pull"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/template/redmine/pull" | python -m json.tool
+
+
+.. http:get:: /api/v1/template/(string:application)/(string:lang)/wizard
+
+    Read the wizard config file, and return html tags of each step and language tags (default: english).
+
+    :param application: Application name
+    :param lang: Wizard language
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/eng/wizard"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/eng/wizard" | python -m json.tool
+
+
+User's application
+------------------
+
+.. http:post:: /api/v1/apps
+
+    Create and start containers.
+
+    :reqjson string template: Application name
+    :reqjson string name: Custom application name
+    :reqjson boolean autostart: Start application when container-station started
+    :reqjson string virtual_path: Start application when container-station started
+    :reqjson string port: 
+    :reqjson object definition: Application definition
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "custom": {
+                    "name": "test",
+                    "autostart": true,
+                    "virtual_path": "redmine",
+                    "port": "5555",
+                    "template": "redmine"
+                },
+                "definition": {
+                    "postgresql": {
+                        "environment": [
+                            "DB_USER=redmine",
+                            "DB_PASS=redminewooo",
+                            "DB_NAME=myredmine"
+                        ],
+                        "image": "sameersbn/postgresql:9.4"
+                    },
+                    "redmine": {
+                        "environment": [
+                            "DB_USER=redmine",
+                            "DB_PASS=redminewooo",
+                            "DB_NAME=myredmine"
+                        ],
+                        "image": "sameersbn/redmine:3.0.2",
+                        "links": [
+                            "postgresql:postgresql"
+                        ],
+                        "ports": [
+                            "22234:80"
+                        ]
+                    }
+                }
+            }' http://${QIP}:${QPORT}/api/v1/apps
+
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d
+            '{
+                "custom": {
+                    "name": "test",
+                    "autostart": true,
+                    "virtual_path": "redmine",
+                    "port": "5555",
+                    "template": "redmine"
+                },
+                "definition": {
+                    "postgresql": {
+                        "environment": [
+                            "DB_USER=redmine",
+                            "DB_PASS=redminewooo",
+                            "DB_NAME=myredmine"
+                        ],
+                        "image": "sameersbn/postgresql:9.4"
+                    },
+                    "redmine": {
+                        "environment": [
+                            "DB_USER=redmine",
+                            "DB_PASS=redminewooo",
+                            "DB_NAME=myredmine"
+                        ],
+                        "image": "sameersbn/redmine:3.0.2",
+                        "links": [
+                            "postgresql:postgresql"
+                        ],
+                        "ports": [
+                            "22234:80"
+                        ]
+                    }
+                }
+            }' http://${QIP}:${QPORT}/api/v1/apps | python -m json.tool
+
+
+.. http:get:: /api/v1/apps
+
+    List all custom application information.
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/apps"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps" | python -m json.tool
+
+
+.. http:get:: /api/v1/apps/(string:name)/definition
+
+    Get custom application definition.
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/definition"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/definition" | python -m json.tool
+
+
+.. http:get:: /api/v1/apps/(string:name)
+
+    Get custom application information.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test" | python -m json.tool
+
+
+.. http:put:: /api/v1/apps/(string:name)/restart
+
+    Restart running application.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/restart"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/restart" | python -m json.tool
+
+
+.. http:put:: /api/v1/apps/(string:name)/kill
+
+    Force stop application containers.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/kill"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/kill" | python -m json.tool
+
+
+.. http:put:: /api/v1/apps/(string:name)/start
+
+    Start existing application.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/start"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/start" | python -m json.tool
+
+
+.. http:put:: /api/v1/apps/(string:name)/stop
+
+    Stop running application without removing them.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/stop"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/stop" | python -m json.tool
+
+
+.. http:delete:: /api/v1/apps/(string:name)
+
+    Remove stopped application containers.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test" | python -m json.tool
