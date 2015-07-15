@@ -113,7 +113,7 @@ Inspect & tags
 
     :param image_type: ``docker``
     :param image_name: image name
-    :param image_name: image tag, which is ``latest`` or other version number
+    :param image_tag: image tag, which is ``latest`` or other version number
 
     **Example request**
 
@@ -136,7 +136,7 @@ Inspect & tags
 
     :param image_type: ``docker``
     :param image_name: image name
-    :param image_name: image tag, which is ``latest`` or other version number
+    :param image_tag: image tag, which is ``latest`` or other version number
 
     **Example request**
 

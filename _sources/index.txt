@@ -10,8 +10,19 @@ QNAP Container Station
 
 .. exec::
     import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
     try:
-        print('Version: ' + str(sp.check_output('git describe --tags --dirty | awk \'{split($0, a, "-"); printf a[1]; if (length(a) > 2) {printf "."a[2]}}\' ', shell=True)))
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+    ret = sp.check_output('curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/system', shell=True)
+    try:
+        system = json.loads(ret)
+        print('Version: ' + system['version']['web'])
     except sp.CalledProcessError:
         print('Unknown version')
 
@@ -28,6 +39,7 @@ Content
     resource
     image
     import
+    node
     backup
     log
     preference

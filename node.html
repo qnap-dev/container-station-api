@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Draft &mdash; Container Station 1.0.0 beta documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Container Station 1.0.0 beta documentation" href="index.html"/>
+        <link rel="next" title="Log and Event" href="log.html"/>
+        <link rel="prev" title="Import and Export" href="import.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Container Station
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-information">System Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#system-port">System Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#certificate-file">Certificate file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#auto-start">Auto start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image.html#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#inspect-tags">Inspect &amp; tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#download">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html#registry">Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="import.html#export">Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Draft</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#node-management">Node Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cluster-app-management">Cluster App Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storage-management">Storage Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network-management">Network Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-management">Image Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="log.html#log">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html#event">Event</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">1.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Container Station</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Draft</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/node.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="draft">
+<h1>Draft<a class="headerlink" href="#draft" title="Permalink to this headline">¶</a></h1>
+<p></p>
+<div class="section" id="node-management">
+<h2>Node Management<a class="headerlink" href="#node-management" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v1-node">
+<code class="descname">GET </code><code class="descname">/api/v1/node</code><a class="headerlink" href="#get--api-v1-node" title="Permalink to this definition">¶</a></dt>
+<dd><p>List machines in cluster</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>labels</strong> (<em>array</em>) &#8211; query node matching labels</li>
+<li><strong>role</strong> (<em>array</em>) &#8211; query node matching role</li>
+<li><strong>state</strong> (<em>array</em>) &#8211; query node matching state</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; node&#8217;s name that case-insensitive, unique and in pattern of [a-z0-9-_]+</li>
+<li><strong>ip</strong> (<em>string</em>) &#8211; node&#8217;s IP</li>
+<li><strong>port</strong> (<em>int</em>) &#8211; node&#8217;s port</li>
+<li><strong>state</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">active</span></code>, <code class="docutils literal"><span class="pre">disconnected</span></code></li>
+<li><strong>role</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">leader</span></code>, <code class="docutils literal"><span class="pre">follower</span></code>, <code class="docutils literal"><span class="pre">user</span></code></li>
+<li><strong>labels</strong> (<em>array</em>) &#8211; <code class="docutils literal"><span class="pre">compute</span></code>, <code class="docutils literal"><span class="pre">storage</span></code>, <code class="docutils literal"><span class="pre">election</span></code></li>
+<li><strong>compute</strong> (<em>object</em>) &#8211; TBD. Swarm inforamtion showing on UI</li>
+<li><strong>storage</strong> (<em>object</em>) &#8211; TBD. Ceph inforamtion showing on UI</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-a&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;leader&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;compute&quot;</span><span class="p">,</span> <span class="s2">&quot;election&quot;</span><span class="p">],</span>
+     <span class="nt">&quot;compute&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;loading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]}</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-node?action=scan">
+<code class="descname">GET </code><code class="descname">/api/v1/node?action=scan</code><a class="headerlink" href="#get--api-v1-node?action=scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>List machines in the same network</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node?action<span class="o">=</span>scan
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-A&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+     <span class="nt">&quot;container-station&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-B&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.11&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+     <span class="nt">&quot;container-station&quot;</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-node-(node_id)">
+<code class="descname">GET </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-node-(node_id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get node information</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>container</strong> (<em>array</em>) &#8211; containers under this node</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference internal" href="#get--api-v1-node" title="GET /api/v1/node"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/node</span></code></a> for others parameters.</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node/eca0338f4ea31566
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-a&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+ <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;leader&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;compute&quot;</span><span class="p">,</span> <span class="s2">&quot;election&quot;</span><span class="p">,</span> <span class="s2">&quot;arch=x86&quot;</span><span class="p">],</span>
+ <span class="nt">&quot;compute&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;loading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]},</span>
+ <span class="nt">&quot;container&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;de1abdef23213&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;web1&quot;</span><span class="p">,</span> <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-v1-node">
+<code class="descname">POST </code><code class="descname">/api/v1/node</code><a class="headerlink" href="#post--api-v1-node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new node</p>
+<p>Refer to <a class="reference internal" href="#get--api-v1-node" title="GET /api/v1/node"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/node</span></code></a> for others parameters.</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{&quot;name&quot;: &quot;member-a&quot;,</span>
+<span class="s1">      &quot;ip&quot;: &quot;192.168.0.10&quot;,</span>
+<span class="s1">      &quot;port&quot;: 8080,</span>
+<span class="s1">      &quot;label&quot;: [&quot;compute&quot;, &quot;election&quot;, &quot;arch=x86&quot;],</span>
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-a&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+ <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;leader&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;compute&quot;</span><span class="p">,</span> <span class="s2">&quot;election&quot;</span><span class="p">,</span> <span class="s2">&quot;arch=x86&quot;</span><span class="p">],</span>
+ <span class="nt">&quot;compute&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;loading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-node-(node_id)">
+<code class="descname">DELETE </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-node-(node_id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a node</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>id</strong> (<em>array</em>) &#8211; nodes to be deleted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node/eca0338f4ea31566
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--api-v1-node-(node_id)">
+<code class="descname">PUT </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--api-v1-node-(node_id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update node that only change the keys are given.</p>
+<p>It returns <em>:http:get:`/api/v1/(int:node_id)`</em> refering to <a class="reference internal" href="#get--api-v1-node" title="GET /api/v1/node"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/node</span></code></a> for others parameters.</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{&quot;name&quot;: &quot;member-a&quot;,</span>
+<span class="s1">      &quot;ip&quot;: &quot;192.168.0.10&quot;,</span>
+<span class="s1">      &quot;port&quot;: 8080,</span>
+<span class="s1">      &quot;label&quot;: [&quot;compute&quot;, &quot;election&quot;, &quot;arch=x86&quot;],</span>
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node/eca0338f4ea31566
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-a&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+ <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;leader&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;compute&quot;</span><span class="p">,</span> <span class="s2">&quot;election&quot;</span><span class="p">,</span> <span class="s2">&quot;arch=x86&quot;</span><span class="p">],</span>
+ <span class="nt">&quot;compute&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;loading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="cluster-app-management">
+<h2>Cluster App Management<a class="headerlink" href="#cluster-app-management" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>This section refer design <a class="reference internal" href="application.html#id1"><span>Template</span></a> and <a class="reference external" href="https://mesosphere.github.io/marathon/docs/rest-api.html">Marathon: REST API</a>. UI may refer to <a class="reference external" href="http://fleetui.com/">FleetUI</a></p>
+<p>Cluster application distribute Docker containers across nodes according to <cite>definition</cite> of request.</p>
+<p>The control of cluster application will follow signle node design as following,</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="application.html#get--api-v1-apps-(string-name)" title="GET /api/v1/apps/(string:name)"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/apps/(string:name)</span></code></a></li>
+<li><a class="reference internal" href="application.html#put--api-v1-apps-(string-name)-restart" title="PUT /api/v1/apps/(string:name)/restart"><code class="xref http http-put docutils literal"><span class="pre">PUT</span> <span class="pre">/api/v1/apps/(string:name)/restart</span></code></a></li>
+<li><a class="reference internal" href="application.html#put--api-v1-apps-(string-name)-kill" title="PUT /api/v1/apps/(string:name)/kill"><code class="xref http http-put docutils literal"><span class="pre">PUT</span> <span class="pre">/api/v1/apps/(string:name)/kill</span></code></a></li>
+<li><a class="reference internal" href="application.html#put--api-v1-apps-(string-name)-start" title="PUT /api/v1/apps/(string:name)/start"><code class="xref http http-put docutils literal"><span class="pre">PUT</span> <span class="pre">/api/v1/apps/(string:name)/start</span></code></a></li>
+<li><a class="reference internal" href="application.html#put--api-v1-apps-(string-name)-stop" title="PUT /api/v1/apps/(string:name)/stop"><code class="xref http http-put docutils literal"><span class="pre">PUT</span> <span class="pre">/api/v1/apps/(string:name)/stop</span></code></a></li>
+<li><a class="reference internal" href="application.html#delete--api-v1-apps-(string-name)" title="DELETE /api/v1/apps/(string:name)"><code class="xref http http-delete docutils literal"><span class="pre">DELETE</span> <span class="pre">/api/v1/apps/(string:name)</span></code></a></li>
+</ul>
+</div></blockquote>
+<p>TBD:</p>
+<blockquote>
+<div><ul class="simple">
+<li>name conflict</li>
+<li>non-stop upgrade</li>
+<li>fixed ip and dns</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<dl class="post">
+<dt id="post--api-v1-cluster-apps">
+<code class="descname">POST </code><code class="descname">/api/v1/cluster-apps</code><a class="headerlink" href="#post--api-v1-cluster-apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and start containers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>deployment</strong> (<em>object</em>) &#8211; </li>
+<li><strong>scale</strong> (<em>int</em>) &#8211; </li>
+<li><strong>node</strong> (<em>string</em>) &#8211; </li>
+<li><strong>label</strong> (<em>array</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;name&quot;: &quot;redmine-app&quot;,</span>
+<span class="s1">        &quot;deployment&quot;: {</span>
+<span class="s1">            &quot;postgresql&quot;: {&quot;scale&quot;: 2,</span>
+<span class="s1">                           &quot;node&quot;: [&quot;aaaa&quot;, &quot;bbbb&quot;, &quot;cccc&quot;]}</span>
+<span class="s1">        },</span>
+<span class="s1">        &quot;definition&quot;: {</span>
+<span class="s1">            &quot;postgresql&quot;: {</span>
+<span class="s1">                &quot;label&quot;: [&quot;arch=x86&quot;],</span>
+<span class="s1">                &quot;environment&quot;: [</span>
+<span class="s1">                    &quot;DB_USER=redmine&quot;,</span>
+<span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
+<span class="s1">                    &quot;DB_NAME=myredmine&quot;,</span>
+<span class="s1">                    &quot;constraint:operatingsystem=qts&quot;,</span>
+<span class="s1">                    &quot;constraint:environment=production&quot;,</span>
+<span class="s1">                    &quot;affinity:image==postgresql&quot;</span>
+<span class="s1">                ],</span>
+<span class="s1">                &quot;image&quot;: &quot;sameersbn/postgresql:9.4&quot;</span>
+<span class="s1">            },</span>
+<span class="s1">            &quot;redmine&quot;: {</span>
+<span class="s1">                &quot;label&quot;: [&quot;arch=x86&quot;],</span>
+<span class="s1">                &quot;environment&quot;: [</span>
+<span class="s1">                    &quot;DB_USER=redmine&quot;,</span>
+<span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
+<span class="s1">                    &quot;DB_NAME=myredmine&quot;</span>
+<span class="s1">                ],</span>
+<span class="s1">                &quot;image&quot;: &quot;sameersbn/redmine:3.0.2&quot;,</span>
+<span class="s1">                &quot;links&quot;: [</span>
+<span class="s1">                    &quot;postgresql:postgresql&quot;</span>
+<span class="s1">                ],</span>
+<span class="s1">                &quot;ports&quot;: [</span>
+<span class="s1">                    &quot;22234:80&quot;</span>
+<span class="s1">                ],</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/apps
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine-app&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;deployment&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;scale&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                        <span class="nt">&quot;node&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;aaaa&quot;</span><span class="p">,</span> <span class="s2">&quot;bbbb&quot;</span><span class="p">,</span> <span class="s2">&quot;cccc&quot;</span><span class="p">]}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;definition&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;arch=x86&quot;</span><span class="p">],</span>
+            <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DB_NAME=myredmine&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;constraint:operatingsystem=qts&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;constraint:environment=production&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;affinity:image==postgresql&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;arch=x86&quot;</span><span class="p">],</span>
+            <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.0.2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;postgresql:postgresql&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;22234:80&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-cluster-apps">
+<code class="descname">GET </code><code class="descname">/api/v1/cluster-apps</code><a class="headerlink" href="#get--api-v1-cluster-apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>List cluster application</p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--api-v1-cluster-apps">
+<code class="descname">PUT </code><code class="descname">/api/v1/cluster-apps</code><a class="headerlink" href="#put--api-v1-cluster-apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify cluster application</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-cluster-apps">
+<code class="descname">DELETE </code><code class="descname">/api/v1/cluster-apps</code><a class="headerlink" href="#delete--api-v1-cluster-apps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete cluster application</p>
+</dd></dl>
+
+</div>
+<div class="section" id="storage-management">
+<h2>Storage Management<a class="headerlink" href="#storage-management" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>TBD. Read ceph document first.</div></blockquote>
+</div>
+<div class="section" id="network-management">
+<h2>Network Management<a class="headerlink" href="#network-management" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v1-cluster-preference">
+<code class="descname">GET </code><code class="descname">/api/v1/cluster-preference</code><a class="headerlink" href="#get--api-v1-cluster-preference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keys:</p>
+<ul class="simple">
+<li>floating-ip-pool</li>
+<li>floating-ip-leader</li>
+</ul>
+</dd></dl>
+
+</div>
+<div class="section" id="image-management">
+<h2>Image Management<a class="headerlink" href="#image-management" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Support private registry for image cache</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="log.html" class="btn btn-neutral float-right" title="Log and Event" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="import.html" class="btn btn-neutral" title="Import and Export" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, QNAP System, Inc.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0 beta',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/extension.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

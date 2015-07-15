@@ -35,6 +35,12 @@ Template
 
     .. runcode:: json
 
+        for i in `seq 30`; do
+            if curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/template" | python -c "import json, sys; r = sys.stdin.read(); sys.stderr.write(r + '\n'); sys.exit(0 if len(json.loads(r)) > 0 else 1)"; then
+                break;
+            fi;
+            sleep 1;
+        done;
         curl -sq -XGET -b cookies.txt
             "http://${QIP}:${QPORT}/api/v1/template"
             | python -m json.tool

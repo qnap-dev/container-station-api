@@ -40,7 +40,7 @@ Export
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{
-                "path": "test/c.tgz",
+                "path": "Public/c.tgz",
                 "compress": true
             }' http://${QIP}:${QPORT}/api/v1/container/lxc/utest/export
 
@@ -51,7 +51,7 @@ Export
         curl -sq -XPOST -b cookies.txt -d
             '{"type": "lxc", "name": "utest", "image": "ubuntu-trusty", "tag": "latest"}'
             http://${QIP}:${QPORT}/api/v1/container -o /dev/null;
-        curl -sq -XPOST -d '{"path": "test/c.tgz", "compress": true, "force": true}' -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/utest/export | python -m json.tool
+        curl -sq -XPOST -d "{\"path\": \"${QTEST_FOLDER}/c.tgz\", \"compress\": true, \"force\": true}" -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/utest/export | python -m json.tool
 
     
 **Example request of Docker**
@@ -60,7 +60,7 @@ Export
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{
-                "path": "test/d.tgz",
+                "path": "Public/d.tgz",
                 "compress": true
             }' http://${QIP}:${QPORT}/api/v1/container/docker/<container_id>/export
 
@@ -69,7 +69,7 @@ Export
     .. runcode:: json
 
         id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/getid/DockerTestAPI` ;
-        curl -sq -XPOST -d '{"path": "test/d.tgz", "compress": true, "force": true}' -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id}/export | python -m json.tool
+        curl -sq -XPOST -d "{\"path\": \"${QTEST_FOLDER}/d.tgz\", \"compress\": true, \"force\": true}" -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id}/export | python -m json.tool
 
 .. http:get:: /api/v1/export/
 
@@ -151,20 +151,20 @@ Import
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/import/test/?name=c.tgz
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/import/Public/?name=c.tgz
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XPOST -d '{"path": "test/c.tgz", "compress": true}' -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/utest/export -o /dev/null;
+        curl -sq -XPOST -d "{\"path\": \"${QTEST_FOLDER}/c.tgz\", \"compress\": true}" -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/utest/export -o /dev/null;
         for i in `seq 10`; do curl -sq -m 5 -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/export/progress -o /dev/null;
             if [ "$?" -eq "28" ]; then
                 break;
             fi;
             sleep 5;
         done;
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/import/test/?name=c.tgz | python -mjson.tool;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/import/${QTEST_FOLDER}/?name=c.tgz | python -mjson.tool;
 
 
 .. http:post:: /api/v1/import/(string:dirpath)/
@@ -220,7 +220,7 @@ Import
                         }
                     }
                 }
-            }' http://${QIP}:${QPORT}/api/v1/import/test/?name=c.tgz
+            }' http://${QIP}:${QPORT}/api/v1/import/${QTEST_FOLDER}/?name=c.tgz
 
     **Example response**
 
@@ -269,7 +269,7 @@ Import
                         }
                     }
                 }
-            }' http://${QIP}:${QPORT}/api/v1/import/test/?name=c.tgz | python -mjson.tool;
+            }' http://${QIP}:${QPORT}/api/v1/import/${QTEST_FOLDER}/?name=c.tgz | python -mjson.tool;
 
 
 .. http:get:: /api/v1/import/
@@ -345,10 +345,14 @@ File operations
     List shared folders. If ``path`` does not exist, it will return 400 error.
 
     :param path: path of a folder
+    
+    :query size: Get the total size and used size of root directory. 
 
     :resjson string name: directory name or file name
     :resjson string type: ``d`` is directory, ``f`` is file. **[Deprecated]**
     :resjson boolean is_dir: is directory or not
+    :resjson string totalsize: Total size of root directory
+    :resjson string usedsize: Used size of root directory
     :resjson boolean write: write permission
 
     **Example request**
@@ -356,6 +360,7 @@ File operations
     .. sourcecode:: bash
 
         $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/
+        $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true"
         $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/test
         $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/Public
 
@@ -364,6 +369,7 @@ File operations
     .. runcode:: json
 
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/ | python -m json.tool; 
+        curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true" | python -m json.tool; 
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/test | python -m json.tool;
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/Public | python -m json.tool;
 
@@ -383,24 +389,24 @@ File operations
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '{"name":"new_folder", "is_dir":true}' \
-            http://${QIP}:${QPORT}/api/v1/sharefolder/test/
+            http://${QIP}:${QPORT}/api/v1/sharefolder/Public/
         $ curl -sq -XPOST -b cookies.txt \
              -d '{"name":"new_file.json", "is_dir":false, "context": ""}' \
-            http://${QIP}:${QPORT}/api/v1/sharefolder/test/new_folder/
+            http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/
         $ curl -sq -XPOST -b cookies.txt \
              -d '{"name":"new_file.txt", "is_dir":false, "context":"I am context."}' \
-            http://${QIP}:${QPORT}/api/v1/sharefolder/test/new_folder/
+            http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/
 
     **Example response**
 
     .. runcode:: json
     
         curl -sq -XPOST -b cookies.txt -d '{"name":"new_folder", "is_dir":true}' \
-          http://${QIP}:${QPORT}/api/v1/sharefolder/test/ | python -m json.tool;
+          http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/ | python -m json.tool;
         curl -sq -XPOST -b cookies.txt -d '{"name":"new_file.json", "is_dir":false, "context": ""}' \
-          http://${QIP}:${QPORT}/api/v1/sharefolder/test/new_folder/ | python -m json.tool;
+          http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/ | python -m json.tool;
         curl -sq -XPOST -b cookies.txt -d '{"name":"new_file.txt", "is_dir":false, "context":"I am context."}' \
-          http://${QIP}:${QPORT}/api/v1/sharefolder/test/new_folder/ | python -m json.tool;
+          http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/ | python -m json.tool;
 
 
 .. http:delete:: /api/v1/sharefolder/(string:dirname)/(string:basename)
@@ -415,13 +421,13 @@ File operations
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt \
-            http://${QIP}:${QPORT}/api/v1/sharefolder/test/new_folder/new_file.json
+            http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/new_file.json
 
     **Example response**
 
     .. runcode:: json
 
-        #curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/test/new_folder/new_file.json | python -m json.tool;
+        #curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/new_file.json | python -m json.tool;
 
 .. http:delete:: /api/v1/sharefolder/(string:dirname)/(string:basename)/
 
@@ -435,11 +441,11 @@ File operations
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt \
-            http://${QIP}:${QPORT}/api/v1/sharefolder/test/new_folder/
+            http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/test/new_folder/ | python -m json.tool;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/ | python -m json.tool;
 
