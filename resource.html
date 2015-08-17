@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#reverse-proxy">Reverse proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Resource</a><ul>
@@ -90,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#port-forwarding">Port Forwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#devices">Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#limit">Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storage">Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
@@ -105,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Draft</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
@@ -119,11 +121,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#image-list-repository">Image list repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
@@ -178,6 +178,7 @@
 <li><a class="reference internal" href="#port-forwarding" id="id3">Port Forwarding</a></li>
 <li><a class="reference internal" href="#devices" id="id4">Devices</a></li>
 <li><a class="reference internal" href="#limit" id="id5">Limit</a></li>
+<li><a class="reference internal" href="#storage" id="id6">Storage</a></li>
 </ul>
 </li>
 </ul>
@@ -373,6 +374,88 @@
 </div>
 </dd></dl>
 
+<dl class="post">
+<dt id="post--api-v1-container-(string-container_type)-(string-container_id)-network-ports">
+<code class="descname">POST </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/network/ports</code><a class="headerlink" href="#post--api-v1-container-(string-container_type)-(string-container_id)-network-ports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edit port forwarding settings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;[[111, 222, &quot;udp&quot;], [333, 444, &quot;tcp&quot;]]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/ports
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="mi">111</span><span class="p">,</span>
+                <span class="mi">222</span><span class="p">,</span>
+                <span class="s2">&quot;udp&quot;</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="mi">333</span><span class="p">,</span>
+                <span class="mi">444</span><span class="p">,</span>
+                <span class="s2">&quot;tcp&quot;</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example request: remove all settings</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/ports
+</pre></div>
+</div>
+<p><strong>Example response: remove all settings</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="devices">
 <h2><a class="toc-backref" href="#id4">Devices</a><a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h2>
@@ -382,7 +465,7 @@
 <dd><p>Get available device list.
 The device allows access inside container.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -b cookies.txt -XGET http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/resource/device
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/resource/device
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -503,7 +586,8 @@ The device allows access inside container.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;], [&quot;allow&quot;, &quot;TTY_(4)&quot;, &quot;rwm&quot;]]&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;[[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;], [&quot;allow&quot;, &quot;TTY_(4)&quot;, &quot;rwm&quot;]]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/devices
 </pre></div>
 </div>
@@ -649,6 +733,103 @@ The device allows access inside container.</p>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="storage">
+<h2><a class="toc-backref" href="#id6">Storage</a><a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h2>
+<dl class="post">
+<dt id="post--api-v1-container-(string-container_type)-(string-container_id)-volume-host">
+<code class="descname">POST </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/volume/host</code><a class="headerlink" href="#post--api-v1-container-(string-container_type)-(string-container_id)-volume-host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edit volume from host settings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code></li>
+<li><strong>container_id</strong> &#8211; container id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>host_path</strong> (<em>object</em>) &#8211; Host path</li>
+<li><strong>bind</strong> (<em>string</em>) &#8211; Mount point in container</li>
+<li><strong>ro</strong> (<em>boolean</em>) &#8211; Read-only</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{&quot;/test&quot;: {&quot;bind&quot;: &quot;/test1&quot;, &quot;ro&quot;: false },&quot;/test/selenium&quot;: {&quot;bind&quot;: &quot;/test2&quot;, &quot;ro&quot;: true }}&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/volume/host
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;cpuweight&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+            <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="s2">&quot;512m&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;/share/test&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;bind&quot;</span><span class="p">:</span> <span class="s2">&quot;/test1&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;ro&quot;</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;/share/test/selenium&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;bind&quot;</span><span class="p">:</span> <span class="s2">&quot;/test2&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;ro&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example request: remove all settings</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;{}&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/volume/host
+</pre></div>
+</div>
+<p><strong>Example response: remove all settings</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;cpuweight&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+            <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="s2">&quot;512m&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>

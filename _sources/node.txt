@@ -1,4 +1,4 @@
-Draft
+Node and Cluster
 ======================
 
 .. exec::
@@ -27,8 +27,8 @@ Node Management
     :>json string name: node's name that case-insensitive, unique and in pattern of [a-z0-9-_]+
     :>json string ip: node's IP
     :>json int port: node's port
-    :>json string state: ``active``, ``disconnected``
-    :>json string role: ``leader``, ``follower``, ``user``
+    :>json string state: ``alive``, ``failed``
+    :>json string role: ``leader``, ``follower``, ``client``
     :>json array labels: ``compute``, ``storage``, ``election``
     :>json object compute: TBD. Swarm inforamtion showing on UI
     :>json object storage: TBD. Ceph inforamtion showing on UI
@@ -55,6 +55,29 @@ Node Management
              "compute": {"loading": [0.3, 0.5, 0.3]}
             }
         ]
+
+.. http:put:: /api/v1/node
+
+    This API is internally for master node to join another node to the cluster. Usually, this was called during processing :http:post:`/api/v1/node/(node_id)`
+
+    :<json string action: ``join``
+    :<json string key: X.509 private key
+    :<json string cert: X.509 Certificate
+    :<json string cacert: X.509 CA Cert
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt -d \
+            '{"action": "join",
+              "key": "...",
+              "cert": "...",
+              "cacert": "...",
+              "nodes": ["123.123.123.123", "12.12.12.12"]
+             }' http://${QIP}:${QPORT}/api/v1/node
+
+    **Example response**
+
+    .. sourcecode:: json
 
 .. http:get:: /api/v1/node?action=scan
 
@@ -128,6 +151,7 @@ Node Management
             '{"name": "member-a",
               "ip": "192.168.0.10",
               "port": 8080,
+              "password": "aaabbbccc",
               "label": ["compute", "election", "arch=x86"],
             }' http://${QIP}:${QPORT}/api/v1/node
 
@@ -248,7 +272,7 @@ Cluster App Management
                             "constraint:environment=production",
                             "affinity:image==postgresql"
                         ],
-                        "image": "sameersbn/postgresql:9.4"
+                        "image": "sameersbn/postgresql:9.4-2"
                     },
                     "redmine": {
                         "label": ["arch=x86"],
@@ -257,7 +281,7 @@ Cluster App Management
                             "DB_PASS=redminewooo",
                             "DB_NAME=myredmine"
                         ],
-                        "image": "sameersbn/redmine:3.0.2",
+                        "image": "sameersbn/redmine:3.1.0",
                         "links": [
                             "postgresql:postgresql"
                         ],
@@ -290,7 +314,7 @@ Cluster App Management
                         "constraint:environment=production",
                         "affinity:image==postgresql"
                     ],
-                    "image": "sameersbn/postgresql:9.4"
+                    "image": "sameersbn/postgresql:9.4-2"
                 },
                 "redmine": {
                     "label": ["arch=x86"],
@@ -299,7 +323,7 @@ Cluster App Management
                         "DB_PASS=redminewooo",
                         "DB_NAME=myredmine"
                     ],
-                    "image": "sameersbn/redmine:3.0.2",
+                    "image": "sameersbn/redmine:3.1.0",
                     "links": [
                         "postgresql:postgresql"
                     ],

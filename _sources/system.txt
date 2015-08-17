@@ -113,6 +113,8 @@ System Port
 
 .. http:get:: /api/v1/system/port/(string:protocol)/(string:port)
 
+    :param protocol: ``tcp``, ``udp`` 
+    :param port: Port number.
     :resjson boolean used: The port has been used or not.
 
     **Example request**
@@ -141,4 +143,16 @@ Certificate file
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/tls/export
+
+
+.. http:get:: /api/v1/tls/export/registry
+
+    Export certificate for registry.
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/tls/export/registry
+
 

@@ -30,7 +30,7 @@ Container
     name            String     v     v      Assign a name to the container
     image           String     v     v      Assign a base image to the container
     tag             String     v     v      lxc is 'latest'
-    autostart       Boolean    v     v      Automatically start the container after reboot
+    autostart       Boolean    v(e)  v(e)   Automatically start the container after reboot
     privileged      Boolean          v      Give extended privileges to this container
     entrypoint      String           v      Overwrite the default ENTRYPOINT of the image
     command         String           v      Run a command in container
@@ -42,15 +42,15 @@ Container
     dns             Str Array        v      Set custom DNS servers
     expose_port     Int Array        v      Expose a port from the container without publishing it to your host
     hostname        String           v      Container host name
-    port            Array      v     v      Publish a container's port to the host
+    port            Array      v(e)  v      Publish a container's port to the host
     **resource**
     limit
-    cpuweight       Int        v     v      2~1024 in relative share of CPU time
-    cputime         Int        v     v      10~999 in milliseconds(ms)
-    memory          String     v     v      String with 'm' in MB. Must higher than 64m
-    device          Str Array  v     v      Add a host device to the container
+    cpuweight       Int        v(e)  v(e)   2~1024 in relative share of CPU time
+    cputime         Int        v(e)  v(e)   10~999 in milliseconds(ms)
+    memory          String     v(e)  v(e)   String with 'm' in MB. Must higher than 64m
+    device          Str Array  v(e)  v(e)   Add a host device to the container
     **volume**
-    host            Object     v     v      Mount a volume from host shared folders
+    host            Object     v(e)  v      Mount a volume from host shared folders
     container       Str Array        v      Mount volumes from the specified container
     new             Str Array        v      Mount a new volume
     =============== ========== ===== ====== ===============
@@ -125,13 +125,21 @@ Container
 
     .. runcode:: json
 
-        curl -sq -b cookies.txt -XPOST  -d '{"description":"Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world."}' http://${QIP}:${QPORT}/api/v1/image/qnap/lxc/ubuntu-trusty/latest/download -o /dev/null; 
-        while :; do curl -sq -b cookies.txt -XGET "http://${QIP}:${QPORT}/api/v1/image/downloadstatus" | python -c "import json, sys; r = sys.stdin.read(); sys.stderr.write(r + '\n'); sys.exit(len(json.loads(r)))"; 
+        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "repository": "qnap", "image": "ubuntu-trusty", "tag": "latest"}'
+            "http://${QIP}:${QPORT}/api/v1/background/download" -o /dev/null;
+
+        while :; 
+        do 
+            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" | python -c 
+                "import json, sys; r = sys.stdin.read(); d=json.loads(r); sys.exit(0 if d[0]['state']=='completed' else 1)";
+
             if [ "$?" -eq "0" ]; then 
                 break; 
             fi; 
             sleep 5; 
         done; 
+
         curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/utest/stop -o /dev/null; 
         curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/utest -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d
@@ -243,13 +251,21 @@ Container
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d '{"description": "I am description.", "location": "https://registry.hub.docker.com/_/library/ubuntu", "icon": "http://download.qnap.com/QPKG/images/QPKG/container_icon.png" }' "http://${QIP}:${QPORT}/api/v1/image/dockerhub/docker/library/ubuntu/latest/download" 1>&2;
-        while :; do curl -sq -b cookies.txt -XGET "http://${QIP}:${QPORT}/api/v1/image/downloadstatus" | python -c "import json, sys; r = sys.stdin.read(); sys.stderr.write(r + '\n'); sys.exit(len(json.loads(r)))"; 
+        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d '{"type": "docker", "repository": "dockerhub", "image": "ubuntu", "tag": "latest"}'
+            "http://${QIP}:${QPORT}/api/v1/background/download" -o /dev/null;
+
+        while :; 
+        do 
+            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" | python -c 
+                "import json, sys; r = sys.stdin.read(); d=json.loads(r); sys.exit(0 if d[0]['state']=='completed' else 1)";
+
             if [ "$?" -eq "0" ]; then 
                 break; 
             fi; 
             sleep 5; 
         done; 
+
         id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/getid/DockerTestAPI`;
         echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id}/stop -o /dev/null;
         echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id} -o /dev/null;

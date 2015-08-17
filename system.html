@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#reverse-proxy">Reverse proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
@@ -90,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#storage">Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
@@ -105,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Draft</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
@@ -119,11 +121,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#image-list-repository">Image list repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
@@ -196,7 +196,7 @@
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-15 17:12:17&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-18 07:46:41&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -227,7 +227,7 @@
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-15 17:12:17&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-18 07:46:41&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -302,7 +302,7 @@
     <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;docker_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.6.2&quot;</span><span class="p">,</span>
         <span class="nt">&quot;lxc_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.7&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v0.94.23&quot;</span>
+        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v1.0&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -331,15 +331,15 @@
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;2.6&quot;</span><span class="p">,</span>
     <span class="nt">&quot;memory_usage&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">61</span><span class="p">,</span>
-        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">2036</span><span class="p">,</span>
-        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span>
-        <span class="nt">&quot;percent_buffers&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">52</span><span class="p">,</span>
+        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">217</span><span class="p">,</span>
+        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">2348</span><span class="p">,</span>
+        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span>
+        <span class="nt">&quot;percent_buffers&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">61</span><span class="p">,</span>
         <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">3847</span><span class="p">,</span>
-        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">1686</span>
+        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">1045</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -356,8 +356,14 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>protocol</strong> &#8211; <code class="docutils literal"><span class="pre">tcp</span></code>, <code class="docutils literal"><span class="pre">udp</span></code></li>
+<li><strong>port</strong> &#8211; Port number.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
 <li><strong>used</strong> (<em>boolean</em>) &#8211; The port has been used or not.</li>
 </ul>
 </td>
@@ -389,6 +395,16 @@
 <dd><p>Export certificate files to ZIP format.</p>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/tls/export
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-tls-export-registry">
+<code class="descname">GET </code><code class="descname">/api/v1/tls/export/registry</code><a class="headerlink" href="#get--api-v1-tls-export-registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export certificate for registry.</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/tls/export/registry
 </pre></div>
 </div>
 </dd></dl>

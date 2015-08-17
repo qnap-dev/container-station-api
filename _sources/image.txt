@@ -183,56 +183,37 @@ Download
 -----------------
 
 
-.. http:post:: /api/v1/image/(string:repository)/(string:image_type)/(string:image_name)/(string:image_tag)/download
+.. http:post:: download image 
 
-    Download the image from QNAP or Docker Hub
-
-    :param repository: ``dockerhub``, ``qnap``
-    :param image_type: ``lxc``, ``docker``
-    :param image_name: image name
-    :param image_tag: image tag, which is ``latest`` or other version number
-
-    :reqjson string description: description of this image
-    :reqjson string location: url of this image
-    :reqjson string icon: icon source of this image
+    Reference: :http:post:`/api/v1/background/(string:category)`
 
     **Example request**
 
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d \
-            '{
-                "description": "I am description.", 
-                "location": "https://registry.hub.docker.com/u/lgsd/diamond/",
-                "icon": "http://download.qnap.com/QPKG/images/QPKG/container_icon.png"
-            }' "http://${QIP}:${QPORT}/api/v1/image/dockerhub/docker/lgsd/diamond/latest/download"
+            '{"type": "docker", "repository": "dockerhub", "image": "busybox", "tag": "latest"}' \
+            "http://${QIP}:${QPORT}/api/v1/background/download"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt 
-            -d '{"description": "I am description.", "location": "https://registry.hub.docker.com/u/lgsd/diamond/",
-                "icon": "http://download.qnap.com/QPKG/images/QPKG/container_icon.png" }'
-            "http://${QIP}:${QPORT}/api/v1/image/dockerhub/docker/lgsd/diamond/latest/download" | python -m json.tool
+        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"type": "docker", "repository": "dockerhub", "image": "busybox", "tag": "latest"}'
+            "http://${QIP}:${QPORT}/api/v1/background/download" | python -m json.tool;
 
+        while :; 
+        do 
+            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" | python -c 
+                "import json, sys; r = sys.stdin.read(); d=json.loads(r); sys.exit(0 if d[0]['state']=='completed' else 1)";
 
-.. http:get:: /api/v1/image/downloadstatus
-
-    Get all downloading image status.
-
-    **Example request**
-
-    .. sourcecode:: bash
-
-        $ curl -sq -b cookies.txt -XGET "http://${QIP}:${QPORT}/api/v1/image/downloadstatus"
- 
-
-    **Example response**
-
-    .. runcode:: json
-
-        curl -sq -b cookies.txt -XGET "http://${QIP}:${QPORT}/api/v1/image/downloadstatus" | python -m json.tool
+            if [ "$?" -eq "0" ]; then 
+                break; 
+            fi; 
+            sleep 5; 
+        done; 
 
 
 .. http:delete:: /api/v1/image/(string:repository)/(string:image_type)/(string:image_name)
@@ -248,14 +229,14 @@ Download
 
     .. sourcecode:: bash
 
-        $ curl -sq -b cookies.txt -XDELETE "http://${QIP}:${QPORT}/api/v1/image/local/docker/lgsd/diamond"
+        $ curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image/local/docker/busybox"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -b cookies.txt -XDELETE 
-            "http://${QIP}:${QPORT}/api/v1/image/local/docker/lgsd/diamond" | python -m json.tool
+        curl -sq -XDELETE -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/image/local/docker/busybox" | python -m json.tool
 
 
 

@@ -116,6 +116,47 @@ Port Forwarding
             http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/port
             | python -mjson.tool;
 
+
+.. http:post:: /api/v1/container/(string:container_type)/(string:container_id)/network/ports
+
+    Edit port forwarding settings.
+
+    :param container_type: ``lxc``
+    :param container_id: container id
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '[[111, 222, "udp"], [333, 444, "tcp"]]' \
+            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/ports
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d
+            '[[111, 222, "udp"], [333, 444, "tcp"]]' 
+            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/ports
+            | python -mjson.tool;
+
+    **Example request: remove all settings**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d '[]' \
+            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/ports
+
+    **Example response: remove all settings**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d '[]' 
+            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/ports
+            | python -mjson.tool;
+
+
 Devices 
 --------
 
@@ -129,13 +170,13 @@ Devices
 
     .. sourcecode:: bash
 
-        $ curl -sq -b cookies.txt -XGET http://${QIP}:${QPORT}/api/v1/resource/device
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/resource/device
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -b cookies.txt -XGET http://${QIP}:${QPORT}/api/v1/resource/device | python -mjson.tool;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/resource/device | python -mjson.tool;
 
 .. http:post:: /api/v1/container/(string:container_type)/(string:container_id)/resource/device
 
@@ -209,7 +250,8 @@ Devices
 
     .. sourcecode:: bash
 
-        $ curl -sq -XPOST -b cookies.txt -d '[["allow", "Input_(13)", "rwm"], ["allow", "TTY_(4)", "rwm"]]' \
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '[["allow", "Input_(13)", "rwm"], ["allow", "TTY_(4)", "rwm"]]' \
             http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/devices
 
     **Example response**
@@ -285,3 +327,47 @@ Limit
             http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/limit
             | python -mjson.tool;
 
+Storage
+----------
+
+.. http:post:: /api/v1/container/(string:container_type)/(string:container_id)/volume/host
+
+    Edit volume from host settings.
+
+    :param container_type: ``lxc``
+    :param container_id: container id
+    :reqjson object host_path: Host path
+    :reqjson string bind: Mount point in container
+    :reqjson boolean ro: Read-only 
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{"/test": {"bind": "/test1", "ro": false },"/test/selenium": {"bind": "/test2", "ro": true }}' \
+            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d
+            '{"/test": {"bind": "/test1", "ro": false },"/test/selenium": {"bind": "/test2", "ro": true }}' 
+            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
+            | python -mjson.tool;
+
+    **Example request: remove all settings**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d '{}' \
+            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
+
+    **Example response: remove all settings**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d '{}' 
+            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
+            | python -mjson.tool;

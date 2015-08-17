@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#reverse-proxy">Reverse proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
@@ -90,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#storage">Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
@@ -105,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Draft</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
@@ -119,11 +121,9 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Preference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#special-preference-settings">Special preference settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#default-image-folder">Default image folder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#network-settings">Network settings</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-list-repository">Image list repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network-settings">Network settings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
@@ -198,7 +198,7 @@
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">11</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">13</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -233,9 +233,11 @@
     <span class="nt">&quot;ch_total_size&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ch_transfer_size&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;doc_test&quot;</span><span class="p">:</span> <span class="s2">&quot;I am sphinx&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;etag_template&quot;</span><span class="p">:</span> <span class="s2">&quot;a697ebc1fed7a368a94ce6f69fe117d3f8fb4de1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;etag_xml&quot;</span><span class="p">:</span> <span class="s2">&quot;9c3c0f3f212e846cad5fd558b63a830abbd72823&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;log_rotate&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span>
+    <span class="nt">&quot;etag_xml&quot;</span><span class="p">:</span> <span class="s2">&quot;3c3cc14ff561defab396240749aca6c8d9b035a6&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;log_rotate&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;repo_branch&quot;</span><span class="p">:</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;repo_project&quot;</span><span class="p">:</span> <span class="s2">&quot;container-apps&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;repo_user&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap-dev&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -319,63 +321,136 @@
 </div>
 </dd></dl>
 
-<div class="section" id="special-preference-settings">
-<h2>Special preference settings<a class="headerlink" href="#special-preference-settings" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="default-image-folder">
-<h3>Default image folder<a class="headerlink" href="#default-image-folder" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="workspace">
+<h2>Workspace<a class="headerlink" href="#workspace" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
-<dt id="get--api-v1-preference-folder">
-<code class="descname">GET </code><code class="descname">/api/v1/preference/folder</code><a class="headerlink" href="#get--api-v1-preference-folder" title="Permalink to this definition">¶</a></dt>
+<dt id="get--api-v1-wizard-workspace">
+<code class="descname">GET </code><code class="descname">/api/v1/wizard/workspace</code><a class="headerlink" href="#get--api-v1-wizard-workspace" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li><strong>folder</strong> (<em>string</em>) &#8211; Get current image directory path</li>
+<li><strong>data_path</strong> (<em>string</em>) &#8211; Current image and container workspace path</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/folder
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/wizard/workspace
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2 Final//EN&quot;&gt;
-&lt;title&gt;500 Internal Server Error&lt;/title&gt;
-&lt;h1&gt;Internal Server Error&lt;/h1&gt;
-&lt;p&gt;The server encountered an internal error and was unable to complete your request.  Either the server is overloaded or there is an error in the application.&lt;/p&gt;
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;data_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/Public/container-station-data/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-wizard-workspace-status">
+<code class="descname">GET </code><code class="descname">/api/v1/wizard/workspace/status</code><a class="headerlink" href="#get--api-v1-wizard-workspace-status" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>status</strong> (<em>string</em>) &#8211; Workspace setting status</li>
+<li><strong>data_path</strong> (<em>string</em>) &#8211; Current image and container workspace path</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/wizard/workspace/status
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;data_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/Public/container-station-data/&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;percentage&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;speed&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;total_size&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;transfer_size&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="image-list-repository">
+<h2>Image list repository<a class="headerlink" href="#image-list-repository" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v1-preference-repo">
+<code class="descname">GET </code><code class="descname">/api/v1/preference/repo</code><a class="headerlink" href="#get--api-v1-preference-repo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>user</strong> (<em>string</em>) &#8211; Get GitHub username</li>
+<li><strong>project</strong> (<em>string</em>) &#8211; Get GitHub project name</li>
+<li><strong>branch</strong> (<em>string</em>) &#8211; Get GitHub project branch name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/repo
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;branch&quot;</span><span class="p">:</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;container-apps&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap-dev&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="put">
-<dt id="put--api-v1-preference-folder">
-<code class="descname">PUT </code><code class="descname">/api/v1/preference/folder</code><a class="headerlink" href="#put--api-v1-preference-folder" title="Permalink to this definition">¶</a></dt>
+<dt id="put--api-v1-preference-repo">
+<code class="descname">PUT </code><code class="descname">/api/v1/preference/repo</code><a class="headerlink" href="#put--api-v1-preference-repo" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> (<em>string</em>) &#8211; New image directory</li>
+<li><strong>user</strong> (<em>string</em>) &#8211; Set GitHub username</li>
+<li><strong>project</strong> (<em>string</em>) &#8211; Set GitHub project name</li>
+<li><strong>branch</strong> (<em>string</em>) &#8211; Set GitHub project branch name</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -XPUT -sq -b cookies.txt -d <span class="s1">&#39;{&quot;path&quot;:&quot;/Public&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/folder
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -XPUT -sq -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{&quot;user&quot;:&quot;qnap-dev&quot;,&quot;project&quot;:&quot;container-apps&quot;,&quot;branch&quot;:&quot;master&quot;}&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/repo
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
 
 </div>
 <div class="section" id="network-settings">
-<h3>Network settings<a class="headerlink" href="#network-settings" title="Permalink to this headline">¶</a></h3>
+<h2>Network settings<a class="headerlink" href="#network-settings" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-preference-network">
 <code class="descname">GET </code><code class="descname">/api/v1/preference/network</code><a class="headerlink" href="#get--api-v1-preference-network" title="Permalink to this definition">¶</a></dt>
@@ -424,7 +499,6 @@
 </div>
 </dd></dl>
 
-</div>
 </div>
 </div>
 

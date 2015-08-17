@@ -88,6 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#reverse-proxy">Reverse proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
@@ -95,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#storage">Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
@@ -110,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Draft</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
@@ -124,11 +126,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#image-list-repository">Image list repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
@@ -174,7 +174,8 @@
    <h1>HTTP Routing Table</h1>
 
    <div class="modindex-jumpbox">
-   <a href="#cap-/api"><strong>/api</strong></a>
+   <a href="#cap-/api"><strong>/api</strong></a> | 
+   <a href="#cap-/download image"><strong>/download image</strong></a>
    </div>
 
    <table class="indextable modindextable" cellspacing="0" cellpadding="2">
@@ -274,11 +275,6 @@
      <tr>
        <td></td>
        <td>
-       <a href="image.html#get--api-v1-image-downloadstatus"><code class="xref">GET /api/v1/image/downloadstatus</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
        <a href="import.html#get--api-v1-import-"><code class="xref">GET /api/v1/import/</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -334,12 +330,17 @@
      <tr>
        <td></td>
        <td>
-       <a href="preference.html#get--api-v1-preference-folder"><code class="xref">GET /api/v1/preference/folder</code></a></td><td>
+       <a href="preference.html#get--api-v1-preference-network"><code class="xref">GET /api/v1/preference/network</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="preference.html#get--api-v1-preference-network"><code class="xref">GET /api/v1/preference/network</code></a></td><td>
+       <a href="preference.html#get--api-v1-preference-repo"><code class="xref">GET /api/v1/preference/repo</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#get--api-v1-proxypass-(string-virtual_path)"><code class="xref">GET /api/v1/proxypass/(string:virtual_path)</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
@@ -404,6 +405,21 @@
      <tr>
        <td></td>
        <td>
+       <a href="system.html#get--api-v1-tls-export-registry"><code class="xref">GET /api/v1/tls/export/registry</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#get--api-v1-wizard-workspace"><code class="xref">GET /api/v1/wizard/workspace</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="preference.html#get--api-v1-wizard-workspace-status"><code class="xref">GET /api/v1/wizard/workspace/status</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
        <a href="application.html#post--api-v1-apps"><code class="xref">POST /api/v1/apps</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -429,6 +445,11 @@
      <tr>
        <td></td>
        <td>
+       <a href="resource.html#post--api-v1-container-(string-container_type)-(string-container_id)-network-ports"><code class="xref">POST /api/v1/container/(string:container_type)/(string:container_id)/network/ports</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
        <a href="resource.html#post--api-v1-container-(string-container_type)-(string-container_id)-resource-device"><code class="xref">POST /api/v1/container/(string:container_type)/(string:container_id)/resource/device</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -444,7 +465,7 @@
      <tr>
        <td></td>
        <td>
-       <a href="image.html#post--api-v1-image-(string-repository)-(string-image_type)-(string-image_name)-(string-image_tag)-download"><code class="xref">POST /api/v1/image/(string:repository)/(string:image_type)/(string:image_name)/(string:image_tag)/download</code></a></td><td>
+       <a href="resource.html#post--api-v1-container-(string-container_type)-(string-container_id)-volume-host"><code class="xref">POST /api/v1/container/(string:container_type)/(string:container_id)/volume/host</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
@@ -465,6 +486,11 @@
        <td></td>
        <td>
        <a href="preference.html#post--api-v1-preference-(string-key)"><code class="xref">POST /api/v1/preference/(string:key)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="application.html#post--api-v1-proxypass"><code class="xref">POST /api/v1/proxypass</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
@@ -534,6 +560,11 @@
      <tr>
        <td></td>
        <td>
+       <a href="node.html#put--api-v1-node"><code class="xref">PUT /api/v1/node</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
        <a href="node.html#put--api-v1-node-(node_id)"><code class="xref">PUT /api/v1/node/(node_id)</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -544,12 +575,12 @@
      <tr>
        <td></td>
        <td>
-       <a href="preference.html#put--api-v1-preference-folder"><code class="xref">PUT /api/v1/preference/folder</code></a></td><td>
+       <a href="preference.html#put--api-v1-preference-network"><code class="xref">PUT /api/v1/preference/network</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="preference.html#put--api-v1-preference-network"><code class="xref">PUT /api/v1/preference/network</code></a></td><td>
+       <a href="preference.html#put--api-v1-preference-repo"><code class="xref">PUT /api/v1/preference/repo</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
@@ -614,6 +645,11 @@
      <tr>
        <td></td>
        <td>
+       <a href="application.html#delete--api-v1-proxypass-(string-virtual_path)"><code class="xref">DELETE /api/v1/proxypass/(string:virtual_path)</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
        <a href="image.html#delete--api-v1-registry"><code class="xref">DELETE /api/v1/registry</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -625,6 +661,14 @@
        <td></td>
        <td>
        <a href="import.html#delete--api-v1-sharefolder-(string-dirname)-(string-basename)-"><code class="xref">DELETE /api/v1/sharefolder/(string:dirname)/(string:basename)/</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+     <tr class="cap" id="cap-/download image"><td></td><td>
+       <strong>/download image</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="image.html#post-download image"><code class="xref">POST download image</code></a></td><td>
        <em></em></td></tr>
    </table>
 

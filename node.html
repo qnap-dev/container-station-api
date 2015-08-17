@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Draft &mdash; Container Station 1.0.0 beta documentation</title>
+  <title>Node and Cluster &mdash; Container Station 1.0.0 beta documentation</title>
   
 
   
@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#reverse-proxy">Reverse proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
@@ -90,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#storage">Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
@@ -105,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Draft</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Node and Cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#node-management">Node Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cluster-app-management">Cluster App Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#storage-management">Storage Management</a></li>
@@ -119,11 +121,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#image-list-repository">Image list repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
@@ -154,7 +154,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Draft</li>
+    <li>Node and Cluster</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -167,8 +167,8 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="draft">
-<h1>Draft<a class="headerlink" href="#draft" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="node-and-cluster">
+<h1>Node and Cluster<a class="headerlink" href="#node-and-cluster" title="Permalink to this headline">¶</a></h1>
 <p></p>
 <div class="section" id="node-management">
 <h2>Node Management<a class="headerlink" href="#node-management" title="Permalink to this headline">¶</a></h2>
@@ -193,8 +193,8 @@
 <li><strong>name</strong> (<em>string</em>) &#8211; node&#8217;s name that case-insensitive, unique and in pattern of [a-z0-9-_]+</li>
 <li><strong>ip</strong> (<em>string</em>) &#8211; node&#8217;s IP</li>
 <li><strong>port</strong> (<em>int</em>) &#8211; node&#8217;s port</li>
-<li><strong>state</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">active</span></code>, <code class="docutils literal"><span class="pre">disconnected</span></code></li>
-<li><strong>role</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">leader</span></code>, <code class="docutils literal"><span class="pre">follower</span></code>, <code class="docutils literal"><span class="pre">user</span></code></li>
+<li><strong>state</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">alive</span></code>, <code class="docutils literal"><span class="pre">failed</span></code></li>
+<li><strong>role</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">leader</span></code>, <code class="docutils literal"><span class="pre">follower</span></code>, <code class="docutils literal"><span class="pre">client</span></code></li>
 <li><strong>labels</strong> (<em>array</em>) &#8211; <code class="docutils literal"><span class="pre">compute</span></code>, <code class="docutils literal"><span class="pre">storage</span></code>, <code class="docutils literal"><span class="pre">election</span></code></li>
 <li><strong>compute</strong> (<em>object</em>) &#8211; TBD. Swarm inforamtion showing on UI</li>
 <li><strong>storage</strong> (<em>object</em>) &#8211; TBD. Ceph inforamtion showing on UI</li>
@@ -220,6 +220,40 @@
      <span class="nt">&quot;compute&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;loading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]}</span>
     <span class="p">}</span>
 <span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--api-v1-node">
+<code class="descname">PUT </code><code class="descname">/api/v1/node</code><a class="headerlink" href="#put--api-v1-node" title="Permalink to this definition">¶</a></dt>
+<dd><p>This API is internally for master node to join another node to the cluster. Usually, this was called during processing <em>:http:post:`/api/v1/node/(node_id)`</em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>action</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">join</span></code></li>
+<li><strong>key</strong> (<em>string</em>) &#8211; X.509 private key</li>
+<li><strong>cert</strong> (<em>string</em>) &#8211; X.509 Certificate</li>
+<li><strong>cacert</strong> (<em>string</em>) &#8211; X.509 CA Cert</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{&quot;action&quot;: &quot;join&quot;,</span>
+<span class="s1">      &quot;key&quot;: &quot;...&quot;,</span>
+<span class="s1">      &quot;cert&quot;: &quot;...&quot;,</span>
+<span class="s1">      &quot;cacert&quot;: &quot;...&quot;,</span>
+<span class="s1">      &quot;nodes&quot;: [&quot;123.123.123.123&quot;, &quot;12.12.12.12&quot;]</span>
+<span class="s1">     }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre>
 </pre></div>
 </div>
 </dd></dl>
@@ -297,6 +331,7 @@
     <span class="s1">&#39;{&quot;name&quot;: &quot;member-a&quot;,</span>
 <span class="s1">      &quot;ip&quot;: &quot;192.168.0.10&quot;,</span>
 <span class="s1">      &quot;port&quot;: 8080,</span>
+<span class="s1">      &quot;password&quot;: &quot;aaabbbccc&quot;,</span>
 <span class="s1">      &quot;label&quot;: [&quot;compute&quot;, &quot;election&quot;, &quot;arch=x86&quot;],</span>
 <span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node
 </pre></div>
@@ -434,7 +469,7 @@
 <span class="s1">                    &quot;constraint:environment=production&quot;,</span>
 <span class="s1">                    &quot;affinity:image==postgresql&quot;</span>
 <span class="s1">                ],</span>
-<span class="s1">                &quot;image&quot;: &quot;sameersbn/postgresql:9.4&quot;</span>
+<span class="s1">                &quot;image&quot;: &quot;sameersbn/postgresql:9.4-2&quot;</span>
 <span class="s1">            },</span>
 <span class="s1">            &quot;redmine&quot;: {</span>
 <span class="s1">                &quot;label&quot;: [&quot;arch=x86&quot;],</span>
@@ -443,7 +478,7 @@
 <span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
 <span class="s1">                    &quot;DB_NAME=myredmine&quot;</span>
 <span class="s1">                ],</span>
-<span class="s1">                &quot;image&quot;: &quot;sameersbn/redmine:3.0.2&quot;,</span>
+<span class="s1">                &quot;image&quot;: &quot;sameersbn/redmine:3.1.0&quot;,</span>
 <span class="s1">                &quot;links&quot;: [</span>
 <span class="s1">                    &quot;postgresql:postgresql&quot;</span>
 <span class="s1">                ],</span>
@@ -473,7 +508,7 @@
                 <span class="s2">&quot;constraint:environment=production&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;affinity:image==postgresql&quot;</span>
             <span class="p">],</span>
-            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4&quot;</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-2&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;arch=x86&quot;</span><span class="p">],</span>
@@ -482,7 +517,7 @@
                 <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
             <span class="p">],</span>
-            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.0.2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.1.0&quot;</span><span class="p">,</span>
             <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s2">&quot;postgresql:postgresql&quot;</span>
             <span class="p">],</span>

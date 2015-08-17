@@ -100,41 +100,90 @@ Preference
         curl -XDELETE -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
 
 
-Special preference settings
----------------------------
+Workspace
+------------------------
 
-Default image folder
-^^^^^^^^^^^^^^^^^^^^
+.. http:get:: /api/v1/wizard/workspace
 
-.. http:get:: /api/v1/preference/folder
-
-    :resjson string folder: Get current image directory path
+    :resjson string data_path: Current image and container workspace path
 
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/folder
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace
 
     **Example response**
 
     .. runcode:: json
 
-        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/folder
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace | python -mjson.tool;
 
-.. http:put:: /api/v1/preference/folder
 
-    :reqjson string path: New image directory
+.. http:get:: /api/v1/wizard/workspace/status
+
+    :resjson string status: Workspace setting status
+    :resjson string data_path: Current image and container workspace path
 
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -XPUT -sq -b cookies.txt -d '{"path":"/Public"}' \
-            http://${QIP}:${QPORT}/api/v1/preference/folder
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace/status
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace/status | python -mjson.tool;
+
+
+
+Image list repository
+------------------------
+
+.. http:get:: /api/v1/preference/repo
+
+    :resjson string user: Get GitHub username
+    :resjson string project: Get GitHub project name
+    :resjson string branch: Get GitHub project branch name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/repo
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/repo | python -mjson.tool;
+
+.. http:put:: /api/v1/preference/repo
+
+    :reqjson string user: Set GitHub username
+    :reqjson string project: Set GitHub project name
+    :reqjson string branch: Set GitHub project branch name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XPUT -sq -b cookies.txt -d \
+            '{"user":"qnap-dev","project":"container-apps","branch":"master"}' \
+            http://${QIP}:${QPORT}/api/v1/preference/repo
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XPUT -sq -b cookies.txt -d 
+          '{"user":"qnap-dev","project":"container-apps","branch":"master"}'
+          http://${QIP}:${QPORT}/api/v1/preference/repo | python -mjson.tool;
 
 Network settings
-^^^^^^^^^^^^^^^^
+------------------------
 
 .. http:get:: /api/v1/preference/network
 

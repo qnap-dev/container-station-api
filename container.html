@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#reverse-proxy">Reverse proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
@@ -90,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#storage">Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
@@ -105,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Draft</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
@@ -119,11 +121,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#image-list-repository">Image list repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
@@ -232,8 +232,8 @@
 </tr>
 <tr class="row-even"><td>autostart</td>
 <td>Boolean</td>
-<td>v</td>
-<td>v</td>
+<td>v(e)</td>
+<td>v(e)</td>
 <td>Automatically start the container after reboot</td>
 </tr>
 <tr class="row-odd"><td>privileged</td>
@@ -304,7 +304,7 @@
 </tr>
 <tr class="row-even"><td>port</td>
 <td>Array</td>
-<td>v</td>
+<td>v(e)</td>
 <td>v</td>
 <td>Publish a container&#8217;s port to the host</td>
 </tr>
@@ -322,26 +322,26 @@
 </tr>
 <tr class="row-odd"><td>cpuweight</td>
 <td>Int</td>
-<td>v</td>
-<td>v</td>
+<td>v(e)</td>
+<td>v(e)</td>
 <td>2~1024 in relative share of CPU time</td>
 </tr>
 <tr class="row-even"><td>cputime</td>
 <td>Int</td>
-<td>v</td>
-<td>v</td>
+<td>v(e)</td>
+<td>v(e)</td>
 <td>10~999 in milliseconds(ms)</td>
 </tr>
 <tr class="row-odd"><td>memory</td>
 <td>String</td>
-<td>v</td>
-<td>v</td>
+<td>v(e)</td>
+<td>v(e)</td>
 <td>String with &#8216;m&#8217; in MB. Must higher than 64m</td>
 </tr>
 <tr class="row-even"><td>device</td>
 <td>Str Array</td>
-<td>v</td>
-<td>v</td>
+<td>v(e)</td>
+<td>v(e)</td>
 <td>Add a host device to the container</td>
 </tr>
 <tr class="row-odd"><td><strong>volume</strong></td>
@@ -352,7 +352,7 @@
 </tr>
 <tr class="row-even"><td>host</td>
 <td>Object</td>
-<td>v</td>
+<td>v(e)</td>
 <td>v</td>
 <td>Mount a volume from host shared folders</td>
 </tr>
@@ -532,12 +532,12 @@
 <p><strong>Example response of Docker</strong></p>
 <blockquote>
 <div><div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
 <span class="p">}</span>
 <span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;64fbd30fdf82686b171b7bd4b8db348e58de0383afddfd64f2a8bf344766b47d&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c98571206918063adaf04c3621548ed843f6aedf153c52394758a22e83b99b7c&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI2&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
 <span class="p">}</span>
@@ -566,13 +566,13 @@
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.002997002997002997</span><span class="p">,</span>
+        <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0005827505827505828</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;10.0.3.140&quot;</span>
+            <span class="s2">&quot;10.0.3.24&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">13553664</span><span class="p">,</span>
+        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">12607488</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -580,7 +580,7 @@
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937&quot;</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>
@@ -588,10 +588,10 @@
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;64fbd30fdf82686b171b7bd4b8db348e58de0383afddfd64f2a8bf344766b47d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c98571206918063adaf04c3621548ed843f6aedf153c52394758a22e83b99b7c&quot;</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">4104192</span><span class="p">,</span>
+        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">4915200</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI2&quot;</span><span class="p">,</span>
         <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -653,7 +653,7 @@
         <span class="nt">&quot;Volumes&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;WorkingDir&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-15T09:10:43.233592066Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-17T23:44:53.807819282Z&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;devicemapper&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ExecDriver&quot;</span><span class="p">:</span> <span class="s2">&quot;native-0.2&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ExecIDs&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
@@ -666,7 +666,7 @@
         <span class="nt">&quot;CapDrop&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;CgroupParent&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ContainerIDFile&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;CpuShares&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;CpuShares&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
         <span class="nt">&quot;CpusetCpus&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Devices&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;Dns&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
@@ -679,7 +679,7 @@
             <span class="nt">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;json-file&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;LxcConf&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Memory&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;Memory&quot;</span><span class="p">:</span> <span class="mi">805306368</span><span class="p">,</span>
         <span class="nt">&quot;MemorySwap&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;NetworkMode&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;PidMode&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -702,11 +702,11 @@
         <span class="nt">&quot;Ulimits&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;VolumesFrom&quot;</span><span class="p">:</span> <span class="kc">null</span>
     <span class="p">},</span>
-    <span class="nt">&quot;HostnamePath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc/hostname&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;HostsPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc/hosts&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;d2a0ecffe6fa4ef3de9646a75cc629bbd9da7eead7f767cb810f9808d6b3ecb6&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;LogPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc/12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc-json.log&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;HostnamePath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937/hostname&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;HostsPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937/hosts&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;8251da35e7a79dca688682f6da6148a06d358c6f094020844468a782842c2172&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LogPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937/5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937-json.log&quot;</span><span class="p">,</span>
     <span class="nt">&quot;MountLabel&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;/DockerTestAPI&quot;</span><span class="p">,</span>
     <span class="nt">&quot;NetworkSettings&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -725,19 +725,19 @@
     <span class="p">},</span>
     <span class="nt">&quot;Path&quot;</span><span class="p">:</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ProcessLabel&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ResolvConfPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc/resolv.conf&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ResolvConfPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937/resolv.conf&quot;</span><span class="p">,</span>
     <span class="nt">&quot;RestartCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;Dead&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ExitCode&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;FinishedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-15T09:10:44.983430616Z&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;FinishedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-17T23:44:54.974562906Z&quot;</span><span class="p">,</span>
         <span class="nt">&quot;OOMKilled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Paused&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Pid&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;Restarting&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Running&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;StartedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-07-15T09:10:44.974873217Z&quot;</span>
+        <span class="nt">&quot;StartedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-17T23:44:54.967785914Z&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;Volumes&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;/mnt/vol1&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/test/selenium&quot;</span><span class="p">,</span>
@@ -803,7 +803,7 @@
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">1863680</span><span class="p">,</span>
+    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">2498560</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -819,7 +819,7 @@
 </div>
 <p><strong>Example response of Docker</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>
@@ -839,13 +839,11 @@
 </div>
 <p><strong>Example response of LXC</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">6.889585588735676e-11</span><span class="p">,</span>
+    <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;10.0.3.140&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">10653696</span><span class="p">,</span>
+    <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">2428928</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -862,7 +860,7 @@
 <p><strong>Example response of Docker</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
     <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
     <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -912,13 +910,11 @@
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">6.889585588735676e-11</span><span class="p">,</span>
+    <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;10.0.3.140&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">10653696</span><span class="p">,</span>
+    <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">2428928</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -954,7 +950,7 @@
 </div>
 <p><strong>Example response of Docker</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>

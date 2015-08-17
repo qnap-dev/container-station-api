@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="Container Station 1.0.0 beta documentation" href="index.html"/>
-        <link rel="next" title="Draft" href="node.html"/>
+        <link rel="next" title="Node and Cluster" href="node.html"/>
         <link rel="prev" title="Image" href="image.html"/> 
 
   
@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html#reverse-proxy">Reverse proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
@@ -90,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#storage">Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
@@ -105,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Draft</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
@@ -119,11 +121,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#special-preference-settings">Special preference settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#default-image-folder">Default image folder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#image-list-repository">Image list repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
@@ -234,7 +234,7 @@
     <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1436980270</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1439883937</span><span class="p">,</span>
     <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
@@ -256,11 +256,11 @@
 <p><strong>Example response of Docker</strong></p>
 <blockquote>
 <div><div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937&quot;</span><span class="p">,</span>
     <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
     <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1436980270</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1439883937</span><span class="p">,</span>
     <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/d.tgz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
@@ -303,11 +303,11 @@
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;12fa9815a3d0b3b77f7c439f000bf350802241b60073bba09fdf5aa0df8181fc&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;5e251bfe5a1712547d30e1a15454f01258c519fd7c78afe289a18745502e0937&quot;</span><span class="p">,</span>
         <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
         <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1436980270</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1439883937</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/d.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
@@ -318,10 +318,10 @@
         <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1436980270</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1439883937</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1436980270</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1439883937</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
@@ -346,10 +346,10 @@
         <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1436980270</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1439883937</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1436980270</span><span class="p">,</span>
+        <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1439883937</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
@@ -409,6 +409,7 @@
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{},</span>
     <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap_export&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{}</span>
 <span class="p">}</span>
@@ -530,7 +531,7 @@
     <span class="p">},</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1436980306</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1439883972</span><span class="p">,</span>
     <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
@@ -577,7 +578,7 @@
         <span class="nt">&quot;create_params&quot;</span><span class="p">:</span> <span class="s2">&quot;{u&#39;resource&#39;: {u&#39;device&#39;: [[u&#39;allow&#39;, u&#39;video4linux_(81)&#39;, u&#39;rw&#39;]], u&#39;limit&#39;: {u&#39;memory&#39;: u&#39;768m&#39;, u&#39;cputime&#39;: 512, u&#39;cpuweight&#39;: 512}}, u&#39;name&#39;: u&#39;utest_import&#39;, u&#39;image&#39;: u&#39;utest&#39;, u&#39;volume&#39;: {u&#39;host&#39;: {u&#39;/share/tmp&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol2&#39;, u&#39;ro&#39;: False}, u&#39;/share/var&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol1&#39;, u&#39;ro&#39;: True}}}, &#39;tag&#39;: &#39;latest&#39;, u&#39;type&#39;: u&#39;lxc&#39;, u&#39;network&#39;: {u&#39;hostname&#39;: u&#39;CustomHostName&#39;, u&#39;port&#39;: [[12345, 1234, u&#39;udp&#39;]]}}&quot;</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1436980306</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1439883972</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
@@ -604,10 +605,10 @@
         <span class="nt">&quot;create_params&quot;</span><span class="p">:</span> <span class="s2">&quot;{u&#39;resource&#39;: {u&#39;device&#39;: [[u&#39;allow&#39;, u&#39;video4linux_(81)&#39;, u&#39;rw&#39;]], u&#39;limit&#39;: {u&#39;memory&#39;: u&#39;768m&#39;, u&#39;cputime&#39;: 512, u&#39;cpuweight&#39;: 512}}, u&#39;name&#39;: u&#39;utest_import&#39;, u&#39;image&#39;: u&#39;utest&#39;, u&#39;volume&#39;: {u&#39;host&#39;: {u&#39;/share/tmp&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol2&#39;, u&#39;ro&#39;: False}, u&#39;/share/var&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol1&#39;, u&#39;ro&#39;: True}}}, &#39;tag&#39;: &#39;latest&#39;, u&#39;type&#39;: u&#39;lxc&#39;, u&#39;network&#39;: {u&#39;hostname&#39;: u&#39;CustomHostName&#39;, u&#39;port&#39;: [[12345, 1234, u&#39;udp&#39;]]}}&quot;</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1436980306</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1439883972</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1436980306</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1439883972</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
@@ -701,6 +702,12 @@
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;USBDisk1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eee&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
@@ -743,6 +750,14 @@
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;USBDisk1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalsize&quot;</span><span class="p">:</span> <span class="s2">&quot;3.7G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedsize&quot;</span><span class="p">:</span> <span class="s2">&quot;1.7G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eee&quot;</span><span class="p">,</span>
         <span class="nt">&quot;totalsize&quot;</span><span class="p">:</span> <span class="s2">&quot;326.1G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
@@ -754,7 +769,7 @@
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Public&quot;</span><span class="p">,</span>
         <span class="nt">&quot;totalsize&quot;</span><span class="p">:</span> <span class="s2">&quot;326.1G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedsize&quot;</span><span class="p">:</span> <span class="s2">&quot;2.9G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedsize&quot;</span><span class="p">:</span> <span class="s2">&quot;7.3G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -814,7 +829,42 @@
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;aaa.img&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bbb.img&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox-1.tar&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;c.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;centos-1.tar&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station_0.95.11_amd64.zip&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station_0.96.1_amd64.qpkg&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station_0.96.2_amd64.qpkg&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -824,7 +874,47 @@
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;debian-jessie_8_armhf.tar.gz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dev.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;docker.png&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;iptable_mangle.ko&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rootfs.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rootfs_1.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-14.04-server-amd64.iso&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-hd_0.1_amd64.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-hd_0.2.1_amd64.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -906,7 +996,42 @@
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;aaa.img&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bbb.img&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox-1.tar&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;c.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;centos-1.tar&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station_0.95.11_amd64.zip&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station_0.96.1_amd64.qpkg&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station_0.96.2_amd64.qpkg&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -916,7 +1041,47 @@
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;debian-jessie_8_armhf.tar.gz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dev.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;docker.png&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;iptable_mangle.ko&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rootfs.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rootfs_1.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-14.04-server-amd64.iso&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-hd_0.1_amd64.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;is_dir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-hd_0.2.1_amd64.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -1011,7 +1176,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="node.html" class="btn btn-neutral float-right" title="Draft" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="node.html" class="btn btn-neutral float-right" title="Node and Cluster" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="image.html" class="btn btn-neutral" title="Image" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
