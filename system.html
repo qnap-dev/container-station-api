@@ -107,14 +107,6 @@
 <li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#network-management">Network Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#image-management">Image Management</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="log.html#log">Log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="log.html#event">Event</a></li>
@@ -196,7 +188,7 @@
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-18 07:46:41&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-18 10:06:23&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -227,7 +219,7 @@
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-18 07:46:41&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-18 10:06:23&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -302,7 +294,7 @@
     <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;docker_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.6.2&quot;</span><span class="p">,</span>
         <span class="nt">&quot;lxc_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.7&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v1.0&quot;</span>
+        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v1.0.1&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -331,15 +323,15 @@
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;2.6&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;memory_usage&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">217</span><span class="p">,</span>
-        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">2348</span><span class="p">,</span>
-        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span>
+        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">224</span><span class="p">,</span>
+        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">2526</span><span class="p">,</span>
+        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
         <span class="nt">&quot;percent_buffers&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">61</span><span class="p">,</span>
+        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span>
         <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">3847</span><span class="p">,</span>
-        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">1045</span>
+        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">836</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

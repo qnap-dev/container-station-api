@@ -112,14 +112,6 @@
 <li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#network-management">Network Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#image-management">Image Management</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="log.html#log">Log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="log.html#event">Event</a></li>
@@ -196,16 +188,6 @@
        <td></td>
        <td>
        <a href="application.html#get--api-v1-apps-(string-name)-definition"><code class="xref">GET /api/v1/apps/(string:name)/definition</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="node.html#get--api-v1-cluster-apps"><code class="xref">GET /api/v1/cluster-apps</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="node.html#get--api-v1-cluster-preference"><code class="xref">GET /api/v1/cluster-preference</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
@@ -301,21 +283,6 @@
        <td></td>
        <td>
        <a href="system.html#get--api-v1-login_refresh"><code class="xref">GET /api/v1/login_refresh</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="node.html#get--api-v1-node"><code class="xref">GET /api/v1/node</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="node.html#get--api-v1-node-(node_id)"><code class="xref">GET /api/v1/node/(node_id)</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="node.html#get--api-v1-node?action=scan"><code class="xref">GET /api/v1/node?action=scan</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
@@ -425,11 +392,6 @@
      <tr>
        <td></td>
        <td>
-       <a href="node.html#post--api-v1-cluster-apps"><code class="xref">POST /api/v1/cluster-apps</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
        <a href="container.html#post--api-v1-container"><code class="xref">POST /api/v1/container</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -480,11 +442,6 @@
      <tr>
        <td></td>
        <td>
-       <a href="node.html#post--api-v1-node"><code class="xref">POST /api/v1/node</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
        <a href="preference.html#post--api-v1-preference-(string-key)"><code class="xref">POST /api/v1/preference/(string:key)</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -530,11 +487,6 @@
      <tr>
        <td></td>
        <td>
-       <a href="node.html#put--api-v1-cluster-apps"><code class="xref">PUT /api/v1/cluster-apps</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
        <a href="resource.html#put--api-v1-container-(string-container_type)-(string-container_id)-autostart-(string-state)"><code class="xref">PUT /api/v1/container/(string:container_type)/(string:container_id)/autostart/(string:state)</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -560,16 +512,6 @@
      <tr>
        <td></td>
        <td>
-       <a href="node.html#put--api-v1-node"><code class="xref">PUT /api/v1/node</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="node.html#put--api-v1-node-(node_id)"><code class="xref">PUT /api/v1/node/(node_id)</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
        <a href="preference.html#put--api-v1-preference-(string-key)"><code class="xref">PUT /api/v1/preference/(string:key)</code></a></td><td>
        <em></em></td></tr>
      <tr>
@@ -586,11 +528,6 @@
        <td></td>
        <td>
        <a href="application.html#delete--api-v1-apps-(string-name)"><code class="xref">DELETE /api/v1/apps/(string:name)</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="node.html#delete--api-v1-cluster-apps"><code class="xref">DELETE /api/v1/cluster-apps</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
@@ -631,11 +568,6 @@
        <td></td>
        <td>
        <a href="log.html#delete--api-v1-log"><code class="xref">DELETE /api/v1/log</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="node.html#delete--api-v1-node-(node_id)"><code class="xref">DELETE /api/v1/node/(node_id)</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
