@@ -29,10 +29,10 @@ Search
     If depots is from dockerhub, it will take a few seconds to search.
     Filter installed image function only effect for depots from qnap.
 
-    :param category: (optional) one of ``local``, ``qnap``, ``official``, ``dockerhub``, ``private``. **Default: local**
-    :param filter_text: (optional) filter image name and description or query string for docker search
-    :param type: (optional) one of ``lxc``, ``docker``
-    :param registry_name: (optional) Private registry name 
+    :query category: (optional) one of ``local``, ``qnap``, ``official``, ``dockerhub``, ``private``. **Default is local**
+    :query filter_text: (optional) filter image name and description or query string for docker search
+    :query type: (optional) one of ``lxc``, ``docker``
+    :query registry_name: (optional) Private registry name 
     
     From local repository:
 

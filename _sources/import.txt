@@ -23,8 +23,8 @@ Export
     :param container_id: container id
 
     :reqjson string path: file path **[required]**
-    :reqjson boolean compress: Compress export file or not. **Default: false**
-    :reqjson boolean force: Force rewrite file or not. **Default:false**
+    :reqjson boolean compress: Compress export file or not. **Default is false**
+    :reqjson boolean force: Force rewrite file or not. **Default is false**
 
 .. note::
     Input check for ``path``
@@ -347,6 +347,7 @@ File operations
     :param path: path of a folder
     
     :query size: Get the total size and used size of root directory. 
+    :query list: List folders by list type. Only ``initial`` works for now.
 
     :resjson string name: directory name or file name
     :resjson string type: ``d`` is directory, ``f`` is file. **[Deprecated]**
@@ -361,6 +362,7 @@ File operations
 
         $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/
         $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true"
+        $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?list=initial"
         $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/test
         $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/Public
 
@@ -370,6 +372,7 @@ File operations
 
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/ | python -m json.tool; 
         curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true" | python -m json.tool; 
+        curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?list=initial" | python -m json.tool; 
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/test | python -m json.tool;
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/Public | python -m json.tool;
 

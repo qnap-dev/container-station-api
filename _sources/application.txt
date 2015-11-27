@@ -109,26 +109,55 @@ Template
             "http://${QIP}:${QPORT}/api/v1/template/redmine/pull" | python -m json.tool
 
 
-.. http:get:: /api/v1/template/(string:application)/(string:lang)/wizard
+.. http:get:: /api/v1/template/(string:application)/wizard
 
-    Read the wizard config file, and return html tags of each step and language tags (default: english).
+    Read the wizard config file and return with specific language.
 
     :param application: Application name
-    :param lang: Wizard language
+    :query lang: Wizard language. **Default is eng**
+    :query stage: Stage of wizard file: ``install``
+
+
+    QTS supports the following languages: 
+
+    * eng (English)
+    * chs (Simplified Chinese)
+    * cht (Traditional Chinese)
+    * cze (Czech)
+    * dan (Danish)
+    * ger (Deutsch)
+    * spa (Spanish)
+    * fre (French)
+    * ita (Italian)
+    * jpn (Japanese)
+    * kor (Korean)
+    * nor (Norwegian)
+    * pol (Polish)
+    * rus (Russian)
+    * fin (Finnish)
+    * swe (Swedish)
+    * dut (Dutch)
+    * tur (Turkish)
+    * tha (Thai)
+    * por (Portuguese)
+    * hun (Hungarian)
+    * grk (Greek)
+    * rom (Romanian)
+
 
     **Example request**
 
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/template/gitlab/eng/wizard"
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/wizard?lang=eng&stage=install"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/template/gitlab/eng/wizard" | python -m json.tool
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/wizard?lang=eng&stage=install" | python -m json.tool
 
 
 User's application
@@ -165,7 +194,7 @@ User's application
                             "DB_PASS=redminewooo",
                             "DB_NAME=myredmine"
                         ],
-                        "image": "sameersbn/postgresql:9.4-2"
+                        "image": "sameersbn/postgresql:9.4-7"
                     },
                     "redmine": {
                         "environment": [
@@ -173,7 +202,7 @@ User's application
                             "DB_PASS=redminewooo",
                             "DB_NAME=myredmine"
                         ],
-                        "image": "sameersbn/redmine:3.1.0",
+                        "image": "sameersbn/redmine:3.1.1-3",
                         "links": [
                             "postgresql:postgresql"
                         ],
@@ -205,7 +234,7 @@ User's application
                             "DB_PASS=redminewooo",
                             "DB_NAME=myredmine"
                         ],
-                        "image": "sameersbn/postgresql:9.4-2"
+                        "image": "sameersbn/postgresql:9.4-7"
                     },
                     "redmine": {
                         "environment": [
@@ -213,7 +242,7 @@ User's application
                             "DB_PASS=redminewooo",
                             "DB_NAME=myredmine"
                         ],
-                        "image": "sameersbn/redmine:3.1.0",
+                        "image": "sameersbn/redmine:3.1.1-3",
                         "links": [
                             "postgresql:postgresql"
                         ],

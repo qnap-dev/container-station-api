@@ -41,8 +41,11 @@ Container
     **network**
     dns             Str Array        v      Set custom DNS servers
     expose_port     Int Array        v      Expose a port from the container without publishing it to your host
-    hostname        String           v      Container host name
+    hostname        String           v      Container host name. Conflict with network 'host' mode.
     port            Array      v(e)  v      Publish a container's port to the host
+    mode            String     v     v      LXC: One of 'nat', 'bridge'.
+
+                                            Docker: One of 'nat', 'host'.
     **resource**
     limit
     cpuweight       Int        v(e)  v(e)   2~1024 in relative share of CPU time

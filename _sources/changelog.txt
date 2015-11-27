@@ -1,6 +1,36 @@
 Change Log
 ==========
 
-1.0.0
+Container Station
+-----------------
+https://www.qnap.com/i/en/app_releasenotes/list.php?app_choose=container-station
+
+
+
+API
 -----
+
+1.2.0
+^^^^^^^^
+**Deprecation warning**
+
+empty
+
+**Features**
+
+empty
+
+**Bugfixes**
+
+empty
+
+**Miscellaneous**
+
+empty
+
+
+1.0.0
+^^^^^^^^
 * Implemented first version of the container station. 
+
+
