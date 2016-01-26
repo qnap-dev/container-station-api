@@ -17,7 +17,7 @@ Export
 
 .. http:post:: /api/v1/container/(string:container_type)/(string:container_id)/export
 
-    Create an export task for container id ``container_id`` of container type ``container_type``. For JSON fields, check :http:get:`/api/v1/export/`. The path must be under the folders by :http:get:`/api/v1/sharefolder/(string:path)`.
+    Create an export task for container id ``container_id`` of container type ``container_type``. For JSON fields, check :http:get:`/api/v1/export/`. The path must be under the folders by :http:get:`/api/v1/sharefolder/`.
 
     :param container_type: ``lxc``, ``docker``
     :param container_id: container id
@@ -139,19 +139,18 @@ Export
 Import
 --------------
 
-.. http:get:: /api/v1/import/(string:dirpath)/
+.. http:get:: /api/v1/import/config
 
     Given container archive path, query the configure
 
-    :param dirpath: archive file relative parent path in NAS
-
+    :query path: archive file relative parent path in NAS
     :query name: archive file name
 
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/import/Public/?name=c.tgz
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/import/config?path=Public&name=c.tgz"
 
     **Example response**
 
@@ -164,15 +163,14 @@ Import
             fi;
             sleep 5;
         done;
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/import/${QTEST_FOLDER}/?name=c.tgz | python -mjson.tool;
+        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/import/config?path=${QTEST_FOLDER}&name=c.tgz" | python -mjson.tool;
 
 
-.. http:post:: /api/v1/import/(string:dirpath)/
+.. http:post:: /api/v1/import/
 
     Create an import task if name is given. The JSON parameters are the same as :http:post:`/api/v1/container`.
 
-    :param dirpath: archive file relative parent path in NAS
-
+    :query path: archive file relative parent path in NAS
     :query name: archive file name
 
     **Example request**
@@ -220,7 +218,7 @@ Import
                         }
                     }
                 }
-            }' http://${QIP}:${QPORT}/api/v1/import/${QTEST_FOLDER}/?name=c.tgz
+            }' "http://${QIP}:${QPORT}/api/v1/import/?path=${QTEST_FOLDER}&name=c.tgz"
 
     **Example response**
 
@@ -269,7 +267,7 @@ Import
                         }
                     }
                 }
-            }' http://${QIP}:${QPORT}/api/v1/import/${QTEST_FOLDER}/?name=c.tgz | python -mjson.tool;
+            }' "http://${QIP}:${QPORT}/api/v1/import/?path=${QTEST_FOLDER}&name=c.tgz" | python -mjson.tool;
 
 
 .. http:get:: /api/v1/import/
@@ -340,20 +338,19 @@ Import
 File operations
 ---------------
 
-.. http:get:: /api/v1/sharefolder/(string:path)
+.. http:get:: /api/v1/sharefolder/
 
-    List shared folders. If ``path`` does not exist, it will return 400 error.
+    List shared folders. 
 
-    :param path: path of a folder
-    
+    :query path: path of a folder
     :query size: Get the total size and used size of root directory. 
     :query list: List folders by list type. Only ``initial`` works for now.
 
     :resjson string name: directory name or file name
     :resjson string type: ``d`` is directory, ``f`` is file. **[Deprecated]**
-    :resjson boolean is_dir: is directory or not
-    :resjson string totalsize: Total size of root directory
-    :resjson string usedsize: Used size of root directory
+    :resjson boolean isDir: is directory or not
+    :resjson string totalSize: Total size of root directory
+    :resjson string usedSize: Used size of root directory
     :resjson boolean write: write permission
 
     **Example request**
@@ -363,8 +360,8 @@ File operations
         $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/
         $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true"
         $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?list=initial"
-        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/test
-        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/Public
+        $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=test"
+        $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=Public"
 
     **Example response**
 
@@ -373,8 +370,8 @@ File operations
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/ | python -m json.tool; 
         curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true" | python -m json.tool; 
         curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?list=initial" | python -m json.tool; 
-        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/test | python -m json.tool;
-        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/Public | python -m json.tool;
+        curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=test" | python -m json.tool;
+        curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=Public" | python -m json.tool;
 
 .. http:post:: /api/v1/sharefolder/(string:dirname)/(string:basename)/
 
@@ -384,31 +381,31 @@ File operations
     :param basename: the base name of dirname path
 
     :reqjson string name: name of directory or file **[required]**
-    :reqjson boolean is_dir: is directory or not **[required]**
+    :reqjson boolean isDir: is directory or not **[required]**
     :reqjson string content: context of file **[required]**
 
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XPOST -b cookies.txt -d '{"name":"new_folder", "is_dir":true}' \
+        $ curl -sq -XPOST -b cookies.txt -d '{"name":"new_folder", "isDir":true}' \
             http://${QIP}:${QPORT}/api/v1/sharefolder/Public/
         $ curl -sq -XPOST -b cookies.txt \
-             -d '{"name":"new_file.json", "is_dir":false, "context": ""}' \
+             -d '{"name":"new_file.json", "isDir":false, "context": ""}' \
             http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/
         $ curl -sq -XPOST -b cookies.txt \
-             -d '{"name":"new_file.txt", "is_dir":false, "context":"I am context."}' \
+             -d '{"name":"new_file.txt", "isDir":false, "context":"I am context."}' \
             http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/
 
     **Example response**
 
     .. runcode:: json
     
-        curl -sq -XPOST -b cookies.txt -d '{"name":"new_folder", "is_dir":true}' \
+        curl -sq -XPOST -b cookies.txt -d '{"name":"new_folder", "isDir":true}' \
           http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/ | python -m json.tool;
-        curl -sq -XPOST -b cookies.txt -d '{"name":"new_file.json", "is_dir":false, "context": ""}' \
+        curl -sq -XPOST -b cookies.txt -d '{"name":"new_file.json", "isDir":false, "context": ""}' \
           http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/ | python -m json.tool;
-        curl -sq -XPOST -b cookies.txt -d '{"name":"new_file.txt", "is_dir":false, "context":"I am context."}' \
+        curl -sq -XPOST -b cookies.txt -d '{"name":"new_file.txt", "isDir":false, "context":"I am context."}' \
           http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/ | python -m json.tool;
 
 

@@ -651,8 +651,12 @@ The device allows access inside container.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;{&quot;cputime&quot;: 100, &quot;cpuweight&quot;: 600, &quot;memory&quot;: &quot;512m&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/limit
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;cputime&quot;: 100,</span>
+<span class="s1">        &quot;cpuweight&quot;: 600,</span>
+<span class="s1">        &quot;memory&quot;: &quot;512m&quot;</span>
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/limit
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -738,7 +742,16 @@ The device allows access inside container.</p>
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
-    <span class="s1">&#39;{&quot;/test&quot;: {&quot;bind&quot;: &quot;/test1&quot;, &quot;ro&quot;: false },&quot;/test/selenium&quot;: {&quot;bind&quot;: &quot;/test2&quot;, &quot;ro&quot;: true }}&#39;</span> <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;/test&quot;: {</span>
+<span class="s1">            &quot;bind&quot;: &quot;/test1&quot;,</span>
+<span class="s1">            &quot;ro&quot;: false</span>
+<span class="s1">        },</span>
+<span class="s1">        &quot;/test/selenium&quot;: {</span>
+<span class="s1">            &quot;bind&quot;: &quot;/test2&quot;,</span>
+<span class="s1">            &quot;ro&quot;: true</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/volume/host
 </pre></div>
 </div>

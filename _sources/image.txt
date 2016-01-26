@@ -14,24 +14,18 @@ Image
 
 .. contents::
 
-Images would be from the depots, including
-
-* local: images had been downloaded in local disk
-* qnap: images selected by QNAP, which needs to be download before using
-* dockerhub: images located in Docker Hub, which needs to be downloaded before using
 
 Search
 -----------------
 
-.. http:get:: /api/v1/image/
+.. http:get:: /api/v1/image
 
-    Get image list from specific depots.
+    Get recommended image list.
     If depots is from dockerhub, it will take a few seconds to search.
-    Filter installed image function only effect for depots from qnap.
 
-    :query category: (optional) one of ``local``, ``qnap``, ``official``, ``dockerhub``, ``private``. **Default is local**
+    :query category: (optional) one of ``all``, ``local``, ``dockerhub``, ``private``. **Default is all**
     :query filter_text: (optional) filter image name and description or query string for docker search
-    :query type: (optional) one of ``lxc``, ``docker``
+    :query type: (optional) one of ``lxc``, ``docker``, ``app``
     :query registry_name: (optional) Private registry name 
     
     From local repository:
@@ -40,66 +34,49 @@ Search
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image/?category=local"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image?category=all"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/api/v1/image/?category=local"
+            "http://${QIP}:${QPORT}/api/v1/image?category=all"
             | python -m json.tool
 
 
-    From QNAP selected:
+    Filter application type:
 
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image/?category=qnap"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image?type=app"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/api/v1/image/?category=qnap"
+            "http://${QIP}:${QPORT}/api/v1/image?type=app"
             | python -m json.tool
     
     
-    From Docker Hub repository:
-
-    **Example request**
-
-    .. sourcecode:: bash
-
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image/?category=official"
-
-    **Example response**
-
-    .. runcode:: json
-
-        curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/api/v1/image/?category=official"
-            | python -m json.tool
-
-
-    From Docker Hub search:
+    Search from Docker Hub:
 
     **Example request**
 
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-              "http://${QIP}:${QPORT}/api/v1/image/?category=dockerhub&filter_text=dorowu"
+              "http://${QIP}:${QPORT}/api/v1/image?category=dockerhub&filter_text=dorowu"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/api/v1/image/?category=dockerhub&filter_text=dorowu"
+            "http://${QIP}:${QPORT}/api/v1/image?category=dockerhub&filter_text=dorowu"
             | python -m json.tool
 
 
@@ -247,12 +224,15 @@ Registry
 
     Registry ``Docker Hub`` is default registry in container-station.
 
+    :resjson int privateRegistry: Using which registry as default My Registry
     :resjson string name: Registry name
     :resjson string url: Registry URL
-    :resjson boolean enable_trust_cert: Trust SSL self-signed certificate
+    :resjson int id: Registry ID
+    :resjson boolean enableTrustCert: Trust SSL self-signed certificate
     :resjson string username: Registry username
     :resjson string password: Registry password
     :resjson string version: Registry version
+    :resjson object metadata: Other information
     
     **Example request**
 
@@ -309,8 +289,9 @@ Registry
     :reqjson string method: Request method of registry. It should be ``add`` or ``edit``. **[required]**
     :reqjson string name: Registry name **[required]**
     :reqjson string url: Registry URL **[required]**
-    :reqjson boolean enable_trust_cert: Trust SSL self-signed certificate **[required]**
+    :reqjson boolean enableTrustCert: Trust SSL self-signed certificate **[required]**
     :reqjson string version: Registry version **[required]**
+    :reqjson boolean setToDefault: Set as default search My Registry
     :reqjson string username: Registry username
     :reqjson string password: Registry password
     :reqjson string oldname: Original registry name before edit.
@@ -325,7 +306,8 @@ Registry
             '{
                 "method": "add",
                 "name": "test",
-                "enable_trust_cert": true,
+                "enableTrustCert": true,
+                "setToDefault": true,
                 "version": "v1",
                 "url": "https://test.registry.com",
                 "username": "my_user",
@@ -343,7 +325,8 @@ Registry
             '{
                 "method": "add",
                 "name": "test",
-                "enable_trust_cert": true,
+                "enableTrustCert": true,
+                "setToDefault": true,
                 "version": "v1",
                 "url": "https://test.registry.com",
                 "username": "my_user",
@@ -363,7 +346,8 @@ Registry
                 "method": "edit",
                 "oldname": "test",
                 "name": "new_test",
-                "enable_trust_cert": false,
+                "enableTrustCert": false,
+                "setToDefault": false,
                 "url": "https://new_test.registry.com",
                 "username": "my_new_user",
                 "password": "my_new_pass"
@@ -379,7 +363,8 @@ Registry
                 "method": "edit",
                 "oldname": "test",
                 "name": "new_test",
-                "enable_trust_cert": false,
+                "enableTrustCert": false,
+                "setToDefault": false,
                 "url": "https://new_test.registry.com",
                 "username": "my_new_user",
                 "password": "my_new_pass"

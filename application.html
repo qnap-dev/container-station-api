@@ -142,98 +142,6 @@
 <div class="section" id="template">
 <span id="id1"></span><h2>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
-<dt id="get--api-v1-template">
-<code class="descname">GET </code><code class="descname">/api/v1/template</code><a class="headerlink" href="#get--api-v1-template" title="Permalink to this definition">¶</a></dt>
-<dd><p>List all application template information.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>filter_text</strong> &#8211; (optional) filter application by name and description</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
-      <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template&quot;</span>
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;GitLab is a web-based Git repository manager with code reviews, issue tracking, activity feeds and wikis.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/app_gitlab.png&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/sameersbn/gitlab/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gitlab&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;GitLab&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;8.1.3&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Joomla! is a free, powerful open source content management system. It is designed for quickly creating online communities, blogs and eCommerce applications.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/app_default.png&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/seterrychen/joomla-without-database/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Joomla!&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.4.3&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Odoo (formerly OpenERP): open source ERP and Apps to grow your business.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/app_default.png&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/_/odoo/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;odoo&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Odoo&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;8.0&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Redmine is a free and open source web-based project management system.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/app_redmine.png&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/sameersbn/redmine/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Redmine&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.1.1&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The Registry is a tool for building private registries. It is highly scalable server side application for storing and distributing Docker images.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/app_registry.png&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/_/registry/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;registry&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Registry&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.9.1&quot;</span>
-    <span class="p">}</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="get">
 <dt id="get--api-v1-template-(string-application)-description">
 <code class="descname">GET </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/description</code><a class="headerlink" href="#get--api-v1-template-(string-application)-description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get application full description with markdown format.</p>
@@ -305,7 +213,7 @@ Password: **5iveL!fe**
             <span class="s2">&quot;GITLAB_SSH_PORT=10022&quot;</span><span class="p">,</span>
             <span class="s2">&quot;GITLAB_SECRETS_DB_KEY_BASE=qcs-gitlab-app&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/gitlab:8.1.3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/gitlab:8.2.3&quot;</span><span class="p">,</span>
         <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;redis:redisio&quot;</span><span class="p">,</span>
             <span class="s2">&quot;postgresql:postgresql&quot;</span>
@@ -313,7 +221,8 @@ Password: **5iveL!fe**
         <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;10080:80&quot;</span><span class="p">,</span>
             <span class="s2">&quot;10022:22&quot;</span>
-        <span class="p">]</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;restart&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -321,10 +230,12 @@ Password: **5iveL!fe**
             <span class="s2">&quot;DB_PASS=password&quot;</span><span class="p">,</span>
             <span class="s2">&quot;DB_NAME=gitlabhq_production&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-7&quot;</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-11&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;restart&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;redis&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redis:latest&quot;</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redis:latest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;restart&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -492,7 +403,7 @@ Password: **5iveL!fe**
 <span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
 <span class="s1">                    &quot;DB_NAME=myredmine&quot;</span>
 <span class="s1">                ],</span>
-<span class="s1">                &quot;image&quot;: &quot;sameersbn/postgresql:9.4-7&quot;</span>
+<span class="s1">                &quot;image&quot;: &quot;sameersbn/postgresql:9.4-11&quot;</span>
 <span class="s1">            },</span>
 <span class="s1">            &quot;redmine&quot;: {</span>
 <span class="s1">                &quot;environment&quot;: [</span>
@@ -500,7 +411,7 @@ Password: **5iveL!fe**
 <span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
 <span class="s1">                    &quot;DB_NAME=myredmine&quot;</span>
 <span class="s1">                ],</span>
-<span class="s1">                &quot;image&quot;: &quot;sameersbn/redmine:3.1.1-3&quot;,</span>
+<span class="s1">                &quot;image&quot;: &quot;sameersbn/redmine:3.2.0-1&quot;,</span>
 <span class="s1">                &quot;links&quot;: [</span>
 <span class="s1">                    &quot;postgresql:postgresql&quot;</span>
 <span class="s1">                ],</span>
@@ -513,7 +424,8 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre>[DOC_ERROR] Failed to run command
+curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {             &quot;name&quot;: &quot;test&quot;,             &quot;autostart&quot;: true,             &quot;virtual_path&quot;: &quot;redmine&quot;,             &quot;port&quot;: 5555,             &quot;template&quot;: &quot;redmine&quot;         },         &quot;definition&quot;: {             &quot;postgresql&quot;: {                 &quot;environment&quot;: [                     &quot;DB_USER=redmine&quot;,                     &quot;DB_PASS=redminewooo&quot;,                     &quot;DB_NAME=myredmine&quot;                 ],                 &quot;image&quot;: &quot;sameersbn/postgresql:9.4-11&quot;             },             &quot;redmine&quot;: {                 &quot;environment&quot;: [                     &quot;DB_USER=redmine&quot;,                     &quot;DB_PASS=redminewooo&quot;,                     &quot;DB_NAME=myredmine&quot;                 ],                 &quot;image&quot;: &quot;sameersbn/redmine:3.2.0-1&quot;,                 &quot;links&quot;: [                     &quot;postgresql:postgresql&quot;                 ],                 &quot;ports&quot;: [                     &quot;22234:80&quot;                 ]             }         }     }&#39; http://${QIP}:${QPORT}/api/v1/apps | python -m json.tool
 </pre></div>
 </div>
 </dd></dl>
@@ -554,7 +466,7 @@ Password: **5iveL!fe**
             <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
             <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-7&quot;</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-11&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -562,7 +474,7 @@ Password: **5iveL!fe**
             <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
             <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.1.1-3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.2.0-1&quot;</span><span class="p">,</span>
         <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;postgresql:postgresql&quot;</span>
         <span class="p">],</span>
@@ -611,7 +523,7 @@ Password: **5iveL!fe**
                 <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
             <span class="p">],</span>
-            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-7&quot;</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-11&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -619,7 +531,7 @@ Password: **5iveL!fe**
                 <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
             <span class="p">],</span>
-            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.1.1-3&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.2.0-1&quot;</span><span class="p">,</span>
             <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s2">&quot;postgresql:postgresql&quot;</span>
             <span class="p">],</span>
@@ -680,12 +592,7 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Not running: test&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -794,7 +701,8 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{}</span>
+<div class="highlight-json"><div class="highlight"><pre>[DOC_ERROR] Failed to run command
+curl -sq -XPOST -b cookies.txt -d     &#39;{&quot;virtual_path&quot;: &quot;test&quot;, &quot;port&quot;: 5566}&#39;     &quot;http://${QIP}:${QPORT}/api/v1/proxypass&quot; | python -m json.tool
 </pre></div>
 </div>
 </dd></dl>
@@ -827,7 +735,7 @@ Password: **5iveL!fe**
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">}</span>
 </pre></div>
 </div>

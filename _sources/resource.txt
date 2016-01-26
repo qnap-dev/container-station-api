@@ -294,8 +294,12 @@ Limit
 
     .. sourcecode:: bash
 
-        $ curl -sq -XPOST -b cookies.txt -d '{"cputime": 100, "cpuweight": 600, "memory": "512m"}' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/limit
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "cputime": 100, 
+                "cpuweight": 600, 
+                "memory": "512m"
+            }' http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/limit
 
     **Example response**
 
@@ -345,7 +349,16 @@ Storage
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d \
-            '{"/test": {"bind": "/test1", "ro": false },"/test/selenium": {"bind": "/test2", "ro": true }}' \
+            '{
+                "/test": {
+                    "bind": "/test1", 
+                    "ro": false 
+                },
+                "/test/selenium": {
+                    "bind": "/test2", 
+                    "ro": true 
+                }
+            }' \
             http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
 
     **Example response**

@@ -71,12 +71,12 @@ System Information
 
 .. http:get:: /api/v1/system
 
-    :resjson int cpu_core: CPU core count
-    :resjson int cpu_thread: Total CPU thread count
+    :resjson int cpuCore: CPU core count
+    :resjson int cpuThread: Total CPU thread count
     :resjson string hostname: Device hostname
     :resjson string processor: Processor information
     :resjson string machine: Machine type, e.g. 'x86_64', 'armv7l'. An empty string is returned if the value cannot be determined.
-    :resjson object version: Version of Docker, LXC, and container-station-web
+    :resjson object version: Version of Docker, LXC, and Container Station 
 
 
     **Example request**
