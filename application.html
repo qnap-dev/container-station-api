@@ -80,7 +80,7 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Application</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#user-s-application">User&#8217;s application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reverse-proxy">Reverse proxy</a></li>
@@ -114,7 +114,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -137,10 +137,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="application">
-<h1>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id2">Application</a><a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h1>
 <p></p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#application" id="id2">Application</a><ul>
+<li><a class="reference internal" href="#template" id="id3">Template</a></li>
+<li><a class="reference internal" href="#user-s-application" id="id4">User&#8217;s application</a></li>
+<li><a class="reference internal" href="#reverse-proxy" id="id5">Reverse proxy</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="template">
-<span id="id1"></span><h2>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2><a class="toc-backref" href="#id3">Template</a><a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-template-(string-application)-description">
 <code class="descname">GET </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/description</code><a class="headerlink" href="#get--api-v1-template-(string-application)-description" title="Permalink to this definition">¶</a></dt>
@@ -157,23 +168,15 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/description&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-text"><div class="highlight"><pre>GitLab with PostgreSQL + Redis
-==============================
+<div class="highlight-text"><div class="highlight"><pre><span></span>## Prerequisites 
+Your docker host needs to have 1GB or more of available RAM to run GitLab. Please refer to the GitLab &lt;a href=&quot;https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/requirements.md#hardware-requirements&quot; target=&quot;_blank&quot;&gt;hardware requirements&lt;/a&gt; documentation for additional information.
 
-## System requirements
-Recommend 2GB of RAM for your Host and 2 Cores for best performance!
-
-## Setup
-The values of environment variables for both PostgreSQL and GitLab need to match. The Keys cannot change. Also, the aliases used in the links to Redis and PostgreSQL from GitLab cannot change.
-
-To view the GUI after launching the template, browse to http://NAS_IP:10080.
-
-## Running
+## Description 
 __NOTE__: Please allow a few minutes for the GitLab service to start.
 
 Login using the default username and password:
@@ -201,12 +204,12 @@ Password: **5iveL!fe**
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/definition&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;gitlab&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;GITLAB_PORT=10080&quot;</span><span class="p">,</span>
@@ -258,12 +261,12 @@ Password: **5iveL!fe**
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/redmine/pull&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -317,46 +320,44 @@ Password: **5iveL!fe**
 <li>rom (Romanian)</li>
 </ul>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/wizard?lang=eng&amp;stage=install&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;app&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;app.gitlab.ports.80&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;web&quot;</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;api_version&quot;</span><span class="p">:</span> <span class="s2">&quot;v1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;http_port&quot;</span><span class="p">:</span> <span class="mi">10080</span><span class="p">,</span>
+        <span class="nt">&quot;ssh_port&quot;</span><span class="p">:</span> <span class="mi">10022</span>
     <span class="p">},</span>
-    <span class="nt">&quot;env&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;gitlab&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;GITLAB_HOST&quot;</span><span class="p">:</span> <span class="s2">&quot;custom.host&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;GITLAB_PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;app.gitlab.ports.80&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;GITLAB_SSH_PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;app.gitlab.ports.22&quot;</span>
-            <span class="p">}</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;## Prerequisites \nYour docker host needs to have 1GB or more of available RAM to run GitLab. Please refer to the GitLab &lt;a href=\&quot;https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/requirements.md#hardware-requirements\&quot; target=\&quot;_blank\&quot;&gt;hardware requirements&lt;/a&gt; documentation for additional information.\n\n## Description \n__NOTE__: Please allow a few minutes for the GitLab service to start.\n\nLogin using the default username and password:\n\nUsername: **root**\n\nPassword: **5iveL!fe**\n&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;GitLab&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;wizard&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;form&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;http_port&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The port of the GitLab server. Defaults to 10080.&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP Port&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&quot;ssh_port&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The ssh port number. Defaults to 10022.&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;SSH Port&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Configure Gitlab&quot;</span>
         <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;html&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;&lt;div class=\&quot;step1\&quot;&gt;\n    &lt;div class=\&quot;step_title\&quot;&gt;\n    {{&#39;CONFIGURE_GITLAB&#39; | translate}}\n    &lt;/div&gt;\n    &lt;form class=\&quot;form-horizontal items\&quot;&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        {{&#39;GITLAB_PASSWORD_DESC&#39; | translate}}\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;PASSWORD&#39; | translate}}\n            &lt;/label&gt;\n&lt;input type=\&quot;text\&quot; class=\&quot;col-sm-10\&quot; name=\&quot;app.gitlab.environment.GITLAB_ROOT_PASSWORD\&quot; ng-model=\&quot;app.gitlab.environment.GITLAB_ROOT_PASSWORD\&quot; ngMinlength=\&quot;2\&quot; ngMaxlength=\&quot;10\&quot;&gt;\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        {{&#39;GITLAB_WEB_HOST_PORT_DESC&#39; | translate}}\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;PORT&#39; | translate}}\n            &lt;/label&gt;\n&lt;input type=\&quot;text\&quot; class=\&quot;col-sm-10\&quot; name=\&quot;app.gitlab.ports[&#39;80&#39;]\&quot; ng-model=\&quot;app.gitlab.ports[&#39;80&#39;]\&quot;&gt;\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        {{&#39;GITLAB_SSH_HOST_PORT_DESC&#39; | translate}}\n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;PORT&#39; | translate}}\n            &lt;/label&gt;\n&lt;input type=\&quot;text\&quot; class=\&quot;col-sm-10\&quot; name=\&quot;app.gitlab.ports[&#39;22&#39;]\&quot; ng-model=\&quot;app.gitlab.ports[&#39;22&#39;]\&quot;&gt;\n        &lt;/div&gt;\n    &lt;/form&gt;\n&lt;/div&gt;\n&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;&lt;div class=\&quot;step2\&quot;&gt;\n    &lt;div class=\&quot;step_title\&quot;&gt;\n    {{&#39;SERVICE_MANAGEMENT&#39; | translate}}\n    &lt;/div&gt;\n    &lt;form class=\&quot;form-horizontal items\&quot;&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        \n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;START_ONBOOT&#39; | translate}}\n            &lt;/label&gt;\n            &lt;input type=\&quot;checkbox\&quot; ng-model=\&quot;custom.autostart\&quot;&gt;        &lt;/div&gt;\n        &lt;div class=\&quot;form-group item_desc\&quot;&gt;\n        \n        &lt;/div&gt;\n        &lt;div class=\&quot;form-group\&quot;&gt;\n            &lt;label class=\&quot;col-sm-2 control-label\&quot;&gt;\n            {{&#39;SERVICE_ENTRY&#39; | translate}}\n            &lt;/label&gt;\n&lt;input type=\&quot;text\&quot; class=\&quot;col-sm-10\&quot; name=\&quot;custom.entrypoint\&quot; ng-model=\&quot;custom.entrypoint\&quot;&gt;\n        &lt;/div&gt;\n    &lt;/form&gt;\n&lt;/div&gt;\n&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;lang&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;CONFIGURE_GITLAB&quot;</span><span class="p">:</span> <span class="s2">&quot;Configure Gitlab&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;CONTEXT_PATH&quot;</span><span class="p">:</span> <span class="s2">&quot;Context path&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;GITLAB_PASSWORD_DESC&quot;</span><span class="p">:</span> <span class="s2">&quot;The password for the root user. Defaults to 5iveL!fe.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;GITLAB_SSH_HOST_PORT_DESC&quot;</span><span class="p">:</span> <span class="s2">&quot;The ssh port number. Defaults to 22.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;GITLAB_WEB_HOST_PORT_DESC&quot;</span><span class="p">:</span> <span class="s2">&quot;The port of the GitLab server. Defaults to 80.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PASSWORD&quot;</span><span class="p">:</span> <span class="s2">&quot;Password&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;Port&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;SERVICE_ENTRY&quot;</span><span class="p">:</span> <span class="s2">&quot;Service entrypoint&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;SERVICE_MANAGEMENT&quot;</span><span class="p">:</span> <span class="s2">&quot;Service Management&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;SERVICE_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;Service URL&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;START_ONBOOT&quot;</span><span class="p">:</span> <span class="s2">&quot;Start on boot&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;total_steps&quot;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -364,7 +365,7 @@ Password: **5iveL!fe**
 
 </div>
 <div class="section" id="user-s-application">
-<h2>User&#8217;s application<a class="headerlink" href="#user-s-application" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">User&#8217;s application</a><a class="headerlink" href="#user-s-application" title="Permalink to this headline">¶</a></h2>
 <dl class="post">
 <dt id="post--api-v1-apps">
 <code class="descname">POST </code><code class="descname">/api/v1/apps</code><a class="headerlink" href="#post--api-v1-apps" title="Permalink to this definition">¶</a></dt>
@@ -380,52 +381,29 @@ Password: **5iveL!fe**
 <li><strong>autostart</strong> (<em>boolean</em>) &#8211; Start application when container-station started</li>
 <li><strong>virtual_path</strong> (<em>string</em>) &#8211; </li>
 <li><strong>port</strong> (<em>int</em>) &#8211; </li>
-<li><strong>definition</strong> (<em>object</em>) &#8211; Application definition</li>
+<li><strong>binding</strong> (<em>object</em>) &#8211; Application binding data</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{</span>
-<span class="s1">        &quot;custom&quot;: {</span>
-<span class="s1">            &quot;name&quot;: &quot;test&quot;,</span>
-<span class="s1">            &quot;autostart&quot;: true,</span>
-<span class="s1">            &quot;virtual_path&quot;: &quot;redmine&quot;,</span>
-<span class="s1">            &quot;port&quot;: 5555,</span>
-<span class="s1">            &quot;template&quot;: &quot;redmine&quot;</span>
-<span class="s1">        },</span>
-<span class="s1">        &quot;definition&quot;: {</span>
-<span class="s1">            &quot;postgresql&quot;: {</span>
-<span class="s1">                &quot;environment&quot;: [</span>
-<span class="s1">                    &quot;DB_USER=redmine&quot;,</span>
-<span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
-<span class="s1">                    &quot;DB_NAME=myredmine&quot;</span>
-<span class="s1">                ],</span>
-<span class="s1">                &quot;image&quot;: &quot;sameersbn/postgresql:9.4-11&quot;</span>
-<span class="s1">            },</span>
-<span class="s1">            &quot;redmine&quot;: {</span>
-<span class="s1">                &quot;environment&quot;: [</span>
-<span class="s1">                    &quot;DB_USER=redmine&quot;,</span>
-<span class="s1">                    &quot;DB_PASS=redminewooo&quot;,</span>
-<span class="s1">                    &quot;DB_NAME=myredmine&quot;</span>
-<span class="s1">                ],</span>
-<span class="s1">                &quot;image&quot;: &quot;sameersbn/redmine:3.2.0-1&quot;,</span>
-<span class="s1">                &quot;links&quot;: [</span>
-<span class="s1">                    &quot;postgresql:postgresql&quot;</span>
-<span class="s1">                ],</span>
-<span class="s1">                &quot;ports&quot;: [</span>
-<span class="s1">                    &quot;22234:80&quot;</span>
-<span class="s1">                ]</span>
-<span class="s1">            }</span>
+<span class="s1">        &quot;template&quot;: &quot;redmine&quot;,</span>
+<span class="s1">        &quot;name&quot;: &quot;test&quot;,</span>
+<span class="s1">        &quot;autostart&quot;: true,</span>
+<span class="s1">        &quot;virtual_path&quot;: &quot;redmine&quot;,</span>
+<span class="s1">        &quot;port&quot;: 5555,</span>
+<span class="s1">        &quot;binding&quot;: {</span>
+<span class="s1">            &quot;ssh_port&quot;: 22,</span>
+<span class="s1">            &quot;http_port&quot;: 80</span>
 <span class="s1">        }</span>
 <span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/apps
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre>[DOC_ERROR] Failed to run command
-curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {             &quot;name&quot;: &quot;test&quot;,             &quot;autostart&quot;: true,             &quot;virtual_path&quot;: &quot;redmine&quot;,             &quot;port&quot;: 5555,             &quot;template&quot;: &quot;redmine&quot;         },         &quot;definition&quot;: {             &quot;postgresql&quot;: {                 &quot;environment&quot;: [                     &quot;DB_USER=redmine&quot;,                     &quot;DB_PASS=redminewooo&quot;,                     &quot;DB_NAME=myredmine&quot;                 ],                 &quot;image&quot;: &quot;sameersbn/postgresql:9.4-11&quot;             },             &quot;redmine&quot;: {                 &quot;environment&quot;: [                     &quot;DB_USER=redmine&quot;,                     &quot;DB_PASS=redminewooo&quot;,                     &quot;DB_NAME=myredmine&quot;                 ],                 &quot;image&quot;: &quot;sameersbn/redmine:3.2.0-1&quot;,                 &quot;links&quot;: [                     &quot;postgresql:postgresql&quot;                 ],                 &quot;ports&quot;: [                     &quot;22234:80&quot;                 ]             }         }     }&#39; http://${QIP}:${QPORT}/api/v1/apps | python -m json.tool
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -435,11 +413,11 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 <code class="descname">GET </code><code class="descname">/api/v1/apps</code><a class="headerlink" href="#get--api-v1-apps" title="Permalink to this definition">¶</a></dt>
 <dd><p>List all custom application information.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;postgresql&quot;</span>
@@ -454,32 +432,30 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 <code class="descname">GET </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><code class="descname">/definition</code><a class="headerlink" href="#get--api-v1-apps-(string-name)-definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get custom application definition.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/definition&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
-        <span class="p">],</span>
+        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;DB_NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine_production&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;DB_PASS&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;DB_USER&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span>
+        <span class="p">},</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-11&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
-        <span class="p">],</span>
+        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;REDMINE_PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;10083&quot;</span>
+        <span class="p">},</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.2.0-1&quot;</span><span class="p">,</span>
         <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;postgresql:postgresql&quot;</span>
         <span class="p">],</span>
         <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;22234:80&quot;</span>
+            <span class="s2">&quot;10083:80&quot;</span>
         <span class="p">]</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -503,43 +479,22 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;custom&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5555</span><span class="p">,</span>
-        <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;virtual_path&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;binding&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;http_port&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+        <span class="nt">&quot;ssh_port&quot;</span><span class="p">:</span> <span class="mi">22</span>
     <span class="p">},</span>
-    <span class="nt">&quot;definition&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-11&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;DB_USER=redmine&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;DB_PASS=redminewooo&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;DB_NAME=myredmine&quot;</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.2.0-1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;postgresql:postgresql&quot;</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;22234:80&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5555</span><span class="p">,</span>
+    <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;virtual_path&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -561,12 +516,17 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/restart&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Not running: test&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -587,12 +547,17 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/kill&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Not running: test&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -613,12 +578,12 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/start&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -639,12 +604,12 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/stop&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -665,19 +630,19 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
 
 </div>
 <div class="section" id="reverse-proxy">
-<h2>Reverse proxy<a class="headerlink" href="#reverse-proxy" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Reverse proxy</a><a class="headerlink" href="#reverse-proxy" title="Permalink to this headline">¶</a></h2>
 <dl class="post">
 <dt id="post--api-v1-proxypass">
 <code class="descname">POST </code><code class="descname">/api/v1/proxypass</code><a class="headerlink" href="#post--api-v1-proxypass" title="Permalink to this definition">¶</a></dt>
@@ -695,14 +660,13 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;custom&quot;: {      
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{&quot;virtual_path&quot;: &quot;test&quot;, &quot;port&quot;: 5566}&#39;</span> <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/proxypass&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre>[DOC_ERROR] Failed to run command
-curl -sq -XPOST -b cookies.txt -d     &#39;{&quot;virtual_path&quot;: &quot;test&quot;, &quot;port&quot;: 5566}&#39;     &quot;http://${QIP}:${QPORT}/api/v1/proxypass&quot; | python -m json.tool
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -729,13 +693,13 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{&quot;virtual_path&quot;: &quot;test
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/proxypass/test&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -756,12 +720,12 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{&quot;virtual_path&quot;: &quot;test
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt <span class="se">\</span>
     <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/proxypass/test&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -788,7 +752,7 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{&quot;virtual_path&quot;: &quot;test
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, QNAP System, Inc.
+        &copy; Copyright 2016, QNAP System, Inc.
 
     </p>
   </div>

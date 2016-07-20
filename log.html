@@ -84,7 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Log and Event</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Log and Event</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#log">Log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#event">Event</a></li>
 </ul>
@@ -113,7 +113,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -136,10 +136,20 @@
            <div itemprop="articleBody">
             
   <div class="section" id="log-and-event">
-<h1>Log and Event<a class="headerlink" href="#log-and-event" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1">Log and Event</a><a class="headerlink" href="#log-and-event" title="Permalink to this headline">¶</a></h1>
 <p></p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#log-and-event" id="id1">Log and Event</a><ul>
+<li><a class="reference internal" href="#log" id="id2">Log</a></li>
+<li><a class="reference internal" href="#event" id="id3">Event</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="log">
-<h2>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Log</a><a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-log">
 <code class="descname">GET </code><code class="descname">/api/v1/log</code><a class="headerlink" href="#get--api-v1-log" title="Permalink to this definition">¶</a></dt>
@@ -149,8 +159,8 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li><strong>time_start</strong> &#8211; (optional) Time stamp of system logs start time (epoch). <strong>Default is 0.</strong></li>
-<li><strong>time_end</strong> &#8211; (optional) Time stamp of system logs end time (epoch). <strong>Default is 0.</strong></li>
+<li><strong>start</strong> &#8211; (optional) Time stamp of system logs start time (epoch). <strong>Default is 0.</strong></li>
+<li><strong>end</strong> &#8211; (optional) Time stamp of system logs end time (epoch). <strong>Default is 0.</strong></li>
 <li><strong>limit</strong> &#8211; (optional) Number of system log records. <strong>Default is 20.</strong></li>
 <li><strong>offset</strong> &#8211; (optional) Response logs start with.</li>
 <li><strong>user</strong> &#8211; (optional) User name who login.</li>
@@ -163,25 +173,25 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/log?limit=5&amp;category=image,export&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/log?limit=5&amp;category=image,export&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;export&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span>
         <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Finished export container (docker, 0c215acef104, DockerTestAPI) to /Public/d.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1453764034</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Finished export container (docker, 18a23aeed2fb, DockerTestAPI) to /Public/d.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1469049668</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;export&quot;</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
         <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Start to export container (docker, 0c215acef104, DockerTestAPI) to /Public/d.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1453764017</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Start to export container (docker, 18a23aeed2fb, DockerTestAPI) to /Public/d.tgz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1469049655</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -189,7 +199,7 @@
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">39</span><span class="p">,</span>
         <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
         <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Finished export container (lxc, utest) to /Public/c.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1453764017</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1469049655</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -197,7 +207,7 @@
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
         <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
         <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Export task logs are cleared&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1453764001</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1469049639</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -205,7 +215,7 @@
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
         <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
         <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Start to export container (lxc, utest) to /Public/c.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1453763998</span><span class="p">,</span>
+        <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1469049635</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
@@ -218,56 +228,55 @@
 <code class="descname">GET </code><code class="descname">/api/v1/log/export</code><a class="headerlink" href="#get--api-v1-log-export" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export logs to csv format.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/log/export
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/log/export
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-text"><div class="highlight"><pre>Date,Level,Category,User,Message
-2016-01-25 23:15:01.531735,INFO,system,system,Update image list successfully
-2016-01-25 23:15:01.651920,INFO,system,system,Update application metadata successfully
-2016-01-25 23:17:21.696505,INFO,container,admin,Restart application: test
-2016-01-25 23:17:23.686821,INFO,container,admin,Kill application: test
-2016-01-25 23:17:25.805475,INFO,container,admin,Start application: test
-2016-01-25 23:17:37.434986,INFO,container,admin,Stop application: test
-2016-01-25 23:17:51.346826,INFO,container,admin,Destroy application: test
-2016-01-25 23:17:51.550882,INFO,system,admin,Delete service path: test
-2016-01-25 23:17:52.800261,INFO,container,admin,&quot;Start to do background task (download, ubuntu-trusty)&quot;
-2016-01-25 23:18:08.609754,INFO,container,admin,&quot;Finished background task (download, ubuntu-trusty)&quot;
-2016-01-25 23:18:16.738510,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
-2016-01-25 23:18:21.224147,INFO,container,admin,&quot;Stop container (lxc, utest)&quot;
-2016-01-25 23:18:21.711348,INFO,container,admin,&quot;Destroy container (lxc, utest)&quot;
-2016-01-25 23:18:24.291135,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
-2016-01-25 23:18:25.255339,INFO,container,admin,&quot;Start to do background task (download, ubuntu)&quot;
-2016-01-25 23:18:47.600438,INFO,container,admin,&quot;Finished background task (download, ubuntu)&quot;
-2016-01-25 23:18:54.146610,INFO,container,admin,&quot;Create container (docker, 0c215acef104, DockerTestAPI)&quot;
-2016-01-25 23:18:56.834916,INFO,container,admin,&quot;Create container (docker, 341847b057d4, DockerTestAPI2)&quot;
-2016-01-25 23:18:58.792224,INFO,container,admin,&quot;Stop container (lxc, utest)&quot;
-2016-01-25 23:18:59.409361,INFO,container,admin,&quot;Start container (lxc, utest)&quot;
-2016-01-25 23:18:59.668903,INFO,container,admin,&quot;Stop container (docker, 0c215acef104, DockerTestAPI)&quot;
-2016-01-25 23:19:00.095902,INFO,container,admin,&quot;Start container (docker, 0c215acef104, DockerTestAPI)&quot;
-2016-01-25 23:19:02.951324,INFO,container,admin,&quot;Restart container (lxc, utest)&quot;
-2016-01-25 23:19:03.614978,INFO,container,admin,&quot;Restart container (docker, 0c215acef104, DockerTestAPI)&quot;
-2016-01-25 23:19:05.040108,INFO,container,admin,&quot;Stop container (lxc, utest)&quot;
-2016-01-25 23:19:05.189282,INFO,container,admin,&quot;Stop container (docker, 0c215acef104, DockerTestAPI)&quot;
-2016-01-25 23:19:05.607446,INFO,container,admin,&quot;Destroy container (lxc, utest)&quot;
-2016-01-25 23:19:06.207950,INFO,container,admin,&quot;Stop container (docker, 341847b057d4, DockerTestAPI2)&quot;
-2016-01-25 23:19:12.715412,INFO,container,admin,&quot;Destroy container (docker, 341847b057d4, DockerTestAPI2)&quot;
-2016-01-25 23:19:29.567270,INFO,container,admin,&quot;Start to do background task (download, busybox)&quot;
-2016-01-25 23:19:42.194276,INFO,container,admin,&quot;Finished background task (download, busybox)&quot;
-2016-01-25 23:19:51.285761,INFO,image,admin,&quot;Image removed (docker, busybox)&quot;
-2016-01-25 23:19:52.846442,INFO,image,admin,Registry add: test
-2016-01-25 23:19:53.121368,INFO,image,admin,Registry edit: new_test
-2016-01-25 23:19:53.313442,INFO,image,admin,Registry remove: new_test
-2016-01-25 23:19:57.309212,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
-2016-01-25 23:19:58.223043,INFO,export,admin,&quot;Start to export container (lxc, utest) to /Public/c.tgz&quot;
-2016-01-25 23:20:01.701216,INFO,export,admin,Export task logs are cleared
-2016-01-25 23:20:17.234565,INFO,export,admin,&quot;Finished export container (lxc, utest) to /Public/c.tgz&quot;
-2016-01-25 23:20:17.393396,INFO,export,admin,&quot;Start to export container (docker, 0c215acef104, DockerTestAPI) to /Public/d.tgz&quot;
-2016-01-25 23:20:32.521315,INFO,import,admin,&quot;Start to import (lxc, utest_import) from /Public/c.tgz&quot;
-2016-01-25 23:20:34.482322,INFO,export,admin,&quot;Finished export container (docker, 0c215acef104, DockerTestAPI) to /Public/d.tgz&quot;
-2016-01-25 23:20:34.772500,INFO,import,admin,Import task logs are cleared
-2016-01-25 23:20:58.660659,INFO,import,admin,&quot;Finished import (lxc, utest_import) from /Public/c.tgz&quot;
-2016-01-25 23:20:59.007124,INFO,system,admin,Create a new folder at /share/Public/new_folder
+<div class="highlight-text"><div class="highlight"><pre><span></span>Date,Level,Category,User,Message
+2016-07-20 21:09:20.887843,INFO,system,system,Update image list successfully
+2016-07-20 21:09:20.952952,INFO,system,system,Update application metadata successfully
+2016-07-20 21:18:27.392657,INFO,container,admin,Create a new redmine application: test
+2016-07-20 21:18:29.372982,INFO,container,admin,Start application: test
+2016-07-20 21:18:40.461281,INFO,container,admin,Stop application: test
+2016-07-20 21:18:43.584548,INFO,container,admin,Destroy application: test
+2016-07-20 21:18:43.712431,INFO,system,admin,Add service path: test 5566
+2016-07-20 21:18:43.829617,INFO,system,admin,Delete service path: test
+2016-07-20 21:18:44.905636,INFO,image,admin,&quot;Start to do background task (image_download, ubuntu-trusty:latest)&quot;
+2016-07-20 21:19:01.950127,INFO,image,admin,&quot;Finished background task (image_download, ubuntu-trusty:latest)&quot;
+2016-07-20 21:19:09.377542,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
+2016-07-20 21:19:15.148092,INFO,container,admin,&quot;Stop container (lxc, utest)&quot;
+2016-07-20 21:19:15.638186,INFO,container,admin,&quot;Destroy container (lxc, utest)&quot;
+2016-07-20 21:19:19.162389,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
+2016-07-20 21:19:20.938743,INFO,image,admin,&quot;Start to do background task (image_download, ubuntu:latest)&quot;
+2016-07-20 21:19:39.232233,INFO,image,admin,&quot;Finished background task (image_download, ubuntu:latest)&quot;
+2016-07-20 21:19:43.654654,INFO,container,admin,&quot;Create container (docker, 18a23aeed2fb, DockerTestAPI)&quot;
+2016-07-20 21:19:46.378310,INFO,container,admin,&quot;Create container (docker, ea4548dce060, DockerTestAPI2)&quot;
+2016-07-20 21:19:48.030940,INFO,container,admin,&quot;Stop container (lxc, utest)&quot;
+2016-07-20 21:19:48.409909,INFO,container,admin,&quot;Start container (lxc, utest)&quot;
+2016-07-20 21:19:48.545134,INFO,container,admin,&quot;Stop container (docker, 18a23aeed2fb, DockerTestAPI)&quot;
+2016-07-20 21:19:49.265764,INFO,container,admin,&quot;Start container (docker, 18a23aeed2fb, DockerTestAPI)&quot;
+2016-07-20 21:19:51.071493,INFO,container,admin,&quot;Restart container (lxc, utest)&quot;
+2016-07-20 21:19:51.638900,INFO,container,admin,&quot;Restart container (docker, 18a23aeed2fb, DockerTestAPI)&quot;
+2016-07-20 21:19:56.933211,INFO,container,admin,&quot;Stop container (lxc, utest)&quot;
+2016-07-20 21:19:57.084730,INFO,container,admin,&quot;Stop container (docker, 18a23aeed2fb, DockerTestAPI)&quot;
+2016-07-20 21:19:57.514475,INFO,container,admin,&quot;Destroy container (lxc, utest)&quot;
+2016-07-20 21:19:58.133751,INFO,container,admin,&quot;Stop container (docker, ea4548dce060, DockerTestAPI2)&quot;
+2016-07-20 21:20:00.791218,INFO,container,admin,&quot;Destroy container (docker, ea4548dce060, DockerTestAPI2)&quot;
+2016-07-20 21:20:17.281618,INFO,image,admin,&quot;Start to do background task (image_download, busybox:latest)&quot;
+2016-07-20 21:20:24.599230,INFO,image,admin,&quot;Finished background task (image_download, busybox:latest)&quot;
+2016-07-20 21:20:28.955877,INFO,image,admin,&quot;Image removed (docker, busybox:latest)&quot;
+2016-07-20 21:20:30.258691,INFO,image,admin,Registry add: test
+2016-07-20 21:20:30.433736,INFO,image,admin,Registry edit: new_test
+2016-07-20 21:20:30.575884,INFO,image,admin,Registry remove: new_test
+2016-07-20 21:20:34.575010,INFO,container,admin,&quot;Create container (lxc, utest)&quot;
+2016-07-20 21:20:35.068986,INFO,export,admin,&quot;Start to export container (lxc, utest) to /Public/c.tgz&quot;
+2016-07-20 21:20:39.889421,INFO,export,admin,Export task logs are cleared
+2016-07-20 21:20:55.538769,INFO,export,admin,&quot;Finished export container (lxc, utest) to /Public/c.tgz&quot;
+2016-07-20 21:20:55.647595,INFO,export,admin,&quot;Start to export container (docker, 18a23aeed2fb, DockerTestAPI) to /Public/d.tgz&quot;
+2016-07-20 21:21:08.133268,INFO,export,admin,&quot;Finished export container (docker, 18a23aeed2fb, DockerTestAPI) to /Public/d.tgz&quot;
+2016-07-20 21:21:10.617042,INFO,import,admin,&quot;Start to import (lxc, utest_import) from /Public/c.tgz&quot;
+2016-07-20 21:21:11.810825,INFO,import,admin,Import task logs are cleared
+2016-07-20 21:21:13.668428,INFO,system,admin,Create a new folder at /share/Public/new_folder
 </pre></div>
 </div>
 </dd></dl>
@@ -289,18 +298,18 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/log
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/log
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-text"><div class="highlight"><pre>{&quot;records&quot;: 46}
+<div class="highlight-text"><div class="highlight"><pre><span></span>{&quot;records&quot;: 45}
 </pre></div>
 </div>
 </dd></dl>
 
 </div>
 <div class="section" id="event">
-<h2>Event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Event</a><a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-event">
 <code class="descname">GET </code><code class="descname">/api/v1/event</code><a class="headerlink" href="#get--api-v1-event" title="Permalink to this definition">¶</a></dt>
@@ -397,35 +406,35 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/event
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/event
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-    <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">58</span><span class="p">,</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;index&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
     <span class="nt">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;import:admin:1453735258:{\&quot;state\&quot;: \&quot;completed\&quot;, \&quot;result\&quot;: 0, \&quot;cid\&quot;: \&quot;utest_import\&quot;, \&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/Public/c.tgz\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;container:all:1453735253:{\&quot;container\&quot;: \&quot;utest_import\&quot;, \&quot;state\&quot;: \&quot;stop\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;container:all:1453735253:{\&quot;container\&quot;: \&quot;utest_import\&quot;, \&quot;state\&quot;: \&quot;create\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;export:admin:1453735235:{\&quot;container\&quot;: \&quot;DockerTestAPI\&quot;, \&quot;cid\&quot;: \&quot;0c215acef104bb2556e7c3fbe900b2441eac93bd5be2853ddaf3da0f004ec613\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;completed\&quot;, \&quot;result\&quot;: 0, \&quot;tid\&quot;: 2, \&quot;path\&quot;: \&quot;/Public/d.tgz\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;import:admin:1453735232:{\&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/Public/c.tgz\&quot;, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;, \&quot;cid\&quot;: \&quot;utest_import\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;export:admin:1453735217:{\&quot;container\&quot;: \&quot;DockerTestAPI\&quot;, \&quot;cid\&quot;: \&quot;0c215acef104bb2556e7c3fbe900b2441eac93bd5be2853ddaf3da0f004ec613\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;tid\&quot;: 2, \&quot;path\&quot;: \&quot;/Public/d.tgz\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;export:admin:1453735217:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;cid\&quot;: \&quot;utest\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;completed\&quot;, \&quot;result\&quot;: 0, \&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/Public/c.tgz\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;container:all:1453735205:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;, \&quot;port\&quot;: \&quot;add\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;export:admin:1453735198:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;cid\&quot;: \&quot;utest\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/Public/c.tgz\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;container:all:1453735198:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;state\&quot;: \&quot;start\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;container:all:1453735197:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;state\&quot;: \&quot;create\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;image:admin:1453735191:{\&quot;action\&quot;: \&quot;delete\&quot;, \&quot;state\&quot;: \&quot;success\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;name\&quot;: \&quot;busybox\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;image:all:1453735191:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;category\&quot;: \&quot;local\&quot;, \&quot;state\&quot;: \&quot;delete\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;5836357695520ee47c93e8ce490e87ec643ff6bd3453e29b7ac489758f800682\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;image:all:1453735188:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;category\&quot;: \&quot;local\&quot;, \&quot;state\&quot;: \&quot;delete\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;b175bcb790231169e232739bd2172bded9669c25104a9b723999c5f366ed7543\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;image:all:1453735185:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;category\&quot;: \&quot;local\&quot;, \&quot;state\&quot;: \&quot;untag\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;b175bcb790231169e232739bd2172bded9669c25104a9b723999c5f366ed7543\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;background:admin:1453735182:{\&quot;category\&quot;: \&quot;download\&quot;, \&quot;state\&quot;: \&quot;completed\&quot;, \&quot;container\&quot;: \&quot;busybox\&quot;, \&quot;result\&quot;: 0, \&quot;tid\&quot;: 1}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;image:admin:1453735182:{\&quot;name\&quot;: \&quot;busybox\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;state\&quot;: \&quot;success\&quot;, \&quot;tag\&quot;: \&quot;latest\&quot;, \&quot;action\&quot;: \&quot;download\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;image:all:1453735181:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;category\&quot;: \&quot;local\&quot;, \&quot;state\&quot;: \&quot;pull\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;busybox:latest\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;background:admin:1453735169:{\&quot;category\&quot;: \&quot;download\&quot;, \&quot;tid\&quot;: 1, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;container\&quot;: \&quot;busybox\&quot;}&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;container:all:1453735152:{\&quot;container\&quot;: \&quot;DockerTestAPI2\&quot;, \&quot;state\&quot;: \&quot;destroy\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;341847b057d42967cc3f133f468dc35468c785646a9ed8368431aae28ec42c1c\&quot;}&quot;</span>
+        <span class="s2">&quot;import:admin:1469020870:{\&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/Public/c.tgz\&quot;, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;, \&quot;cid\&quot;: \&quot;utest_import\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export:admin:1469020868:{\&quot;container\&quot;: \&quot;DockerTestAPI\&quot;, \&quot;cid\&quot;: \&quot;18a23aeed2fbe9321e4b8d36d8ff8d3c983b584d0554634526f05a467cd5650e\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;completed\&quot;, \&quot;result\&quot;: 0, \&quot;tid\&quot;: 2, \&quot;path\&quot;: \&quot;/Public/d.tgz\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export:admin:1469020855:{\&quot;container\&quot;: \&quot;DockerTestAPI\&quot;, \&quot;cid\&quot;: \&quot;18a23aeed2fbe9321e4b8d36d8ff8d3c983b584d0554634526f05a467cd5650e\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;tid\&quot;: 2, \&quot;path\&quot;: \&quot;/Public/d.tgz\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export:admin:1469020855:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;cid\&quot;: \&quot;utest\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;completed\&quot;, \&quot;result\&quot;: 0, \&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/Public/c.tgz\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1469020840:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;, \&quot;port\&quot;: \&quot;add\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1469020835:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;state\&quot;: \&quot;start\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;export:admin:1469020835:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;cid\&quot;: \&quot;utest\&quot;, \&quot;compress\&quot;: true, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;tid\&quot;: 1, \&quot;path\&quot;: \&quot;/Public/c.tgz\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1469020834:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;state\&quot;: \&quot;create\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:admin:1469020829:{\&quot;action\&quot;: \&quot;delete\&quot;, \&quot;state\&quot;: \&quot;success\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;name\&quot;: \&quot;busybox\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1469020828:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;category\&quot;: \&quot;local\&quot;, \&quot;state\&quot;: \&quot;delete\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;sha256:2b8fd9751c4c0f5dd266fcae00707e67a2545ef34f9a29354585f93dac906749\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1469020827:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;category\&quot;: \&quot;local\&quot;, \&quot;state\&quot;: \&quot;untag\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;sha256:2b8fd9751c4c0f5dd266fcae00707e67a2545ef34f9a29354585f93dac906749\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;background:admin:1469020824:{\&quot;category\&quot;: \&quot;image_download\&quot;, \&quot;state\&quot;: \&quot;completed\&quot;, \&quot;container\&quot;: \&quot;busybox:latest\&quot;, \&quot;result\&quot;: 0, \&quot;tid\&quot;: 1}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:admin:1469020824:{\&quot;name\&quot;: \&quot;busybox\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;state\&quot;: \&quot;success\&quot;, \&quot;tag\&quot;: \&quot;latest\&quot;, \&quot;action\&quot;: \&quot;download\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image:all:1469020822:{\&quot;action\&quot;: \&quot;update\&quot;, \&quot;category\&quot;: \&quot;local\&quot;, \&quot;state\&quot;: \&quot;pull\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;busybox:latest\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;background:admin:1469020817:{\&quot;category\&quot;: \&quot;image_download\&quot;, \&quot;tid\&quot;: 1, \&quot;state\&quot;: \&quot;running\&quot;, \&quot;container\&quot;: \&quot;busybox:latest\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1469020800:{\&quot;container\&quot;: \&quot;DockerTestAPI2\&quot;, \&quot;state\&quot;: \&quot;destroy\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;ea4548dce060885311ab76c4c8790a63b005ae9dcf415526814d11999f55867c\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1469020798:{\&quot;container\&quot;: \&quot;DockerTestAPI2\&quot;, \&quot;state\&quot;: \&quot;die\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;ea4548dce060885311ab76c4c8790a63b005ae9dcf415526814d11999f55867c\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1469020797:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;state\&quot;: \&quot;destroy\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1469020796:{\&quot;container\&quot;: \&quot;utest\&quot;, \&quot;state\&quot;: \&quot;stop\&quot;, \&quot;type\&quot;: \&quot;lxc\&quot;}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;container:all:1469020792:{\&quot;container\&quot;: \&quot;DockerTestAPI\&quot;, \&quot;state\&quot;: \&quot;die\&quot;, \&quot;type\&quot;: \&quot;docker\&quot;, \&quot;id\&quot;: \&quot;18a23aeed2fbe9321e4b8d36d8ff8d3c983b584d0554634526f05a467cd5650e\&quot;}&quot;</span>
     <span class="p">],</span>
-    <span class="nt">&quot;offset&quot;</span><span class="p">:</span> <span class="mi">78</span>
+    <span class="nt">&quot;offset&quot;</span><span class="p">:</span> <span class="mi">60</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -454,21 +463,22 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/event/wait/lxc/utest/stopped?duration=5&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/event/wait/lxc/utest/stopped?duration=5&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;10.0.3.249&quot;</span>
+        <span class="s2">&quot;10.0.3.3&quot;</span>
     <span class="p">],</span>
-    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">10973184</span><span class="p">,</span>
+    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">10997760</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;tcpPort&quot;</span><span class="p">:</span> <span class="p">[],</span>
     <span class="nt">&quot;tx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
 <span class="p">}</span>
@@ -498,7 +508,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, QNAP System, Inc.
+        &copy; Copyright 2016, QNAP System, Inc.
 
     </p>
   </div>

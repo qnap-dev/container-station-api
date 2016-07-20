@@ -12,13 +12,15 @@ Log and Event
     except:
         raise Exception('Unauthorized: ' + str(ret))
 
+.. contents::
+
 Log
 ------------------
 
 .. http:get:: /api/v1/log
 
-    :query time_start: (optional) Time stamp of system logs start time (epoch). **Default is 0.**
-    :query time_end: (optional) Time stamp of system logs end time (epoch). **Default is 0.**
+    :query start: (optional) Time stamp of system logs start time (epoch). **Default is 0.**
+    :query end: (optional) Time stamp of system logs end time (epoch). **Default is 0.**
     :query limit: (optional) Number of system log records. **Default is 20.**
     :query offset: (optional) Response logs start with.
     :query user: (optional) User name who login.

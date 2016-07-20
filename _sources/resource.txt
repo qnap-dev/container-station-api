@@ -277,12 +277,12 @@ Devices
             http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/devices
             | python -mjson.tool;
 
-Limit
-----------
+CPU and memory limits
+---------------------
 
 .. http:post:: /api/v1/container/(string:container_type)/(string:container_id)/resource/limit
 
-    Add resource limitation.
+    Add CPU and memory limits.
 
     :param container_type: ``lxc``, ``docker``
     :param container_id: container id

@@ -81,11 +81,11 @@
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Resource</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Resource</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#auto-start">Auto start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#port-forwarding">Port Forwarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#devices">Devices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#limit">Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cpu-and-memory-limits">CPU and memory limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#storage">Storage</a></li>
 </ul>
 </li>
@@ -116,7 +116,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -148,7 +148,7 @@
 <li><a class="reference internal" href="#auto-start" id="id2">Auto start</a></li>
 <li><a class="reference internal" href="#port-forwarding" id="id3">Port Forwarding</a></li>
 <li><a class="reference internal" href="#devices" id="id4">Devices</a></li>
-<li><a class="reference internal" href="#limit" id="id5">Limit</a></li>
+<li><a class="reference internal" href="#cpu-and-memory-limits" id="id5">CPU and memory limits</a></li>
 <li><a class="reference internal" href="#storage" id="id6">Storage</a></li>
 </ul>
 </li>
@@ -171,12 +171,12 @@
 </table>
 <p>resource list</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/all
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -190,6 +190,7 @@
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -218,14 +219,14 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/autostart/on
-<span class="nv">$ </span>curl -sq -XPUT -b cookies.txt <span class="se">\</span>
+$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/autostart/off
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -239,6 +240,7 @@
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -257,6 +259,7 @@
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -285,12 +288,12 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[12345, 12345, &quot;tcp&quot;]&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[12345, 12345, &quot;tcp&quot;]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/port
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -310,6 +313,7 @@
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -335,12 +339,12 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;[12345, 12345, &quot;tcp&quot;]&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;[12345, 12345, &quot;tcp&quot;]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/port
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -362,13 +366,13 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;[[111, 222, &quot;udp&quot;], [333, 444, &quot;tcp&quot;]]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/ports
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -393,6 +397,7 @@
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -400,12 +405,12 @@
 </pre></div>
 </div>
 <p><strong>Example request: remove all settings</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[]&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/ports
 </pre></div>
 </div>
 <p><strong>Example response: remove all settings</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -419,6 +424,7 @@
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -436,11 +442,11 @@
 <dd><p>Get available device list.
 The device allows access inside container.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/resource/device
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/resource/device
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="s2">&quot;Input_(13)&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Sound_and_ALSA_(14,_116)&quot;</span><span class="p">,</span>
     <span class="s2">&quot;ACM_USB_modems_(166)&quot;</span><span class="p">,</span>
@@ -475,12 +481,12 @@ The device allows access inside container.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;]&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/device
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -500,6 +506,7 @@ The device allows access inside container.</p>
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -525,12 +532,12 @@ The device allows access inside container.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;]&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/device
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -558,13 +565,13 @@ The device allows access inside container.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;[[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;], [&quot;allow&quot;, &quot;TTY_(4)&quot;, &quot;rwm&quot;]]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/devices
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -589,6 +596,7 @@ The device allows access inside container.</p>
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -596,12 +604,12 @@ The device allows access inside container.</p>
 </pre></div>
 </div>
 <p><strong>Example request: remove all settings</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[]&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[]&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/devices
 </pre></div>
 </div>
 <p><strong>Example response: remove all settings</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -615,6 +623,7 @@ The device allows access inside container.</p>
         <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -624,12 +633,12 @@ The device allows access inside container.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="limit">
-<h2><a class="toc-backref" href="#id5">Limit</a><a class="headerlink" href="#limit" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cpu-and-memory-limits">
+<h2><a class="toc-backref" href="#id5">CPU and memory limits</a><a class="headerlink" href="#cpu-and-memory-limits" title="Permalink to this headline">¶</a></h2>
 <dl class="post">
 <dt id="post--api-v1-container-(string-container_type)-(string-container_id)-resource-limit">
 <code class="descname">POST </code><code class="descname">/api/v1/container/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>container_id</em><span class="sig-paren">)</span><code class="descname">/resource/limit</code><a class="headerlink" href="#post--api-v1-container-(string-container_type)-(string-container_id)-resource-limit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add resource limitation.</p>
+<dd><p>Add CPU and memory limits.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -651,7 +660,7 @@ The device allows access inside container.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{</span>
 <span class="s1">        &quot;cputime&quot;: 100,</span>
 <span class="s1">        &quot;cpuweight&quot;: 600,</span>
@@ -660,7 +669,7 @@ The device allows access inside container.</p>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -678,6 +687,7 @@ The device allows access inside container.</p>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -703,12 +713,12 @@ The device allows access inside container.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;{&quot;cputime&quot;: 0}&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;{&quot;cputime&quot;: 0}&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/limit
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -741,7 +751,7 @@ The device allows access inside container.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{</span>
 <span class="s1">        &quot;/test&quot;: {</span>
 <span class="s1">            &quot;bind&quot;: &quot;/test1&quot;,</span>
@@ -756,7 +766,7 @@ The device allows access inside container.</p>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -773,6 +783,7 @@ The device allows access inside container.</p>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;/share/test&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -789,12 +800,12 @@ The device allows access inside container.</p>
 </pre></div>
 </div>
 <p><strong>Example request: remove all settings</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;{}&#39;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;{}&#39;</span> <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/volume/host
 </pre></div>
 </div>
 <p><strong>Example response: remove all settings</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -811,6 +822,7 @@ The device allows access inside container.</p>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;volume&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">}</span>
@@ -841,7 +853,7 @@ The device allows access inside container.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, QNAP System, Inc.
+        &copy; Copyright 2016, QNAP System, Inc.
 
     </p>
   </div>

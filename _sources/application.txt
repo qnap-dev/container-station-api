@@ -12,6 +12,8 @@ Application
     except:
         raise Exception('Unauthorized: ' + str(ret))
 
+.. contents::
+
 .. _application:
 
 
@@ -144,7 +146,7 @@ User's application
     :reqjson boolean autostart: Start application when container-station started
     :reqjson string virtual_path: 
     :reqjson int port: 
-    :reqjson object definition: Application definition
+    :reqjson object binding: Application binding data
 
     **Example request**
 
@@ -152,36 +154,14 @@ User's application
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{
-                "custom": {
-                    "name": "test",
-                    "autostart": true,
-                    "virtual_path": "redmine",
-                    "port": 5555,
-                    "template": "redmine"
-                },
-                "definition": {
-                    "postgresql": {
-                        "environment": [
-                            "DB_USER=redmine",
-                            "DB_PASS=redminewooo",
-                            "DB_NAME=myredmine"
-                        ],
-                        "image": "sameersbn/postgresql:9.4-11"
-                    },
-                    "redmine": {
-                        "environment": [
-                            "DB_USER=redmine",
-                            "DB_PASS=redminewooo",
-                            "DB_NAME=myredmine"
-                        ],
-                        "image": "sameersbn/redmine:3.2.0-1",
-                        "links": [
-                            "postgresql:postgresql"
-                        ],
-                        "ports": [
-                            "22234:80"
-                        ]
-                    }
+                "template": "redmine",
+                "name": "test",
+                "autostart": true,
+                "virtual_path": "redmine",
+                "port": 5555,
+                "binding": {
+                    "ssh_port": 22,
+                    "http_port": 80
                 }
             }' http://${QIP}:${QPORT}/api/v1/apps
 
@@ -192,36 +172,14 @@ User's application
 
         curl -sq -XPOST -b cookies.txt -d
             '{
-                "custom": {
-                    "name": "test",
-                    "autostart": true,
-                    "virtual_path": "redmine",
-                    "port": 5555,
-                    "template": "redmine"
-                },
-                "definition": {
-                    "postgresql": {
-                        "environment": [
-                            "DB_USER=redmine",
-                            "DB_PASS=redminewooo",
-                            "DB_NAME=myredmine"
-                        ],
-                        "image": "sameersbn/postgresql:9.4-11"
-                    },
-                    "redmine": {
-                        "environment": [
-                            "DB_USER=redmine",
-                            "DB_PASS=redminewooo",
-                            "DB_NAME=myredmine"
-                        ],
-                        "image": "sameersbn/redmine:3.2.0-1",
-                        "links": [
-                            "postgresql:postgresql"
-                        ],
-                        "ports": [
-                            "22234:80"
-                        ]
-                    }
+                "template": "redmine",
+                "name": "test",
+                "autostart": true,
+                "virtual_path": "redmine",
+                "port": 5555,
+                "binding": {
+                    "ssh_port": 22,
+                    "http_port": 80
                 }
             }' http://${QIP}:${QPORT}/api/v1/apps | python -m json.tool
 

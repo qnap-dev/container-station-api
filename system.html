@@ -78,10 +78,10 @@
             
             
                 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">System</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">System</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#system-information">System Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#system-port">System Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network">Network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#certificate-file">Certificate file</a></li>
 </ul>
 </li>
@@ -115,7 +115,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -138,9 +138,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="system">
-<h1>System<a class="headerlink" href="#system" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1">System</a><a class="headerlink" href="#system" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#system" id="id1">System</a><ul>
+<li><a class="reference internal" href="#authentication" id="id2">Authentication</a></li>
+<li><a class="reference internal" href="#system-information" id="id3">System Information</a></li>
+<li><a class="reference internal" href="#network" id="id4">Network</a></li>
+<li><a class="reference internal" href="#certificate-file" id="id5">Certificate file</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="authentication">
-<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Authentication</a><a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
 <dl class="post">
 <dt id="post--api-v1-login">
 <code class="descname">POST </code><code class="descname">/api/v1/login</code><a class="headerlink" href="#post--api-v1-login" title="Permalink to this definition">¶</a></dt>
@@ -158,15 +170,16 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -c cookies.txt -d <span class="s2">&quot;username=admin&amp;password=admin&quot;</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -c cookies.txt -d <span class="s2">&quot;username=admin&amp;password=admin&quot;</span> <span class="se">\</span>
       http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/login
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-01-25 23:21:13&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;isVm&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-07-20 21:21:45&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -190,14 +203,15 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/login_refresh
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/login_refresh
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-01-25 23:21:13&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;isVm&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-07-20 21:21:45&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -220,11 +234,11 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/logout
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/logout
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -233,7 +247,7 @@
 
 </div>
 <div class="section" id="system-information">
-<h2>System Information<a class="headerlink" href="#system-information" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">System Information</a><a class="headerlink" href="#system-information" title="Permalink to this headline">¶</a></h2>
 <p></p>
 <dl class="get">
 <dt id="get--api-v1-system">
@@ -256,24 +270,25 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;cpuCore&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="nt">&quot;cpuThread&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
     <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;&quot;</span>
+        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;net_bridge&quot;</span>
     <span class="p">],</span>
     <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;DRR224&quot;</span><span class="p">,</span>
     <span class="nt">&quot;machine&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
     <span class="nt">&quot;processor&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(R) Core(TM) i3-4130 CPU @ 3.40GHz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;dockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.9.1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;lxcVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.8&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;qpkg&quot;</span><span class="p">:</span> <span class="s2">&quot;1.4.1010&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v1.4.1010&quot;</span>
+        <span class="nt">&quot;dockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.11.2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lxcVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;qpkg&quot;</span><span class="p">:</span> <span class="s2">&quot;1.6.1618&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v1.6.1618&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -297,33 +312,44 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system/resource
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system/resource
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;memory_usage&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">239</span><span class="p">,</span>
-        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">2372</span><span class="p">,</span>
-        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-        <span class="nt">&quot;percent_buffers&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">61</span><span class="p">,</span>
+        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">272</span><span class="p">,</span>
+        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">1957</span><span class="p">,</span>
+        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span>
+        <span class="nt">&quot;percent_buffers&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">51</span><span class="p">,</span>
         <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">3838</span><span class="p">,</span>
-        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">997</span>
+        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">1364</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
 
+<dl class="get">
+<dt id="get--api-v1-system-report">
+<code class="descname">GET </code><code class="descname">/api/v1/system/report</code><a class="headerlink" href="#get--api-v1-system-report" title="Permalink to this definition">¶</a></dt>
+<dd><p>System diagnosis report</p>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system/report
+</pre></div>
 </div>
-<div class="section" id="system-port">
-<h2>System Port<a class="headerlink" href="#system-port" title="Permalink to this headline">¶</a></h2>
+</dd></dl>
+
+</div>
+<div class="section" id="network">
+<h2><a class="toc-backref" href="#id4">Network</a><a class="headerlink" href="#network" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-system-port-(string-protocol)-(string-port)">
 <code class="descname">GET </code><code class="descname">/api/v1/system/port/</code><span class="sig-paren">(</span><em class="property">string: </em><em>protocol</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-system-port-(string-protocol)-(string-port)" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Check port in used or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -342,12 +368,12 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system/port/tcp/5000
-<span class="nv">$ </span>curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system/port/udp/33806
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system/port/tcp/5000
+$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system/port/udp/33806
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">}</span>
 <span class="p">{</span>
@@ -357,15 +383,74 @@
 </div>
 </dd></dl>
 
+<dl class="get">
+<dt id="get--api-v1-system-bridge">
+<code class="descname">GET </code><code class="descname">/api/v1/system/bridge</code><a class="headerlink" href="#get--api-v1-system-bridge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get brief bridge information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>interface</strong> (<em>string</em>) &#8211; Network interface</li>
+<li><strong>ip</strong> (<em>string</em>) &#8211; IP address</li>
+<li><strong>vswitchName</strong> (<em>string</em>) &#8211; Virtual switch name</li>
+<li><strong>disabled</strong> (<em>boolean</em>) &#8211; If it is <code class="docutils literal"><span class="pre">true</span></code>, do not use this interface</li>
+<li><strong>join</strong> (<em>boolean</em>) &#8211; If it is <code class="docutils literal"><span class="pre">true</span></code>, means it will join this bridge which was created by others</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/system/bridge
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;disabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.80.224&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;join&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;vswitchName&quot;</span><span class="p">:</span> <span class="s2">&quot;br0&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;disabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;join&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;vswitchName&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;disabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;join&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;vswitchName&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;disabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;join&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;vswitchName&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="certificate-file">
-<h2>Certificate file<a class="headerlink" href="#certificate-file" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Certificate file</a><a class="headerlink" href="#certificate-file" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-tls-export">
 <code class="descname">GET </code><code class="descname">/api/v1/tls/export</code><a class="headerlink" href="#get--api-v1-tls-export" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export certificate files to ZIP format.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/tls/export
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/tls/export
 </pre></div>
 </div>
 </dd></dl>
@@ -373,9 +458,9 @@
 <dl class="get">
 <dt id="get--api-v1-tls-export-registry">
 <code class="descname">GET </code><code class="descname">/api/v1/tls/export/registry</code><a class="headerlink" href="#get--api-v1-tls-export-registry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Export certificate for registry.</p>
+<dd><p>Export certificate file for registry.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/tls/export/registry
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/tls/export/registry
 </pre></div>
 </div>
 </dd></dl>
@@ -402,7 +487,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, QNAP System, Inc.
+        &copy; Copyright 2016, QNAP System, Inc.
 
     </p>
   </div>

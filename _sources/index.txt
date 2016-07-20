@@ -38,6 +38,8 @@ Content
     application
     resource
     image
+    networks
+    volumes
     import
     node
     backup

@@ -13,7 +13,14 @@ Container
         raise Exception('Unauthorized: ' + str(ret))
     
 
+.. contents::
+
+Create a container
+------------------
+
 .. http:post:: /api/v1/container
+
+    Create a new container.
 
     :reqjson string name: container name **[required]**
     :reqjson string image: image name **[required]**
@@ -43,9 +50,11 @@ Container
     expose_port     Int Array        v      Expose a port from the container without publishing it to your host
     hostname        String           v      Container host name. Conflict with network 'host' mode.
     port            Array      v(e)  v      Publish a container's port to the host
-    mode            String     v     v      LXC: One of 'nat', 'bridge'.
+    mode            String     v     v      LXC: 'nat'
 
-                                            Docker: One of 'nat', 'host'.
+                                            Docker: 'nat', 'host', 'bridge'
+    interface       String           v      Ethernet interface
+    join            Boolean          v      Join to existed interface bridge
     **resource**
     limit
     cpuweight       Int        v(e)  v(e)   2~1024 in relative share of CPU time
@@ -130,7 +139,7 @@ Container
 
         curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "repository": "qnap", "image": "ubuntu-trusty", "tag": "latest"}'
-            "http://${QIP}:${QPORT}/api/v1/background/download" -o /dev/null;
+            "http://${QIP}:${QPORT}/api/v1/background/image_download" -o /dev/null;
 
         while :; 
         do 
@@ -256,7 +265,7 @@ Container
 
         curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d '{"type": "docker", "repository": "dockerhub", "image": "ubuntu", "tag": "latest"}'
-            "http://${QIP}:${QPORT}/api/v1/background/download" -o /dev/null;
+            "http://${QIP}:${QPORT}/api/v1/background/image_download" -o /dev/null;
 
         while :; 
         do 
@@ -325,6 +334,9 @@ Container
             http://${QIP}:${QPORT}/api/v1/container
             | python -m json.tool;
     
+List containers
+------------------
+
 .. http:get:: /api/v1/container
 
     :resjson array object: :http:get:`/api/v1/container/(string:container_type)/(string:container_id)`
@@ -344,9 +356,12 @@ Container
         curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/event/wait/lxc/utest/running?duration=20 -o /dev/null;
         curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/container | python -mjson.tool
 
+Inspect a container
+---------------------
 
 .. http:get:: /api/v1/container/(string:container_type)/(string:container_id)/inspect
-    
+
+    Return low-level information on a container.
 
     **Example request of Docker**
 
@@ -361,11 +376,12 @@ Container
 
         curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/DockerTestAPI/inspect | python -mjson.tool
 
+Fetch the logs
+--------------
 
 .. http:get:: /api/v1/container/(string:container_type)/(string:container_id)/logs
 
-    
-    Support Docker container only.
+    Fetch the logs of a container. Support Docker container only.
     
     :query tail: (optional) Output the specified number of lines at the end of logs. **Default is 100.**
 
@@ -385,9 +401,12 @@ Container
 
         curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/DockerTestAPI/logs | python -mjson.tool
 
+Start a container
+-----------------
 
 .. http:put:: /api/v1/container/(string:container_type)/(string:container_id)/start
 
+    Start a container.
 
     Return the last status by :http:get:`/api/v1/container/(string:container_type)/(string:container_id)`
 
@@ -419,9 +438,12 @@ Container
         curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id}/stop -o /dev/null;
         curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id}/start | python -mjson.tool
 
+Restart a container
+-------------------
 
 .. http:put:: /api/v1/container/(string:container_type)/(string:container_id)/restart
 
+    Restart a container.
 
     Return the last status by :http:get:`/api/v1/container/(string:container_type)/(string:container_id)`
 
@@ -451,6 +473,8 @@ Container
         id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/getid/DockerTestAPI` ;
         curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id}/restart | python -mjson.tool
 
+Basic information
+-----------------
 
 .. http:get:: /api/v1/container/(string:container_type)/(string:container_id)
 
@@ -468,6 +492,7 @@ Container
     :resjson int rx: network receive rate
     :resjson int tx: network transmit rate
     :resjson array ipaddress: container IP address
+    :resjson array tcpPort: Host TCP port forward number
 
     **Example request**
 
@@ -482,9 +507,12 @@ Container
         curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/event/wait/lxc/utest/running?duration=20 -o /dev/null;
         curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/utest | python -mjson.tool
 
+Stop a container
+----------------
 
 .. http:put:: /api/v1/container/(string:container_type)/(string:container_id)/stop
 
+    Stop a running container.
 
     Return the last status by :http:get:`/api/v1/container/(string:container_type)/(string:container_id)`
 
@@ -514,10 +542,12 @@ Container
         id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/getid/DockerTestAPI` ;
         curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id}/stop | python -mjson.tool
 
+Remove a container
+------------------
 
 .. http:delete:: /api/v1/container/(string:container_type)/(string:container_id)
 
-
+    Remove a container.
     Return {} if success
 
     **Example request of LXC**

@@ -12,8 +12,13 @@ Import and Export
     except:
         raise Exception('Unauthorized: ' + str(ret))
 
-Export
---------------
+.. contents::
+
+Export [Deprecated]
+-------------------
+
+.. deprecated:: 1.6
+   Use :http:post:`/api/v1/background/container_export` instead.
 
 .. http:post:: /api/v1/container/(string:container_type)/(string:container_id)/export
 
@@ -136,8 +141,11 @@ Export
         curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/export/ | python -m json.tool
 
 
-Import
---------------
+Import [Deprecated]
+-------------------
+
+.. deprecated:: 1.6
+   Use :http:post:`/api/v1/background/container_import` instead.
 
 .. http:get:: /api/v1/import/config
 
@@ -344,7 +352,6 @@ File operations
 
     :query path: path of a folder
     :query size: Get the total size and used size of root directory. 
-    :query list: List folders by list type. Only ``initial`` works for now.
 
     :resjson string name: directory name or file name
     :resjson string type: ``d`` is directory, ``f`` is file. **[Deprecated]**
@@ -359,7 +366,6 @@ File operations
 
         $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/
         $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true"
-        $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?list=initial"
         $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=test"
         $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=Public"
 
@@ -369,7 +375,6 @@ File operations
 
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/ | python -m json.tool; 
         curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true" | python -m json.tool; 
-        curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?list=initial" | python -m json.tool; 
         curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=test" | python -m json.tool;
         curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=Public" | python -m json.tool;
 

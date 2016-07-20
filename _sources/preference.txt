@@ -12,6 +12,7 @@ Preference
     except:
         raise Exception('Unauthorized: ' + str(ret))
 
+.. contents::
 
 .. http:post:: /api/v1/preference/(string:key)
 

@@ -1,6 +1,8 @@
 System
 =============
 
+.. contents::
+
 Authentication
 ------------------
 
@@ -108,10 +110,22 @@ System Information
 
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/resource | python -mjson.tool
 
-System Port 
+.. http:get:: /api/v1/system/report
+
+    System diagnosis report 
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/report
+
+Network
 ------------------
 
 .. http:get:: /api/v1/system/port/(string:protocol)/(string:port)
+
+    Check port in used or not.
 
     :param protocol: ``tcp``, ``udp`` 
     :param port: Port number.
@@ -131,6 +145,30 @@ System Port
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/port/tcp/5000 | python -mjson.tool;
         curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/port/udp/33806 | python -mjson.tool;
 
+
+.. http:get:: /api/v1/system/bridge
+
+    Get brief bridge information.
+
+    :resjson string interface: Network interface 
+    :resjson string ip: IP address
+    :resjson string vswitchName: Virtual switch name
+    :resjson boolean disabled: If it is ``true``, do not use this interface
+    :resjson boolean join: If it is ``true``, means it will join this bridge which was created by others
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/bridge
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/bridge | python -mjson.tool;
+
+
 Certificate file 
 ------------------
 
@@ -147,7 +185,7 @@ Certificate file
 
 .. http:get:: /api/v1/tls/export/registry
 
-    Export certificate for registry.
+    Export certificate file for registry.
     
     **Example request**
 
