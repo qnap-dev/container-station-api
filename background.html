@@ -1,0 +1,917 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Background tasks &mdash; Container Station  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Container Station  documentation" href="index.html"/>
+        <link rel="next" title="Application" href="application.html"/>
+        <link rel="prev" title="Container" href="container.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Container Station
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Background tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-task">Add a task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-container">Create a container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-an-application">Create an application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-an-application">Upgrade an application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-an-image">Download an image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remove-an-image">Remove an image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#push-an-image-to-registry">Push an image to registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-an-image">Export an image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-a-container">Import a container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-a-container">Export a container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#list-tasks">List tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-tasks">Delete tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Container Station</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Background tasks</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/background.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="background-tasks">
+<h1><a class="toc-backref" href="#id1">Background tasks</a><a class="headerlink" href="#background-tasks" title="Permalink to this headline">¶</a></h1>
+<p></p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#background-tasks" id="id1">Background tasks</a><ul>
+<li><a class="reference internal" href="#add-a-task" id="id2">Add a task</a><ul>
+<li><a class="reference internal" href="#create-a-container" id="id3">Create a container</a></li>
+<li><a class="reference internal" href="#create-an-application" id="id4">Create an application</a></li>
+<li><a class="reference internal" href="#upgrade-an-application" id="id5">Upgrade an application</a></li>
+<li><a class="reference internal" href="#download-an-image" id="id6">Download an image</a></li>
+<li><a class="reference internal" href="#remove-an-image" id="id7">Remove an image</a></li>
+<li><a class="reference internal" href="#push-an-image-to-registry" id="id8">Push an image to registry</a></li>
+<li><a class="reference internal" href="#export-an-image" id="id9">Export an image</a></li>
+<li><a class="reference internal" href="#import-a-container" id="id10">Import a container</a></li>
+<li><a class="reference internal" href="#export-a-container" id="id11">Export a container</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#list-tasks" id="id12">List tasks</a></li>
+<li><a class="reference internal" href="#delete-tasks" id="id13">Delete tasks</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="add-a-task">
+<h2><a class="toc-backref" href="#id2">Add a task</a><a class="headerlink" href="#add-a-task" title="Permalink to this headline">¶</a></h2>
+<dl class="post">
+<dt id="post--api-v1-background-(string-category)">
+<code class="descname">POST </code><code class="descname">/api/v1/background/</code><span class="sig-paren">(</span><em class="property">string: </em><em>category</em><span class="sig-paren">)</span><a class="headerlink" href="#post--api-v1-background-(string-category)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>category</strong> &#8211; <code class="docutils literal"><span class="pre">create</span></code>, <code class="docutils literal"><span class="pre">application</span></code>, <code class="docutils literal"><span class="pre">application_upgrade</span></code>, <code class="docutils literal"><span class="pre">image_download</span></code>, <code class="docutils literal"><span class="pre">image_remove</span></code>, <code class="docutils literal"><span class="pre">image_push</span></code>, <code class="docutils literal"><span class="pre">image_export</span></code>, <code class="docutils literal"><span class="pre">container_import</span></code>, <code class="docutils literal"><span class="pre">container_export</span></code></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="create-a-container">
+<h3><a class="toc-backref" href="#id3">Create a container</a><a class="headerlink" href="#create-a-container" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-create">
+<code class="descname">POST </code><code class="descname">/api/v1/background/create</code><a class="headerlink" href="#post--api-v1-background-create" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal"><span class="pre">create</span></code> category request:</p>
+<blockquote>
+<div>Other JSON parameters are the same as <a class="reference internal" href="container.html#post--api-v1-container" title="POST /api/v1/container"><code class="xref http http-post docutils literal"><span class="pre">POST</span> <span class="pre">/api/v1/container</span></code></a>.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>repository</strong> (<em>string</em>) &#8211; image is from <code class="docutils literal"><span class="pre">dockerhub</span></code>, <code class="docutils literal"><span class="pre">qnap</span></code>, <code class="docutils literal"><span class="pre">private</span></code> <strong>[required]</strong></li>
+<li><strong>name</strong> (<em>string</em>) &#8211; container name <strong>[required]</strong></li>
+<li><strong>image</strong> (<em>string</em>) &#8211; image name <strong>[required]</strong></li>
+<li><strong>tag</strong> (<em>string</em>) &#8211; image tag. For LXC is <code class="docutils literal"><span class="pre">latest</span></code>  <strong>[required]</strong></li>
+<li><strong>type</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code> <strong>[required]</strong></li>
+<li><strong>registry_name</strong> (<em>string</em>) &#8211; Private registry name</li>
+<li><strong>download</strong> (<em>object</em>) &#8211; image metadata</li>
+<li><strong>description</strong> (<em>string</em>) &#8211; description of this image</li>
+<li><strong>location</strong> (<em>string</em>) &#8211; url of this image</li>
+<li><strong>icon</strong> (<em>string</em>) &#8211; icon source of this image</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request of create a LXC container</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;type&quot;: &quot;lxc&quot;,</span>
+<span class="s1">        &quot;repository&quot;: &quot;qnap&quot;,</span>
+<span class="s1">        &quot;name&quot;: &quot;ctest&quot;,</span>
+<span class="s1">        &quot;image&quot;: &quot;ubuntu-trusty&quot;,</span>
+<span class="s1">        &quot;tag&quot;: &quot;latest&quot;</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/create
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response of create a LXC container</strong></p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141036</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ctest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ctest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example request of create a Docker container</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt  -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;type&quot;: &quot;docker&quot;,</span>
+<span class="s1">        &quot;repository&quot;: &quot;dockerhub&quot;,</span>
+<span class="s1">        &quot;name&quot;: &quot;dtest&quot;,</span>
+<span class="s1">        &quot;image&quot;: &quot;ubuntu&quot;,</span>
+<span class="s1">        &quot;tag&quot;: &quot;latest&quot;,</span>
+<span class="s1">        &quot;download&quot;: {</span>
+<span class="s1">            &quot;description&quot;: &quot;I am description.&quot;,</span>
+<span class="s1">            &quot;location&quot;: &quot;https://hub.docker.com/_/ubuntu/&quot;,</span>
+<span class="s1">            &quot;icon&quot;: &quot;http://download.qnap.com/QPKG/images/QPKG/container/ubuntu_icon.png&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/create
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response of create a Docker contaienr</strong></p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141037</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dtest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;download&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;I am description.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/ubuntu_icon.png&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/_/ubuntu/&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dtest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="create-an-application">
+<h3><a class="toc-backref" href="#id4">Create an application</a><a class="headerlink" href="#create-an-application" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-application">
+<code class="descname">POST </code><code class="descname">/api/v1/background/application</code><a class="headerlink" href="#post--api-v1-background-application" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>For <code class="docutils literal"><span class="pre">application</span></code> category request:</p>
+<blockquote>
+<div>Other JSON parameters are the same as <a class="reference internal" href="application.html#post--api-v1-apps" title="POST /api/v1/apps"><code class="xref http http-post docutils literal"><span class="pre">POST</span> <span class="pre">/api/v1/apps</span></code></a>.</div></blockquote>
+</div>
+<div class="section" id="upgrade-an-application">
+<h3><a class="toc-backref" href="#id5">Upgrade an application</a><a class="headerlink" href="#upgrade-an-application" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-application_upgrade">
+<code class="descname">POST </code><code class="descname">/api/v1/background/application_upgrade</code><a class="headerlink" href="#post--api-v1-background-application_upgrade" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal"><span class="pre">application_upgrade</span></code> category request:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>template</strong> (<em>string</em>) &#8211; Application template name <strong>[required]</strong></li>
+<li><strong>name</strong> (<em>string</em>) &#8211; Custom application name <strong>[required]</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="download-an-image">
+<h3><a class="toc-backref" href="#id6">Download an image</a><a class="headerlink" href="#download-an-image" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-image_download">
+<code class="descname">POST </code><code class="descname">/api/v1/background/image_download</code><a class="headerlink" href="#post--api-v1-background-image_download" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal"><span class="pre">image_download</span></code> category request:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>repository</strong> (<em>string</em>) &#8211; image is from <code class="docutils literal"><span class="pre">dockerhub</span></code>, <code class="docutils literal"><span class="pre">qnap</span></code>, <code class="docutils literal"><span class="pre">private</span></code> <strong>[required]</strong></li>
+<li><strong>image</strong> (<em>string</em>) &#8211; image name <strong>[required]</strong></li>
+<li><strong>tag</strong> (<em>string</em>) &#8211; image tag. For LXC is <code class="docutils literal"><span class="pre">latest</span></code>  <strong>[required]</strong></li>
+<li><strong>type</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code> <strong>[required]</strong></li>
+<li><strong>registry_name</strong> (<em>string</em>) &#8211; Private registry name</li>
+<li><strong>download</strong> (<em>object</em>) &#8211; image metadata</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request of image download</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt  -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;type&quot;: &quot;docker&quot;,</span>
+<span class="s1">        &quot;repository&quot;: &quot;dockerhub&quot;,</span>
+<span class="s1">        &quot;image&quot;: &quot;busybox&quot;,</span>
+<span class="s1">        &quot;tag&quot;: &quot;latest&quot;</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/image_download
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response of image download</strong></p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_download&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141037</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="remove-an-image">
+<h3><a class="toc-backref" href="#id7">Remove an image</a><a class="headerlink" href="#remove-an-image" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-image_remove">
+<code class="descname">POST </code><code class="descname">/api/v1/background/image_remove</code><a class="headerlink" href="#post--api-v1-background-image_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal"><span class="pre">image_remove</span></code> category request:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code> <strong>[required]</strong></li>
+<li><strong>image</strong> (<em>string</em>) &#8211; image name <strong>[required]</strong></li>
+<li><strong>tag</strong> (<em>string</em>) &#8211; image tag <strong>[required]</strong></li>
+<li><strong>id</strong> (<em>string</em>) &#8211; image id <strong>[required]</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request of image remove</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt  -d <span class="se">\</span>
+    <span class="s1">&#39;[</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;type&quot;: &quot;docker&quot;,</span>
+<span class="s1">            &quot;image&quot;: &quot;busybox&quot;,</span>
+<span class="s1">            &quot;tag&quot;: &quot;latest&quot;,</span>
+<span class="s1">            &quot;id&quot;: &quot;fake_id&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">    ]&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/image_remove
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response of image remove</strong></p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_remove&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141037</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;fake_id&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="push-an-image-to-registry">
+<h3><a class="toc-backref" href="#id8">Push an image to registry</a><a class="headerlink" href="#push-an-image-to-registry" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-image_push">
+<code class="descname">POST </code><code class="descname">/api/v1/background/image_push</code><a class="headerlink" href="#post--api-v1-background-image_push" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal"><span class="pre">image_push</span></code> category request:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">docker</span></code> only <strong>[required]</strong></li>
+<li><strong>image</strong> (<em>string</em>) &#8211; image name <strong>[required]</strong></li>
+<li><strong>tag</strong> (<em>string</em>) &#8211; image tag <strong>[required]</strong></li>
+<li><strong>newImage</strong> (<em>string</em>) &#8211; The repository to set <strong>[required]</strong></li>
+<li><strong>newTag</strong> (<em>string</em>) &#8211; The new tag name <strong>[required]</strong></li>
+<li><strong>registry</strong> (<em>string</em>) &#8211; registry name <strong>[required] Default is `Docker Hub`</strong></li>
+<li><strong>username</strong> (<em>string</em>) &#8211; registry username <strong>[required if registry is Docker Hub]</strong></li>
+<li><strong>password</strong> (<em>string</em>) &#8211; registry password <strong>[required if registry is Docker Hub]</strong></li>
+<li><strong>rememberme</strong> (<em>boolean</em>) &#8211; Remember it</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request of image push</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt  -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;type&quot;: &quot;docker&quot;,</span>
+<span class="s1">        &quot;image&quot;: &quot;busybox&quot;,</span>
+<span class="s1">        &quot;tag&quot;: &quot;latest&quot;,</span>
+<span class="s1">        &quot;newImage&quot;: &quot;mybusybox&quot;,</span>
+<span class="s1">        &quot;newTag&quot;: &quot;test&quot;,</span>
+<span class="s1">        &quot;registry&quot;: &quot;Docker Hub&quot;,</span>
+<span class="s1">        &quot;username&quot;: &quot;qcsuser&quot;,</span>
+<span class="s1">        &quot;password&quot;: &quot;qcspassword&quot;,</span>
+<span class="s1">        &quot;rememberme&quot;: true</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/image_push
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="export-an-image">
+<h3><a class="toc-backref" href="#id9">Export an image</a><a class="headerlink" href="#export-an-image" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-image_export">
+<code class="descname">POST </code><code class="descname">/api/v1/background/image_export</code><a class="headerlink" href="#post--api-v1-background-image_export" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal"><span class="pre">image_export</span></code> category request:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">docker</span></code> only <strong>[required]</strong></li>
+<li><strong>image</strong> (<em>string</em>) &#8211; image name <strong>[required]</strong></li>
+<li><strong>tag</strong> (<em>string</em>) &#8211; image tag <strong>[required]</strong></li>
+<li><strong>path</strong> (<em>string</em>) &#8211; file path <strong>[required]</strong></li>
+<li><strong>compress</strong> (<em>boolean</em>) &#8211; Compress export file or not. <strong>[required]</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request of image export</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;type&quot;: &quot;docker&quot;,</span>
+<span class="s1">        &quot;image&quot;: &quot;ubuntu&quot;,</span>
+<span class="s1">        &quot;tag&quot;: &quot;latest&quot;,</span>
+<span class="s1">        &quot;path&quot;: &quot;test/a.tgz&quot;,</span>
+<span class="s1">        &quot;compress&quot;: true</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/image_export
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="import-a-container">
+<h3><a class="toc-backref" href="#id10">Import a container</a><a class="headerlink" href="#import-a-container" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-container_import">
+<code class="descname">POST </code><code class="descname">/api/v1/background/container_import</code><a class="headerlink" href="#post--api-v1-background-container_import" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal"><span class="pre">container_import</span></code> category request:</p>
+<p>Create an import task if name is given. The JSON parameters are the same as <a class="reference internal" href="container.html#post--api-v1-container" title="POST /api/v1/container"><code class="xref http http-post docutils literal"><span class="pre">POST</span> <span class="pre">/api/v1/container</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code> <strong>[required]</strong></li>
+<li><strong>name</strong> (<em>string</em>) &#8211; container name <strong>[required]</strong></li>
+<li><strong>image</strong> (<em>string</em>) &#8211; image name <strong>[required]</strong></li>
+<li><strong>path</strong> (<em>string</em>) &#8211; file path <strong>[required]</strong></li>
+<li><strong>...</strong> (<em>object</em>) &#8211; other parameters</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request of container import</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt  -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;type&quot;: &quot;lxc&quot;,</span>
+<span class="s1">        &quot;name&quot;: &quot;utest_import1&quot;,</span>
+<span class="s1">        &quot;image&quot;: &quot;utest&quot;,</span>
+<span class="s1">        &quot;path&quot;: &quot;test/c.tgz&quot;,</span>
+<span class="s1">        &quot;network&quot;: {</span>
+<span class="s1">            &quot;hostname&quot;: &quot;CustomHostName&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        &quot;resource&quot;: {</span>
+<span class="s1">            &quot;device&quot;: [</span>
+<span class="s1">                [</span>
+<span class="s1">                    &quot;allow&quot;,</span>
+<span class="s1">                    &quot;video4linux_(81)&quot;,</span>
+<span class="s1">                    &quot;rw&quot;</span>
+<span class="s1">                ]</span>
+<span class="s1">            ],</span>
+<span class="s1">            &quot;limit&quot;: {</span>
+<span class="s1">                &quot;cputime&quot;: 512,</span>
+<span class="s1">                &quot;cpuweight&quot;: 512,</span>
+<span class="s1">                &quot;memory&quot;: &quot;768m&quot;</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span><span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/container_import
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="export-a-container">
+<h3><a class="toc-backref" href="#id11">Export a container</a><a class="headerlink" href="#export-a-container" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-background-container_export">
+<code class="descname">POST </code><code class="descname">/api/v1/background/container_export</code><a class="headerlink" href="#post--api-v1-background-container_export" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal"><span class="pre">container_export</span></code> category request:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code> <strong>[required]</strong></li>
+<li><strong>name</strong> (<em>string</em>) &#8211; container name <strong>[required]</strong></li>
+<li><strong>id</strong> (<em>string</em>) &#8211; container id <strong>[required]</strong></li>
+<li><strong>path</strong> (<em>string</em>) &#8211; file path <strong>[required]</strong></li>
+<li><strong>compress</strong> (<em>boolean</em>) &#8211; Compress export file or not. <strong>Default is false</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request of container export</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt  -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;type&quot;: &quot;lxc&quot;,</span>
+<span class="s1">        &quot;id&quot;: &quot;ubuntu-trusty-1&quot;,</span>
+<span class="s1">        &quot;name&quot;: &quot;ubuntu-trusty-1&quot;,</span>
+<span class="s1">        &quot;path&quot;: &quot;test/c.tgz&quot;,</span>
+<span class="s1">        &quot;compress&quot;: true</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/container_export
+
+$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;type&quot;: &quot;docker&quot;,</span>
+<span class="s1">        &quot;id&quot;: &quot;a4af24dfe4329015e3adebbc169cbb04bb771f458167b41b07ebf98c882cce59&quot;,</span>
+<span class="s1">        &quot;name&quot;: &quot;busybox-6&quot;,</span>
+<span class="s1">        &quot;path&quot;: &quot;test/d.tgz&quot;,</span>
+<span class="s1">        &quot;compress&quot;: true</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/container_export
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="list-tasks">
+<h2><a class="toc-backref" href="#id12">List tasks</a><a class="headerlink" href="#list-tasks" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v1-background-">
+<code class="descname">GET </code><code class="descname">/api/v1/background/</code><a class="headerlink" href="#get--api-v1-background-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get background tasks list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
+<li><strong>category</strong> &#8211; (optional) Task category</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>id</strong> (<em>int</em>) &#8211; unique task id</li>
+<li><strong>init</strong> (<em>int</em>) &#8211; time of initial request</li>
+<li><strong>start</strong> (<em>int</em>) &#8211; time of starting in epoch</li>
+<li><strong>end</strong> (<em>int</em>) &#8211; time of completion in epoch</li>
+<li><strong>result</strong> (<em>int</em>) &#8211; 0 means success</li>
+<li><strong>deletable</strong> (<em>boolean</em>) &#8211; It can be delete or not during running state</li>
+<li><strong>category</strong> (<em>string</em>) &#8211; background task category, the same as <a class="reference internal" href="#post--api-v1-background-(string-category)" title="POST /api/v1/background/(string:category)"><code class="xref http http-post docutils literal"><span class="pre">POST</span> <span class="pre">/api/v1/background/(string:category)</span></code></a></li>
+<li><strong>state</strong> (<em>string</em>) &#8211; one of <code class="docutils literal"><span class="pre">waiting</span></code>, <code class="docutils literal"><span class="pre">running</span></code>, <code class="docutils literal"><span class="pre">completed</span></code>, <code class="docutils literal"><span class="pre">error</span></code></li>
+<li><strong>detail_state</strong> (<em>string</em>) &#8211; Detail of task progress</li>
+<li><strong>user</strong> (<em>string</em>) &#8211; request user name</li>
+<li><strong>params</strong> (<em>string</em>) &#8211; request parameters</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/background/?category=image_remove&quot;</span>
+
+$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/
+</pre></div>
+</div>
+<p><strong>Example response of all tasks</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_remove&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141037</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;fake_id&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Example response of all tasks</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_remove&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141037</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;fake_id&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_download&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141037</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141037</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dtest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;download&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;I am description.&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/ubuntu_icon.png&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/_/ubuntu/&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dtest&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;Download image ubuntu-trusty&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1469141036</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ctest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ctest&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1469141037</span><span class="p">,</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-tasks">
+<h2><a class="toc-backref" href="#id13">Delete tasks</a><a class="headerlink" href="#delete-tasks" title="Permalink to this headline">¶</a></h2>
+<dl class="delete">
+<dt id="delete--api-v1-background-">
+<code class="descname">DELETE </code><code class="descname">/api/v1/background/</code><a class="headerlink" href="#delete--api-v1-background-" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-background-(string-task_id)">
+<code class="descname">DELETE </code><code class="descname">/api/v1/background/</code><span class="sig-paren">(</span><em class="property">string: </em><em>task_id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-background-(string-task_id)" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v1-background-(string-category)">
+<code class="descname">DELETE </code><code class="descname">/api/v1/background/</code><span class="sig-paren">(</span><em class="property">string: </em><em>category</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-background-(string-category)" title="Permalink to this definition">¶</a></dt>
+<dd><p>It can delete completed and error tasks. Also can delete task with specific task ID or task category.</p>
+<p>If task is is running state, it cannot be delete unless this task with deletable capability.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>task_id</strong> &#8211; task ID</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>object</strong> (<em>array</em>) &#8211; task ID which have been deleted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/background/
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="application.html" class="btn btn-neutral float-right" title="Application" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="container.html" class="btn btn-neutral" title="Container" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, QNAP System, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/extension.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

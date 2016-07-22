@@ -32,7 +32,7 @@
   
     <link rel="top" title="Container Station  documentation" href="index.html"/>
         <link rel="next" title="Resource" href="resource.html"/>
-        <link rel="prev" title="Container" href="container.html"/> 
+        <link rel="prev" title="Background tasks" href="background.html"/> 
 
   
   <script src="static/js/modernizr.min.js"></script>
@@ -80,6 +80,7 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background tasks</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#user-s-application">User&#8217;s application</a></li>
@@ -212,11 +213,12 @@ Password: **5iveL!fe**
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;gitlab&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;DEBUG=false&quot;</span><span class="p">,</span>
             <span class="s2">&quot;GITLAB_PORT=10080&quot;</span><span class="p">,</span>
             <span class="s2">&quot;GITLAB_SSH_PORT=10022&quot;</span><span class="p">,</span>
             <span class="s2">&quot;GITLAB_SECRETS_DB_KEY_BASE=qcs-gitlab-app&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/gitlab:8.2.3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/gitlab:8.9.6-1&quot;</span><span class="p">,</span>
         <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;redis:redisio&quot;</span><span class="p">,</span>
             <span class="s2">&quot;postgresql:postgresql&quot;</span>
@@ -231,12 +233,16 @@ Password: **5iveL!fe**
         <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;DB_USER=gitlab&quot;</span><span class="p">,</span>
             <span class="s2">&quot;DB_PASS=password&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;DB_NAME=gitlabhq_production&quot;</span>
+            <span class="s2">&quot;DB_NAME=gitlabhq_production&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DB_EXTENSION=pg_trgm&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-11&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-23&quot;</span><span class="p">,</span>
         <span class="nt">&quot;restart&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;redis&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;--loglevel warning&quot;</span>
+        <span class="p">],</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redis:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;restart&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span>
     <span class="p">}</span>
@@ -444,13 +450,13 @@ Password: **5iveL!fe**
             <span class="nt">&quot;DB_PASS&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
             <span class="nt">&quot;DB_USER&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span>
         <span class="p">},</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-11&quot;</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-23&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;REDMINE_PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;10083&quot;</span>
         <span class="p">},</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.2.0-1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.3.0-1&quot;</span><span class="p">,</span>
         <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;postgresql:postgresql&quot;</span>
         <span class="p">],</span>
@@ -493,7 +499,7 @@ Password: **5iveL!fe**
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
     <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5555</span><span class="p">,</span>
     <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.3.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;virtual_path&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -743,7 +749,7 @@ Password: **5iveL!fe**
         <a href="resource.html" class="btn btn-neutral float-right" title="Resource" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="container.html" class="btn btn-neutral" title="Container" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="background.html" class="btn btn-neutral" title="Background tasks" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
