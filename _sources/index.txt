@@ -45,6 +45,7 @@ Content
     backup
     log
     preference
+    qnet
     draft
     changelog
 

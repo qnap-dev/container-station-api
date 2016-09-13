@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnet.html">Qnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
@@ -550,12 +551,12 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 <p><strong>Example response of Docker</strong></p>
 <blockquote>
 <div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
 <span class="p">}</span>
 <span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a00358eab5be6667192c226d1f2cb07f253cf695af514f5fed0fecba871bc451&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1c5d99f28ed276be8bfd399f3fac212b78da9bf60af55bc3c177f014fa4835a0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI2&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
 <span class="p">}</span>
@@ -587,13 +588,13 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0012491672218520986</span><span class="p">,</span>
+        <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0011658894070619586</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ctest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;10.0.3.62&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">11280384</span><span class="p">,</span>
+        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">10653696</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ctest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -602,13 +603,13 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0014985014985014985</span><span class="p">,</span>
+        <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0014157228514323785</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;10.0.3.3&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">11325440</span><span class="p">,</span>
+        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">11513856</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -617,7 +618,7 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c&quot;</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>
@@ -626,12 +627,12 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a00358eab5be6667192c226d1f2cb07f253cf695af514f5fed0fecba871bc451&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1c5d99f28ed276be8bfd399f3fac212b78da9bf60af55bc3c177f014fa4835a0&quot;</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;10.0.3.3&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">5033984</span><span class="p">,</span>
+        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">4849664</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI2&quot;</span><span class="p">,</span>
         <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -641,12 +642,12 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c3258e469a6a037fada304e0886dd4551333117610090032a14a6368d61cec4c&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1078f7f876fb0b0923cc72c1117c6b2b967bc783c8e048041f5ca86bc8697c2e&quot;</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;10.0.3.2&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">4628480</span><span class="p">,</span>
+        <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">4669440</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dtest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -710,13 +711,13 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
         <span class="nt">&quot;Volumes&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;WorkingDir&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-07-21T14:45:09.240688171Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-09-13T07:34:46.353283592Z&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;devicemapper&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ExecIDs&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
     <span class="nt">&quot;GraphDriver&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;DeviceId&quot;</span><span class="p">:</span> <span class="s2">&quot;27&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;DeviceName&quot;</span><span class="p">:</span> <span class="s2">&quot;docker-253:0-11796522-de1c0853994e32ae8f6619ed20fd8fa3e26253e79f06a0da731c0fd93847232f&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;DeviceId&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;DeviceName&quot;</span><span class="p">:</span> <span class="s2">&quot;docker-253:0-11796502-ae8d472999a5a573a978ef58f46531e0f8c6cb40dc0888f3598e8e33c1ad760d&quot;</span><span class="p">,</span>
             <span class="nt">&quot;DeviceSize&quot;</span><span class="p">:</span> <span class="s2">&quot;10737418240&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;devicemapper&quot;</span>
@@ -800,26 +801,26 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
         <span class="nt">&quot;VolumeDriver&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;VolumesFrom&quot;</span><span class="p">:</span> <span class="kc">null</span>
     <span class="p">},</span>
-    <span class="nt">&quot;HostnamePath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151/hostname&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;HostsPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151/hosts&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:ac526a356ca46f915e822e2f8051b9cf3404c756b725661c51191564ae4e6ea7&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;LogPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151/e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151-json.log&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;HostnamePath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c/hostname&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;HostsPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c/hosts&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:bd3d4369aebc4945be269859df0e15b1d32fefa2645f5699037d7d8c6b415a10&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LogPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c/f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c-json.log&quot;</span><span class="p">,</span>
     <span class="nt">&quot;MountLabel&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Mounts&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Destination&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/vol2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Mode&quot;</span><span class="p">:</span> <span class="s2">&quot;rw&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Propagation&quot;</span><span class="p">:</span> <span class="s2">&quot;rprivate&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;RW&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/test/spec&quot;</span>
-        <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;Destination&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/vol1&quot;</span><span class="p">,</span>
             <span class="nt">&quot;Mode&quot;</span><span class="p">:</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span>
             <span class="nt">&quot;Propagation&quot;</span><span class="p">:</span> <span class="s2">&quot;rprivate&quot;</span><span class="p">,</span>
             <span class="nt">&quot;RW&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/test/selenium&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;Destination&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/vol2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Mode&quot;</span><span class="p">:</span> <span class="s2">&quot;rw&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Propagation&quot;</span><span class="p">:</span> <span class="s2">&quot;rprivate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;RW&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/test/spec&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;/DockerTestAPI&quot;</span><span class="p">,</span>
@@ -849,30 +850,30 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
                 <span class="nt">&quot;IPv6Gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
                 <span class="nt">&quot;MacAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;NetworkID&quot;</span><span class="p">:</span> <span class="s2">&quot;74031cc59af8f198a0de9a4fc449cb8273f2349cfdb2ddd76e58684b284340e5&quot;</span>
+                <span class="nt">&quot;NetworkID&quot;</span><span class="p">:</span> <span class="s2">&quot;6cc2f844c3de8dcff99b283c94841e0dd9e217e97ea0ecea080bf1c54fb97cb8&quot;</span>
             <span class="p">}</span>
         <span class="p">},</span>
         <span class="nt">&quot;Ports&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;SandboxID&quot;</span><span class="p">:</span> <span class="s2">&quot;5b2e614c47886e0f4f5f5904ee3b754e14104e2f5de1c14991a3a47321a68994&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;SandboxKey&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/run/docker/netns/5b2e614c4788&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SandboxID&quot;</span><span class="p">:</span> <span class="s2">&quot;a0c5a1bed2cec37b0e98aeda98628a261d4ffa14ff97ee0a368f077e93e9e408&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SandboxKey&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/run/docker/netns/a0c5a1bed2ce&quot;</span><span class="p">,</span>
         <span class="nt">&quot;SecondaryIPAddresses&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;SecondaryIPv6Addresses&quot;</span><span class="p">:</span> <span class="kc">null</span>
     <span class="p">},</span>
     <span class="nt">&quot;Path&quot;</span><span class="p">:</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ProcessLabel&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ResolvConfPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151/resolv.conf&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ResolvConfPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/containers/f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c/resolv.conf&quot;</span><span class="p">,</span>
     <span class="nt">&quot;RestartCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;Dead&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ExitCode&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;FinishedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-07-21T14:45:11.299879678Z&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;FinishedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-09-13T07:34:48.522314268Z&quot;</span><span class="p">,</span>
         <span class="nt">&quot;OOMKilled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Paused&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Pid&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;Restarting&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Running&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;StartedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-07-21T14:45:11.272889282Z&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;StartedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-09-13T07:34:48.499130127Z&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="s2">&quot;exited&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -951,7 +952,7 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 <p><strong>Example response of Docker</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
     <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -980,16 +981,11 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 </div>
 <p><strong>Example response of LXC</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>
     <span class="nt">&quot;tcpPort&quot;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="nt">&quot;tx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -1002,7 +998,7 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 <p><strong>Example response of Docker</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
     <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -1057,11 +1053,11 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">8.338368576607158e-12</span><span class="p">,</span>
+    <span class="nt">&quot;cpu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">2224128</span><span class="p">,</span>
+    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">2519040</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;rx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
@@ -1103,7 +1099,7 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 </div>
 <p><strong>Example response of Docker</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;e00b930c6123a42b5f2dfc1daf8b5a7af8d50fe41e1be4654ac0052d0b828151&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f33a0698856f043d083e1f5760471e6d398721faeb395402b2ae7ab5d53f755c&quot;</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>
