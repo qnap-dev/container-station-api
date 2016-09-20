@@ -17,46 +17,50 @@ Qnet
 Qnet provide a method for getting the same subnet IP address as physical NIC. It supports on QTS 4.2.2 or later.
 
 Create a container from UI
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create a container with qnet driver in Container Station.
+Create a container with Qnet driver in Container Station. An example of installing Ubuntu is shown below.
 
 **Install Ubuntu**
 
-Click "Create Container" on the left side bar.
-Click "Install" button of Ubuntu image.
+First, click **Create Container** on the left side bar. You will see many recommended images shown in the page.
+To install Ubuntu, you need to scroll down your page and click **Install** button of Ubuntu image.
 
-.. image:: http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_step1-2.png
+.. image:: images/qnet/qnet_step1-2.png
 
 **Advanced settings**
 
-Click "Advanced settings".
+It shows **Create Container** dialog after Container Station finished loading.
+Click **Advanced settings** in the lower left to configure Qnet.
 
-.. image:: http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_step3.png
+.. image:: images/qnet/qnet_step3.png
 
 **Use DHCP**
 
-Click "Network" on the left side bar and select "Bridge" option from "Network Mode" field. "Use DHCP" is default setting.
+Click **Network** on the left side bar and select **Bridge** option from **Network Mode** field. **Use DHCP** is default setting. Finally, click **Create** in the dialog.
+In this situation, Ubuntu container will request an IP address from DHCP server. Therefore, Ubuntu container and NAS are in the same subnet.
 
-.. image:: http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_dhcp.png
+.. image:: images/qnet/qnet_dhcp.png
 
 **Use static IP**
 
-Click "Network" on the left side bar and select "Bridge" option from "Network Mode" field. When "Use static IP" is checked, you need to set IP Address, Netmask and Gateway as your own environment.
+You can configure a specific IP address manually.
+Click **Network** on the left side bar and select **Bridge** option from **Network Mode** field. When **Use static IP** is checked, you need to set IP Address, Netmask and Gateway as your own environment. Finally, click **Create** in the dialog.
 
-.. image:: http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_static.png
+.. image:: images/qnet/qnet_static.png
 
 .. note::
-    Container's network interface will be added to Ethernet X (Virtual Switch) when you Choose a physical NIC to use from "Use Interface" field.
+    Container's network interface will be added to Ethernet X (Virtual Switch) when you choose a physical NIC to use from **Use Interface** field.
 
 Docker Command
 ^^^^^^^^^^^^^^
 
-Use Docker commmand to create a network that belongs to qnet driver.
-
-Run a container with ``--net`` argument.
+Without UI, you can also use Docker command to create a network that belongs to Qnet driver and run a container with ``--net`` argument.
 
 **DHCP mode**
+
+Create a new network named qnet-dhcp-eth0.
+
 
     .. sourcecode:: bash
 
@@ -65,6 +69,8 @@ Run a container with ``--net`` argument.
 
 **Static mode**
 
+Create a new network named qnet-static-eth0-XXXXXX.
+
     .. sourcecode:: bash
 
         $ docker network create -d qnet --ipam-driver=qnet --ipam-opt=iface=eth0 \
@@ -72,7 +78,7 @@ Run a container with ``--net`` argument.
         85fbe06a66d82ba8109d304e1b891598d7c21e9f6c9a99a34f586250c7d8b92d
 
 .. note::
-    Set iface=<physical NIC> to connect Docker network to physical NIC  .
+    Set iface=<physical NIC> to connect Docker network to physical NIC.
 
 **Check Docker network driver**
 
@@ -86,7 +92,9 @@ Run a container with ``--net`` argument.
         9e3b67877569        qnet-dhcp-eth0            qnet                local
         85fbe06a66d8        qnet-static-eth0-XXXXXX   qnet                local
 
-**Run container with qnet DHCP mode**
+**Run container with Qnet DHCP mode**
+
+Run a container and connect it to qnet-dhcp-eth0 network.
 
     .. sourcecode:: bash
 
@@ -99,7 +107,9 @@ Run a container with ``--net`` argument.
                   collisions:0 txqueuelen:1000
                   RX bytes:60 (60.0 B)  TX bytes:0 (0.0 B)
 
-**Run container with qnet Static mode**
+**Run container with Qnet Static mode**
+
+Run a container and connect it to qnet-dhcp-eth0-XXXXXX network.
 
     .. sourcecode:: bash
 
@@ -115,9 +125,11 @@ Run a container with ``--net`` argument.
 Docker Compose
 ^^^^^^^^^^^^^^
 
+There is another way to create a container with Qnet driver. 
+
 **Write docker-compose.yml**
 
-Specify "qnet" driver for this network.
+Specify ``qnet`` driver for this network.
 
     .. sourcecode:: bash
 
@@ -156,6 +168,8 @@ Specify "qnet" driver for this network.
                   gateway: 192.168.80.254
 
 **Run docker-compose up**
+
+It will create network and container automatically when using ``docker-compose up`` command.
 
     .. sourcecode:: bash
 

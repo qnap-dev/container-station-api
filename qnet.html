@@ -155,30 +155,33 @@
 <p>Qnet provide a method for getting the same subnet IP address as physical NIC. It supports on QTS 4.2.2 or later.</p>
 <div class="section" id="create-a-container-from-ui">
 <h2><a class="toc-backref" href="#id2">Create a container from UI</a><a class="headerlink" href="#create-a-container-from-ui" title="Permalink to this headline">¶</a></h2>
-<p>Create a container with qnet driver in Container Station.</p>
+<p>Create a container with Qnet driver in Container Station. An example of installing Ubuntu is shown below.</p>
 <p><strong>Install Ubuntu</strong></p>
-<p>Click &#8220;Create Container&#8221; on the left side bar.
-Click &#8220;Install&#8221; button of Ubuntu image.</p>
-<img alt="http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_step1-2.png" src="http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_step1-2.png" />
+<p>First, click <strong>Create Container</strong> on the left side bar. You will see many recommended images shown in the page.
+To install Ubuntu, you need to scroll down your page and click <strong>Install</strong> button of Ubuntu image.</p>
+<img alt="_images/qnet_step1-2.png" src="_images/qnet_step1-2.png" />
 <p><strong>Advanced settings</strong></p>
-<p>Click &#8220;Advanced settings&#8221;.</p>
-<img alt="http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_step3.png" src="http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_step3.png" />
+<p>It shows <strong>Create Container</strong> dialog after Container Station finished loading.
+Click <strong>Advanced settings</strong> in the lower left to configure Qnet.</p>
+<img alt="_images/qnet_step3.png" src="_images/qnet_step3.png" />
 <p><strong>Use DHCP</strong></p>
-<p>Click &#8220;Network&#8221; on the left side bar and select &#8220;Bridge&#8221; option from &#8220;Network Mode&#8221; field. &#8220;Use DHCP&#8221; is default setting.</p>
-<img alt="http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_dhcp.png" src="http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_dhcp.png" />
+<p>Click <strong>Network</strong> on the left side bar and select <strong>Bridge</strong> option from <strong>Network Mode</strong> field. <strong>Use DHCP</strong> is default setting. Finally, click <strong>Create</strong> in the dialog.
+In this situation, Ubuntu container will request an IP address from DHCP server. Therefore, Ubuntu container and NAS are in the same subnet.</p>
+<img alt="_images/qnet_dhcp.png" src="_images/qnet_dhcp.png" />
 <p><strong>Use static IP</strong></p>
-<p>Click &#8220;Network&#8221; on the left side bar and select &#8220;Bridge&#8221; option from &#8220;Network Mode&#8221; field. When &#8220;Use static IP&#8221; is checked, you need to set IP Address, Netmask and Gateway as your own environment.</p>
-<img alt="http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_static.png" src="http://qnap.dorowu.com/gitlab/oliver/olivercheng/raw/master/picture/qnet/qnet_static.png" />
+<p>You can configure a specific IP address manually.
+Click <strong>Network</strong> on the left side bar and select <strong>Bridge</strong> option from <strong>Network Mode</strong> field. When <strong>Use static IP</strong> is checked, you need to set IP Address, Netmask and Gateway as your own environment. Finally, click <strong>Create</strong> in the dialog.</p>
+<img alt="_images/qnet_static.png" src="_images/qnet_static.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Container&#8217;s network interface will be added to Ethernet X (Virtual Switch) when you Choose a physical NIC to use from &#8220;Use Interface&#8221; field.</p>
+<p class="last">Container&#8217;s network interface will be added to Ethernet X (Virtual Switch) when you choose a physical NIC to use from <strong>Use Interface</strong> field.</p>
 </div>
 </div>
 <div class="section" id="docker-command">
 <h2><a class="toc-backref" href="#id3">Docker Command</a><a class="headerlink" href="#docker-command" title="Permalink to this headline">¶</a></h2>
-<p>Use Docker commmand to create a network that belongs to qnet driver.</p>
-<p>Run a container with <code class="docutils literal"><span class="pre">--net</span></code> argument.</p>
+<p>Without UI, you can also use Docker command to create a network that belongs to Qnet driver and run a container with <code class="docutils literal"><span class="pre">--net</span></code> argument.</p>
 <p><strong>DHCP mode</strong></p>
+<p>Create a new network named qnet-dhcp-eth0.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker network create -d qnet --ipam-driver<span class="o">=</span>qnet --ipam-opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 qnet-dhcp-eth0
 9e3b67877569d6da0f5587c736c4981b3206c7f31bd22e7acdfe1a347e41122c
@@ -186,6 +189,7 @@ Click &#8220;Install&#8221; button of Ubuntu image.</p>
 </div>
 </div></blockquote>
 <p><strong>Static mode</strong></p>
+<p>Create a new network named qnet-static-eth0-XXXXXX.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker network create -d qnet --ipam-driver<span class="o">=</span>qnet --ipam-opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 <span class="se">\</span>
       --subnet<span class="o">=</span>192.168.80.0/23 --gateway<span class="o">=</span>192.168.80.254 qnet-static-eth0-XXXXXX
@@ -195,7 +199,7 @@ Click &#8220;Install&#8221; button of Ubuntu image.</p>
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Set iface=&lt;physical NIC&gt; to connect Docker network to physical NIC  .</p>
+<p class="last">Set iface=&lt;physical NIC&gt; to connect Docker network to physical NIC.</p>
 </div>
 <p><strong>Check Docker network driver</strong></p>
 <blockquote>
@@ -209,7 +213,8 @@ e1369e8797ad        none                      null                <span class="n
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Run container with qnet DHCP mode</strong></p>
+<p><strong>Run container with Qnet DHCP mode</strong></p>
+<p>Run a container and connect it to qnet-dhcp-eth0 network.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run --rm -it --net<span class="o">=</span>qnet-dhcp-eth0 alpine ifconfig eth0
 eth0      Link encap:Ethernet  HWaddr 02:42:B8:3D:2B:07
@@ -222,7 +227,8 @@ eth0      Link encap:Ethernet  HWaddr 02:42:B8:3D:2B:07
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Run container with qnet Static mode</strong></p>
+<p><strong>Run container with Qnet Static mode</strong></p>
+<p>Run a container and connect it to qnet-dhcp-eth0-XXXXXX network.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run --rm -it --net<span class="o">=</span>qnet-static-eth0-XXXXXX --ip<span class="o">=</span>192.168.80.119 alpine ifconfig eth0
 eth0      Link encap:Ethernet  HWaddr 02:42:55:B1:84:92
@@ -238,8 +244,9 @@ eth0      Link encap:Ethernet  HWaddr 02:42:55:B1:84:92
 </div>
 <div class="section" id="docker-compose">
 <h2><a class="toc-backref" href="#id4">Docker Compose</a><a class="headerlink" href="#docker-compose" title="Permalink to this headline">¶</a></h2>
+<p>There is another way to create a container with Qnet driver.</p>
 <p><strong>Write docker-compose.yml</strong></p>
-<p>Specify &#8220;qnet&#8221; driver for this network.</p>
+<p>Specify <code class="docutils literal"><span class="pre">qnet</span></code> driver for this network.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ cat docker-compose.yml
 version: <span class="s1">&#39;2&#39;</span>
@@ -278,6 +285,7 @@ networks:
 </div>
 </div></blockquote>
 <p><strong>Run docker-compose up</strong></p>
+<p>It will create network and container automatically when using <code class="docutils literal"><span class="pre">docker-compose</span> <span class="pre">up</span></code> command.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker-compose up
 Creating network <span class="s2">&quot;root_qnet-dhcp&quot;</span> with driver <span class="s2">&quot;qnet&quot;</span>
