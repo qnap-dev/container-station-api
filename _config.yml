@@ -1,1 +1,1 @@
-include:      ["_images", "_static"]
+include:      ["_static", "_images"]
