@@ -24,18 +24,21 @@
 
   
   
-    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   
 
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Container Station  documentation" href="index.html"/>
-        <link rel="next" title="Change Log" href="changelog.html"/>
+        <link rel="next" title="Dockerized QPKG" href="dqpkg.html"/>
         <link rel="prev" title="Preference" href="preference.html"/> 
 
   
-  <script src="static/js/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -84,7 +87,10 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
-<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup.html">Draft for Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Qnet</a><ul>
@@ -93,6 +99,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#docker-compose">Docker Compose</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="dqpkg.html">Dockerized QPKG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="draft.html">Draft</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
@@ -128,7 +136,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/qnet.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/qnet.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,7 +200,7 @@ Click <strong>Network</strong> on the left side bar and select <strong>Bridge</s
 <p>Create a new network named qnet-static-eth0-XXXXXX.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker network create -d qnet --ipam-driver<span class="o">=</span>qnet --ipam-opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 <span class="se">\</span>
-      --subnet<span class="o">=</span>192.168.80.0/23 --gateway<span class="o">=</span>192.168.80.254 qnet-static-eth0-XXXXXX
+      --subnet<span class="o">=</span><span class="m">192</span>.168.80.0/23 --gateway<span class="o">=</span><span class="m">192</span>.168.80.254 qnet-static-eth0-XXXXXX
 85fbe06a66d82ba8109d304e1b891598d7c21e9f6c9a99a34f586250c7d8b92d
 </pre></div>
 </div>
@@ -217,27 +225,27 @@ e1369e8797ad        none                      null                <span class="n
 <p>Run a container and connect it to qnet-dhcp-eth0 network.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run --rm -it --net<span class="o">=</span>qnet-dhcp-eth0 alpine ifconfig eth0
-eth0      Link encap:Ethernet  HWaddr 02:42:B8:3D:2B:07
+eth0      Link encap:Ethernet  HWaddr <span class="m">02</span>:42:B8:3D:2B:07
           inet addr:192.168.80.118  Bcast:0.0.0.0  Mask:255.255.254.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:1 errors:0 dropped:1 overruns:0 frame:0
           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000
-          RX bytes:60 <span class="o">(</span>60.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>
+          RX bytes:60 <span class="o">(</span><span class="m">60</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Run container with Qnet Static mode</strong></p>
 <p>Run a container and connect it to qnet-dhcp-eth0-XXXXXX network.</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run --rm -it --net<span class="o">=</span>qnet-static-eth0-XXXXXX --ip<span class="o">=</span>192.168.80.119 alpine ifconfig eth0
-eth0      Link encap:Ethernet  HWaddr 02:42:55:B1:84:92
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run --rm -it --net<span class="o">=</span>qnet-static-eth0-XXXXXX --ip<span class="o">=</span><span class="m">192</span>.168.80.119 alpine ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr <span class="m">02</span>:42:55:B1:84:92
           inet addr:192.168.80.119  Bcast:0.0.0.0  Mask:255.255.254.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:9 errors:0 dropped:4 overruns:0 frame:0
           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000
-          RX bytes:940 <span class="o">(</span>940.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>
+          RX bytes:940 <span class="o">(</span><span class="m">940</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -262,7 +270,7 @@ services:
     command: ifconfig eth0
     networks:
       qnet-static:
-        ipv4_address: 192.168.80.119
+        ipv4_address: <span class="m">192</span>.168.80.119
 
 networks:
   qnet-dhcp:
@@ -279,8 +287,8 @@ networks:
       driver_opts:
         iface: <span class="s2">&quot;eth0&quot;</span>
       config:
-        - subnet: 192.168.80.0/23
-          gateway: 192.168.80.254
+        - subnet: <span class="m">192</span>.168.80.0/23
+          gateway: <span class="m">192</span>.168.80.254
 </pre></div>
 </div>
 </div></blockquote>
@@ -293,24 +301,24 @@ Creating network <span class="s2">&quot;root_qnet-static&quot;</span> with drive
 Starting root_qnet_dhcp_1
 Creating root_qnet_static_1
 Attaching to root_qnet_dhcp_1, root_qnet_static_1
-qnet_dhcp_1    <span class="p">|</span> eth0      Link encap:Ethernet  HWaddr 02:42:80:EF:D6:BD
+qnet_dhcp_1    <span class="p">|</span> eth0      Link encap:Ethernet  HWaddr <span class="m">02</span>:42:80:EF:D6:BD
 qnet_dhcp_1    <span class="p">|</span>           inet addr:192.168.80.118  Bcast:0.0.0.0  Mask:255.255.254.0
 qnet_dhcp_1    <span class="p">|</span>           UP BROADCAST MULTICAST  MTU:1500  Metric:1
 qnet_dhcp_1    <span class="p">|</span>           RX packets:2 errors:0 dropped:1 overruns:0 frame:0
 qnet_dhcp_1    <span class="p">|</span>           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
 qnet_dhcp_1    <span class="p">|</span>           collisions:0 txqueuelen:1000
-qnet_dhcp_1    <span class="p">|</span>           RX bytes:374 <span class="o">(</span>374.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>
+qnet_dhcp_1    <span class="p">|</span>           RX bytes:374 <span class="o">(</span><span class="m">374</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
 qnet_dhcp_1    <span class="p">|</span>
-qnet_static_1  <span class="p">|</span> eth0      Link encap:Ethernet  HWaddr 02:42:87:99:2C:87
+qnet_static_1  <span class="p">|</span> eth0      Link encap:Ethernet  HWaddr <span class="m">02</span>:42:87:99:2C:87
 qnet_static_1  <span class="p">|</span>           inet addr:192.168.80.119  Bcast:0.0.0.0  Mask:255.255.254.0
 qnet_static_1  <span class="p">|</span>           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
 qnet_static_1  <span class="p">|</span>           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
 qnet_static_1  <span class="p">|</span>           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
 qnet_static_1  <span class="p">|</span>           collisions:0 txqueuelen:1000
-qnet_static_1  <span class="p">|</span>           RX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>
+qnet_static_1  <span class="p">|</span>           RX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
 qnet_static_1  <span class="p">|</span>
-root_qnet_dhcp_1 exited with code 0
-root_qnet_static_1 exited with code 0
+root_qnet_dhcp_1 exited with code <span class="m">0</span>
+root_qnet_static_1 exited with code <span class="m">0</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -336,7 +344,7 @@ e1369e8797ad        none                null                <span class="nb">loc
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="changelog.html" class="btn btn-neutral float-right" title="Change Log" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dqpkg.html" class="btn btn-neutral float-right" title="Dockerized QPKG" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="preference.html" class="btn btn-neutral" title="Preference" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -376,16 +384,16 @@ e1369e8797ad        none                null                <span class="nb">loc
             HAS_SOURCE:  true
         };
     </script>
-      <script type="text/javascript" src="static/jquery.js"></script>
-      <script type="text/javascript" src="static/underscore.js"></script>
-      <script type="text/javascript" src="static/doctools.js"></script>
-      <script type="text/javascript" src="static/extension.js"></script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/extension.js"></script>
 
   
 
   
   
-    <script type="text/javascript" src="static/js/theme.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
   

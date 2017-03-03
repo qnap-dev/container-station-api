@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Node and Cluster &mdash; Container Station 1.0.0 beta documentation</title>
+  <title>Node and Cluster &mdash; Container Station  documentation</title>
   
 
   
@@ -24,18 +24,21 @@
 
   
   
-    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   
 
   
 
   
-    <link rel="top" title="Container Station 1.0.0 beta documentation" href="index.html"/>
-        <link rel="next" title="Log and Event" href="log.html"/>
-        <link rel="prev" title="Import and Export" href="import.html"/> 
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Container Station  documentation" href="index.html"/>
+        <link rel="next" title="Draft for Backup and Restore" href="backup.html"/>
+        <link rel="prev" title="Volumes" href="volumes.html"/> 
 
   
-  <script src="static/js/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -45,17 +48,23 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-        
-          <a href="index.html" class="icon icon-home"> Container Station
-        
+          
+            <a href="index.html" class="icon icon-home"> Container Station
+          
 
-        
-        </a>
+          
+          </a>
 
-        
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -64,50 +73,23 @@
   </form>
 </div>
 
-        
-      </div>
+          
+        </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-          
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="system.html">System</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="system.html#authentication">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system.html#system-information">System Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system.html#system-port">System Port</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system.html#certificate-file">Certificate file</a></li>
-</ul>
-</li>
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
-<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="application.html#template">Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application.html#user-s-application">User&#8217;s application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application.html#reverse-proxy">Reverse proxy</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resource.html#auto-start">Auto start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource.html#port-forwarding">Port Forwarding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource.html#devices">Devices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource.html#limit">Limit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource.html#storage">Storage</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="image.html">Image</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="image.html#search">Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image.html#inspect-tags">Inspect &amp; tags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image.html#download">Download</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image.html#registry">Registry</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="import.html#export">Export</a></li>
-<li class="toctree-l2"><a class="reference internal" href="import.html#import">Import</a></li>
-<li class="toctree-l2"><a class="reference internal" href="import.html#file-operations">File operations</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Node and Cluster</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Node and Cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#node-management">Node Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cluster-app-management">Cluster App Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#storage-management">Storage Management</a></li>
@@ -115,27 +97,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#image-management">Image Management</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="log.html#log">Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="log.html#event">Event</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#workspace">Workspace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#image-list-repository">Image list repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preference.html#network-settings">Network settings</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">1.0.0</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="backup.html">Draft for Backup and Restore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnet.html">Qnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dqpkg.html">Dockerized QPKG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="draft.html">Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -150,7 +124,13 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
@@ -158,20 +138,34 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/node.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/node.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="node-and-cluster">
-<h1>Node and Cluster<a class="headerlink" href="#node-and-cluster" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1">Node and Cluster</a><a class="headerlink" href="#node-and-cluster" title="Permalink to this headline">¶</a></h1>
 <p></p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#node-and-cluster" id="id1">Node and Cluster</a><ul>
+<li><a class="reference internal" href="#node-management" id="id2">Node Management</a></li>
+<li><a class="reference internal" href="#cluster-app-management" id="id3">Cluster App Management</a></li>
+<li><a class="reference internal" href="#storage-management" id="id4">Storage Management</a></li>
+<li><a class="reference internal" href="#network-management" id="id5">Network Management</a></li>
+<li><a class="reference internal" href="#image-management" id="id6">Image Management</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="node-management">
-<h2>Node Management<a class="headerlink" href="#node-management" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Node Management</a><a class="headerlink" href="#node-management" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-node">
 <code class="descname">GET </code><code class="descname">/api/v1/node</code><a class="headerlink" href="#get--api-v1-node" title="Permalink to this definition">¶</a></dt>
@@ -204,12 +198,12 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-a&quot;</span><span class="p">,</span>
      <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
@@ -224,51 +218,28 @@
 </div>
 </dd></dl>
 
-<dl class="put">
-<dt id="put--api-v1-node">
-<code class="descname">PUT </code><code class="descname">/api/v1/node</code><a class="headerlink" href="#put--api-v1-node" title="Permalink to this definition">¶</a></dt>
-<dd><p>This API is internally for master node to join another node to the cluster. Usually, this was called during processing <em>:http:post:`/api/v1/node/(node_id)`</em></p>
+<dl class="get">
+<dt id="get--api-v1-node">
+<code class="descname">GET </code><code class="descname">/api/v1/node</code><a class="headerlink" href="#get--api-v1-node" title="Permalink to this definition">¶</a></dt>
+<dd><p>List machines in the same network</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li><strong>action</strong> (<em>string</em>) &#8211; <code class="docutils literal"><span class="pre">join</span></code></li>
-<li><strong>key</strong> (<em>string</em>) &#8211; X.509 private key</li>
-<li><strong>cert</strong> (<em>string</em>) &#8211; X.509 Certificate</li>
-<li><strong>cacert</strong> (<em>string</em>) &#8211; X.509 CA Cert</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>action</strong> &#8211; <code class="docutils literal"><span class="pre">scan</span></code></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt -d <span class="se">\</span>
-    <span class="s1">&#39;{&quot;action&quot;: &quot;join&quot;,</span>
-<span class="s1">      &quot;key&quot;: &quot;...&quot;,</span>
-<span class="s1">      &quot;cert&quot;: &quot;...&quot;,</span>
-<span class="s1">      &quot;cacert&quot;: &quot;...&quot;,</span>
-<span class="s1">      &quot;nodes&quot;: [&quot;123.123.123.123&quot;, &quot;12.12.12.12&quot;]</span>
-<span class="s1">     }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-v1-node?action=scan">
-<code class="descname">GET </code><code class="descname">/api/v1/node?action=scan</code><a class="headerlink" href="#get--api-v1-node?action=scan" title="Permalink to this definition">¶</a></dt>
-<dd><p>List machines in the same network</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node?action<span class="o">=</span>scan
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/node?action=scan&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-A&quot;</span><span class="p">,</span>
      <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
      <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
@@ -285,8 +256,8 @@
 </dd></dl>
 
 <dl class="get">
-<dt id="get--api-v1-node-(node_id)">
-<code class="descname">GET </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-node-(node_id)" title="Permalink to this definition">¶</a></dt>
+<dt id="get--api-v1-node-(string-node_id)">
+<code class="descname">GET </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em class="property">string: </em><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-node-(string-node_id)" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get node information</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -302,12 +273,12 @@
 </table>
 <p>Refer to <a class="reference internal" href="#get--api-v1-node" title="GET /api/v1/node"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/node</span></code></a> for others parameters.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node/eca0338f4ea31566
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-a&quot;</span><span class="p">,</span>
  <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
  <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
@@ -327,7 +298,7 @@
 <dd><p>Create a new node</p>
 <p>Refer to <a class="reference internal" href="#get--api-v1-node" title="GET /api/v1/node"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/node</span></code></a> for others parameters.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{&quot;name&quot;: &quot;member-a&quot;,</span>
 <span class="s1">      &quot;ip&quot;: &quot;192.168.0.10&quot;,</span>
 <span class="s1">      &quot;port&quot;: 8080,</span>
@@ -337,7 +308,7 @@
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-a&quot;</span><span class="p">,</span>
  <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
  <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
@@ -351,8 +322,8 @@
 </dd></dl>
 
 <dl class="delete">
-<dt id="delete--api-v1-node-(node_id)">
-<code class="descname">DELETE </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-node-(node_id)" title="Permalink to this definition">¶</a></dt>
+<dt id="delete--api-v1-node-(string-node_id)">
+<code class="descname">DELETE </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em class="property">string: </em><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-node-(string-node_id)" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete a node</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -367,23 +338,23 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XGET -b cookies.txt <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
     http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/node/eca0338f4ea31566
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="put">
-<dt id="put--api-v1-node-(node_id)">
-<code class="descname">PUT </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--api-v1-node-(node_id)" title="Permalink to this definition">¶</a></dt>
+<dt id="put--api-v1-node-(string-node_id)">
+<code class="descname">PUT </code><code class="descname">/api/v1/node/</code><span class="sig-paren">(</span><em class="property">string: </em><em>node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#put--api-v1-node-(string-node_id)" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update node that only change the keys are given.</p>
-<p>It returns <em>:http:get:`/api/v1/(int:node_id)`</em> refering to <a class="reference internal" href="#get--api-v1-node" title="GET /api/v1/node"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/node</span></code></a> for others parameters.</p>
+<p>It returns <a class="reference internal" href="#get--api-v1-node-(string-node_id)" title="GET /api/v1/node/(string:node_id)"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/node/(string:node_id)</span></code></a> refering to <a class="reference internal" href="#get--api-v1-node" title="GET /api/v1/node"><code class="xref http http-get docutils literal"><span class="pre">GET</span> <span class="pre">/api/v1/node</span></code></a> for others parameters.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPUT -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{&quot;name&quot;: &quot;member-a&quot;,</span>
 <span class="s1">      &quot;ip&quot;: &quot;192.168.0.10&quot;,</span>
 <span class="s1">      &quot;port&quot;: 8080,</span>
@@ -392,7 +363,7 @@
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eca0338f4ea31566&quot;</span><span class="p">,</span>
  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;member-a&quot;</span><span class="p">,</span>
  <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
  <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
@@ -407,9 +378,9 @@
 
 </div>
 <div class="section" id="cluster-app-management">
-<h2>Cluster App Management<a class="headerlink" href="#cluster-app-management" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Cluster App Management</a><a class="headerlink" href="#cluster-app-management" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>This section refer design <a class="reference internal" href="application.html#id1"><span>Template</span></a> and <a class="reference external" href="https://mesosphere.github.io/marathon/docs/rest-api.html">Marathon: REST API</a>. UI may refer to <a class="reference external" href="http://fleetui.com/">FleetUI</a></p>
+<div><p>This section refer design <a class="reference internal" href="application.html#id1"><span class="std std-ref">Template</span></a> and <a class="reference external" href="https://mesosphere.github.io/marathon/docs/rest-api.html">Marathon: REST API</a>. UI may refer to <a class="reference external" href="http://fleetui.com/">FleetUI</a></p>
 <p>Cluster application distribute Docker containers across nodes according to <cite>definition</cite> of request.</p>
 <p>The control of cluster application will follow signle node design as following,</p>
 <blockquote>
@@ -451,7 +422,7 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{</span>
 <span class="s1">        &quot;name&quot;: &quot;redmine-app&quot;,</span>
 <span class="s1">        &quot;deployment&quot;: {</span>
@@ -491,7 +462,7 @@
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine-app&quot;</span><span class="p">,</span>
     <span class="nt">&quot;deployment&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;scale&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -551,12 +522,12 @@
 
 </div>
 <div class="section" id="storage-management">
-<h2>Storage Management<a class="headerlink" href="#storage-management" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Storage Management</a><a class="headerlink" href="#storage-management" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>TBD. Read ceph document first.</div></blockquote>
 </div>
 <div class="section" id="network-management">
-<h2>Network Management<a class="headerlink" href="#network-management" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Network Management</a><a class="headerlink" href="#network-management" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-cluster-preference">
 <code class="descname">GET </code><code class="descname">/api/v1/cluster-preference</code><a class="headerlink" href="#get--api-v1-cluster-preference" title="Permalink to this definition">¶</a></dt>
@@ -569,22 +540,23 @@
 
 </div>
 <div class="section" id="image-management">
-<h2>Image Management<a class="headerlink" href="#image-management" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Image Management</a><a class="headerlink" href="#image-management" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>Support private registry for image cache</div></blockquote>
 </div>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="log.html" class="btn btn-neutral float-right" title="Log and Event" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="backup.html" class="btn btn-neutral float-right" title="Draft for Backup and Restore" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="import.html" class="btn btn-neutral" title="Import and Export" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="volumes.html" class="btn btn-neutral" title="Volumes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -593,10 +565,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, QNAP System, Inc.
+        &copy; Copyright 2016, QNAP System, Inc.
+
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -614,22 +587,22 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0.0 beta',
+            VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
-      <script type="text/javascript" src="static/jquery.js"></script>
-      <script type="text/javascript" src="static/underscore.js"></script>
-      <script type="text/javascript" src="static/doctools.js"></script>
-      <script type="text/javascript" src="static/extension.js"></script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/extension.js"></script>
 
   
 
   
   
-    <script type="text/javascript" src="static/js/theme.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
   

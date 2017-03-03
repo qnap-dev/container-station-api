@@ -1,0 +1,436 @@
+Image
+==================
+
+.. exec::
+    import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    try:
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+.. contents::
+
+
+Search images
+-----------------
+
+.. http:get:: /api/v1/image
+
+    Get recommended image list.
+    If depots is from dockerhub, it will take a few seconds to search.
+
+    :query category: (optional) one of ``all``, ``local``, ``dockerhub``, ``private``. **Default is all**
+    :query filter_text: (optional) filter image name and description or query string for docker search
+    :query type: (optional) one of ``lxc``, ``docker``, ``app``
+    :query registry_name: (optional) Private registry name 
+    
+    From local repository:
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image?category=all"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt
+            "http://${QIP}:${QPORT}/api/v1/image?category=all"
+            | python -m json.tool
+
+
+    Filter application type:
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image?type=app"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt
+            "http://${QIP}:${QPORT}/api/v1/image?type=app"
+            | python -m json.tool
+    
+    
+    Search from Docker Hub:
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+              "http://${QIP}:${QPORT}/api/v1/image?category=dockerhub&filter_text=dorowu"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt
+            "http://${QIP}:${QPORT}/api/v1/image?category=dockerhub&filter_text=dorowu"
+            | python -m json.tool
+
+
+Inspect an image
+-----------------
+
+
+.. http:get:: /api/v1/image/(string:image_type)/(string:image_name)/(string:image_tag)/inspect
+
+    Inspect image information.
+
+    :param image_type: ``docker``
+    :param image_name: image name
+    :param image_tag: image tag, which is ``latest`` or other version number
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/image/docker/ubuntu/latest/inspect"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/image/docker/ubuntu/latest/inspect" | python -m json.tool
+
+
+.. http:get:: /api/v1/image/(string:image_type)/(string:image_name)/(string:image_tag)/remote_inspect
+
+    Inspect image information.
+
+    :param image_type: ``docker``
+    :param image_name: image name
+    :param image_tag: image tag, which is ``latest`` or other version number
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/image/docker/redis/latest/remote_inspect"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/image/docker/redis/latest/remote_inspect" | python -m json.tool
+
+Get image tags
+-----------------
+
+.. http:get:: /api/v1/image/(string:image_name)/tags
+
+    Get image tags from specific registry. 
+    
+    :param image_name: image name
+    :query registry: Registry name
+
+    :resjson string name: Request image name 
+    :resjson array installed: tags have been installed in local
+    :resjson array tags: all tags of request image
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/image/nginx/tags?registry=Docker%20Hub"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/image/nginx/tags?registry=Docker%20Hub" | python -m json.tool
+
+
+Download an image
+-----------------
+
+
+.. http:post:: download image 
+
+    Reference: :http:post:`/api/v1/background/(string:category)`
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{"type": "docker", "repository": "dockerhub", "image": "busybox", "tag": "latest"}' \
+            "http://${QIP}:${QPORT}/api/v1/background/image_download"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"type": "docker", "repository": "dockerhub", "image": "busybox", "tag": "latest"}'
+            "http://${QIP}:${QPORT}/api/v1/background/image_download" | python -m json.tool;
+
+        while :; 
+        do 
+            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/" | python -c 
+                "import json, sys; r = sys.stdin.read(); d=json.loads(r); sys.exit(0 if d[0]['state']=='completed' else 1)";
+
+            if [ "$?" -eq "0" ]; then 
+                break; 
+            fi; 
+            sleep 5; 
+        done; 
+
+
+.. http:delete:: /api/v1/image/(string:repository)/(string:image_type)/(string:image_name)
+
+    Remove image function which is only used in ``local`` image.
+    This request will take few seconds to finish. 
+
+    :param repository: ``local`` 
+    :param image_type: ``lxc``, ``docker``
+    :param image_name: image name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/api/v1/image/local/docker/busybox"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/image/local/docker/busybox" | python -m json.tool
+
+
+
+Registry
+-----------------
+
+List registries
+^^^^^^^^^^^^^^^
+
+.. http:get:: /api/v1/registry
+
+    Registry ``Docker Hub`` is default registry in container-station.
+
+    :resjson int privateRegistry: Using which registry as default My Registry
+    :resjson string name: Registry name
+    :resjson string url: Registry URL
+    :resjson int id: Registry ID
+    :resjson boolean enableTrustCert: Trust SSL self-signed certificate
+    :resjson string username: Registry username
+    :resjson string password: Registry password
+    :resjson string version: Registry version
+    :resjson object metadata: Other information
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/registry
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt
+            http://${QIP}:${QPORT}/api/v1/registry
+            | python -m json.tool;
+
+Get default push registry
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. http:get:: /api/v1/registry/push
+
+    :resjson string registry: Registry name
+    :resjson string username: Registry username
+    :resjson string password: Registry password
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/registry/push"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/registry/push"
+            | python -m json.tool;
+
+
+Ping a registry
+^^^^^^^^^^^^^^^
+
+.. http:get:: /api/v1/registry/ping
+
+    :reqjson url: Registry URL **[required]**
+    :reqjson tls: Enable self-cert or not **[required]**
+    :reqjson string username: Registry username
+    :reqjson string password: Registry password
+
+    :resjson string version: Registry version
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "url": "https://registry.hub.docker.com",
+                "tls": true
+            }' http://${QIP}:${QPORT}/api/v1/registry/ping
+
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d
+            '{
+                "url": "https://registry.hub.docker.com",
+                "tls": true
+            }' http://${QIP}:${QPORT}/api/v1/registry/ping | python -m json.tool;
+
+
+    **Example response when error occurred**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d
+            '{
+                "url": "https://www.example.com",
+                "tls": true
+            }' http://${QIP}:${QPORT}/api/v1/registry/ping | python -m json.tool;
+
+Add/Edit a registry
+^^^^^^^^^^^^^^^^^^^
+
+.. http:post:: /api/v1/registry
+
+    * Registry name cannot conflict with others.
+    * Edit default ``Docker Hub`` registry is forbidden.
+
+    :reqjson string method: Request method of registry. It should be ``add`` or ``edit``. **[required]**
+    :reqjson string name: Registry name **[required]**
+    :reqjson string url: Registry URL **[required]**
+    :reqjson boolean enableTrustCert: Trust SSL self-signed certificate **[required]**
+    :reqjson string version: Registry version **[required]**
+    :reqjson boolean setToDefault: Set as default search My Registry
+    :reqjson string username: Registry username
+    :reqjson string password: Registry password
+    :reqjson string oldname: Original registry name before edit.
+
+    Add a new registry:
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "method": "add",
+                "name": "test",
+                "enableTrustCert": true,
+                "setToDefault": true,
+                "version": "v1",
+                "url": "https://test.registry.com",
+                "username": "my_user",
+                "password": "my_pass"
+            }' http://${QIP}:${QPORT}/api/v1/registry
+
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/registry/test -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/registry/new_test -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d
+            '{
+                "method": "add",
+                "name": "test",
+                "enableTrustCert": true,
+                "setToDefault": true,
+                "version": "v1",
+                "url": "https://test.registry.com",
+                "username": "my_user",
+                "password": "my_pass"
+            }'
+            http://${QIP}:${QPORT}/api/v1/registry
+            | python -m json.tool;
+
+    Edit registry:
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "method": "edit",
+                "oldname": "test",
+                "name": "new_test",
+                "enableTrustCert": false,
+                "setToDefault": false,
+                "url": "https://new_test.registry.com",
+                "username": "my_new_user",
+                "password": "my_new_pass"
+            }' http://${QIP}:${QPORT}/api/v1/registry
+
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d
+            '{
+                "method": "edit",
+                "oldname": "test",
+                "name": "new_test",
+                "enableTrustCert": false,
+                "setToDefault": false,
+                "url": "https://new_test.registry.com",
+                "username": "my_new_user",
+                "password": "my_new_pass"
+            }'
+            http://${QIP}:${QPORT}/api/v1/registry
+            | python -m json.tool;
+
+Remove a registry
+^^^^^^^^^^^^^^^^^
+
+.. http:delete:: /api/v1/registry
+
+    Delete default ``Docker Hub`` registry is forbidden.
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/registry/new_test
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt
+            http://${QIP}:${QPORT}/api/v1/registry/new_test
+            | python -m json.tool;

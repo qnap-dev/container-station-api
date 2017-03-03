@@ -1,0 +1,286 @@
+Application
+===================
+
+.. exec::
+    import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    try:
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+.. contents::
+
+.. _application:
+
+
+Template
+------------------
+
+.. http:get:: /api/v1/template/(string:application)/wizard
+
+    Read the wizard config file and return with specific language.
+
+    :param application: Application name
+    :query lang: Wizard language. **Default is eng**
+
+
+    QTS supports the following languages: 
+
+    * eng (English)
+    * chs (Simplified Chinese)
+    * cht (Traditional Chinese)
+    * cze (Czech)
+    * dan (Danish)
+    * ger (Deutsch)
+    * spa (Spanish)
+    * fre (French)
+    * ita (Italian)
+    * jpn (Japanese)
+    * kor (Korean)
+    * nor (Norwegian)
+    * pol (Polish)
+    * rus (Russian)
+    * fin (Finnish)
+    * swe (Swedish)
+    * dut (Dutch)
+    * tur (Turkish)
+    * tha (Thai)
+    * por (Portuguese)
+    * hun (Hungarian)
+    * grk (Greek)
+    * rom (Romanian)
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/wizard?lang=eng"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/template/gitlab/wizard?lang=eng" | python -m json.tool
+
+
+User's application
+------------------
+
+.. http:get:: /api/v1/apps
+
+    List all custom application information.
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/apps"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps" | python -m json.tool
+
+
+.. http:get:: /api/v1/apps/(string:name)
+
+    Get custom application information.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test" | python -m json.tool
+
+
+.. http:put:: /api/v1/apps/(string:name)/restart
+
+    Restart running application.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/restart"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/restart" | python -m json.tool
+
+
+.. http:put:: /api/v1/apps/(string:name)/kill
+
+    Force stop application containers.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/kill"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/kill" | python -m json.tool
+
+
+.. http:put:: /api/v1/apps/(string:name)/start
+
+    Start existing application.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/start"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/start" | python -m json.tool
+
+
+.. http:put:: /api/v1/apps/(string:name)/stop
+
+    Stop running application without removing them.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test/stop"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test/stop" | python -m json.tool
+
+
+.. http:delete:: /api/v1/apps/(string:name)
+
+    Remove stopped application containers.
+
+    :param name: Custom application name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/apps/test"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/apps/test" | python -m json.tool
+
+Reverse proxy
+------------------
+
+.. http:post:: /api/v1/proxypass
+
+    :reqjson string virtual_path: 
+    :reqjson int port: 
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{"virtual_path": "test", "port": 5566}' \
+            "http://${QIP}:${QPORT}/api/v1/proxypass"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d
+            '{"virtual_path": "test", "port": 5566}'
+            "http://${QIP}:${QPORT}/api/v1/proxypass" | python -m json.tool
+
+
+.. http:get:: /api/v1/proxypass/(string:virtual_path)
+
+    Check virtual path is used or not by other container applications.
+
+    :param virtual_path: 
+
+    :resjson boolean used: Used or not
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/proxypass/test"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/proxypass/test" | python -m json.tool
+
+
+.. http:delete:: /api/v1/proxypass/(string:virtual_path)
+
+    :param virtual_path: 
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/proxypass/test"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt 
+            "http://${QIP}:${QPORT}/api/v1/proxypass/test" | python -m json.tool
+
+

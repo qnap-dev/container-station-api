@@ -24,18 +24,18 @@
 
   
   
-    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   
 
   
 
   
     <link rel="top" title="Container Station  documentation" href="index.html"/>
-        <link rel="next" title="Log and Event" href="log.html"/>
-        <link rel="prev" title="Image" href="image.html"/> 
+        <link rel="next" title="Node and Cluster" href="node.html"/>
+        <link rel="prev" title="Volumes" href="volumes.html"/> 
 
   
-  <script src="static/js/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -84,15 +84,20 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Import and Export</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#export-deprecated">Export [Deprecated]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#import-deprecated">Import [Deprecated]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-operations">File operations</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup.html">Draft for Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qnet.html">Qnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="draft.html">Draft</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
@@ -218,8 +223,8 @@
     <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474391901</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474480220</span><span class="p">,</span>
     <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
@@ -241,11 +246,11 @@
 <p><strong>Example response of Docker</strong></p>
 <blockquote>
 <div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;6641dac2181c73541eb329872c49ca30e62ad18d1ab9f766fa896fc9c5e83277&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;540e04492903795d94d071c7d0a6a2039795c79b52845c540e74e3fbc871f032&quot;</span><span class="p">,</span>
     <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
     <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474391902</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474480221</span><span class="p">,</span>
     <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/d.tgz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
@@ -288,11 +293,11 @@
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;6641dac2181c73541eb329872c49ca30e62ad18d1ab9f766fa896fc9c5e83277&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;540e04492903795d94d071c7d0a6a2039795c79b52845c540e74e3fbc871f032&quot;</span><span class="p">,</span>
         <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
         <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474391902</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474480221</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/d.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
@@ -302,41 +307,13 @@
         <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474391901</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474480220</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474391901</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474480220</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1474386326</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474386299</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474386308</span><span class="p">,</span>
-        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;completed&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;0157ad9b41c561339ed8714e6db55d4810eba4f79314444c5105582456b97a0f&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;DockerTestAPI&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1474386308</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474386276</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/d.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474386295</span><span class="p">,</span>
-        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;completed&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
@@ -358,11 +335,11 @@
         <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;compress&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474391901</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474480220</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474391901</span><span class="p">,</span>
+        <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474480220</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
@@ -381,10 +358,7 @@
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="mi">2</span><span class="p">,</span>
-    <span class="mi">3</span>
-<span class="p">]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -540,9 +514,9 @@
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474391937</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474480255</span><span class="p">,</span>
     <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
@@ -587,43 +561,13 @@
         <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;utest_import&quot;</span><span class="p">,</span>
         <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest_import&quot;</span><span class="p">,</span>
         <span class="nt">&quot;create_params&quot;</span><span class="p">:</span> <span class="s2">&quot;{u&#39;resource&#39;: {u&#39;device&#39;: [[u&#39;allow&#39;, u&#39;video4linux_(81)&#39;, u&#39;rw&#39;]], u&#39;limit&#39;: {u&#39;memory&#39;: u&#39;768m&#39;, u&#39;cputime&#39;: 512, u&#39;cpuweight&#39;: 512}}, u&#39;name&#39;: u&#39;utest_import&#39;, u&#39;image&#39;: u&#39;utest&#39;, u&#39;volume&#39;: {u&#39;host&#39;: {u&#39;/share/tmp&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol2&#39;, u&#39;ro&#39;: False}, u&#39;/share/var&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol1&#39;, u&#39;ro&#39;: True}}}, u&#39;type&#39;: u&#39;lxc&#39;, u&#39;network&#39;: {u&#39;hostname&#39;: u&#39;CustomHostName&#39;, u&#39;port&#39;: [[12345, 1234, u&#39;udp&#39;]]}}&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474391937</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474391937</span><span class="p">,</span>
-        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;utest_import&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest_import&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;create_params&quot;</span><span class="p">:</span> <span class="s2">&quot;{u&#39;resource&#39;: {u&#39;device&#39;: [[u&#39;allow&#39;, u&#39;video4linux_(81)&#39;, u&#39;rw&#39;]], u&#39;limit&#39;: {u&#39;memory&#39;: u&#39;768m&#39;, u&#39;cputime&#39;: 512, u&#39;cpuweight&#39;: 512}}, u&#39;name&#39;: u&#39;utest_import&#39;, u&#39;image&#39;: u&#39;utest&#39;, u&#39;volume&#39;: {u&#39;host&#39;: {u&#39;/share/tmp&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol2&#39;, u&#39;ro&#39;: False}, u&#39;/share/var&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol1&#39;, u&#39;ro&#39;: True}}}, u&#39;type&#39;: u&#39;lxc&#39;, u&#39;network&#39;: {u&#39;hostname&#39;: u&#39;CustomHostName&#39;, u&#39;port&#39;: [[12345, 1234, u&#39;udp&#39;]]}}&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1474386412</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474386345</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474386387</span><span class="p">,</span>
-        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;completed&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;utest_import&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest_import&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;create_params&quot;</span><span class="p">:</span> <span class="s2">&quot;{u&#39;resource&#39;: {u&#39;device&#39;: [[u&#39;allow&#39;, u&#39;video4linux_(81)&#39;, u&#39;rw&#39;]], u&#39;limit&#39;: {u&#39;memory&#39;: u&#39;768m&#39;, u&#39;cputime&#39;: 512, u&#39;cpuweight&#39;: 512}}, u&#39;name&#39;: u&#39;utest_import&#39;, u&#39;image&#39;: u&#39;utest&#39;, u&#39;volume&#39;: {u&#39;host&#39;: {u&#39;/share/tmp&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol2&#39;, u&#39;ro&#39;: False}, u&#39;/share/var&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol1&#39;, u&#39;ro&#39;: True}}}, u&#39;type&#39;: u&#39;lxc&#39;, u&#39;network&#39;: {u&#39;hostname&#39;: u&#39;CustomHostName&#39;, u&#39;port&#39;: [[12345, 1234, u&#39;udp&#39;]]}}&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1474386387</span><span class="p">,</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474386311</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474480255</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474386311</span><span class="p">,</span>
-        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;completed&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474480255</span><span class="p">,</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">}</span>
@@ -646,12 +590,12 @@
         <span class="nt">&quot;cid&quot;</span><span class="p">:</span> <span class="s2">&quot;utest_import&quot;</span><span class="p">,</span>
         <span class="nt">&quot;cname&quot;</span><span class="p">:</span> <span class="s2">&quot;utest_import&quot;</span><span class="p">,</span>
         <span class="nt">&quot;create_params&quot;</span><span class="p">:</span> <span class="s2">&quot;{u&#39;resource&#39;: {u&#39;device&#39;: [[u&#39;allow&#39;, u&#39;video4linux_(81)&#39;, u&#39;rw&#39;]], u&#39;limit&#39;: {u&#39;memory&#39;: u&#39;768m&#39;, u&#39;cputime&#39;: 512, u&#39;cpuweight&#39;: 512}}, u&#39;name&#39;: u&#39;utest_import&#39;, u&#39;image&#39;: u&#39;utest&#39;, u&#39;volume&#39;: {u&#39;host&#39;: {u&#39;/share/tmp&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol2&#39;, u&#39;ro&#39;: False}, u&#39;/share/var&#39;: {u&#39;bind&#39;: u&#39;/mnt/vol1&#39;, u&#39;ro&#39;: True}}}, u&#39;type&#39;: u&#39;lxc&#39;, u&#39;network&#39;: {u&#39;hostname&#39;: u&#39;CustomHostName&#39;, u&#39;port&#39;: [[12345, 1234, u&#39;udp&#39;]]}}&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;utest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474391937</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1474480255</span><span class="p">,</span>
         <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Public/c.tgz&quot;</span><span class="p">,</span>
         <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474391937</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1474480255</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
@@ -682,10 +626,7 @@
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="mi">1</span><span class="p">,</span>
-    <span class="mi">2</span>
-<span class="p">]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -853,7 +794,7 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Public&quot;</span><span class="p">,</span>
         <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;326.1G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;11G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;9.0G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -1193,10 +1134,10 @@ $ curl -sq -XPOST -b cookies.txt <span class="se">\</span>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="log.html" class="btn btn-neutral float-right" title="Log and Event" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="node.html" class="btn btn-neutral float-right" title="Node and Cluster" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="image.html" class="btn btn-neutral" title="Image" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="volumes.html" class="btn btn-neutral" title="Volumes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1233,16 +1174,16 @@ $ curl -sq -XPOST -b cookies.txt <span class="se">\</span>
             HAS_SOURCE:  true
         };
     </script>
-      <script type="text/javascript" src="static/jquery.js"></script>
-      <script type="text/javascript" src="static/underscore.js"></script>
-      <script type="text/javascript" src="static/doctools.js"></script>
-      <script type="text/javascript" src="static/extension.js"></script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/extension.js"></script>
 
   
 
   
   
-    <script type="text/javascript" src="static/js/theme.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
   

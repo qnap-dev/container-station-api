@@ -1,0 +1,187 @@
+Networks
+==================
+
+.. exec::
+    import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    try:
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+.. contents::
+
+List all networks
+-----------------
+
+.. http:get:: /api/v1/networks
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/networks
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/networks | python -mjson.tool;
+
+Create a network
+----------------
+
+.. http:post:: /api/v1/networks
+
+    :reqjson string name: The new network’s name. this is a mandatory field **[required]**
+    :reqjson bool check_duplicate: Requests daemon to check for networks with same name
+    :reqjson string driver: Name of the network driver plugin to use. Defaults to bridge driver
+    :reqjson string internal: Restrict external access to the network
+    :reqjson object ipam: Optional custom IP scheme for the network
+    :reqjson bool enableIPv6: Enable IPv6 on the network **[currently not supported]**
+    :reqjson object options: Network specific options to be used by the drivers
+    :reqjson object labels: Labels to set on the network, specified as a map: {"key":"value" [,"key2":"value2"]} **[currently not supported]**
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "name": "doc_test_network",
+                "check_duplicate": true
+            }' \
+            http://${QIP}:${QPORT}/api/v1/networks
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d 
+            '{
+                "name": "doc_test_network",
+                "check_duplicate": true
+            }'
+            http://${QIP}:${QPORT}/api/v1/networks | python -mjson.tool;
+
+    **Example response with duplicated network**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d 
+            '{
+                "name": "doc_test_network",
+                "check_duplicate": true
+            }'
+            http://${QIP}:${QPORT}/api/v1/networks | python -mjson.tool;
+
+Inspect network
+-------------------
+
+.. http:get:: /api/v1/networks/(string:network_id)
+
+    Display detailed network information.
+
+    :param network_id: The network's id
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/networks/doc_test_network/inspect
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/networks/doc_test_network/inspect | python -mjson.tool;
+
+Connect container
+-----------------
+
+.. http:post:: /api/v1/networks/(string:network_id)/connect
+
+    Connect container to a network.
+
+    :reqjson string container: container-id/name to be connected to the network
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{"container": "dtest"}' \
+            http://${QIP}:${QPORT}/api/v1/networks/doc_test_network/connect
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"container": "dtest"}' 
+            http://${QIP}:${QPORT}/api/v1/networks/doc_test_network/connect | python -mjson.tool;
+
+    **Inspect result after container connected**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/networks/doc_test_network/inspect | python -mjson.tool;
+
+Disconnect container
+--------------------
+
+.. http:post:: /api/v1/networks/(string:network_id)/disconnect
+
+    Disconnect container from a network.
+
+    :reqjson string container: container-id/name to be disconnected from a network
+    :reqjson string force: Force the container to disconnect from a network **[currently not supported]**
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{"container": "dtest", "forct": false}' \
+            http://${QIP}:${QPORT}/api/v1/networks/doc_test_network/disconnect
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"container": "dtest", "forct": false}' 
+            http://${QIP}:${QPORT}/api/v1/networks/doc_test_network/disconnect | python -mjson.tool;
+
+Remove a network
+----------------
+
+.. http:delete:: /api/v1/networks/(string:network_id)
+
+    :param network_id: The network's id
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/networks/doc_test_network
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/networks/doc_test_network | python -mjson.tool;
+
+    **Example response of network not found**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/networks/doc_test_network | python -mjson.tool;

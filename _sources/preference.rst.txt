@@ -1,0 +1,219 @@
+Preference
+============================
+
+.. exec::
+    import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    try:
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+.. contents::
+
+.. http:post:: /api/v1/preference/(string:key)
+
+    :reqjson string value: set the value of key
+
+    :resjson int id: primary key ID
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XPOST -sq -b cookies.txt -d '{"value":"I am sphinx"}' \
+            http://${QIP}:${QPORT}/api/v1/preference/doc_test
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XPOST -sq -b cookies.txt -d '{"value":"I am sphinx"}' http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+
+.. http:get:: /api/v1/preference/
+
+    :resjson string key-name: value
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/ | python -mjson.tool;
+
+.. http:get:: /api/v1/preference/(string:key)
+
+    :resjson string key-name: value
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+
+.. http:put:: /api/v1/preference/(string:key)
+
+    :reqjson string value: set the value of key
+
+    :resjson boolean result: true when success
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XPUT -sq -b cookies.txt -d '{"value":"I am container station"}' \
+            http://${QIP}:${QPORT}/api/v1/preference/doc_test
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XPUT -sq -b cookies.txt -d '{"value":"I am container station"}' http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+
+.. http:delete:: /api/v1/preference/(string:key)
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XDELETE -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XDELETE -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+
+
+Workspace
+------------------------
+
+.. http:get:: /api/v1/wizard/workspace
+
+    :resjson string data_path: Current image and container workspace path
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace | python -mjson.tool;
+
+
+.. http:get:: /api/v1/wizard/workspace/status
+
+    :resjson string status: Workspace setting status
+    :resjson string data_path: Current image and container workspace path
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace/status
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace/status | python -mjson.tool;
+
+
+
+Image list repository
+------------------------
+
+.. http:get:: /api/v1/preference/repo
+
+    :resjson string user: Get GitHub username
+    :resjson string project: Get GitHub project name
+    :resjson string branch: Get GitHub project branch name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/repo
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/repo | python -mjson.tool;
+
+.. http:put:: /api/v1/preference/repo
+
+    :reqjson string user: Set GitHub username
+    :reqjson string project: Set GitHub project name
+    :reqjson string branch: Set GitHub project branch name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XPUT -sq -b cookies.txt -d \
+            '{"user":"qnap-dev","project":"container-apps","branch":"master"}' \
+            http://${QIP}:${QPORT}/api/v1/preference/repo
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XPUT -sq -b cookies.txt -d 
+          '{"user":"qnap-dev","project":"container-apps","branch":"master"}'
+          http://${QIP}:${QPORT}/api/v1/preference/repo | python -mjson.tool;
+
+Network settings
+------------------------
+
+.. http:get:: /api/v1/preference/network
+
+    :resjson string LXC_DHCP_MAX: DHCP Max
+    :resjson string LXC_NETMASK: Netmask
+    :resjson string LXC_ADDR: IP address
+    :resjson string LXC_DHCP_RANGE: DHCP range
+    :resjson string LXC_NETWORK: Network
+    :resjson string LXC_BRIDGE: Bridge name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/network
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/network | python -m json.tool
+
+
+.. http:put:: /api/v1/preference/network
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XPUT -sq -b cookies.txt -d '{"LXC_NETWORK":"10.0.4.0/24"}' \
+            http://${QIP}:${QPORT}/api/v1/preference/network

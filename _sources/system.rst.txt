@@ -1,0 +1,349 @@
+System
+=============
+
+.. contents::
+
+Authentication
+------------------
+
+.. http:post:: /api/v1/login
+
+    :resjson boolean isAdmin: is administrator group or not
+    :resjson string username: request username
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -c cookies.txt -d "username=admin&password=admin" \
+              http://${QIP}:${QPORT}/api/v1/login
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login  | python -mjson.tool
+
+.. http:get:: /api/v1/login_refresh
+
+    :resjson boolean isAdmin: is administrator group or not
+    :resjson string username: request username
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/login_refresh
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/login_refresh | python -mjson.tool
+
+.. http:put:: /api/v1/logout
+
+    :resjson string username: request username
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/logout
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/logout | python -mjson.tool
+
+System Information
+------------------
+
+.. exec::
+    import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    try:
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+.. http:get:: /api/v1/system
+
+    :resjson int cpuCore: CPU core count
+    :resjson int cpuThread: Total CPU thread count
+    :resjson string hostname: Device hostname
+    :resjson string processor: Processor information
+    :resjson string machine: Machine type, e.g. 'x86_64', 'armv7l'. An empty string is returned if the value cannot be determined.
+    :resjson object version: Version of Docker, LXC, and Container Station 
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system | python -mjson.tool
+
+.. http:get:: /api/v1/system/resource
+
+    :resjson string cpu_usage: CPU usage in percentage
+    :resjson object memory_usage: Memory usage in MB
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/resource
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/resource | python -mjson.tool
+
+.. http:get:: /api/v1/system/report
+
+    System diagnosis report 
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/report
+
+Network
+------------------
+
+.. http:get:: /api/v1/system/port/(string:protocol)/(string:port)
+
+    Check port in used or not.
+
+    :param protocol: ``tcp``, ``udp`` 
+    :param port: Port number.
+    :resjson boolean used: The port has been used or not.
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/port/tcp/5000
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/port/udp/33806
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/port/tcp/5000 | python -mjson.tool;
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/port/udp/33806 | python -mjson.tool;
+
+
+.. http:get:: /api/v1/system/bridge
+
+    Get brief bridge information.
+
+    :resjson string interface: Network interface 
+    :resjson string ip: IP address
+    :resjson string vswitchName: Virtual switch name
+    :resjson boolean disabled: If it is ``true``, do not use this interface
+    :resjson boolean join: If it is ``true``, means it will join this bridge which was created by others
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/bridge
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/system/bridge | python -mjson.tool;
+
+
+Certificate file 
+------------------
+
+.. http:get:: /api/v1/tls
+
+    Get certificate information
+
+    :resjson string startdate: After date
+    :resjson string enddate: Before date
+    :resjson string outdatedNotify: Notify to user
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/tls
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/tls | python -mjson.tool;
+
+.. http:post:: /api/v1/tls
+
+    Set certificate outdated notify
+
+    :reqjson boolean outdatedNotify: set to false if not notify next time **[required]**
+
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d '{"outdatedNotify": false}' \
+            http://${QIP}:${QPORT}/api/v1/tls
+
+    **Example response**
+
+    .. runcode:: json
+
+       curl -sq -XPOST -b cookies.txt -d '{"outdatedNotify": false}' \
+         http://${QIP}:${QPORT}/api/v1/tls | python -mjson.tool;
+
+
+
+.. http:get:: /api/v1/tls/export
+
+    Export certificate files to ZIP format.
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/tls/export
+
+
+.. http:get:: /api/v1/tls/export/registry
+
+    Export certificate file for registry.
+    
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/tls/export/registry
+
+
+Shared folders
+---------------
+
+.. http:get:: /api/v1/sharefolder/
+
+    List shared folders. 
+
+    :query path: path of a folder
+    :query size: Get the total size and used size of root directory. 
+
+    :resjson string name: directory name or file name
+    :resjson boolean isDir: is directory or not
+    :resjson string totalSize: Total size of root directory
+    :resjson string usedSize: Used size of root directory
+    :resjson boolean write: write permission
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/
+        $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true"
+        $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=test"
+        $ curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=Public"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/ | python -m json.tool; 
+        curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?size=true" | python -m json.tool; 
+        curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=test" | python -m json.tool;
+        curl -sq -b cookies.txt "http://${QIP}:${QPORT}/api/v1/sharefolder/?path=Public" | python -m json.tool;
+
+.. .. http:post:: /api/v1/sharefolder/(string:dirname)/(string:basename)/
+
+..    Create the directory or file, if they do not already exist.
+
+..    :param dirname: directory name
+..    :param basename: the base name of dirname path
+
+..    :reqjson string name: name of directory or file **[required]**
+..    :reqjson boolean isDir: is directory or not **[required]**
+..    :reqjson string content: context of file **[required]**
+
+..    **Example request**
+
+..    .. sourcecode:: bash
+
+..        $ curl -sq -XPOST -b cookies.txt -d '{"name":"new_folder", "isDir":true}' \
+              http://${QIP}:${QPORT}/api/v1/sharefolder/Public/
+..        $ curl -sq -XPOST -b cookies.txt \
+               -d '{"name":"new_file.json", "isDir":false, "context": ""}' \
+              http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/
+..        $ curl -sq -XPOST -b cookies.txt \
+               -d '{"name":"new_file.txt", "isDir":false, "context":"I am context."}' \
+              http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/
+
+..    **Example response**
+
+..    .. runcode:: json
+
+..        curl -sq -XPOST -b cookies.txt -d '{"name":"new_folder", "isDir":true}' \
+            http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/ | python -m json.tool;
+..        curl -sq -XPOST -b cookies.txt -d '{"name":"new_file.json", "isDir":false, "context": ""}' \
+            http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/ | python -m json.tool;
+..        curl -sq -XPOST -b cookies.txt -d '{"name":"new_file.txt", "isDir":false, "context":"I am context."}' \
+          http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/ | python -m json.tool;
+
+
+.. .. http:delete:: /api/v1/sharefolder/(string:dirname)/(string:basename)
+
+..  Delete selected file
+
+..  :param dirname: directory name
+..  :param basename: the base name of dirname path
+
+..  **Example request**
+
+..  .. sourcecode:: bash
+
+..      $ curl -sq -XDELETE -b cookies.txt \
+            http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/new_file.json
+
+..  **Example response**
+
+..  .. runcode:: json
+
+..      #curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/new_file.json | python -m json.tool;
+
+.. .. http:delete:: /api/v1/sharefolder/(string:dirname)/(string:basename)/
+
+..  Delete directories and their contents
+
+..  :param dirname: directory name
+..  :param basename: the base name of dirname path
+
+..  **Example request**
+
+..  .. sourcecode:: bash
+
+..      $ curl -sq -XDELETE -b cookies.txt \
+            http://${QIP}:${QPORT}/api/v1/sharefolder/Public/new_folder/
+
+..  **Example response**
+
+..  .. runcode:: json
+
+..      curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/sharefolder/${QTEST_FOLDER}/new_folder/ | python -m json.tool;
+

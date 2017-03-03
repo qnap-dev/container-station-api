@@ -24,18 +24,21 @@
 
   
   
-    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   
 
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Container Station  documentation" href="index.html"/>
         <link rel="next" title="Resource" href="resource.html"/>
         <link rel="prev" title="Background tasks" href="background.html"/> 
 
   
-  <script src="static/js/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -89,10 +92,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
-<li class="toctree-l1"><a class="reference internal" href="import.html">Import and Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup.html">Draft for Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qnet.html">Qnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dqpkg.html">Dockerized QPKG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="draft.html">Draft</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
@@ -128,7 +136,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/application.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/application.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -155,130 +163,6 @@
 <div class="section" id="template">
 <span id="id1"></span><h2><a class="toc-backref" href="#id3">Template</a><a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
-<dt id="get--api-v1-template-(string-application)-description">
-<code class="descname">GET </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/description</code><a class="headerlink" href="#get--api-v1-template-(string-application)-description" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get application full description with markdown format.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>application</strong> &#8211; Application name</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/description&quot;</span>
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>## Prerequisites 
-Your docker host needs to have 1GB or more of available RAM to run GitLab. Please refer to the GitLab &lt;a href=&quot;https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/requirements.md#hardware-requirements&quot; target=&quot;_blank&quot;&gt;hardware requirements&lt;/a&gt; documentation for additional information.
-
-## Description 
-__NOTE__: Please allow a few minutes for the GitLab service to start.
-
-Login using the default username and password:
-
-Username: **root**
-
-Password: **5iveL!fe**
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-v1-template-(string-application)-definition">
-<code class="descname">GET </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/definition</code><a class="headerlink" href="#get--api-v1-template-(string-application)-definition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get application full YAML definition.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>application</strong> &#8211; Application name</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/definition&quot;</span>
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;gitlab&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;DEBUG=false&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;GITLAB_PORT=10080&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;GITLAB_SSH_PORT=10022&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;GITLAB_SECRETS_DB_KEY_BASE=qcs-gitlab-app&quot;</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/gitlab:8.9.6-1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;redis:redisio&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;postgresql:postgresql&quot;</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;10080:80&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;10022:22&quot;</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;restart&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;DB_USER=gitlab&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;DB_PASS=password&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;DB_NAME=gitlabhq_production&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;DB_EXTENSION=pg_trgm&quot;</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-23&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;restart&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;redis&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;--loglevel warning&quot;</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redis:latest&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;restart&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="post">
-<dt id="post--api-v1-template-(string-application)-pull">
-<code class="descname">POST </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/pull</code><a class="headerlink" href="#post--api-v1-template-(string-application)-pull" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pulls images for containers.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>application</strong> &#8211; Application name</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/redmine/pull&quot;</span>
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="get">
 <dt id="get--api-v1-template-(string-application)-wizard">
 <code class="descname">GET </code><code class="descname">/api/v1/template/</code><span class="sig-paren">(</span><em class="property">string: </em><em>application</em><span class="sig-paren">)</span><code class="descname">/wizard</code><a class="headerlink" href="#get--api-v1-template-(string-application)-wizard" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read the wizard config file and return with specific language.</p>
@@ -294,7 +178,6 @@ Password: **5iveL!fe**
 <tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
 <li><strong>lang</strong> &#8211; Wizard language. <strong>Default is eng</strong></li>
-<li><strong>stage</strong> &#8211; Stage of wizard file: <code class="docutils literal"><span class="pre">install</span></code></li>
 </ul>
 </td>
 </tr>
@@ -328,7 +211,7 @@ Password: **5iveL!fe**
 </ul>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/wizard?lang=eng&amp;stage=install&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/template/gitlab/wizard?lang=eng&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -373,48 +256,6 @@ Password: **5iveL!fe**
 </div>
 <div class="section" id="user-s-application">
 <h2><a class="toc-backref" href="#id4">User&#8217;s application</a><a class="headerlink" href="#user-s-application" title="Permalink to this headline">¶</a></h2>
-<dl class="post">
-<dt id="post--api-v1-apps">
-<code class="descname">POST </code><code class="descname">/api/v1/apps</code><a class="headerlink" href="#post--api-v1-apps" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create and start containers.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li><strong>template</strong> (<em>string</em>) &#8211; Application name</li>
-<li><strong>name</strong> (<em>string</em>) &#8211; Custom application name</li>
-<li><strong>autostart</strong> (<em>boolean</em>) &#8211; Start application when container-station started</li>
-<li><strong>virtual_path</strong> (<em>string</em>) &#8211; </li>
-<li><strong>port</strong> (<em>int</em>) &#8211; </li>
-<li><strong>binding</strong> (<em>object</em>) &#8211; Application binding data</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
-    <span class="s1">&#39;{</span>
-<span class="s1">        &quot;template&quot;: &quot;redmine&quot;,</span>
-<span class="s1">        &quot;name&quot;: &quot;test&quot;,</span>
-<span class="s1">        &quot;autostart&quot;: true,</span>
-<span class="s1">        &quot;virtual_path&quot;: &quot;redmine&quot;,</span>
-<span class="s1">        &quot;port&quot;: 5555,</span>
-<span class="s1">        &quot;binding&quot;: {</span>
-<span class="s1">            &quot;ssh_port&quot;: 22,</span>
-<span class="s1">            &quot;http_port&quot;: 80</span>
-<span class="s1">        }</span>
-<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/apps
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
-</pre></div>
-</div>
-</dd></dl>
-
 <dl class="get">
 <dt id="get--api-v1-apps">
 <code class="descname">GET </code><code class="descname">/api/v1/apps</code><a class="headerlink" href="#get--api-v1-apps" title="Permalink to this definition">¶</a></dt>
@@ -424,48 +265,7 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;postgresql&quot;</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-v1-apps-(string-name)-definition">
-<code class="descname">GET </code><code class="descname">/api/v1/apps/</code><span class="sig-paren">(</span><em class="property">string: </em><em>name</em><span class="sig-paren">)</span><code class="descname">/definition</code><a class="headerlink" href="#get--api-v1-apps-(string-name)-definition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get custom application definition.</p>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/apps/test/definition&quot;</span>
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;postgresql&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;DB_NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine_production&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;DB_PASS&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;DB_USER&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/postgresql:9.4-23&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;redmine&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;REDMINE_PORT&quot;</span><span class="p">:</span> <span class="s2">&quot;10083&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;sameersbn/redmine:3.3.0-1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;postgresql:postgresql&quot;</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;10083:80&quot;</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -492,16 +292,10 @@ Password: **5iveL!fe**
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;autostart&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;binding&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;http_port&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
-        <span class="nt">&quot;ssh_port&quot;</span><span class="p">:</span> <span class="mi">22</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5555</span><span class="p">,</span>
-    <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.3.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;virtual_path&quot;</span><span class="p">:</span> <span class="s2">&quot;redmine&quot;</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -528,7 +322,12 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -554,7 +353,12 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -580,7 +384,12 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -606,7 +415,12 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -632,7 +446,12 @@ Password: **5iveL!fe**
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -777,16 +596,16 @@ Password: **5iveL!fe**
             HAS_SOURCE:  true
         };
     </script>
-      <script type="text/javascript" src="static/jquery.js"></script>
-      <script type="text/javascript" src="static/underscore.js"></script>
-      <script type="text/javascript" src="static/doctools.js"></script>
-      <script type="text/javascript" src="static/extension.js"></script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/extension.js"></script>
 
   
 
   
   
-    <script type="text/javascript" src="static/js/theme.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
   
