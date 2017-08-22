@@ -24,7 +24,7 @@
 
   
   
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
   
 
   
@@ -37,7 +37,7 @@
         <link rel="next" title="System" href="system.html"/> 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  <script src="static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -86,15 +86,9 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
-<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backup.html">Draft for Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qnet.html">Qnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dqpkg.html">Dockerized QPKG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="draft.html">Draft</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
@@ -143,7 +137,7 @@
   <div class="section" id="qnap-container-station">
 <h1>QNAP Container Station<a class="headerlink" href="#qnap-container-station" title="Permalink to this headline">¶</a></h1>
 <p><em>QNAP Container Station</em> is a application on QNAP NAS providing container technology (operating system-level virtualization <a class="footnote-reference" href="#id2" id="id1">[1]</a>). It&#8217;s mainly included a web UI, a back-end RESTful API server and essential utilities, such as commands lxc-* and docker.</p>
-<p>Version: v1.7.2224
+<p>Version: v1.7.2415
 </p>
 <div class="section" id="content">
 <h2>Content<a class="headerlink" href="#content" title="Permalink to this headline">¶</a></h2>
@@ -198,37 +192,6 @@
 <li class="toctree-l2"><a class="reference internal" href="image.html#registry">Registry</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="networks.html#list-all-networks">List all networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="networks.html#create-a-network">Create a network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="networks.html#inspect-network">Inspect network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="networks.html#connect-container">Connect container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="networks.html#disconnect-container">Disconnect container</a></li>
-<li class="toctree-l2"><a class="reference internal" href="networks.html#remove-a-network">Remove a network</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="volumes.html#list-volumes">List volumes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="volumes.html#create-a-volume">Create a volume</a></li>
-<li class="toctree-l2"><a class="reference internal" href="volumes.html#inspect-a-volume">Inspect a volume</a></li>
-<li class="toctree-l2"><a class="reference internal" href="volumes.html#remove-a-volume">Remove a volume</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="node.html#node-management">Node Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#cluster-app-management">Cluster App Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#storage-management">Storage Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#network-management">Network Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="node.html#image-management">Image Management</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="backup.html">Draft for Backup and Restore</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="backup.html#targets">Targets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="backup.html#backup">Backup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="backup.html#restore">Restore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="backup.html#progress-changed">Progress Changed</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="log.html#log">Log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="log.html#event">Event</a></li>
@@ -246,14 +209,6 @@
 <li class="toctree-l2"><a class="reference internal" href="qnet.html#docker-compose">Docker Compose</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dqpkg.html">Dockerized QPKG</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dqpkg.html#what-is-dockerized-qpkg-dqpkg">What is Dockerized QPKG (DQPKG)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dqpkg.html#quick-start">Quick Start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dqpkg.html#build-your-own-dockerized-qpkg">Build Your Own Dockerized QPKG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dqpkg.html#example-gitlab">Example: GitLab</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="draft.html">Draft</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 </div>
@@ -311,16 +266,16 @@
             HAS_SOURCE:  true
         };
     </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/extension.js"></script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/extension.js"></script>
 
   
 
   
   
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+    <script type="text/javascript" src="static/js/theme.js"></script>
   
 
   

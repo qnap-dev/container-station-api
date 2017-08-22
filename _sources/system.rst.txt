@@ -214,6 +214,45 @@ Certificate file
          http://${QIP}:${QPORT}/api/v1/tls | python -mjson.tool;
 
 
+.. http:get:: /api/v1/tls/domain_names
+
+    Get extra DNS hostname or IP Address for server certificate
+
+    :resjson string domain_names: Extra hostnames
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/tls/domain_names
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/tls/domain_names | python -mjson.tool;
+
+
+.. http:put:: /api/v1/tls/domain_names
+
+    Set extra DNS hostname or IP Address for server certificate
+
+    :reqjson string domain_names: Extra hostnames **[required]**
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt -d '{"domain_names": "user.myqnapcloud.com"}' \
+            http://${QIP}:${QPORT}/api/v1/tls/domain_names
+
+    **Example response**
+
+    .. runcode:: json
+
+       curl -sq -XPUT -b cookies.txt -d '{"domain_names": "user.myqnapcloud.com"}' \
+         http://${QIP}:${QPORT}/api/v1/tls/domain_names | python -mjson.tool;
+
 
 .. http:get:: /api/v1/tls/export
 

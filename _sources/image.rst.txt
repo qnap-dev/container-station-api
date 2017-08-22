@@ -281,10 +281,8 @@ Ping a registry
 
 .. http:get:: /api/v1/registry/ping
 
-    :reqjson url: Registry URL **[required]**
-    :reqjson tls: Enable self-cert or not **[required]**
-    :reqjson string username: Registry username
-    :reqjson string password: Registry password
+    :param url: Registry URL
+    :param tls: Enable self-cert or not
 
     :resjson string version: Registry version
     
@@ -292,33 +290,25 @@ Ping a registry
 
     .. sourcecode:: bash
 
-        $ curl -sq -XPOST -b cookies.txt -d \
-            '{
-                "url": "https://registry.hub.docker.com",
-                "tls": true
-            }' http://${QIP}:${QPORT}/api/v1/registry/ping
-
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/api/v1/registry/ping?url=https://registry.hub.docker.com&tls=true"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d
-            '{
-                "url": "https://registry.hub.docker.com",
-                "tls": true
-            }' http://${QIP}:${QPORT}/api/v1/registry/ping | python -m json.tool;
+        curl -sq -XGET -b cookies.txt
+            "http://${QIP}:${QPORT}/api/v1/registry/ping?url=https://registry.hub.docker.com&tls=true"
+            | python -m json.tool;
 
 
     **Example response when error occurred**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d
-            '{
-                "url": "https://www.example.com",
-                "tls": true
-            }' http://${QIP}:${QPORT}/api/v1/registry/ping | python -m json.tool;
+        curl -sq -XGET -b cookies.txt
+            "http://${QIP}:${QPORT}/api/v1/registry/ping?url=https://test.hub.docker.com&tls=true"
+            | python -m json.tool;
 
 Add/Edit a registry
 ^^^^^^^^^^^^^^^^^^^

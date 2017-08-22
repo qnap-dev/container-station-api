@@ -24,7 +24,7 @@
 
   
   
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
   
 
   
@@ -34,11 +34,11 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Container Station  documentation" href="index.html"/>
-        <link rel="next" title="Networks" href="networks.html"/>
+        <link rel="next" title="Log and Event" href="log.html"/>
         <link rel="prev" title="Resource" href="resource.html"/> 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  <script src="static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -101,15 +101,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.html">Node and Cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backup.html">Draft for Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qnet.html">Qnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dqpkg.html">Dockerized QPKG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="draft.html">Draft</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
@@ -209,7 +203,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="nt">&quot;filterText&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.7.2224&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.7.2415&quot;</span><span class="p">,</span>
     <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
@@ -340,6 +334,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/images/QPKG/container/fedora_icon.png&quot;</span><span class="p">,</span>
             <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;kernelVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;4.2.8&quot;</span><span class="p">,</span>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/fedora-twentyfour_24_amd64.tar.gz&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;fedora-twentyfour&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
@@ -714,7 +709,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="nt">&quot;filterText&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.7.2224&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.7.2415&quot;</span><span class="p">,</span>
     <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
@@ -823,7 +818,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
     <span class="nt">&quot;filterText&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.7.2224&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.7.2415&quot;</span><span class="p">,</span>
     <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu with openssh-server and NoVNC&quot;</span><span class="p">,</span>
@@ -835,7 +830,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu-desktop-lxde-vnc&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu-desktop-lxde-vnc&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">127</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -855,6 +850,32 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/online-document.amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/online-document.amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ntopng&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ntopng&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -862,45 +883,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu-lxqt-vnc&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;apt-repo-server is a debian repository server.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/apt-repo-server&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/apt-repo-server&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/lightop-ubuntu-trusty-ttyjs&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/lightop-ubuntu-trusty-ttyjs&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/lightop&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/lightop&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -917,16 +899,42 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;apt-repo-server is a debian repository server.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/apt-repo-server&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/apt-repo-server&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ntopng&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ntopng&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/lightop&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/lightop&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/lightop-ubuntu-trusty-ttyjs&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/lightop-ubuntu-trusty-ttyjs&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -959,13 +967,26 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-mongo-express_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-mongo-express_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowus images with additional software&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/glusterfs-keepalived&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/glusterfs-keepalived&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/hardock14/dorowu-docker-ubuntu-vnc-desktop&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;hardock14/dorowu-docker-ubuntu-vnc-desktop&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -975,60 +996,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/online-document.amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/online-document.amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/nodejs_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/nodejs_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ruby_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ruby_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu_armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu_armhf&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-ponte_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-ponte_amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1053,8 +1022,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/mattermostdocker_db&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/mattermostdocker_db&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-node-red_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-node-red_amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1066,8 +1035,34 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu-lxde-novnc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu-lxde-novnc&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu_armhf&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu_armhf&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/nodejs_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/nodejs_amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1092,8 +1087,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/dashing&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/dashing&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu-lxde-novnc&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu-lxde-novnc&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1105,8 +1100,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-mongo-express_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-mongo-express_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-redis-commander_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-redis-commander_amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1118,8 +1113,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-ponte_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-ponte_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-redis-commander_armhf&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-redis-commander_armhf&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1131,8 +1126,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-rabbitmq_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-rabbitmq_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu-desktop-pinta.amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu-desktop-pinta.amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1144,8 +1139,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;is_trusted&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-mosquitto_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-mosquitto_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qiot-kafka-manager_amd64&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qiot-kafka-manager_amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1201,8 +1196,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="nt">&quot;Env&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;Hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;bbdeb8fab105&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:518b94cfb647aca74cc36f08ddacd5cb61abee3c8cf5cd66b1fadff40c7240eb&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;8089fe031125&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:490eac3b7ec54965ae09d3075a391e7b36b11f9b59121a199065facd774a072e&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="p">{},</span>
         <span class="nt">&quot;OnBuild&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;OpenStdin&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1212,7 +1207,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="nt">&quot;Volumes&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;WorkingDir&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Container&quot;</span><span class="p">:</span> <span class="s2">&quot;35f7d1cf6d58c50d01d1bdbf55caf173400055373defea22338e43637c4cf04f&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Container&quot;</span><span class="p">:</span> <span class="s2">&quot;098997d78aa83d76ddf6c55c37892844c0d6517a72d3a335c841347c968f734a&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ContainerConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;ArgsEscaped&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;AttachStderr&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1229,8 +1224,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="nt">&quot;Env&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;Hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;bbdeb8fab105&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:518b94cfb647aca74cc36f08ddacd5cb61abee3c8cf5cd66b1fadff40c7240eb&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;8089fe031125&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:490eac3b7ec54965ae09d3075a391e7b36b11f9b59121a199065facd774a072e&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="p">{},</span>
         <span class="nt">&quot;OnBuild&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;OpenStdin&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1240,15 +1235,15 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="nt">&quot;Volumes&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;WorkingDir&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-27T19:42:10.522384312Z&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;DockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.12.6&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-08-10T20:13:42.07991257Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;DockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;17.03.2-ce&quot;</span><span class="p">,</span>
     <span class="nt">&quot;GraphDriver&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;RootDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV4_DATA/Public/container-station-data/lib/docker/overlay/66cdab3437d7b82cbd7d5e6e58b07b6f3f2e0e65610a2453e0c0a46e8d5e3dfb/root&quot;</span>
+            <span class="nt">&quot;RootDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/overlay/5811fa2812a3ae53ac93b44c8eaddb3f0cadb395b6f3ac8626199db1cd964a6e/root&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;overlay&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:0ef2e08ed3fabfc44002ccb846c4f2416a2135affc3ce39538834059606f32dd&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:ccc7a11d65b1b5874b65adb4b2387034582d08d65ac1817ebc5fb9be1baa5f88&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Os&quot;</span><span class="p">:</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Parent&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Remote&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1258,16 +1253,16 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
     <span class="p">],</span>
     <span class="nt">&quot;RootFS&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;Layers&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;sha256:745f5be9952c1a22dd4225ed6c8d7b760fe0d3583efd52f91992463b53f7aea3&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;sha256:85782553e37a2998422ecb14fb34ac3fda94dbc90c6630d721a3bcc770939946&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;sha256:29660d0e5bb2bae1d415f5638fa6011ab4063d1c0895e889d51ad365186d1995&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;sha256:440e02c3dcde277c7426c07c6e240a40b1e53da4a8a0cc22a8cecd4e6f419a98&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;sha256:56827159aa8b327a1b15c2102040ee87f3ca0bf8285aab00a1286e8af79a4beb&quot;</span>
+            <span class="s2">&quot;sha256:8aa4fcad5eeb286fe9696898d988dc85503c6392d1a2bd9023911fb0d6d27081&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sha256:25e0901a71b8c6a9df21590604a70517eb7b074071ef6af1033d50037baf3dd5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sha256:625c7a2a783b4736cf488efd1fafc41736b9998ec087e20da946c30522ec9ad7&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sha256:9c42c2077cdea659ac116f148b63ded203d0e83f017accb6d7987377d1363673&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sha256:a09947e71dc0d591901870f2fd3c18565339b960f6bb32793d14604a85d67393&quot;</span>
         <span class="p">],</span>
         <span class="nt">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;layers&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Size&quot;</span><span class="p">:</span> <span class="mi">129972069</span><span class="p">,</span>
-    <span class="nt">&quot;VirtualSize&quot;</span><span class="p">:</span> <span class="mi">129972069</span>
+    <span class="nt">&quot;Size&quot;</span><span class="p">:</span> <span class="mi">120093185</span><span class="p">,</span>
+    <span class="nt">&quot;VirtualSize&quot;</span><span class="p">:</span> <span class="mi">120093185</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1348,7 +1343,9 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
     <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="p">[],</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;nginx&quot;</span><span class="p">,</span>
     <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;1-alpine-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.10-alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.10.0-alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.10.0&quot;</span><span class="p">,</span>
@@ -1366,6 +1363,10 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="s2">&quot;1.11.1&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.11.10-alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.11.10&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.11.12-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.11.12&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.11.13-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.11.13&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.11.3-alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.11.3&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.11.4-alpine&quot;</span><span class="p">,</span>
@@ -1381,6 +1382,38 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="s2">&quot;1.11.9-alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.11.9&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.11&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12.0-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12.0-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12.0-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12.1-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12.1-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12.1-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.12&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.0-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.0-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.0-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.1-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.1-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.1-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.2-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.2-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.2-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.3-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.3-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.3-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13.3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.13&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.7.1&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.7.10&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.7.11&quot;</span><span class="p">,</span>
@@ -1415,11 +1448,17 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="s2">&quot;1.9.9&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.9&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alpine-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mainline-alpine-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;mainline-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mainline-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;mainline&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stable-alpine-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;stable-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stable-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;stable&quot;</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -1446,7 +1485,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
     <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1488575802</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1503418136</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
@@ -1591,12 +1630,9 @@ This request will take few seconds to finish.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
-<li><strong>url</strong> &#8211; Registry URL <strong>[required]</strong></li>
-<li><strong>tls</strong> &#8211; Enable self-cert or not <strong>[required]</strong></li>
-<li><strong>username</strong> (<em>string</em>) &#8211; Registry username</li>
-<li><strong>password</strong> (<em>string</em>) &#8211; Registry password</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>url</strong> &#8211; Registry URL</li>
+<li><strong>tls</strong> &#8211; Enable self-cert or not</li>
 </ul>
 </td>
 </tr>
@@ -1609,21 +1645,23 @@ This request will take few seconds to finish.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
-    <span class="s1">&#39;{</span>
-<span class="s1">        &quot;url&quot;: &quot;https://registry.hub.docker.com&quot;,</span>
-<span class="s1">        &quot;tls&quot;: true</span>
-<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/registry/ping
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/api/v1/registry/ping?url=https://registry.hub.docker.com&amp;tls=true&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span>[DOC_ERROR] Failed to run command
-curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;url&quot;: &quot;https://registry.hub.docker.com&quot;,         &quot;tls&quot;: true     }&#39; http://${QIP}:${QPORT}/api/v1/registry/ping | python -m json.tool;
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;v1&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Example response when error occurred</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span>[DOC_ERROR] Failed to run command
-curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;url&quot;: &quot;https://www.example.com&quot;,         &quot;tls&quot;: true     }&#39; http://${QIP}:${QPORT}/api/v1/registry/ping | python -m json.tool;
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Cannot get registry version&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1788,7 +1826,7 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;url&quot;: &quot;http
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="networks.html" class="btn btn-neutral float-right" title="Networks" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="log.html" class="btn btn-neutral float-right" title="Log and Event" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="resource.html" class="btn btn-neutral" title="Resource" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -1828,16 +1866,16 @@ curl -sq -XPOST -b cookies.txt -d     &#39;{         &quot;url&quot;: &quot;http
             HAS_SOURCE:  true
         };
     </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/extension.js"></script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+      <script type="text/javascript" src="static/extension.js"></script>
 
   
 
   
   
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+    <script type="text/javascript" src="static/js/theme.js"></script>
   
 
   

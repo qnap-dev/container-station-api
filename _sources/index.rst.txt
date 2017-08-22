@@ -45,7 +45,6 @@ Content
     log
     preference
     qnet
-    dqpkg
     draft
     changelog
 
