@@ -4,7 +4,7 @@ Resource
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -27,15 +27,15 @@ Resource
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/all
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/all
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "name": "utest", "image": "ubuntu-trusty", "tag": "latest"}' http://${QIP}:${QPORT}/api/v1/container  -o /dev/null; 
+        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "name": "utest", "image": "ubuntu-trusty", "tag": "latest"}' http://${QIP}:${QPORT}/containerstation/api/v1/container  -o /dev/null; 
         curl -sq -XGET -b cookies.txt 
-           http://${QIP}:${QPORT}/api/v1/container/lxc/utest/all
+           http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/all
            | python -mjson.tool
 
 Auto start
@@ -54,19 +54,19 @@ Auto start
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/autostart/on
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/autostart/on
         $ curl -sq -XPUT -b cookies.txt \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/autostart/off
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/autostart/off
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/autostart/on
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/autostart/on
             | python -mjson.tool;
         curl -sq -XPUT -b cookies.txt
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/autostart/off
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/autostart/off
             | python -mjson.tool;
 
 Port Forwarding
@@ -84,14 +84,14 @@ Port Forwarding
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '[12345, 12345, "tcp"]' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/port
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/port
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '[12345, 12345, "tcp"]' 
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/port
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/port
             | python -mjson.tool;
 
 .. http:delete:: /api/v1/container/(string:container_type)/(string:container_id)/network/port
@@ -106,14 +106,14 @@ Port Forwarding
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt -d '[12345, 12345, "tcp"]' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/port
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/port
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt -d '[12345, 12345, "tcp"]' 
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/port
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/port
             | python -mjson.tool;
 
 
@@ -130,7 +130,7 @@ Port Forwarding
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '[[111, 222, "udp"], [333, 444, "tcp"]]' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/ports
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/ports
 
     **Example response**
 
@@ -138,7 +138,7 @@ Port Forwarding
 
         curl -sq -XPOST -b cookies.txt -d
             '[[111, 222, "udp"], [333, 444, "tcp"]]' 
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/ports
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/ports
             | python -mjson.tool;
 
     **Example request: remove all settings**
@@ -146,14 +146,14 @@ Port Forwarding
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '[]' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/ports
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/ports
 
     **Example response: remove all settings**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '[]' 
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/network/ports
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/ports
             | python -mjson.tool;
 
 
@@ -170,13 +170,13 @@ Devices
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/resource/device
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/resource/device
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/resource/device | python -mjson.tool;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/resource/device | python -mjson.tool;
 
 .. http:post:: /api/v1/container/(string:container_type)/(string:container_id)/resource/device
 
@@ -198,14 +198,14 @@ Devices
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '["allow", "Input_(13)", "rwm"]' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/device
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/device
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '["allow", "Input_(13)", "rwm"]'
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/device
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/device
             | python -mjson.tool;
 
 .. http:delete:: /api/v1/container/(string:container_type)/(string:container_id)/resource/device
@@ -220,14 +220,14 @@ Devices
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt -d '["allow", "Input_(13)", "rwm"]' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/device
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/device
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt -d '["allow", "Input_(13)", "rwm"]'
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/device
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/device
             | python -mjson.tool;
 
 
@@ -252,14 +252,14 @@ Devices
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '[["allow", "Input_(13)", "rwm"], ["allow", "TTY_(4)", "rwm"]]' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/devices
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/devices
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '[["allow", "Input_(13)", "rwm"], ["allow", "TTY_(4)", "rwm"]]'
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/devices
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/devices
             | python -mjson.tool;
 
     **Example request: remove all settings**
@@ -267,14 +267,14 @@ Devices
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '[]' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/devices
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/devices
 
     **Example response: remove all settings**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '[]'
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/devices
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/devices
             | python -mjson.tool;
 
 CPU and memory limits
@@ -299,14 +299,14 @@ CPU and memory limits
                 "cputime": 100, 
                 "cpuweight": 600, 
                 "memory": "512m"
-            }' http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/limit
+            }' http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/limit
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '{"cputime": 100, "cpuweight": 600, "memory": "512m"}'
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/limit
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/limit
             | python -mjson.tool;
 
 .. http:delete:: /api/v1/container/(string:container_type)/(string:container_id)/resource/limit
@@ -321,14 +321,14 @@ CPU and memory limits
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt -d '{"cputime": 0}' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/limit
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/limit
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt -d '{"cputime": 0}'
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/resource/limit
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/limit
             | python -mjson.tool;
 
 Storage
@@ -359,7 +359,7 @@ Storage
                     "ro": true 
                 }
             }' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/volume/host
 
     **Example response**
 
@@ -367,7 +367,7 @@ Storage
 
         curl -sq -XPOST -b cookies.txt -d
             '{"/test": {"bind": "/test1", "ro": false },"/test/selenium": {"bind": "/test2", "ro": true }}' 
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/volume/host
             | python -mjson.tool;
 
     **Example request: remove all settings**
@@ -375,12 +375,12 @@ Storage
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '{}' \
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/volume/host
 
     **Example response: remove all settings**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '{}' 
-            http://${QIP}:${QPORT}/api/v1/container/lxc/utest/volume/host
+            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/volume/host
             | python -mjson.tool;

@@ -4,7 +4,7 @@ Application
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -60,14 +60,14 @@ Template
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/template/gitlab/wizard?lang=eng"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/template/gitlab/wizard?lang=eng"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/template/gitlab/wizard?lang=eng" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/template/gitlab/wizard?lang=eng" | python -m json.tool
 
 
 User's application
@@ -81,14 +81,14 @@ User's application
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/apps"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/apps"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/apps" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps" | python -m json.tool
 
 
 .. http:get:: /api/v1/apps/(string:name)
@@ -102,14 +102,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/apps/test"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/apps/test" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/restart
@@ -123,14 +123,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/apps/test/restart"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/restart"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/apps/test/restart" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/restart" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/kill
@@ -144,14 +144,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/apps/test/kill"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/kill"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/apps/test/kill" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/kill" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/start
@@ -165,14 +165,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/apps/test/start"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/start"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/apps/test/start" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/start" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/stop
@@ -186,14 +186,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/apps/test/stop"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/stop"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/apps/test/stop" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/stop" | python -m json.tool
 
 
 .. http:delete:: /api/v1/apps/(string:name)
@@ -207,14 +207,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/apps/test"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/apps/test" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test" | python -m json.tool
 
 Reverse proxy
 ------------------
@@ -231,7 +231,7 @@ Reverse proxy
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"virtual_path": "test", "port": 5566}' \
-            "http://${QIP}:${QPORT}/api/v1/proxypass"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass"
 
     **Example response**
 
@@ -239,7 +239,7 @@ Reverse proxy
 
         curl -sq -XPOST -b cookies.txt -d
             '{"virtual_path": "test", "port": 5566}'
-            "http://${QIP}:${QPORT}/api/v1/proxypass" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass" | python -m json.tool
 
 
 .. http:get:: /api/v1/proxypass/(string:virtual_path)
@@ -255,14 +255,14 @@ Reverse proxy
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/proxypass/test"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass/test"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/proxypass/test" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass/test" | python -m json.tool
 
 
 .. http:delete:: /api/v1/proxypass/(string:virtual_path)
@@ -274,13 +274,13 @@ Reverse proxy
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/proxypass/test"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass/test"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt 
-            "http://${QIP}:${QPORT}/api/v1/proxypass/test" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass/test" | python -m json.tool
 
 

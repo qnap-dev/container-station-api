@@ -4,7 +4,7 @@ Preference
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -25,13 +25,13 @@ Preference
     .. sourcecode:: bash
 
         $ curl -XPOST -sq -b cookies.txt -d '{"value":"I am sphinx"}' \
-            http://${QIP}:${QPORT}/api/v1/preference/doc_test
+            http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test
 
     **Example response**
 
     .. runcode:: json
 
-        curl -XPOST -sq -b cookies.txt -d '{"value":"I am sphinx"}' http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+        curl -XPOST -sq -b cookies.txt -d '{"value":"I am sphinx"}' http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test | python -mjson.tool;
 
 .. http:get:: /api/v1/preference/
 
@@ -41,13 +41,13 @@ Preference
 
     .. sourcecode:: bash
 
-        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/ | python -mjson.tool;
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/ | python -mjson.tool;
 
 .. http:get:: /api/v1/preference/(string:key)
 
@@ -57,13 +57,13 @@ Preference
 
     .. sourcecode:: bash
 
-        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test | python -mjson.tool;
 
 .. http:put:: /api/v1/preference/(string:key)
 
@@ -76,15 +76,15 @@ Preference
     .. sourcecode:: bash
 
         $ curl -XPUT -sq -b cookies.txt -d '{"value":"I am container station"}' \
-            http://${QIP}:${QPORT}/api/v1/preference/doc_test
-        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test
+            http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test
+        $ curl -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test
 
     **Example response**
 
     .. runcode:: json
 
-        curl -XPUT -sq -b cookies.txt -d '{"value":"I am container station"}' http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
-        curl -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+        curl -XPUT -sq -b cookies.txt -d '{"value":"I am container station"}' http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test | python -mjson.tool;
+        curl -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test | python -mjson.tool;
 
 .. http:delete:: /api/v1/preference/(string:key)
 
@@ -92,13 +92,13 @@ Preference
 
     .. sourcecode:: bash
 
-        $ curl -XDELETE -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test
+        $ curl -XDELETE -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test
 
     **Example response**
 
     .. runcode:: json
 
-        curl -XDELETE -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/doc_test | python -mjson.tool;
+        curl -XDELETE -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/doc_test | python -mjson.tool;
 
 
 Workspace
@@ -112,13 +112,13 @@ Workspace
 
     .. sourcecode:: bash
 
-        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/wizard/workspace
 
     **Example response**
 
     .. runcode:: json
 
-        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace | python -mjson.tool;
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/wizard/workspace | python -mjson.tool;
 
 
 .. http:get:: /api/v1/wizard/workspace/status
@@ -130,13 +130,13 @@ Workspace
 
     .. sourcecode:: bash
 
-        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace/status
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/wizard/workspace/status
 
     **Example response**
 
     .. runcode:: json
 
-        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/wizard/workspace/status | python -mjson.tool;
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/wizard/workspace/status | python -mjson.tool;
 
 
 
@@ -153,13 +153,13 @@ Image list repository
 
     .. sourcecode:: bash
 
-        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/repo
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/repo
 
     **Example response**
 
     .. runcode:: json
 
-        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/repo | python -mjson.tool;
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/repo | python -mjson.tool;
 
 .. http:put:: /api/v1/preference/repo
 
@@ -173,7 +173,7 @@ Image list repository
 
         $ curl -XPUT -sq -b cookies.txt -d \
             '{"user":"qnap-dev","project":"container-apps","branch":"master"}' \
-            http://${QIP}:${QPORT}/api/v1/preference/repo
+            http://${QIP}:${QPORT}/containerstation/api/v1/preference/repo
 
     **Example response**
 
@@ -181,7 +181,7 @@ Image list repository
 
         curl -XPUT -sq -b cookies.txt -d 
           '{"user":"qnap-dev","project":"container-apps","branch":"master"}'
-          http://${QIP}:${QPORT}/api/v1/preference/repo | python -mjson.tool;
+          http://${QIP}:${QPORT}/containerstation/api/v1/preference/repo | python -mjson.tool;
 
 Network settings
 ------------------------
@@ -199,13 +199,13 @@ Network settings
 
     .. sourcecode:: bash
 
-        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/network
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/network
 
     **Example response**
 
     .. runcode:: json
 
-        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/api/v1/preference/network | python -m json.tool
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/network | python -m json.tool
 
 
 .. http:put:: /api/v1/preference/network
@@ -216,4 +216,4 @@ Network settings
     .. sourcecode:: bash
 
         $ curl -XPUT -sq -b cookies.txt -d '{"LXC_NETWORK":"10.0.4.0/24"}' \
-            http://${QIP}:${QPORT}/api/v1/preference/network
+            http://${QIP}:${QPORT}/containerstation/api/v1/preference/network

@@ -5,7 +5,7 @@ Background tasks
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -54,14 +54,14 @@ Create a container
                     "image": "ubuntu-trusty",
                     "tag": "latest"
                 }' \
-                http://${QIP}:${QPORT}/api/v1/background/create
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/create
 
     **Example response of create a LXC container**
 
         .. runcode:: json
 
-            curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/ctest/stop -o /dev/null;
-            curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/lxc/ctest -o /dev/null;
+            curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/ctest/stop -o /dev/null;
+            curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/ctest -o /dev/null;
             curl -sq -XPOST -b cookies.txt -d
                 '{
                     "type": "lxc",
@@ -70,7 +70,7 @@ Create a container
                     "image": "ubuntu-trusty",
                     "tag": "latest"
                 }'
-                http://${QIP}:${QPORT}/api/v1/background/create
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/create
                 | python -m json.tool;
 
     **Example request of create a Docker container**
@@ -90,15 +90,15 @@ Create a container
                         "icon": "http://download.qnap.com/QPKG/images/QPKG/container/ubuntu_icon.png"
                     }
                 }' \
-                http://${QIP}:${QPORT}/api/v1/background/create
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/create
 
     **Example response of create a Docker contaienr**
 
         .. runcode:: json
 
-            id=`curl -sq -XGET -b cookies.txt  http://${QIP}:${QPORT}/api/v1/container/docker/getid/dtest`;
-            echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id}/stop -o /dev/null;
-            echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/container/docker/${id} -o /dev/null;
+            id=`curl -sq -XGET -b cookies.txt  http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/dtest`;
+            echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop -o /dev/null;
+            echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id} -o /dev/null;
             curl -sq -XPOST -b cookies.txt -d
                 '{
                     "type": "docker",
@@ -112,7 +112,7 @@ Create a container
                         "icon": "http://download.qnap.com/QPKG/images/QPKG/container/ubuntu_icon.png"
                     }
                 }'
-                http://${QIP}:${QPORT}/api/v1/background/create
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/create
                 | python -m json.tool;
 
 Create an application
@@ -163,7 +163,7 @@ Download an image
                     "image": "busybox",
                     "tag": "latest"
                 }' \
-                http://${QIP}:${QPORT}/api/v1/background/image_download
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download
 
     **Example response of image download**
 
@@ -176,7 +176,7 @@ Download an image
                     "image": "busybox",
                     "tag": "latest"
                 }'
-                http://${QIP}:${QPORT}/api/v1/background/image_download
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download
                 | python -m json.tool;
 
 Remove an image
@@ -204,7 +204,7 @@ Remove an image
                         "id": "fake_id"
                     }
                 ]' \
-                http://${QIP}:${QPORT}/api/v1/background/image_remove
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_remove
 
     **Example response of image remove**
 
@@ -219,7 +219,7 @@ Remove an image
                         "id": "fake_id"
                     }
                 ]'
-                http://${QIP}:${QPORT}/api/v1/background/image_remove
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_remove
                 | python -m json.tool;
 
 Push an image to registry
@@ -255,7 +255,7 @@ Push an image to registry
                     "password": "qcspassword",
                     "rememberme": true
                 }' \
-                http://${QIP}:${QPORT}/api/v1/background/image_push
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_push
 
 Export an image
 ^^^^^^^^^^^^^^^^^^^
@@ -282,7 +282,7 @@ Export an image
                     "path": "test/a.tgz",
                     "compress": true
                 }' \
-                http://${QIP}:${QPORT}/api/v1/background/image_export
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_export
 
 Import a container
 ^^^^^^^^^^^^^^^^^^^
@@ -328,7 +328,7 @@ Import a container
                         }
                     }
                 }'\
-                http://${QIP}:${QPORT}/api/v1/background/container_import
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/container_import
  
     
 Export a container
@@ -356,7 +356,7 @@ Export a container
                     "path": "test/c.tgz",
                     "compress": true
                 }' \
-                http://${QIP}:${QPORT}/api/v1/background/container_export
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/container_export
 
             $ curl -sq -XPOST -b cookies.txt -d \
                 '{
@@ -366,7 +366,7 @@ Export a container
                     "path": "test/d.tgz",
                     "compress": true
                 }' \
-                http://${QIP}:${QPORT}/api/v1/background/container_export
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/container_export
 
 
 
@@ -396,21 +396,21 @@ List tasks
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/api/v1/background/?category=image_remove"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/background/?category=image_remove"
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/background/
-
-    **Example response of all tasks**
-
-    .. runcode:: json
-
-        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/api/v1/background/?category=image_remove" | python -m json.tool
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/background/
 
     **Example response of all tasks**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/background/ | python -m json.tool
+        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/?category=image_remove" | python -m json.tool
+
+    **Example response of all tasks**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/background/ | python -m json.tool
 
     
 Delete tasks
@@ -431,12 +431,12 @@ Delete tasks
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/background/
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/background/
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/api/v1/background/ | python -m json.tool
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/background/ | python -m json.tool
 
 

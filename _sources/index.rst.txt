@@ -11,7 +11,7 @@ QNAP Container Station
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -19,7 +19,7 @@ QNAP Container Station
     except:
         raise Exception('Unauthorized: ' + str(ret))
 
-    ret = sp.check_output('curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/api/v1/system', shell=True)
+    ret = sp.check_output('curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/system', shell=True)
     try:
         system = json.loads(ret)
         print('Version: ' + system['version']['web'])

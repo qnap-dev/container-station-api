@@ -24,7 +24,7 @@
 
   
   
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
   
 
   
@@ -176,7 +176,7 @@
 <p>resource list</p>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/all
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/all
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -224,9 +224,9 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/autostart/on
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/autostart/on
 $ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/autostart/off
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/autostart/off
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -293,7 +293,7 @@ $ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[12345, 12345, &quot;tcp&quot;]&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/port
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/network/port
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -344,7 +344,7 @@ $ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;[12345, 12345, &quot;tcp&quot;]&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/port
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/network/port
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -372,7 +372,7 @@ $ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;[[111, 222, &quot;udp&quot;], [333, 444, &quot;tcp&quot;]]&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/ports
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/network/ports
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -410,7 +410,7 @@ $ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
 </div>
 <p><strong>Example request: remove all settings</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[]&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/network/ports
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/network/ports
 </pre></div>
 </div>
 <p><strong>Example response: remove all settings</strong></p>
@@ -446,7 +446,7 @@ $ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
 <dd><p>Get available device list.
 The device allows access inside container.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/resource/device
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/resource/device
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -486,7 +486,7 @@ The device allows access inside container.</p>
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;]&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/device
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/resource/device
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -537,7 +537,7 @@ The device allows access inside container.</p>
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;]&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/device
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/resource/device
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -571,7 +571,7 @@ The device allows access inside container.</p>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;[[&quot;allow&quot;, &quot;Input_(13)&quot;, &quot;rwm&quot;], [&quot;allow&quot;, &quot;TTY_(4)&quot;, &quot;rwm&quot;]]&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/devices
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/resource/devices
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -609,7 +609,7 @@ The device allows access inside container.</p>
 </div>
 <p><strong>Example request: remove all settings</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;[]&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/devices
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/resource/devices
 </pre></div>
 </div>
 <p><strong>Example response: remove all settings</strong></p>
@@ -669,7 +669,7 @@ The device allows access inside container.</p>
 <span class="s1">        &quot;cputime&quot;: 100,</span>
 <span class="s1">        &quot;cpuweight&quot;: 600,</span>
 <span class="s1">        &quot;memory&quot;: &quot;512m&quot;</span>
-<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/limit
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/resource/limit
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -718,7 +718,7 @@ The device allows access inside container.</p>
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt -d <span class="s1">&#39;{&quot;cputime&quot;: 0}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/resource/limit
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/resource/limit
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -766,7 +766,7 @@ The device allows access inside container.</p>
 <span class="s1">            &quot;ro&quot;: true</span>
 <span class="s1">        }</span>
 <span class="s1">    }&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/volume/host
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/volume/host
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -805,7 +805,7 @@ The device allows access inside container.</p>
 </div>
 <p><strong>Example request: remove all settings</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;{}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/container/lxc/utest/volume/host
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/container/lxc/utest/volume/host
 </pre></div>
 </div>
 <p><strong>Example response: remove all settings</strong></p>
@@ -857,7 +857,7 @@ The device allows access inside container.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, QNAP System, Inc.
+        &copy; Copyright 2017, QNAP System, Inc.
 
     </p>
   </div>

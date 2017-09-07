@@ -24,7 +24,7 @@
 
   
   
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
   
 
   
@@ -177,7 +177,7 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPOST -sq -b cookies.txt -d <span class="s1">&#39;{&quot;value&quot;:&quot;I am sphinx&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/doc_test
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -204,15 +204,15 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;backup_concurrent&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;cert_enddate&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-08-06&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;cert_md5&quot;</span><span class="p">:</span> <span class="s2">&quot;f0001c4c8bb69f3fc25d901c46b94f73&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;cert_startdate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-08-22&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cert_enddate&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-08-22&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cert_md5&quot;</span><span class="p">:</span> <span class="s2">&quot;02afebc947ca512849b3a1a73ebdbf9a&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cert_startdate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-09-07&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ch_data_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/Public/container-station-data/&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ch_percentage&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ch_speed&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -250,7 +250,7 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/doc_test
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -284,8 +284,8 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPUT -sq -b cookies.txt -d <span class="s1">&#39;{&quot;value&quot;:&quot;I am container station&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/doc_test
-$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/doc_test
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
+$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -303,7 +303,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 <dt id="delete--api-v1-preference-(string-key)">
 <code class="descname">DELETE </code><code class="descname">/api/v1/preference/</code><span class="sig-paren">(</span><em class="property">string: </em><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-preference-(string-key)" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XDELETE -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/doc_test
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XDELETE -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -330,7 +330,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/wizard/workspace
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/wizard/workspace
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -358,7 +358,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/wizard/workspace/status
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/wizard/workspace/status
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -396,7 +396,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/repo
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/repo
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -429,7 +429,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPUT -sq -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{&quot;user&quot;:&quot;qnap-dev&quot;,&quot;project&quot;:&quot;container-apps&quot;,&quot;branch&quot;:&quot;master&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/repo
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/repo
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -464,7 +464,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/network
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/network
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -486,7 +486,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 <code class="descname">PUT </code><code class="descname">/api/v1/preference/network</code><a class="headerlink" href="#put--api-v1-preference-network" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPUT -sq -b cookies.txt -d <span class="s1">&#39;{&quot;LXC_NETWORK&quot;:&quot;10.0.4.0/24&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/api/v1/preference/network
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/network
 </pre></div>
 </div>
 </dd></dl>
@@ -513,7 +513,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, QNAP System, Inc.
+        &copy; Copyright 2017, QNAP System, Inc.
 
     </p>
   </div>
