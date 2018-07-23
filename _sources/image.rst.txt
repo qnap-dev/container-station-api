@@ -107,28 +107,6 @@ Inspect an image
             "http://${QIP}:${QPORT}/containerstation/api/v1/image/docker/ubuntu/latest/inspect" | python -m json.tool
 
 
-.. http:get:: /api/v1/image/(string:image_type)/(string:image_name)/(string:image_tag)/remote_inspect
-
-    Inspect image information.
-
-    :param image_type: ``docker``
-    :param image_name: image name
-    :param image_tag: image tag, which is ``latest`` or other version number
-
-    **Example request**
-
-    .. sourcecode:: bash
-
-        $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image/docker/redis/latest/remote_inspect"
-
-    **Example response**
-
-    .. runcode:: json
-
-        curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image/docker/redis/latest/remote_inspect" | python -m json.tool
-
 Get image tags
 -----------------
 
@@ -218,7 +196,6 @@ Download an image
             "http://${QIP}:${QPORT}/containerstation/api/v1/image/local/docker/busybox" | python -m json.tool
 
 
-
 Registry
 -----------------
 
@@ -251,7 +228,7 @@ List registries
 
         curl -sq -XGET -b cookies.txt
             http://${QIP}:${QPORT}/containerstation/api/v1/registry
-            | python -m json.tool;
+            | python -m json.tool
 
 Get default push registry
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -273,7 +250,7 @@ Get default push registry
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/registry/push"
-            | python -m json.tool;
+            | python -m json.tool
 
 
 Ping a registry
@@ -281,8 +258,10 @@ Ping a registry
 
 .. http:get:: /api/v1/registry/ping
 
-    :param url: Registry URL
-    :param tls: Enable self-cert or not
+    :reqjson url: Registry URL **[required]**
+    :reqjson tls: Enable self-cert or not **[required]**
+    :reqjson string username: Registry username
+    :reqjson string password: Registry password
 
     :resjson string version: Registry version
     
@@ -290,24 +269,32 @@ Ping a registry
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping?url=https://registry.hub.docker.com&tls=true"
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "url": "https://registry.hub.docker.com",
+                "tls": true
+            }' http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping
+
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping?url=https://registry.hub.docker.com&tls=true"
-            | python -m json.tool
+        curl -sq -XPOST -b cookies.txt -d
+            '{
+                "url": "https://registry.hub.docker.com",
+                "tls": true
+            }' http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping | python -m json.tool
 
     **Example response when error occurred**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping?url=https://test.hub.docker.com&tls=true"
-            | python -m json.tool
+        curl -sq -XPOST -b cookies.txt -d
+            '{
+                "url": "https://www.example.com",
+                "tls": true
+            }' http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping | python -m json.tool
 
 Add/Edit a registry
 ^^^^^^^^^^^^^^^^^^^
@@ -401,7 +388,7 @@ Add/Edit a registry
                 "password": "my_new_pass"
             }'
             http://${QIP}:${QPORT}/containerstation/api/v1/registry
-            | python -m json.tool;
+            | python -m json.tool
 
 Remove a registry
 ^^^^^^^^^^^^^^^^^
@@ -422,4 +409,4 @@ Remove a registry
 
         curl -sq -XDELETE -b cookies.txt
             http://${QIP}:${QPORT}/containerstation/api/v1/registry/new_test
-            | python -m json.tool;
+            | python -m json.tool

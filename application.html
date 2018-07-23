@@ -92,9 +92,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qnet.html">Qnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dqpkg.html">Dockerized QPKG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
@@ -261,7 +264,12 @@
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;joomla&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;web&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;db&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -283,15 +291,17 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/test&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
-    <span class="p">}</span>
+    <span class="nt">&quot;binding&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;createFrom&quot;</span><span class="p">:</span> <span class="s2">&quot;wizard&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;httpPort&quot;</span><span class="p">:</span> <span class="s2">&quot;10082&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.8.1&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -314,16 +324,11 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/test/restart&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla/restart&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -345,16 +350,11 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/test/kill&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla/kill&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -376,16 +376,11 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/test/start&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla/start&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -407,16 +402,11 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/test/stop&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla/stop&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -438,16 +428,11 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/test&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Application not found: test&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -564,7 +549,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, QNAP System, Inc.
+        &copy; Copyright 2018, QNAP System, Inc.
 
     </p>
   </div>

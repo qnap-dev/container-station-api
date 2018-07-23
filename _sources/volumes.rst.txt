@@ -1,0 +1,139 @@
+Volumes
+==================
+
+.. exec::
+    import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    try:
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+.. contents::
+
+Create a volume
+---------------
+
+.. http:post:: /api/v1/volumes/(string:volume_name)
+
+    :reqjson string name: The new volume’s name. If not specified, Docker generates a name. **[required]**
+    :reqjson string driver: Name of the volume driver to use. Defaults to local for the name.
+    :reqjson object driver_opts: A mapping of driver options and values. These options are passed directly to the driver and are driver specific.
+    :reqjson object labels: Labels to set on the volume, specified as a map: {"key":"value" [,"key2":"value2"]} **[currently not supported]**
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{"name": "test_volume_1"}' \
+            http://${QIP}:${QPORT}/containerstation/api/v1/volumes
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{"name": "test_volume_2",
+              "labels": {"key":"value"},
+              "driver_opts": {"device":"tmpfs","type":"tmpfs","o":"size=100m,uid=1000"}
+            }' \
+            http://${QIP}:${QPORT}/containerstation/api/v1/volumes
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"name": "test_volume_1"}' 
+            http://${QIP}:${QPORT}/containerstation/api/v1/volumes | python -mjson.tool;
+
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"name": "test_volume_2",
+              "labels": {"key":"value"},
+              "driver_opts": {"device":"tmpfs","type":"tmpfs","o":"size=100m,uid=1000"}
+            }' 
+            http://${QIP}:${QPORT}/containerstation/api/v1/volumes | python -mjson.tool;
+
+List volumes
+-------------
+
+.. http:get:: /api/v1/volumes
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes | python -mjson.tool
+
+Inspect a volume
+------------------
+
+.. http:get:: /api/v1/volumes/(string:volume_name)/inspect
+
+    :param volume_name: volume's name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/test_volume_2/inspect
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/test_volume_2/inspect | python -mjson.tool
+
+Remove a volume
+---------------
+
+.. http:delete:: /api/v1/volumes/(string:volume_name)
+
+    :param volume_name: volume's name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/test_volume_2
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/test_volume_2 | python -mjson.tool
+
+Remove all unused volumes
+-------------------------
+
+.. http:delete:: /api/v1/volumes/
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"name": "test_volume_1"}' 
+            http://${QIP}:${QPORT}/containerstation/api/v1/volumes -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"name": "test_volume_2"}' 
+            http://${QIP}:${QPORT}/containerstation/api/v1/volumes -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d 
+            '{"name": "test_volume_3"}' 
+            http://${QIP}:${QPORT}/containerstation/api/v1/volumes -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/ | python -mjson.tool;
+
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/ | python -mjson.tool;

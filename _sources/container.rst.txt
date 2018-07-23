@@ -49,6 +49,7 @@ Create a container
     dns             Str Array        v      Set custom DNS servers
     expose_port     Int Array        v      Expose a port from the container without publishing it to your host
     hostname        String           v      Container host name. Conflict with network 'host' mode.
+    mac_addr        String     v     v      Assign MAC address to the container
     port            Array      v(e)  v      Publish a container's port to the host
     mode            String     v     v      LXC: 'nat'
 
@@ -248,7 +249,7 @@ Create a container
                             "ro": true
                         },
                         "/test/spec": {
-                            "bind": "mnt/vol2",
+                            "bind": "/mnt/vol2",
                             "ro": false
                         }
                     }
@@ -319,7 +320,7 @@ Create a container
                             "ro": true
                         },
                         "/test/spec": {
-                            "bind": "mnt/vol2",
+                            "bind": "/mnt/vol2",
                             "ro": false
                         }
                     }

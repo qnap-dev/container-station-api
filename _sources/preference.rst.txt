@@ -194,6 +194,8 @@ Network settings
     :resjson string LXC_DHCP_RANGE: DHCP range
     :resjson string LXC_NETWORK: Network
     :resjson string LXC_BRIDGE: Bridge name
+    :resjson string LXC_DNS_PRIMARY: Primary DNS server
+    :resjson string LXC_DNS_SECONDARY: Secondary DNS server
 
     **Example request**
 
@@ -217,3 +219,39 @@ Network settings
 
         $ curl -XPUT -sq -b cookies.txt -d '{"LXC_NETWORK":"10.0.4.0/24"}' \
             http://${QIP}:${QPORT}/containerstation/api/v1/preference/network
+
+
+.. http:get:: /api/v1/preference/network_docker
+
+    :resjson string DOCKER_NET_DHCP_MAX: DHCP Max
+    :resjson string DOCKER_NET_NETMASK: Netmask
+    :resjson string DOCKER_NET_ADDR: IP address
+    :resjson string DOCKER_NET_DHCP_RANGE: DHCP range
+    :resjson string DOCKER_NET_NETWORK: Network
+    :resjson string DOCKER_NET_BRIDGE: Bridge name
+    :resjson string DOCKER_NET_DNS_PRIMARY: Primary DNS server
+    :resjson string DOCKER_NET_DNS_SECONDARY: Secondary DNS server
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/network_docker
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -XGET -sq -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/preference/network_docker | python -m json.tool
+
+
+.. http:put:: /api/v1/preference/network_docker
+
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -XPUT -sq -b cookies.txt -d '{"DOCKER_NET_NETWORK":"10.0.4.0/24"}' \
+            http://${QIP}:${QPORT}/containerstation/api/v1/preference/network_docker
+

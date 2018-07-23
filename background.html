@@ -103,9 +103,12 @@
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log and Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preference.html">Preference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qnet.html">Qnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dqpkg.html">Dockerized QPKG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
 </ul>
 
@@ -243,8 +246,8 @@
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
     <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800582</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ctest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -284,8 +287,8 @@
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
     <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800582</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dtest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;download&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -320,8 +323,8 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li><strong>template</strong> (<em>string</em>) &#8211; Application name</li>
-<li><strong>name</strong> (<em>string</em>) &#8211; Custom application name</li>
+<li><strong>template</strong> (<em>string</em>) &#8211; Application name <strong>[required]</strong></li>
+<li><strong>name</strong> (<em>string</em>) &#8211; Custom application name <strong>[required]</strong></li>
 <li><strong>autostart</strong> (<em>boolean</em>) &#8211; Start application when container-station started</li>
 <li><strong>virtual_path</strong> (<em>string</em>) &#8211; </li>
 <li><strong>port</strong> (<em>int</em>) &#8211; </li>
@@ -331,6 +334,37 @@
 </tr>
 </tbody>
 </table>
+<p><strong>Example request of create a Joomla application</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;template&quot;: &quot;joomla&quot;,</span>
+<span class="s1">        &quot;name&quot;: &quot;joomla&quot;</span>
+<span class="s1">    }&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/background/application
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example response of create a Joomla application</strong></p>
+<blockquote>
+<div><div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;binding&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 </div>
@@ -398,8 +432,8 @@
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_download&quot;</span><span class="p">,</span>
     <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800583</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
@@ -458,8 +492,8 @@
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_remove&quot;</span><span class="p">,</span>
     <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800583</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -717,8 +751,8 @@ $ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv
         <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_remove&quot;</span><span class="p">,</span>
         <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800583</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
@@ -740,8 +774,8 @@ $ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv
         <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_remove&quot;</span><span class="p">,</span>
         <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800583</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
@@ -758,8 +792,8 @@ $ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv
         <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;image_download&quot;</span><span class="p">,</span>
         <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800583</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
@@ -771,11 +805,26 @@ $ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;binding&quot;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;waiting&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
         <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
         <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800582</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dtest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;download&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -795,9 +844,9 @@ $ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv
     <span class="p">{</span>
         <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span>
         <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;Download image:6%&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1504800582</span><span class="p">,</span>
+        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;Download image:3%&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ctest&quot;</span><span class="p">,</span>
         <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-trusty&quot;</span><span class="p">,</span>
@@ -806,8 +855,26 @@ $ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv
             <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
         <span class="p">},</span>
-        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1504800582</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1532342324</span><span class="p">,</span>
         <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1532342216</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1532342117</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;binding&quot;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;joomla&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1532342117</span><span class="p">,</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;completed&quot;</span><span class="p">,</span>
         <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
@@ -855,7 +922,9 @@ $ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="mi">1</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -882,7 +951,7 @@ $ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, QNAP System, Inc.
+        &copy; Copyright 2018, QNAP System, Inc.
 
     </p>
   </div>

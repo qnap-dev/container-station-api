@@ -122,12 +122,38 @@ Create an application
 
     For ``application`` category request:
 
-    :reqjson string template: Application name
-    :reqjson string name: Custom application name
+    :reqjson string template: Application name **[required]**
+    :reqjson string name: Custom application name **[required]**
     :reqjson boolean autostart: Start application when container-station started
     :reqjson string virtual_path: 
     :reqjson int port: 
     :reqjson object binding: Application binding data
+
+    **Example request of create a Joomla application**
+
+        .. sourcecode:: bash
+
+            $ curl -sq -XPOST -b cookies.txt -d \
+                '{
+                    "template": "joomla",
+                    "name": "joomla"
+                }' \
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/application
+
+    **Example response of create a Joomla application**
+
+        .. runcode:: json
+
+            code=`curl -sq -XGET -b cookies.txt  http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla`;
+            echo $code | grep -q 404 || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/kill -o /dev/null;
+            echo $code | grep -q 404 || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla -o /dev/null;
+            curl -sq -XPOST -b cookies.txt -d
+                '{
+                    "template": "joomla",
+                    "name": "joomla"
+                }'
+                http://${QIP}:${QPORT}/containerstation/api/v1/background/application
+                | python -m json.tool;
 
 Upgrade an application
 ^^^^^^^^^^^^^^^^^^^^^^

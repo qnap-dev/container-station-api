@@ -87,6 +87,13 @@ User's application
 
     .. runcode:: json
 
+        curl -sq -XPOST -b cookies.txt -d
+        '{
+            "template": "joomla",
+            "name": "joomla"
+        }'
+        http://${QIP}:${QPORT}/containerstation/api/v1/background/application -o /dev/null;
+        sleep 180;
         curl -sq -XGET -b cookies.txt 
             "http://${QIP}:${QPORT}/containerstation/api/v1/apps" | python -m json.tool
 
@@ -102,14 +109,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/restart
@@ -123,14 +130,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/restart"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/restart"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/restart" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/restart" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/kill
@@ -144,14 +151,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/kill"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/kill"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/kill" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/kill" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/start
@@ -165,14 +172,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/start"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/start"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/start" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/start" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/stop
@@ -186,14 +193,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/stop"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/stop"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test/stop" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/stop" | python -m json.tool
 
 
 .. http:delete:: /api/v1/apps/(string:name)
@@ -207,14 +214,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test"
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/test" | python -m json.tool
+            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla" | python -m json.tool
 
 Reverse proxy
 ------------------

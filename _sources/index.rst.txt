@@ -34,17 +34,17 @@ Content
 
     system
     container
-    background 
+    background
     application
     resource
     image
     networks
     volumes
     node
-    backup
     log
     preference
     qnet
+    dqpkg
     draft
     changelog
 
