@@ -194,10 +194,10 @@ Click <strong>Network</strong> on the left side bar and select <strong>Bridge</s
 </div>
 </div></blockquote>
 <p><strong>Static mode</strong></p>
-<p>Create a new network named qnet-static-eth0-XXXXXX.</p>
+<p>Create a new network named qnet-static-eth0.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker network create -d qnet --ipam-driver<span class="o">=</span>qnet --ipam-opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 <span class="se">\</span>
-      --subnet<span class="o">=</span><span class="m">192</span>.168.80.0/23 --gateway<span class="o">=</span><span class="m">192</span>.168.80.254 qnet-static-eth0-XXXXXX
+      --subnet<span class="o">=</span><span class="m">192</span>.168.80.0/23 --gateway<span class="o">=</span><span class="m">192</span>.168.80.254 qnet-static-eth0
 85fbe06a66d82ba8109d304e1b891598d7c21e9f6c9a99a34f586250c7d8b92d
 </pre></div>
 </div>
@@ -214,7 +214,7 @@ NETWORK ID          NAME                      DRIVER              SCOPE
 1de2febfecad        host                      host                <span class="nb">local</span>
 e1369e8797ad        none                      null                <span class="nb">local</span>
 9e3b67877569        qnet-dhcp-eth0            qnet                <span class="nb">local</span>
-85fbe06a66d8        qnet-static-eth0-XXXXXX   qnet                <span class="nb">local</span>
+85fbe06a66d8        qnet-static-eth0          qnet                <span class="nb">local</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -233,9 +233,9 @@ eth0      Link encap:Ethernet  HWaddr <span class="m">02</span>:42:B8:3D:2B:07
 </div>
 </div></blockquote>
 <p><strong>Run container with Qnet Static mode</strong></p>
-<p>Run a container and connect it to qnet-dhcp-eth0-XXXXXX network.</p>
+<p>Run a container and connect it to qnet-static-eth0 network.</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run --rm -it --net<span class="o">=</span>qnet-static-eth0-XXXXXX --ip<span class="o">=</span><span class="m">192</span>.168.80.119 alpine ifconfig eth0
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run --rm -it --net<span class="o">=</span>qnet-static-eth0 --ip<span class="o">=</span><span class="m">192</span>.168.80.119 alpine ifconfig eth0
 eth0      Link encap:Ethernet  HWaddr <span class="m">02</span>:42:55:B1:84:92
           inet addr:192.168.80.119  Bcast:0.0.0.0  Mask:255.255.254.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -274,14 +274,14 @@ networks:
     driver: qnet
     ipam:
       driver: qnet
-      driver_opts:
+      options:
         iface: <span class="s2">&quot;eth0&quot;</span>
 
   qnet-static:
     driver: qnet
     ipam:
       driver: qnet
-      driver_opts:
+      options:
         iface: <span class="s2">&quot;eth0&quot;</span>
       config:
         - subnet: <span class="m">192</span>.168.80.0/23

@@ -69,12 +69,12 @@ Create a new network named qnet-dhcp-eth0.
 
 **Static mode**
 
-Create a new network named qnet-static-eth0-XXXXXX.
+Create a new network named qnet-static-eth0.
 
     .. sourcecode:: bash
 
         $ docker network create -d qnet --ipam-driver=qnet --ipam-opt=iface=eth0 \
-              --subnet=192.168.80.0/23 --gateway=192.168.80.254 qnet-static-eth0-XXXXXX
+              --subnet=192.168.80.0/23 --gateway=192.168.80.254 qnet-static-eth0
         85fbe06a66d82ba8109d304e1b891598d7c21e9f6c9a99a34f586250c7d8b92d
 
 .. note::
@@ -90,7 +90,7 @@ Create a new network named qnet-static-eth0-XXXXXX.
         1de2febfecad        host                      host                local
         e1369e8797ad        none                      null                local
         9e3b67877569        qnet-dhcp-eth0            qnet                local
-        85fbe06a66d8        qnet-static-eth0-XXXXXX   qnet                local
+        85fbe06a66d8        qnet-static-eth0          qnet                local
 
 **Run container with Qnet DHCP mode**
 
@@ -109,11 +109,11 @@ Run a container and connect it to qnet-dhcp-eth0 network.
 
 **Run container with Qnet Static mode**
 
-Run a container and connect it to qnet-dhcp-eth0-XXXXXX network.
+Run a container and connect it to qnet-static-eth0 network.
 
     .. sourcecode:: bash
 
-        $ docker run --rm -it --net=qnet-static-eth0-XXXXXX --ip=192.168.80.119 alpine ifconfig eth0
+        $ docker run --rm -it --net=qnet-static-eth0 --ip=192.168.80.119 alpine ifconfig eth0
         eth0      Link encap:Ethernet  HWaddr 02:42:55:B1:84:92
                   inet addr:192.168.80.119  Bcast:0.0.0.0  Mask:255.255.254.0
                   UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -154,14 +154,14 @@ Specify ``qnet`` driver for this network.
             driver: qnet
             ipam:
               driver: qnet
-              driver_opts:
+              options:
                 iface: "eth0"
 
           qnet-static:
             driver: qnet
             ipam:
               driver: qnet
-              driver_opts:
+              options:
                 iface: "eth0"
               config:
                 - subnet: 192.168.80.0/23
