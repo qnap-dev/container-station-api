@@ -543,6 +543,34 @@ Stop a container
         id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/DockerTestAPI` ;
         curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop | python -mjson.tool
 
+Get export container settings
+-----------------------------
+.. http:get:: /api/v1/import/config
+
+    Given container archive path, query the configure
+
+    :query path: archive file relative parent path in NAS
+    :query name: archive file name
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/import/config?path=Public&name=c.tgz"
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -d "{\"path\": \"Public/c.tgz\", \"compress\": true}" -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/export -o /dev/null;
+        for i in `seq 10`; do curl -sq -m 5 -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/export/progress -o /dev/null;
+            if [ "$?" -eq "28" ]; then
+                break;
+            fi;
+            sleep 5;
+        done;
+        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/import/config?path=Public&name=c.tgz" | python -mjson.tool;
+
 Remove a container
 ------------------
 
@@ -577,33 +605,3 @@ Remove a container
         id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/DockerTestAPI2` ;
         curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop -o /dev/null;
         curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id} | python -mjson.tool;
-
-
-Get export container settings
------------------------------
-.. http:get:: /api/v1/import/config
-
-    Given container archive path, query the configure
-
-    :query path: archive file relative parent path in NAS
-    :query name: archive file name
-
-    **Example request**
-
-    .. sourcecode:: bash
-
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/import/config?path=Public&name=c.tgz"
-
-    **Example response**
-
-    .. runcode:: json
-
-        curl -sq -XPOST -d "{\"path\": \"${QTEST_FOLDER}/c.tgz\", \"compress\": true}" -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/export -o /dev/null;
-        for i in `seq 10`; do curl -sq -m 5 -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/export/progress -o /dev/null;
-            if [ "$?" -eq "28" ]; then
-                break;
-            fi;
-            sleep 5;
-        done;
-        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/import/config?path=${QTEST_FOLDER}&name=c.tgz" | python -mjson.tool;
-
