@@ -51,7 +51,7 @@ Create a container
                     "type": "lxc",
                     "repository": "qnap",
                     "name": "ctest",
-                    "image": "ubuntu-trusty",
+                    "image": "ubuntu-bionic",
                     "tag": "latest"
                 }' \
                 http://${QIP}:${QPORT}/containerstation/api/v1/background/create
@@ -67,7 +67,7 @@ Create a container
                     "type": "lxc",
                     "repository": "qnap",
                     "name": "ctest",
-                    "image": "ubuntu-trusty",
+                    "image": "ubuntu-bionic",
                     "tag": "latest"
                 }'
                 http://${QIP}:${QPORT}/containerstation/api/v1/background/create
@@ -377,8 +377,8 @@ Export a container
             $ curl -sq -XPOST -b cookies.txt  -d \
                 '{
                     "type": "lxc",
-                    "id": "ubuntu-trusty-1",
-                    "name": "ubuntu-trusty-1",
+                    "id": "ubuntu-bionic-1",
+                    "name": "ubuntu-bionic-1",
                     "path": "test/c.tgz",
                     "compress": true
                 }' \

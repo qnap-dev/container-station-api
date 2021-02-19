@@ -147,7 +147,7 @@
   <div class="section" id="system">
 <h1><a class="toc-backref" href="#id1">System</a><a class="headerlink" href="#system" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<p class="topic-title">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#system" id="id1">System</a><ul>
 <li><a class="reference internal" href="#authentication" id="id2">Authentication</a></li>
@@ -186,7 +186,7 @@
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-26 15:43:54&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19 10:19:18&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -195,7 +195,7 @@
 
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>${QPORT} is the same as the system port of NAS.</p>
+<p>${QPORT}/containerstation is the same as the system port of NAS.</p>
 <p>Steps to check the system port: &#8220;Control Panel&#8221; &gt; &#8220;General Settings&#8221;</p>
 <img alt="_images/system_port.png" class="last" src="_images/system_port.png" />
 </div>
@@ -223,7 +223,7 @@
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-26 15:43:54&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19 10:19:18&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -287,25 +287,37 @@
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;cpuCore&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="nt">&quot;cpuThread&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;cpuCore&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="nt">&quot;cpuThread&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
     <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="s2">&quot;net_bridge&quot;</span>
     <span class="p">],</span>
-    <span class="nt">&quot;gpu&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;gpuDriver&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;X80-test&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;gpu&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;csMode&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;driverInstalled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;gpuchanged&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;SW8-qx82-4&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;isDevicemapper&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isSupportOverlay&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;machine&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;migrationDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/lib/docker/qnap-migration&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;migrationDmStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;needRestart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;processor&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(R) Core(TM) i3-4130 CPU @ 3.40GHz&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;platform&quot;</span><span class="p">:</span> <span class="s2">&quot;qts&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;processor&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;storageDriver&quot;</span><span class="p">:</span> <span class="s2">&quot;overlay2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;uncleanFS&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;dockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;17.09.1-ce&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;firmware&quot;</span><span class="p">:</span> <span class="s2">&quot;4.3.4&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;dockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;19.03.13&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;firmware&quot;</span><span class="p">:</span> <span class="s2">&quot;4.5.1&quot;</span><span class="p">,</span>
         <span class="nt">&quot;lxcVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.6&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;qpkg&quot;</span><span class="p">:</span> <span class="s2">&quot;1.8.3138&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v1.8.3138&quot;</span>
+        <span class="nt">&quot;qpkg&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.14.1638&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;qpkgBuildDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2020/11/19&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v2.2.14.1638&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -334,15 +346,15 @@
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;41.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;memory_usage&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">89</span><span class="p">,</span>
-        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">1409</span><span class="p">,</span>
-        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">51</span><span class="p">,</span>
-        <span class="nt">&quot;percent_buffers&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
-        <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">3833</span><span class="p">,</span>
-        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">1957</span>
+        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">2487</span><span class="p">,</span>
+        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">13060</span><span class="p">,</span>
+        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="nt">&quot;percent_buffers&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">32089</span><span class="p">,</span>
+        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">15428</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -391,7 +403,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">}</span>
 <span class="p">{</span>
     <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">false</span>
@@ -437,19 +449,19 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="s2">&quot;br0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 2 (Virtual Switch 3)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 2 (Virtual Switch 5)&quot;</span><span class="p">,</span>
             <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.180.254&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.181.21&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.180.7&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth1&quot;</span><span class="p">,</span>
             <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.254.0&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 3&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="s2">&quot;qvs1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 3 (Virtual Switch 9)&quot;</span><span class="p">,</span>
             <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;169.254.7.68&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.0.0&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
@@ -457,6 +469,22 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
             <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth3&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="s2">&quot;qvs0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 5 (Virtual Switch 1)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.180.254&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.181.145&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth4&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.254.0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 6&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth5&quot;</span><span class="p">,</span>
             <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
@@ -493,9 +521,9 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;enddate&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-10-10&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;enddate&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-02-03&quot;</span><span class="p">,</span>
     <span class="nt">&quot;outdatedNotify&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;startdate&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-26&quot;</span>
+    <span class="nt">&quot;startdate&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-18&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -552,7 +580,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;domain_names&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="nt">&quot;domain_names&quot;</span><span class="p">:</span> <span class="s2">&quot;user.myqnapcloud.com&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -648,6 +676,11 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;! @#$^&amp;()_-0{}~\u9f9c\u306e\uc77c&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Browser Station&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
@@ -659,6 +692,36 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Public&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVREliteSys&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProAppData&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProAutoSnap&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProDB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProRecording&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VMs&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -670,30 +733,79 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
 <span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;! @#$^&amp;()_-0{}~\u9f9c\u306e\uc77c&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;24K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Browser Station&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;167.7G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;12K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;20K&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Container&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;167.7G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;12K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;2.6G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Public&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;167.7G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;4.0G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;4.7G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVREliteSys&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;808K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProAppData&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;48K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProAutoSnap&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;20K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProDB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;920M&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProRecording&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;24K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VMs&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;132G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Web&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;167.7G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;24K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;28K&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">}</span>
 <span class="p">]</span>
@@ -718,7 +830,19 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station-data&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRCenterAutoLog&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;binaries&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;composetest&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -726,7 +850,39 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-16.04.5-desktop-amd64.iso&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station_2.2.9.1587_x86-v2-2-9.qpkg&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ct-data.tar&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;docker-compose.yml&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;docker-utils&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;messages&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ok-all_default_but_no_audio.log&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ok-rm_driver_opt.log&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qbus&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnetwork_cli&quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
@@ -755,7 +911,7 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, QNAP System, Inc.
+        &copy; Copyright 2021, QNAP System, Inc.
 
     </p>
   </div>

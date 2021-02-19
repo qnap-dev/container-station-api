@@ -155,5 +155,5 @@ Event
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "name": "utest", "image": "ubuntu-trusty", "tag": "latest"}' http://${QIP}:${QPORT}/containerstation/api/v1/container  -o /dev/null; 
+        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}' http://${QIP}:${QPORT}/containerstation/api/v1/container  -o /dev/null; 
         curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/event/wait/lxc/utest/stopped?duration=5" | python -mjson.tool

@@ -11,7 +11,7 @@ Container
             raise Exception
     except:
         raise Exception('Unauthorized: ' + str(ret))
-    
+
 
 .. contents::
 
@@ -51,7 +51,7 @@ Create a container
     hostname        String           v      Container host name. Conflict with network 'host' mode.
     mac_addr        String     v     v      Assign MAC address to the container
     port            Array      v(e)  v      Publish a container's port to the host
-    mode            String     v     v      LXC: 'nat'
+    mode            String     v     v      LXC: 'nat', 'bridge'
 
                                             Docker: 'nat', 'host', 'bridge'
     interface       String           v      Ethernet interface
@@ -90,7 +90,7 @@ Create a container
             '{
                 "type": "lxc",
                 "name": "utest",
-                "image": "ubuntu-trusty",
+                "image": "ubuntu-bionic",
                 "tag": "latest",
                 "autostart": true,
                 "network": {
@@ -131,7 +131,26 @@ Create a container
             }' http://${QIP}:${QPORT}/containerstation/api/v1/container
 
         $ curl -sq -XPOST -b cookies.txt -d \
-            '{"type": "lxc", "name": "utest", "image": "ubuntu-trusty", "tag": "latest"}' \
+            '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}' \
+            http://${QIP}:${QPORT}/containerstation/api/v1/container
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "type":"lxc",
+                "image":"ubuntu-bionic",
+                "tag":"18.04",
+                "name":"utest",
+                "network":{
+                    "mode":"bridge",
+                    "bridge":{
+                        "mode":"dhcp",
+                        "interface":{
+                            "bridge":"br0",
+                            "name":"eth0"
+                        }
+                    }
+                }
+            }' \
             http://${QIP}:${QPORT}/containerstation/api/v1/container
 
 **Example response of LXC**
@@ -139,7 +158,7 @@ Create a container
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/" -o /dev/null;
-        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "repository": "qnap", "image": "ubuntu-trusty", "tag": "latest"}'
+        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "repository": "qnap", "image": "ubuntu-bionic", "tag": "latest"}'
             "http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download" -o /dev/null;
 
         while :; 
@@ -159,7 +178,7 @@ Create a container
             '{
                 "type": "lxc",
                 "name": "utest",
-                "image": "ubuntu-trusty",
+                "image": "ubuntu-bionic",
                 "tag": "latest",
                 "autostart": true,
                 "network": {
@@ -203,7 +222,7 @@ Create a container
         curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/stop -o /dev/null;
         curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d
-            '{"type": "lxc", "name": "utest", "image": "ubuntu-trusty", "tag": "latest"}'
+            '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}'
             http://${QIP}:${QPORT}/containerstation/api/v1/container
             | python -m json.tool;
 
@@ -258,6 +277,28 @@ Create a container
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"type": "docker", "name": "DockerTestAPI2", "image": "ubuntu", "tag": "latest"}' \
+            http://${QIP}:${QPORT}/containerstation/api/v1/container
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "type":"docker",
+                "image":"ubuntu",
+                "tag":"latest",
+                "name":"DockerTestAPI3",
+                "network":{
+                    "mode":"bridge",
+                    "bridge":{
+                        "mode":"dhcp",
+                        "interface":{
+                            "bridge":"br0",
+                            "name":"eth0"
+                        }
+                    }
+                },
+                "autostart":true,
+                "repository":"local",
+                "command":"/bin/bash"
+            }' \
             http://${QIP}:${QPORT}/containerstation/api/v1/container
 
 **Example response of Docker**
@@ -592,6 +633,8 @@ Remove a container
         curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest | python -mjson.tool
 
     **Example request of Docker**
+
+    :query remove_volumes: Automatically remove anonymous volumes associated with the container. **Default is false.**
 
     .. sourcecode:: bash
 

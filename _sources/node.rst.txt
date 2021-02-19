@@ -1,0 +1,350 @@
+Node and Cluster
+======================
+
+.. exec::
+    import subprocess as sp
+    import json
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    try:
+        auth = json.loads(ret)
+        if 'error' in auth:
+            raise Exception
+    except:
+        raise Exception('Unauthorized: ' + str(ret))
+
+.. contents::
+
+Node Management
+-----------------
+
+.. http:get:: /api/v1/node
+
+    List machines in cluster
+
+    :<json array labels: query node matching labels
+    :<json array role: query node matching role
+    :<json array state: query node matching state
+
+    :>json string name: node's name that case-insensitive, unique and in pattern of [a-z0-9-_]+
+    :>json string ip: node's IP
+    :>json int port: node's port
+    :>json string state: ``alive``, ``failed``
+    :>json string role: ``leader``, ``follower``, ``client``
+    :>json array labels: ``compute``, ``storage``, ``election``
+    :>json object compute: TBD. Swarm inforamtion showing on UI
+    :>json object storage: TBD. Ceph inforamtion showing on UI
+
+    **Example request**
+ 
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            http://${QIP}:${QPORT}/containerstation/api/v1/node
+
+    **Example response**
+
+    .. sourcecode:: json
+
+        [
+            {"id": "eca0338f4ea31566",
+             "name": "member-a",
+             "ip": "192.168.0.10",
+             "port": 8080,
+             "state": "active",
+             "role": "leader",
+             "label": ["compute", "election"],
+             "compute": {"loading": [0.3, 0.5, 0.3]}
+            }
+        ]
+
+.. http:get:: /api/v1/node
+
+    List machines in the same network
+
+    :param action: ``scan``
+
+    **Example request**
+ 
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            "http://${QIP}:${QPORT}/containerstation/api/v1/node?action=scan"
+
+    **Example response**
+
+    .. sourcecode:: json
+
+        [
+            {"name": "member-A",
+             "ip": "192.168.0.10",
+             "port": 8080,
+             "container-station": true
+            }
+            {"name": "member-B",
+             "ip": "192.168.0.11",
+             "port": 8080,
+             "container-station": false
+            }
+        ]
+
+.. http:get:: /api/v1/node/(string:node_id)
+
+    Get node information
+
+    :>json array container: containers under this node
+    
+    Refer to :http:get:`/api/v1/node` for others parameters.
+
+    **Example request**
+ 
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            http://${QIP}:${QPORT}/containerstation/api/v1/node/eca0338f4ea31566
+
+    **Example response**
+
+    .. sourcecode:: json
+
+        {"id": "eca0338f4ea31566",
+         "name": "member-a",
+         "ip": "192.168.0.10",
+         "port": 8080,
+         "state": "active",
+         "role": "leader",
+         "label": ["compute", "election", "arch=x86"],
+         "compute": {"loading": [0.3, 0.5, 0.3]},
+         "container": [{"id": "de1abdef23213", "name": "web1", "state": "running"}]
+        }
+
+.. http:post:: /api/v1/node
+
+    Create a new node
+
+    Refer to :http:get:`/api/v1/node` for others parameters.
+
+    **Example request**
+ 
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{"name": "member-a",
+              "ip": "192.168.0.10",
+              "port": 8080,
+              "password": "aaabbbccc",
+              "label": ["compute", "election", "arch=x86"],
+            }' http://${QIP}:${QPORT}/containerstation/api/v1/node
+
+    **Example response**
+
+    .. sourcecode:: json
+
+        {"id": "eca0338f4ea31566",
+         "name": "member-a",
+         "ip": "192.168.0.10",
+         "port": 8080,
+         "state": "active",
+         "role": "leader",
+         "label": ["compute", "election", "arch=x86"],
+         "compute": {"loading": [0.3, 0.5, 0.3]}
+        }
+
+.. http:delete:: /api/v1/node/(string:node_id)
+
+    Delete a node
+
+    :>json array id: nodes to be deleted
+
+    **Example request**
+ 
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            http://${QIP}:${QPORT}/containerstation/api/v1/node/eca0338f4ea31566
+
+    **Example response**
+
+    .. sourcecode:: json
+
+        [1]
+
+.. http:put:: /api/v1/node/(string:node_id)
+
+    Update node that only change the keys are given.
+
+    It returns :http:get:`/api/v1/node/(string:node_id)` refering to :http:get:`/api/v1/node` for others parameters.
+
+    **Example request**
+ 
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt -d \
+            '{"name": "member-a",
+              "ip": "192.168.0.10",
+              "port": 8080,
+              "label": ["compute", "election", "arch=x86"],
+            }' http://${QIP}:${QPORT}/containerstation/api/v1/node/eca0338f4ea31566
+
+    **Example response**
+
+    .. sourcecode:: json
+
+        {"id": "eca0338f4ea31566",
+         "name": "member-a",
+         "ip": "192.168.0.10",
+         "port": 8080,
+         "state": "active",
+         "role": "leader",
+         "label": ["compute", "election", "arch=x86"],
+         "compute": {"loading": [0.3, 0.5, 0.3]}
+        }
+
+Cluster App Management
+----------------------
+
+    This section refer design :ref:`application` and `Marathon: REST API <https://mesosphere.github.io/marathon/docs/rest-api.html>`_. UI may refer to `FleetUI <http://fleetui.com/>`_
+
+    Cluster application distribute Docker containers across nodes according to `definition` of request.
+
+    The control of cluster application will follow signle node design as following, 
+
+      - :http:get:`/api/v1/apps/(string:name)`
+      - :http:put:`/api/v1/apps/(string:name)/restart`
+      - :http:put:`/api/v1/apps/(string:name)/kill`
+      - :http:put:`/api/v1/apps/(string:name)/start`
+      - :http:put:`/api/v1/apps/(string:name)/stop`
+      - :http:delete:`/api/v1/apps/(string:name)`
+
+    TBD:
+
+      - name conflict
+      - non-stop upgrade
+      - fixed ip and dns
+
+.. http:post:: /api/v1/cluster-apps
+
+    Create and start containers.
+
+    :<json object deployment:
+    :<json int scale:
+    :<json string node:
+    :<json array label:
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "name": "redmine-app",
+                "deployment": {
+                    "postgresql": {"scale": 2,
+                                   "node": ["aaaa", "bbbb", "cccc"]}
+                },
+                "definition": {
+                    "postgresql": {
+                        "label": ["arch=x86"],
+                        "environment": [
+                            "DB_USER=redmine",
+                            "DB_PASS=redminewooo",
+                            "DB_NAME=myredmine",
+                            "constraint:operatingsystem=qts",
+                            "constraint:environment=production",
+                            "affinity:image==postgresql"
+                        ],
+                        "image": "sameersbn/postgresql:9.4-2"
+                    },
+                    "redmine": {
+                        "label": ["arch=x86"],
+                        "environment": [
+                            "DB_USER=redmine",
+                            "DB_PASS=redminewooo",
+                            "DB_NAME=myredmine"
+                        ],
+                        "image": "sameersbn/redmine:3.1.0",
+                        "links": [
+                            "postgresql:postgresql"
+                        ],
+                        "ports": [
+                            "22234:80"
+                        ],
+                    }
+                }
+            }' http://${QIP}:${QPORT}/containerstation/api/v1/apps
+
+
+    **Example response**
+
+    .. sourcecode:: json
+
+        {
+            "name": "redmine-app",
+            "deployment": {
+                "postgresql": {"scale": 2,
+                                "node": ["aaaa", "bbbb", "cccc"]}
+            },
+            "definition": {
+                "postgresql": {
+                    "label": ["arch=x86"],
+                    "environment": [
+                        "DB_USER=redmine",
+                        "DB_PASS=redminewooo",
+                        "DB_NAME=myredmine",
+                        "constraint:operatingsystem=qts",
+                        "constraint:environment=production",
+                        "affinity:image==postgresql"
+                    ],
+                    "image": "sameersbn/postgresql:9.4-2"
+                },
+                "redmine": {
+                    "label": ["arch=x86"],
+                    "environment": [
+                        "DB_USER=redmine",
+                        "DB_PASS=redminewooo",
+                        "DB_NAME=myredmine"
+                    ],
+                    "image": "sameersbn/redmine:3.1.0",
+                    "links": [
+                        "postgresql:postgresql"
+                    ],
+                    "ports": [
+                        "22234:80"
+                    ]
+                }
+            }
+        }
+
+
+
+.. http:get:: /api/v1/cluster-apps
+
+    List cluster application
+
+.. http:put:: /api/v1/cluster-apps
+
+    Modify cluster application
+
+.. http:delete:: /api/v1/cluster-apps
+
+    Delete cluster application
+
+
+Storage Management
+------------------
+
+    TBD. Read ceph document first.
+
+Network Management
+------------------
+
+.. http:get:: /api/v1/cluster-preference
+
+    Keys:
+
+    - floating-ip-pool
+    - floating-ip-leader
+
+Image Management
+-----------------
+
+    Support private registry for image cache
