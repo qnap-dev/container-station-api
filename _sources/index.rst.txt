@@ -40,12 +40,9 @@ Content
     image
     networks
     volumes
-    node
     log
     preference
     qnet
-    dqpkg
-    draft
     changelog
 
 

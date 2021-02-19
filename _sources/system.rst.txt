@@ -26,7 +26,7 @@ Authentication
 
 .. note::
 
-    ${QPORT} is the same as the system port of NAS.
+    ${QPORT}/containerstation is the same as the system port of NAS.
 
     Steps to check the system port: "Control Panel" > "General Settings"
 
