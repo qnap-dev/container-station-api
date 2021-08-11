@@ -97,6 +97,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#ping-a-registry">Ping a registry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#add-edit-a-registry">Add/Edit a registry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#remove-a-registry">Remove a registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-lxd-registries">List LXD registries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-lxd-registry">Add a LXD registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-a-lxd-registry">Edit a LXD registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Remove a registry</a></li>
 </ul>
 </li>
 </ul>
@@ -152,22 +156,26 @@
            <div itemprop="articleBody">
             
   <div class="section" id="image">
-<h1><a class="toc-backref" href="#id1">Image</a><a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id2">Image</a><a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h1>
 <p></p>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#image" id="id1">Image</a><ul>
-<li><a class="reference internal" href="#search-images" id="id2">Search images</a></li>
-<li><a class="reference internal" href="#inspect-an-image" id="id3">Inspect an image</a></li>
-<li><a class="reference internal" href="#get-image-tags" id="id4">Get image tags</a></li>
-<li><a class="reference internal" href="#download-an-image" id="id5">Download an image</a></li>
-<li><a class="reference internal" href="#registry" id="id6">Registry</a><ul>
-<li><a class="reference internal" href="#list-registries" id="id7">List registries</a></li>
-<li><a class="reference internal" href="#get-default-push-registry" id="id8">Get default push registry</a></li>
-<li><a class="reference internal" href="#ping-a-registry" id="id9">Ping a registry</a></li>
-<li><a class="reference internal" href="#add-edit-a-registry" id="id10">Add/Edit a registry</a></li>
-<li><a class="reference internal" href="#remove-a-registry" id="id11">Remove a registry</a></li>
+<li><a class="reference internal" href="#image" id="id2">Image</a><ul>
+<li><a class="reference internal" href="#search-images" id="id3">Search images</a></li>
+<li><a class="reference internal" href="#inspect-an-image" id="id4">Inspect an image</a></li>
+<li><a class="reference internal" href="#get-image-tags" id="id5">Get image tags</a></li>
+<li><a class="reference internal" href="#download-an-image" id="id6">Download an image</a></li>
+<li><a class="reference internal" href="#registry" id="id7">Registry</a><ul>
+<li><a class="reference internal" href="#list-registries" id="id8">List registries</a></li>
+<li><a class="reference internal" href="#get-default-push-registry" id="id9">Get default push registry</a></li>
+<li><a class="reference internal" href="#ping-a-registry" id="id10">Ping a registry</a></li>
+<li><a class="reference internal" href="#add-edit-a-registry" id="id11">Add/Edit a registry</a></li>
+<li><a class="reference internal" href="#remove-a-registry" id="id12">Remove a registry</a></li>
+<li><a class="reference internal" href="#list-lxd-registries" id="id13">List LXD registries</a></li>
+<li><a class="reference internal" href="#add-a-lxd-registry" id="id14">Add a LXD registry</a></li>
+<li><a class="reference internal" href="#edit-a-lxd-registry" id="id15">Edit a LXD registry</a></li>
+<li><a class="reference internal" href="#id1" id="id16">Remove a registry</a></li>
 </ul>
 </li>
 </ul>
@@ -175,7 +183,7 @@
 </ul>
 </div>
 <div class="section" id="search-images">
-<h2><a class="toc-backref" href="#id2">Search images</a><a class="headerlink" href="#search-images" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Search images</a><a class="headerlink" href="#search-images" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-image">
 <code class="descname">GET </code><code class="descname">/api/v1/image</code><a class="headerlink" href="#get--api-v1-image" title="Permalink to this definition">¶</a></dt>
@@ -189,7 +197,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
 <li><strong>category</strong> &#8211; (optional) one of <code class="docutils literal"><span class="pre">all</span></code>, <code class="docutils literal"><span class="pre">local</span></code>, <code class="docutils literal"><span class="pre">dockerhub</span></code>, <code class="docutils literal"><span class="pre">private</span></code>. <strong>Default is all</strong></li>
 <li><strong>filter_text</strong> &#8211; (optional) filter image name and description or query string for docker search</li>
-<li><strong>type</strong> &#8211; (optional) one of <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code>, <code class="docutils literal"><span class="pre">app</span></code></li>
+<li><strong>type</strong> &#8211; (optional) one of <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">lxd</span></code>, <code class="docutils literal"><span class="pre">docker</span></code>, <code class="docutils literal"><span class="pre">app</span></code></li>
 <li><strong>registry_name</strong> &#8211; (optional) Private registry name</li>
 </ul>
 </td>
@@ -198,14 +206,14 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 </table>
 <p>From local repository:</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/image?category=all&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/image?category=all&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="nt">&quot;filterText&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.14.1638&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.4.0.2316&quot;</span><span class="p">,</span>
     <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
@@ -328,21 +336,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Run Dashing in a Docker container&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Dashing&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;dashing&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-dashing_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-dashing_armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.4&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A damn-sexy, open source real-time dashboard builder for IOT and other web mashups&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;freeboard&quot;</span><span class="p">,</span>
@@ -352,21 +345,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-freeboard_amd64/&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-freeboard_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A damn-sexy, open source real-time dashboard builder for IOT and other web mashups&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;freeboard&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;freeboard&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_freeboard.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-freeboard_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-freeboard_armhf&quot;</span><span class="p">,</span>
             <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
@@ -418,21 +396,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.2&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;MongoDB document databases provide high availability and easy scalability&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;MongoDB&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;mongodb&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_mongo.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-mongodb_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-mongodb_armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.4.10&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;MQTT Mosquitto 1.5.8 build on ubuntu 14.4&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;MQTT&quot;</span><span class="p">,</span>
@@ -442,21 +405,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-mosquitto_amd64/&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-mosquitto_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;MQTT Mosquitto 1.5.8 build on ubuntu 14.4&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;MQTT&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;mqtt&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_mqtt.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-mosquitto_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-mosquitto_armhf&quot;</span><span class="p">,</span>
             <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
@@ -493,21 +441,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;latest&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Node-RED visual tool for wiring the Internet of Things&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Node-RED&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;node-red&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_node_red.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-node-red_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-node-red_armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A vendor and technology agnostic open source automation software for home.&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;openHAB&quot;</span><span class="p">,</span>
@@ -523,21 +456,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.0-amd64-debian&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A vendor and technology agnostic open source automation software for home.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;openHAB&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;openhab&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_openhab.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/openhab/openhab/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;openhab/openhab&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.8&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.0-armhf-alpine&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ponte is an Internet of Things / Machine to Machine platform that connect Things to Web developers&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ponte&quot;</span><span class="p">,</span>
@@ -547,21 +465,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-ponte_amd64/&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-ponte_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ponte is an Internet of Things / Machine to Machine platform that connect Things to Web developers&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ponte&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ponte&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-ponte_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-ponte_armhf&quot;</span><span class="p">,</span>
             <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
@@ -583,21 +486,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.6.6-management&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;RabbitMQ is a highly reliable enterprise messaging system based on the emerging AMQP standard&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;RabbitMQ&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;rabbitmq&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_rabbit_mq.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-rabbitmq_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-rabbitmq_armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis is an open source key-value store that functions as a data structure server&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis&quot;</span><span class="p">,</span>
@@ -613,21 +501,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0.7&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis is an open source key-value store that functions as a data structure server&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;redis&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_redis.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-redis_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-redis_armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0.7&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis management tool written in node.js&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis Commander&quot;</span><span class="p">,</span>
@@ -637,21 +510,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-redis-commander_amd64/&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-redis-commander_amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis management tool written in node.js&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis Commander&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;redis commander&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/qnapnas/qiot-redis-commander_armhf/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnapnas/qiot-redis-commander_armhf&quot;</span><span class="p">,</span>
             <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;iot&quot;</span><span class="p">,</span>
@@ -715,20 +573,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;12&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Odoo (formerly OpenERP): open source ERP and Apps to grow your business.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Odoo&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;odoo&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/app_odoo.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dmisdani/arm-odoo&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;odooarm&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Redmine is a free and open source web-based project management system.&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Redmine&quot;</span><span class="p">,</span>
@@ -785,34 +629,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.2&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Busybox base image.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Busybox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/busybox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/busybox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.29.3&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Busybox base image.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Busybox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/busybox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/busybox&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.29.3&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The official build of CentOS.&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;CentOS&quot;</span><span class="p">,</span>
@@ -839,62 +655,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;143&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Go&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;go&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/golang&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/golang&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.11.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Go&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;go&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/golang&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/golang&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.11.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The IRC client of the future&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Irssi&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;irssi&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/irssi&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/irssi&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1.1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The IRC client of the future&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Irssi&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;irssi&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/irssi&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/irssi&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1.1&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
@@ -981,20 +741,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.14&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Node.js is a JavaScript runtime built on Chrome&#39;s V8 JavaScript engine&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Node.js&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;node.js&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/node&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/node&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;11.6.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Node.js is a JavaScript-based platform for server-side and networking applications.&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Node.js&quot;</span><span class="p">,</span>
@@ -1007,76 +753,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;11.6.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Node.js is a JavaScript runtime built on Chrome&#39;s V8 JavaScript engine&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Node.js&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;node.js&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/node&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/node&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;11.6.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Perl is a high-level, general-purpose, interpreted, dynamic programming language.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Perl&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;perl&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/perl&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/perl&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.28.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Perl is a high-level, general-purpose, interpreted, dynamic programming language.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Perl&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;perl&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/perl&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/perl&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.28&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;While designed for web development, the PHP scripting language also provides general-purpose use.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;PHP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;php&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/php&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/php&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;7.3&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;While designed for web development, the PHP scripting language also provides general-purpose use.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;PHP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;php&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/php&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/php&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;7.3&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
@@ -1093,34 +769,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;11.0&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Python is an interpreted, interactive, object-oriented, open-source programming language.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/python&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/python&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.7&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Python is an interpreted, interactive, object-oriented, open-source programming language.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/python&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/python&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3.7&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis is an open source key-value store that functions as a data structure server.&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Redis&quot;</span><span class="p">,</span>
@@ -1135,62 +783,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.0&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ruby is a dynamic, reflective, object-oriented, general-purpose, open-source programming language.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ruby&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ruby&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/ruby&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/ruby&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.6&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Ruby is a dynamic, reflective, object-oriented, general-purpose, open-source programming language.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ruby&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ruby&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/ruby&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/ruby&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.6&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;xenial&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm32v7/ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm32v7/ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;bionic&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The official build of Ubuntu.&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
@@ -1217,34 +809,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;18.04&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;xenial&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/arm64v8/ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8/ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;bionic&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
@@ -1259,204 +823,22 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;bionic&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Remote desktop Sharing in Ubuntu 14.04.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu with noVNC&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu with novnc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/colinhuang/ubuntu-novnc-armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;colinhuang/ubuntu-novnc-armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Remote desktop Sharing in Ubuntu 14.04.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu with noVNC&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu with novnc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/terrychu/docker-ubuntu-novnc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;terrychu/docker-ubuntu-novnc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64v8-1.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Debian is a Linux distribution that is composed entirely of free and open-source software (most of which is under the GNU General Public License) and packaged by a group called the Debian project.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Debian&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;debian&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/debian_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/debian-buster_10_20191009_amd64.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;debian-buster&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The Debian Project is an association of individuals who have made common cause to create a free operating system.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Debian&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;debian&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/debian_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/debian-buster_10_20191009_armhf.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;debian-buster-armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The Debian Project is an association of individuals who have made common cause to create a free operating system.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Debian&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;debian&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/debian_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/debian-buster_10_20191009_arm64.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;debian-buster-arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fedora (formerly Fedora Core) is an operating system based on the Linux kernel, developed by the community-supported Fedora Project and owned by Red Hat.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Fedora&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;fedora&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/fedora_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;kernelVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;4.2.8&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/fedora-twentyeight_28_amd64.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;fedora-twentyeight&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;28&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;kernelVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.19&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/ubuntu-xenial_16.04_20171130_amd64.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-xenial&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;16.04&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/ubuntu-bionic_18.04_20191009_amd64.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-bionic&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;18.04&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;kernelVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;4.2.8&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/ubuntu-xenial_16.04_20180212_armhf.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-xenial-armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;16.04&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/ubuntu-bionic_18.04_20191009_armhf.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-bionic-armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;18.04&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/ubuntu-xenial_16.04_20180808_arm64.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-xenial-arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;16.04&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fast, free and incredibly easy to use, the Ubuntu operating system powers millions of desktop PCs, laptops and servers around the world.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ubuntu_icon.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;inspect&quot;</span><span class="p">:</span> <span class="s2">&quot;{}&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;http://download.qnap.com/QPKG/container/ubuntu-bionic_18.04_20191009_arm64.tar.gz&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-bionic-arm64&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;18.04&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="nt">&quot;totalCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Filter application type:</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/image?type=app&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/image?type=app&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="nt">&quot;filterText&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.14.1638&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.4.0.2316&quot;</span><span class="p">,</span>
     <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
@@ -1501,20 +883,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;12&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;armhf&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Odoo (formerly OpenERP): open source ERP and Apps to grow your business.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Odoo&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;displayNameLower&quot;</span><span class="p">:</span> <span class="s2">&quot;odoo&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/app_odoo.png&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dmisdani/arm-odoo&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;odooarm&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Redmine is a free and open source web-based project management system.&quot;</span><span class="p">,</span>
             <span class="nt">&quot;displayName&quot;</span><span class="p">:</span> <span class="s2">&quot;Redmine&quot;</span><span class="p">,</span>
@@ -1557,7 +925,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;4.9.8&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="nt">&quot;totalCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -1565,14 +932,14 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 <p>Search from Docker Hub:</p>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-      <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/image?category=dockerhub&amp;filter_text=dorowu&quot;</span>
+      <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/image?category=dockerhub&amp;filter_text=dorowu&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
     <span class="nt">&quot;filterText&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.14.1638&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;qcsVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.4.0.2316&quot;</span><span class="p">,</span>
     <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Docker image to provide HTML5 VNC interface to access Ubuntu LXDE and LXQt desktop environment&quot;</span><span class="p">,</span>
@@ -1583,7 +950,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/ubuntu-desktop-lxde-vnc&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/ubuntu-desktop-lxde-vnc&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">497</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">560</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -1635,18 +1002,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Create Docker App on QNAP NAS in QPKG format &quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qdk2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qdk2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1654,6 +1009,18 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qdk2-build&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qdk2-build&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Create Docker App on QNAP NAS in QPKG format &quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/qdk2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/qdk2&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1690,6 +1057,18 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/laks/dorowu&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;laks/dorowu&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/dorowu/nextcloud-client&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dorowu/nextcloud-client&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
@@ -1755,18 +1134,6 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;vnpy-1.9.1 based on dorowu/ubuntu-desktop-lxde-vnc.&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/efreeway/ubuntu-vnpy-novnc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;efreeway/ubuntu-vnpy-novnc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Japanese version of dorowu/ubuntu-desktop-lxde-vnc&quot;</span><span class="p">,</span>
             <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1776,6 +1143,18 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;haoling/ubuntu-desktop-lxde-vnc-ja&quot;</span><span class="p">,</span>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;vnpy-1.9.1 based on dorowu/ubuntu-desktop-lxde-vnc.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/efreeway/ubuntu-vnpy-novnc&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;efreeway/ubuntu-vnpy-novnc&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -1861,21 +1240,8 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
             <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;docker image based on dorowus Ubuntu with novnc&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;downloading&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;is_automated&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nt">&quot;is_official&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hub.docker.com/r/hardock14/ubuntu-media&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;hardock14/ubuntu-media&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="s2">&quot;dockerhub&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;star_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="nt">&quot;totalCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -1884,7 +1250,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 
 </div>
 <div class="section" id="inspect-an-image">
-<h2><a class="toc-backref" href="#id3">Inspect an image</a><a class="headerlink" href="#inspect-an-image" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Inspect an image</a><a class="headerlink" href="#inspect-an-image" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-image-(string-image_type)-(string-image_name)-(string-image_tag)-inspect">
 <code class="descname">GET </code><code class="descname">/api/v1/image/</code><span class="sig-paren">(</span><em class="property">string: </em><em>image_type</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>image_name</em><span class="sig-paren">)</span><code class="descname">/</code><span class="sig-paren">(</span><em class="property">string: </em><em>image_tag</em><span class="sig-paren">)</span><code class="descname">/inspect</code><a class="headerlink" href="#get--api-v1-image-(string-image_type)-(string-image_name)-(string-image_tag)-inspect" title="Permalink to this definition">¶</a></dt>
@@ -1904,7 +1270,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/image/docker/ubuntu/latest/inspect&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/image/docker/ubuntu/latest/inspect&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -1917,7 +1283,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="nt">&quot;AttachStdin&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;AttachStdout&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;Cmd&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;/bin/bash&quot;</span>
+            <span class="s2">&quot;bash&quot;</span>
         <span class="p">],</span>
         <span class="nt">&quot;Domainname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Entrypoint&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
@@ -1925,7 +1291,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="s2">&quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span>
         <span class="p">],</span>
         <span class="nt">&quot;Hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:87be921e3d90770f1353d50d10255324a6c4ab865dc3c1b7e3b39c7bdd8738a1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:93c06ad94bc63e5c8fb978d605468c4507f82d92b9ba0dad33c9a80b137163cd&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;OnBuild&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;OpenStdin&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1935,7 +1301,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="nt">&quot;Volumes&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;WorkingDir&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Container&quot;</span><span class="p">:</span> <span class="s2">&quot;ce366f29d6016d41ac378597493aa148c8dcd456dd5d996dfa8fa4c38b09fd2e&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Container&quot;</span><span class="p">:</span> <span class="s2">&quot;c956fe828128e93f86f7628bff7449517519f8ed8dc87285077108eefb8d16ac&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ContainerConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;AttachStderr&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="nt">&quot;AttachStdin&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1944,15 +1310,15 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
             <span class="s2">&quot;/bin/sh&quot;</span><span class="p">,</span>
             <span class="s2">&quot;-c&quot;</span><span class="p">,</span>
             <span class="s2">&quot;#(nop) &quot;</span><span class="p">,</span>
-            <span class="s2">&quot;CMD [\&quot;/bin/bash\&quot;]&quot;</span>
+            <span class="s2">&quot;CMD [\&quot;bash\&quot;]&quot;</span>
         <span class="p">],</span>
         <span class="nt">&quot;Domainname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Entrypoint&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;Env&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s2">&quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span>
         <span class="p">],</span>
-        <span class="nt">&quot;Hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;ce366f29d601&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:87be921e3d90770f1353d50d10255324a6c4ab865dc3c1b7e3b39c7bdd8738a1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;c956fe828128&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:93c06ad94bc63e5c8fb978d605468c4507f82d92b9ba0dad33c9a80b137163cd&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="p">{},</span>
         <span class="nt">&quot;OnBuild&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;OpenStdin&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1962,39 +1328,36 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="nt">&quot;Volumes&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;WorkingDir&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-01-21T03:38:23.37559427Z&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;DockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;19.03.12&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-07-26T21:21:40.307832875Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;DockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;20.10.7&quot;</span><span class="p">,</span>
     <span class="nt">&quot;GraphDriver&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;LowerDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/overlay2/322ecde07596da04193dcc48caa0f20153d3aa0773fd851ef083b196e29060e1/diff:/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/overlay2/2c94799dd8df1b9ac38b241c064f1c7051c0e4815bb5907880aac9401b8598b7/diff&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MergedDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/overlay2/59a426954b059d981a803a3c7a24521e54dc86d4f6f53f2a3184291a62b2336b/merged&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;UpperDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/overlay2/59a426954b059d981a803a3c7a24521e54dc86d4f6f53f2a3184291a62b2336b/diff&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;WorkDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/overlay2/59a426954b059d981a803a3c7a24521e54dc86d4f6f53f2a3184291a62b2336b/work&quot;</span>
+            <span class="nt">&quot;MergedDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/overlay2/b682268b56d8843a9a70a385892bc6009967ea021b34656781b062adaddf3af1/merged&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;UpperDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/overlay2/b682268b56d8843a9a70a385892bc6009967ea021b34656781b062adaddf3af1/diff&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;WorkDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/overlay2/b682268b56d8843a9a70a385892bc6009967ea021b34656781b062adaddf3af1/work&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;overlay2&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:f63181f19b2fe819156dcb068b3b5bc036820bec7014c5f77277cfa341d4cb5e&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:1318b700e415001198d1bf66d260b07f67ca8a552b61b0da02b3832c778f221b&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;LastTagTime&quot;</span><span class="p">:</span> <span class="s2">&quot;0001-01-01T00:00:00Z&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;Os&quot;</span><span class="p">:</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Parent&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;RepoDigests&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;ubuntu@sha256:703218c0465075f4425e58fac086e09e1de5c340b12976ab9eb8ad26615c3715&quot;</span>
+        <span class="s2">&quot;ubuntu@sha256:82becede498899ec668628e7cb0ad87b6e1c371cb8a1e597d83a47fac21d6af3&quot;</span>
     <span class="p">],</span>
     <span class="nt">&quot;RepoTags&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;ubuntu:latest&quot;</span>
     <span class="p">],</span>
     <span class="nt">&quot;RootFS&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;Layers&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;sha256:9f32931c9d28f10104a8eb1330954ba90e76d92b02c5256521ba864feec14009&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;sha256:dbf2c0f42a39b60301f6d3936f7f8adb59bb97d31ec11cc4a049ce81155fef89&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;sha256:02473afd360bd5391fa51b6e7849ce88732ae29f50f3630c3551f528eba66d1e&quot;</span>
+            <span class="s2">&quot;sha256:7555a8182c42c7737a384cfe03a3c7329f646a3bf389c4bcd75379fc85e6c144&quot;</span>
         <span class="p">],</span>
         <span class="nt">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;layers&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Size&quot;</span><span class="p">:</span> <span class="mi">72901280</span><span class="p">,</span>
-    <span class="nt">&quot;VirtualSize&quot;</span><span class="p">:</span> <span class="mi">72901280</span>
+    <span class="nt">&quot;Size&quot;</span><span class="p">:</span> <span class="mi">72776763</span><span class="p">,</span>
+    <span class="nt">&quot;VirtualSize&quot;</span><span class="p">:</span> <span class="mi">72776763</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2002,7 +1365,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 
 </div>
 <div class="section" id="get-image-tags">
-<h2><a class="toc-backref" href="#id4">Get image tags</a><a class="headerlink" href="#get-image-tags" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Get image tags</a><a class="headerlink" href="#get-image-tags" title="Permalink to this headline">¶</a></h2>
 <dl class="get">
 <dt id="get--api-v1-image-(string-image_name)-tags">
 <code class="descname">GET </code><code class="descname">/api/v1/image/</code><span class="sig-paren">(</span><em class="property">string: </em><em>image_name</em><span class="sig-paren">)</span><code class="descname">/tags</code><a class="headerlink" href="#get--api-v1-image-(string-image_name)-tags" title="Permalink to this definition">¶</a></dt>
@@ -2034,7 +1397,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/image/nginx/tags?registry=Docker%20Hub&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/image/nginx/tags?registry=Docker%20Hub&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2300,6 +1663,10 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="s2">&quot;1.19.1-alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.19.1-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.19.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.10-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.10-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.10-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.10&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.19.2-alpine-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.19.2-alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.19.2-perl&quot;</span><span class="p">,</span>
@@ -2324,7 +1691,39 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
         <span class="s2">&quot;1.19.7-alpine&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.19.7-perl&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.19.7&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.8-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.8-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.8-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.8&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.9-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.9-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.9-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.19.9&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.19&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20.0-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20.0-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20.0-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20.1-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20.1-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20.1-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.20&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21.0-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21.0-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21.0-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21.1-alpine-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21.1-alpine&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21.1-perl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.21&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.7.1&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.7.10&quot;</span><span class="p">,</span>
         <span class="s2">&quot;1.7.11&quot;</span><span class="p">,</span>
@@ -2379,7 +1778,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 
 </div>
 <div class="section" id="download-an-image">
-<h2><a class="toc-backref" href="#id5">Download an image</a><a class="headerlink" href="#download-an-image" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Download an image</a><a class="headerlink" href="#download-an-image" title="Permalink to this headline">¶</a></h2>
 <dl class="post">
 <dt id="post-download image">
 <code class="descname">POST </code><code class="descname">download image</code><a class="headerlink" href="#post-download image" title="Permalink to this definition">¶</a></dt>
@@ -2387,7 +1786,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{&quot;type&quot;: &quot;docker&quot;, &quot;repository&quot;: &quot;dockerhub&quot;, &quot;image&quot;: &quot;busybox&quot;, &quot;tag&quot;: &quot;latest&quot;}&#39;</span> <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/background/image_download&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/background/image_download&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2396,7 +1795,7 @@ If depots is from dockerhub, it will take a few seconds to search.</p>
     <span class="nt">&quot;deletable&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;detail_state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1613729893</span><span class="p">,</span>
+    <span class="nt">&quot;init&quot;</span><span class="p">:</span> <span class="mi">1628700784</span><span class="p">,</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox:latest&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;busybox&quot;</span><span class="p">,</span>
@@ -2422,15 +1821,16 @@ This request will take few seconds to finish.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>repository</strong> &#8211; <code class="docutils literal"><span class="pre">local</span></code></li>
-<li><strong>image_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
+<li><strong>image_type</strong> &#8211; <code class="docutils literal"><span class="pre">lxc</span></code>, <code class="docutils literal"><span class="pre">lxd</span></code>, <code class="docutils literal"><span class="pre">docker</span></code></li>
 <li><strong>image_name</strong> &#8211; image name</li>
+<li><strong>fingerprint</strong> &#8211; LXD image ID</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/image/local/docker/busybox&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/image/local/docker/busybox/latest&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2446,9 +1846,9 @@ This request will take few seconds to finish.</p>
 
 </div>
 <div class="section" id="registry">
-<h2><a class="toc-backref" href="#id6">Registry</a><a class="headerlink" href="#registry" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Registry</a><a class="headerlink" href="#registry" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="list-registries">
-<h3><a class="toc-backref" href="#id7">List registries</a><a class="headerlink" href="#list-registries" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">List registries</a><a class="headerlink" href="#list-registries" title="Permalink to this headline">¶</a></h3>
 <dl class="get">
 <dt id="get--api-v1-registry">
 <code class="descname">GET </code><code class="descname">/api/v1/registry</code><a class="headerlink" href="#get--api-v1-registry" title="Permalink to this definition">¶</a></dt>
@@ -2474,7 +1874,7 @@ This request will take few seconds to finish.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/registry
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/registry
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2499,7 +1899,7 @@ This request will take few seconds to finish.</p>
 
 </div>
 <div class="section" id="get-default-push-registry">
-<h3><a class="toc-backref" href="#id8">Get default push registry</a><a class="headerlink" href="#get-default-push-registry" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">Get default push registry</a><a class="headerlink" href="#get-default-push-registry" title="Permalink to this headline">¶</a></h3>
 <dl class="get">
 <dt id="get--api-v1-registry-push">
 <code class="descname">GET </code><code class="descname">/api/v1/registry/push</code><a class="headerlink" href="#get--api-v1-registry-push" title="Permalink to this definition">¶</a></dt>
@@ -2518,7 +1918,7 @@ This request will take few seconds to finish.</p>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/registry/push&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/registry/push&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2533,7 +1933,7 @@ This request will take few seconds to finish.</p>
 
 </div>
 <div class="section" id="ping-a-registry">
-<h3><a class="toc-backref" href="#id9">Ping a registry</a><a class="headerlink" href="#ping-a-registry" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">Ping a registry</a><a class="headerlink" href="#ping-a-registry" title="Permalink to this headline">¶</a></h3>
 <dl class="get">
 <dt id="get--api-v1-registry-ping">
 <code class="descname">GET </code><code class="descname">/api/v1/registry/ping</code><a class="headerlink" href="#get--api-v1-registry-ping" title="Permalink to this definition">¶</a></dt>
@@ -2563,7 +1963,7 @@ This request will take few seconds to finish.</p>
     <span class="s1">&#39;{</span>
 <span class="s1">        &quot;url&quot;: &quot;https://registry.hub.docker.com&quot;,</span>
 <span class="s1">        &quot;tls&quot;: true</span>
-<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/registry/ping
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/registry/ping
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2584,7 +1984,7 @@ This request will take few seconds to finish.</p>
 
 </div>
 <div class="section" id="add-edit-a-registry">
-<h3><a class="toc-backref" href="#id10">Add/Edit a registry</a><a class="headerlink" href="#add-edit-a-registry" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">Add/Edit a registry</a><a class="headerlink" href="#add-edit-a-registry" title="Permalink to this headline">¶</a></h3>
 <dl class="post">
 <dt id="post--api-v1-registry">
 <code class="descname">POST </code><code class="descname">/api/v1/registry</code><a class="headerlink" href="#post--api-v1-registry" title="Permalink to this definition">¶</a></dt>
@@ -2624,7 +2024,7 @@ This request will take few seconds to finish.</p>
 <span class="s1">        &quot;url&quot;: &quot;https://test.registry.com&quot;,</span>
 <span class="s1">        &quot;username&quot;: &quot;my_user&quot;,</span>
 <span class="s1">        &quot;password&quot;: &quot;my_pass&quot;</span>
-<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/registry
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/registry
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2669,7 +2069,7 @@ This request will take few seconds to finish.</p>
 <span class="s1">        &quot;url&quot;: &quot;https://new_test.registry.com&quot;,</span>
 <span class="s1">        &quot;username&quot;: &quot;my_new_user&quot;,</span>
 <span class="s1">        &quot;password&quot;: &quot;my_new_pass&quot;</span>
-<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/registry
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/registry
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2706,13 +2106,13 @@ This request will take few seconds to finish.</p>
 
 </div>
 <div class="section" id="remove-a-registry">
-<h3><a class="toc-backref" href="#id11">Remove a registry</a><a class="headerlink" href="#remove-a-registry" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">Remove a registry</a><a class="headerlink" href="#remove-a-registry" title="Permalink to this headline">¶</a></h3>
 <dl class="delete">
 <dt id="delete--api-v1-registry">
 <code class="descname">DELETE </code><code class="descname">/api/v1/registry</code><a class="headerlink" href="#delete--api-v1-registry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete default <code class="docutils literal"><span class="pre">Docker</span> <span class="pre">Hub</span></code> registry is forbidden.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/registry/new_test
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/registry/new_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -2731,6 +2131,130 @@ This request will take few seconds to finish.</p>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="list-lxd-registries">
+<h3><a class="toc-backref" href="#id13">List LXD registries</a><a class="headerlink" href="#list-lxd-registries" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v1-lxd_registry">
+<code class="descname">GET </code><code class="descname">/api/v1/lxd_registry</code><a class="headerlink" href="#get--api-v1-lxd_registry" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; LXD Registry name</li>
+<li><strong>url</strong> (<em>string</em>) &#8211; LXD Registry URL</li>
+<li><strong>default</strong> (<em>boolean</em>) &#8211; Is default LXD Registry or not</li>
+<li><strong>static</strong> (<em>boolean</em>) &#8211; Is static LXD Registry or not (if =true you cannot edit/remove it)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/lxd_registry
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;static&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://images.linuxcontainers.org&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-lxd-registry">
+<h3><a class="toc-backref" href="#id14">Add a LXD registry</a><a class="headerlink" href="#add-a-lxd-registry" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v1-lxd_registry">
+<code class="descname">POST </code><code class="descname">/api/v1/lxd_registry</code><a class="headerlink" href="#post--api-v1-lxd_registry" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; LXD Registry name</li>
+<li><strong>url</strong> (<em>string</em>) &#8211; LXD Registry URL</li>
+<li><strong>setToDefault</strong> (<em>boolean</em>) &#8211; Is default LXD Registry or not</li>
+<li><strong>password</strong> (<em>string</em>) &#8211; private LXD Registry password</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;name&quot;: &quot;test&quot;,</span>
+<span class="s1">        &quot;url&quot;: &quot;https://images.linuxcontainers.org&quot;,</span>
+<span class="s1">        &quot;setToDefault&quot;: true,</span>
+<span class="s1">        &quot;password&quot;: &quot;password&quot;</span>
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/lxd_registry
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="edit-a-lxd-registry">
+<h3><a class="toc-backref" href="#id15">Edit a LXD registry</a><a class="headerlink" href="#edit-a-lxd-registry" title="Permalink to this headline">¶</a></h3>
+<dl class="patch">
+<dt id="patch--api-v1-lxd_registry-(string-registry_name)">
+<code class="descname">PATCH </code><code class="descname">/api/v1/lxd_registry/</code><span class="sig-paren">(</span><em class="property">string: </em><em>registry_name</em><span class="sig-paren">)</span><a class="headerlink" href="#patch--api-v1-lxd_registry-(string-registry_name)" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>string</em>) &#8211; LXD Registry URL</li>
+<li><strong>setToDefault</strong> (<em>boolean</em>) &#8211; Is default LXD Registry or not</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPATCH -b cookies.txt -d <span class="se">\</span>
+    <span class="s1">&#39;{</span>
+<span class="s1">        &quot;url&quot;: &quot;https://images.linuxcontainers.org&quot;,</span>
+<span class="s1">        &quot;setToDefault&quot;: true</span>
+<span class="s1">    }&#39;</span> http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/lxd_registry/test
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id16">Remove a registry</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v1-lxd_registry-(string-registry_name)">
+<code class="descname">DELETE </code><code class="descname">/api/v1/lxd_registry/</code><span class="sig-paren">(</span><em class="property">string: </em><em>registry_name</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-lxd_registry-(string-registry_name)" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/lxd_registry/test
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
 </pre></div>
 </div>
 </dd></dl>

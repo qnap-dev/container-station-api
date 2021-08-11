@@ -6,12 +6,12 @@
 QNAP Container Station
 ======================
 
-*QNAP Container Station* is a application on QNAP NAS providing container technology (operating system-level virtualization [1]_). It's mainly included a web UI, a back-end RESTful API server and essential utilities, such as commands lxc-* and docker. 
+*QNAP Container Station* is a application on QNAP NAS providing container technology (operating system-level virtualization [1]_). It's mainly included a web UI, a back-end RESTful API server and essential utilities, such as commands lxc-* and docker.
 
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -19,10 +19,10 @@ QNAP Container Station
     except:
         raise Exception('Unauthorized: ' + str(ret))
 
-    ret = sp.check_output('curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/system', shell=True)
+    ret = sp.check_output('curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/system', shell=True)
     try:
         system = json.loads(ret)
-        print('Version: ' + system['version']['web'])
+        print('Version: ' + system['version']['qpkg'])
     except sp.CalledProcessError:
         print('Unknown version')
 

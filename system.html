@@ -177,16 +177,21 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -c cookies.txt -d <span class="s2">&quot;username=admin&amp;password=admin&quot;</span> <span class="se">\</span>
-      http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/login
+<p><strong>Example request (username and password)</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -c cookies.txt -d <span class="s1">&#39;{&quot;username&quot;: &quot;admin&quot;, &quot;password&quot;: &quot;admin&quot;}&#39;</span> <span class="se">\</span>
+      http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/login
+</pre></div>
+</div>
+<p><strong>Example request (sid)</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -c cookies.txt -d <span class="s1">&#39;{&quot;sid&quot;: &quot;nassid&quot;}&#39;</span> <span class="se">\</span>
+      http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/login
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19 10:19:18&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11 16:54:45&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -195,9 +200,15 @@
 
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>${QPORT}/containerstation is the same as the system port of NAS.</p>
+<p>${QPORT} is the same as the system port of NAS.</p>
 <p>Steps to check the system port: &#8220;Control Panel&#8221; &gt; &#8220;General Settings&#8221;</p>
 <img alt="_images/system_port.png" class="last" src="_images/system_port.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Login API response will get HTTP 403 Forbidden status code if 2-step</p>
+<p>verification is enabled on this account.</p>
+<p class="last">You should use sid as request body instead of username and password in login API.</p>
 </div>
 <dl class="get">
 <dt id="get--api-v1-login_refresh">
@@ -216,14 +227,14 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/login_refresh
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/login_refresh
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;anonymous&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isAdmin&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19 10:19:18&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logintime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11 16:54:45&quot;</span><span class="p">,</span>
     <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -246,7 +257,7 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/logout
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/logout
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -275,23 +286,26 @@
 <li><strong>hostname</strong> (<em>string</em>) &#8211; Device hostname</li>
 <li><strong>processor</strong> (<em>string</em>) &#8211; Processor information</li>
 <li><strong>machine</strong> (<em>string</em>) &#8211; Machine type, e.g. &#8216;x86_64&#8217;, &#8216;armv7l&#8217;. An empty string is returned if the value cannot be determined.</li>
-<li><strong>version</strong> (<em>object</em>) &#8211; Version of Docker, LXC, and Container Station</li>
+<li><strong>version</strong> (<em>object</em>) &#8211; Version of Docker, LXC, LXD, and Container Station</li>
+<li><strong>memoryPageSize</strong> (<em>int</em>) &#8211; Memory page size.</li>
+<li><strong>features</strong> (<em>object</em>) &#8211; Support features, e.g. &#8216;lxd&#8217;, &#8216;net_bridge&#8217;</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/system
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/system
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;cpuCore&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-    <span class="nt">&quot;cpuThread&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="nt">&quot;cpuCore&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;cpuThread&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
     <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;net_bridge&quot;</span>
+        <span class="s2">&quot;net_bridge&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lxd&quot;</span>
     <span class="p">],</span>
     <span class="nt">&quot;gpu&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;csMode&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -299,25 +313,28 @@
         <span class="nt">&quot;driverInstalled&quot;</span><span class="p">:</span> <span class="kc">false</span>
     <span class="p">},</span>
     <span class="nt">&quot;gpuchanged&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;SW8-qx82-4&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;SW8-ED-453Bm&quot;</span><span class="p">,</span>
     <span class="nt">&quot;isDevicemapper&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;isSupportOverlay&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;machine&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;memory&quot;</span><span class="p">:</span> <span class="mi">7998068</span><span class="p">,</span>
+    <span class="nt">&quot;memoryPageSize&quot;</span><span class="p">:</span> <span class="mi">4096</span><span class="p">,</span>
     <span class="nt">&quot;migrationDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/lib/docker/qnap-migration&quot;</span><span class="p">,</span>
     <span class="nt">&quot;migrationDmStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;needRestart&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;platform&quot;</span><span class="p">:</span> <span class="s2">&quot;qts&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;processor&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;processor&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(R) Celeron(R) CPU J3455 @ 1.50GHz&quot;</span><span class="p">,</span>
     <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
     <span class="nt">&quot;storageDriver&quot;</span><span class="p">:</span> <span class="s2">&quot;overlay2&quot;</span><span class="p">,</span>
     <span class="nt">&quot;uncleanFS&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;dockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;19.03.13&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;firmware&quot;</span><span class="p">:</span> <span class="s2">&quot;4.5.1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;lxcVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.6&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;qpkg&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.14.1638&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;qpkgBuildDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2020/11/19&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;web&quot;</span><span class="p">:</span> <span class="s2">&quot;v2.2.14.1638&quot;</span>
+        <span class="nt">&quot;compose&quot;</span><span class="p">:</span> <span class="s2">&quot;1.29.2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;dockerVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;20.10.3&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;firmware&quot;</span><span class="p">:</span> <span class="s2">&quot;4.5.4&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lxc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.11-1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lxd&quot;</span><span class="p">:</span> <span class="s2">&quot;4.14&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;qpkg&quot;</span><span class="p">:</span> <span class="s2">&quot;2.4.0.2316&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;qpkgBuildDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2021/07/06&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -341,20 +358,20 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/system/resource
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/system/resource
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;41.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cpu_usage&quot;</span><span class="p">:</span> <span class="s2">&quot;100.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;memory_usage&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">2487</span><span class="p">,</span>
-        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">13060</span><span class="p">,</span>
-        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="nt">&quot;buffers&quot;</span><span class="p">:</span> <span class="mi">585</span><span class="p">,</span>
+        <span class="nt">&quot;cached&quot;</span><span class="p">:</span> <span class="mi">3336</span><span class="p">,</span>
+        <span class="nt">&quot;percent&quot;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
         <span class="nt">&quot;percent_buffers&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-        <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">32089</span><span class="p">,</span>
-        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">15428</span>
+        <span class="nt">&quot;percent_cached&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+        <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">7810</span><span class="p">,</span>
+        <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="mi">2086</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -366,7 +383,7 @@
 <code class="descname">GET </code><code class="descname">/api/v1/system/report</code><a class="headerlink" href="#get--api-v1-system-report" title="Permalink to this definition">¶</a></dt>
 <dd><p>System diagnosis report</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/system/report
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/system/report
 </pre></div>
 </div>
 </dd></dl>
@@ -397,13 +414,13 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/system/port/tcp/5000
-$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/system/port/udp/33806
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/system/port/tcp/5000
+$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/system/port/udp/33806
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 <span class="p">{</span>
     <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">false</span>
@@ -433,7 +450,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/system/bridge
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/system/bridge
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -442,50 +459,18 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
         <span class="p">{</span>
             <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
             <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.180.254&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.180.68&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.254.0&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="s2">&quot;br0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 2 (Virtual Switch 5)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 2&quot;</span><span class="p">,</span>
             <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.180.254&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.180.7&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.181.160&quot;</span><span class="p">,</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth1&quot;</span><span class="p">,</span>
             <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.254.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="s2">&quot;qvs1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 3 (Virtual Switch 9)&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;169.254.7.68&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.0.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 4&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth3&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="s2">&quot;qvs0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 5 (Virtual Switch 1)&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.180.254&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.181.145&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth4&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.254.0&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;bridge&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Adapter 6&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;netmask&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="mi">1</span>
@@ -516,14 +501,14 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/tls
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/tls
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;enddate&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-02-03&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;outdatedNotify&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;startdate&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-18&quot;</span>
+    <span class="nt">&quot;enddate&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-07-26&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;outdatedNotify&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;startdate&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -547,7 +532,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="s1">&#39;{&quot;outdatedNotify&quot;: false}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/tls
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/tls
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -575,12 +560,12 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/tls/domain_names
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/tls/domain_names
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;domain_names&quot;</span><span class="p">:</span> <span class="s2">&quot;user.myqnapcloud.com&quot;</span>
+    <span class="nt">&quot;domain_names&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -604,7 +589,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt -d <span class="s1">&#39;{&quot;domain_names&quot;: &quot;user.myqnapcloud.com&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/tls/domain_names
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/tls/domain_names
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -620,17 +605,17 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 <code class="descname">GET </code><code class="descname">/api/v1/tls/export</code><a class="headerlink" href="#get--api-v1-tls-export" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export certificate files to ZIP format.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/tls/export
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/tls/export
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="get">
-<dt id="get--api-v1-tls-export-registry">
-<code class="descname">GET </code><code class="descname">/api/v1/tls/export/registry</code><a class="headerlink" href="#get--api-v1-tls-export-registry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Export certificate file for registry.</p>
+<dl class="post">
+<dt id="post--api-v1-tls-rotation">
+<code class="descname">POST </code><code class="descname">/api/v1/tls/rotation</code><a class="headerlink" href="#post--api-v1-tls-rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renew Docker client certificate.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/tls/export/registry
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/tls/rotation
 </pre></div>
 </div>
 </dd></dl>
@@ -666,24 +651,14 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/sharefolder/
-$ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/sharefolder/?size=true&quot;</span>
-$ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/sharefolder/?path=test&quot;</span>
-$ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/sharefolder/?path=Public&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/sharefolder/
+$ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/sharefolder/?size=true&quot;</span>
+$ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/sharefolder/?path=test&quot;</span>
+$ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/sharefolder/?path=Public&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;! @#$^&amp;()_-0{}~\u9f9c\u306e\uc77c&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Browser Station&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Container&quot;</span><span class="p">,</span>
@@ -691,37 +666,17 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Download&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Multimedia&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Public&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVREliteSys&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProAppData&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProAutoSnap&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProDB&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProRecording&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VMs&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -733,79 +688,37 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
 <span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;! @#$^&amp;()_-0{}~\u9f9c\u306e\uc77c&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;24K&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Browser Station&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;20K&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Container&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;2.6G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;565.9G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;2.7G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Download&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;217.3G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Multimedia&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;217.3G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;711M&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Public&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;4.7G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVREliteSys&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;808K&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProAppData&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;48K&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProAutoSnap&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;20K&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProDB&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;920M&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;QVRProRecording&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;24K&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VMs&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;132G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;217.3G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;5.4G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Web&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;957.1G&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;28K&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;totalSize&quot;</span><span class="p">:</span> <span class="s2">&quot;217.3G&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;usedSize&quot;</span><span class="p">:</span> <span class="s2">&quot;12G&quot;</span><span class="p">,</span>
         <span class="nt">&quot;write&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">}</span>
 <span class="p">]</span>
@@ -822,10 +735,6 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
 <span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;@Recently-Snapshot&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;@Recycle&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -834,35 +743,31 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;configs&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;binaries&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;lxc&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;composetest&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qpkg&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;c.tgz&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;WordPress_5.7.2_x86_64.qpkg&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;container-station_2.2.9.1587_x86-v2-2-9.qpkg&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;b1.tar&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ct-data.tar&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cs-api-server&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;docker-compose.yml&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;docker-utils&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ctstation.sqlite&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -870,19 +775,7 @@ $ curl -sq -b cookies.txt <span class="s2">&quot;http://</span><span class="si">
     <span class="p">},</span>
     <span class="p">{</span>
         <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ok-all_default_but_no_audio.log&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ok-rm_driver_opt.log&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qbus&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;isDir&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;qnetwork_cli&quot;</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;wordpress_5.4.2_x86_64.qpkg&quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
 </pre></div>

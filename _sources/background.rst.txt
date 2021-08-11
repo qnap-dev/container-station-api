@@ -5,7 +5,7 @@ Background tasks
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -35,12 +35,18 @@ Create a container
     :reqjson string name: container name **[required]**
     :reqjson string image: image name **[required]**
     :reqjson string tag: image tag. For LXC is ``latest``  **[required]**
-    :reqjson string type: ``lxc``, ``docker`` **[required]**
+    :reqjson string type: ``lxc``, ``lxd``, ``docker`` **[required]**
     :reqjson string registry_name: Private registry name
     :reqjson object download: image metadata
     :reqjson string description: description of this image
     :reqjson string location: url of this image
     :reqjson string icon: icon source of this image
+    :reqjson string fingerprint: LXD image ID (For LXD only)
+    :reqjson boolean privileged: give extended privileges to this container
+    :reqjson boolean autostart: automatically start the container after reboot
+    :reqjson object network: container network setting
+    :reqjson object resource: container resource setting
+    :reqjson object volume: container volume setting
 
     **Example request of create a LXC container**
 
@@ -54,14 +60,14 @@ Create a container
                     "image": "ubuntu-bionic",
                     "tag": "latest"
                 }' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/create
+                http://${QIP}:${QPORT}/container-station/api/v1/background/create
 
     **Example response of create a LXC container**
 
         .. runcode:: json
 
-            curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/ctest/stop -o /dev/null;
-            curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/ctest -o /dev/null;
+            curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/ctest/stop -o /dev/null;
+            curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/ctest -o /dev/null;
             curl -sq -XPOST -b cookies.txt -d
                 '{
                     "type": "lxc",
@@ -70,7 +76,99 @@ Create a container
                     "image": "ubuntu-bionic",
                     "tag": "latest"
                 }'
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/create
+                http://${QIP}:${QPORT}/container-station/api/v1/background/create
+                | python -m json.tool;
+
+    **Example request of create a LXD container**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "type": "lxd",
+                "name": "lxdTest",
+                "image": "ubuntu",
+                "tag": "bionic",
+                "repository": "lxd",
+                "autostart": true,
+                "network": {
+                    "port": [
+                        [
+                            12345,
+                            1234,
+                            "udp"
+                        ]
+                    ]
+                },
+                "resource": {
+                    "device": [
+                        [
+                            "allow",
+                            "video4linux_(81)",
+                            "rw"
+                        ]
+                    ],
+                    "limit": {
+                        "cputime": 512,
+                        "memory": "768m"
+                    }
+                },
+                "volume": {
+                    "host": {
+                        "/test/selenium": {
+                            "bind": "/mnt/vol1",
+                            "ro": true
+                        }
+                    }
+                }
+            }' http://${QIP}:${QPORT}/container-station/api/v1/background/create
+
+    **Example response of create a LXD container**
+
+        .. runcode:: json
+
+            curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/stop -o /dev/null;
+            curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest -o /dev/null;
+            curl -sq -XPOST -b cookies.txt -d
+                '{
+                    "type": "lxd",
+                    "name": "lxdTest",
+                    "image": "ubuntu",
+                    "tag": "bionic",
+                    "repository": "lxd",
+                    "autostart": true,
+                    "network": {
+                        "port": [
+                            [
+                                12345,
+                                1234,
+                                "udp"
+                            ]
+                        ]
+                    },
+                    "resource": {
+                        "device": [
+                            [
+                                "allow",
+                                "video4linux_(81)",
+                                "rw"
+                            ]
+                        ],
+                        "limit": {
+                            "cputime": 512,
+                            "memory": "768m"
+                        }
+                    },
+                    "volume": {
+                        "host": {
+                            "/test/selenium": {
+                                "bind": "/mnt/vol1",
+                                "ro": true
+                            }
+                        }
+                    }
+                }'
+                http://${QIP}:${QPORT}/container-station/api/v1/background/create
                 | python -m json.tool;
 
     **Example request of create a Docker container**
@@ -90,15 +188,15 @@ Create a container
                         "icon": "http://download.qnap.com/QPKG/images/QPKG/container/ubuntu_icon.png"
                     }
                 }' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/create
+                http://${QIP}:${QPORT}/container-station/api/v1/background/create
 
     **Example response of create a Docker contaienr**
 
         .. runcode:: json
 
-            id=`curl -sq -XGET -b cookies.txt  http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/dtest`;
-            echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop -o /dev/null;
-            echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id} -o /dev/null;
+            id=`curl -sq -XGET -b cookies.txt  http://${QIP}:${QPORT}/container-station/api/v1/container/docker/getid/dtest`;
+            echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/stop -o /dev/null;
+            echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id} -o /dev/null;
             curl -sq -XPOST -b cookies.txt -d
                 '{
                     "type": "docker",
@@ -112,7 +210,7 @@ Create a container
                         "icon": "http://download.qnap.com/QPKG/images/QPKG/container/ubuntu_icon.png"
                     }
                 }'
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/create
+                http://${QIP}:${QPORT}/container-station/api/v1/background/create
                 | python -m json.tool;
 
 Create an application
@@ -125,8 +223,8 @@ Create an application
     :reqjson string template: Application name **[required]**
     :reqjson string name: Custom application name **[required]**
     :reqjson boolean autostart: Start application when container-station started
-    :reqjson string virtual_path: 
-    :reqjson int port: 
+    :reqjson string virtual_path:
+    :reqjson int port:
     :reqjson object binding: Application binding data
 
     **Example request of create a Joomla application**
@@ -138,21 +236,21 @@ Create an application
                     "template": "joomla",
                     "name": "joomla"
                 }' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/application
+                http://${QIP}:${QPORT}/container-station/api/v1/background/application
 
     **Example response of create a Joomla application**
 
         .. runcode:: json
 
-            code=`curl -sq -XGET -b cookies.txt  http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla`;
-            echo $code | grep -q 404 || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/kill -o /dev/null;
-            echo $code | grep -q 404 || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla -o /dev/null;
+            code=`curl -sq -XGET -b cookies.txt  http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla`;
+            echo $code | grep -q 404 || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/kill -o /dev/null;
+            echo $code | grep -q 404 || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla -o /dev/null;
             curl -sq -XPOST -b cookies.txt -d
                 '{
                     "template": "joomla",
                     "name": "joomla"
                 }'
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/application
+                http://${QIP}:${QPORT}/container-station/api/v1/background/application
                 | python -m json.tool;
 
 Upgrade an application
@@ -174,14 +272,14 @@ Download an image
     :reqjson string repository: image is from ``dockerhub``, ``qnap``, ``private`` **[required]**
     :reqjson string image: image name **[required]**
     :reqjson string tag: image tag. For LXC is ``latest``  **[required]**
-    :reqjson string type: ``lxc``, ``docker`` **[required]**
+    :reqjson string type: ``lxc``, ``lxd``, ``docker`` **[required]**
     :reqjson string registry_name: Private registry name
     :reqjson object download: image metadata
 
     **Example request of image download**
 
         .. sourcecode:: bash
- 
+
             $ curl -sq -XPOST -b cookies.txt  -d \
                 '{
                     "type": "docker",
@@ -189,7 +287,7 @@ Download an image
                     "image": "busybox",
                     "tag": "latest"
                 }' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download
+                http://${QIP}:${QPORT}/container-station/api/v1/background/image_download
 
     **Example response of image download**
 
@@ -202,7 +300,7 @@ Download an image
                     "image": "busybox",
                     "tag": "latest"
                 }'
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download
+                http://${QIP}:${QPORT}/container-station/api/v1/background/image_download
                 | python -m json.tool;
 
 Remove an image
@@ -212,7 +310,7 @@ Remove an image
 
     For ``image_remove`` category request:
 
-    :reqjson string type: ``lxc``, ``docker`` **[required]**
+    :reqjson string type: ``lxc``, ``lxd``, ``docker`` **[required]**
     :reqjson string image: image name **[required]**
     :reqjson string tag: image tag **[required]**
     :reqjson string id: image id **[required]**
@@ -220,7 +318,7 @@ Remove an image
     **Example request of image remove**
 
         .. sourcecode:: bash
- 
+
             $ curl -sq -XPOST -b cookies.txt  -d \
                 '[
                     {
@@ -230,7 +328,7 @@ Remove an image
                         "id": "fake_id"
                     }
                 ]' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_remove
+                http://${QIP}:${QPORT}/container-station/api/v1/background/image_remove
 
     **Example response of image remove**
 
@@ -245,7 +343,7 @@ Remove an image
                         "id": "fake_id"
                     }
                 ]'
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_remove
+                http://${QIP}:${QPORT}/container-station/api/v1/background/image_remove
                 | python -m json.tool;
 
 Push an image to registry
@@ -260,15 +358,15 @@ Push an image to registry
     :reqjson string tag: image tag **[required]**
     :reqjson string newImage: The repository to set **[required]**
     :reqjson string newTag: The new tag name **[required]**
-    :reqjson string registry: registry name **[required] Default is `Docker Hub`** 
+    :reqjson string registry: registry name **[required] Default is `Docker Hub`**
     :reqjson string username: registry username **[required if registry is Docker Hub]**
     :reqjson string password: registry password **[required if registry is Docker Hub]**
-    :reqjson boolean rememberme: Remember it 
+    :reqjson boolean rememberme: Remember it
 
     **Example request of image push**
 
         .. sourcecode:: bash
- 
+
             $ curl -sq -XPOST -b cookies.txt  -d \
                 '{
                     "type": "docker",
@@ -281,7 +379,7 @@ Push an image to registry
                     "password": "qcspassword",
                     "rememberme": true
                 }' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_push
+                http://${QIP}:${QPORT}/container-station/api/v1/background/image_push
 
 Export an image
 ^^^^^^^^^^^^^^^^^^^
@@ -308,7 +406,7 @@ Export an image
                     "path": "test/a.tgz",
                     "compress": true
                 }' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/image_export
+                http://${QIP}:${QPORT}/container-station/api/v1/background/image_export
 
 Import a container
 ^^^^^^^^^^^^^^^^^^^
@@ -329,7 +427,7 @@ Import a container
     **Example request of container import**
 
         .. sourcecode:: bash
- 
+
             $ curl -sq -XPOST -b cookies.txt  -d \
                 '{
                     "type": "lxc",
@@ -354,9 +452,9 @@ Import a container
                         }
                     }
                 }'\
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/container_import
- 
-    
+                http://${QIP}:${QPORT}/container-station/api/v1/background/container_import
+
+
 Export a container
 ^^^^^^^^^^^^^^^^^^^
 
@@ -373,7 +471,7 @@ Export a container
     **Example request of container export**
 
         .. sourcecode:: bash
- 
+
             $ curl -sq -XPOST -b cookies.txt  -d \
                 '{
                     "type": "lxc",
@@ -382,17 +480,17 @@ Export a container
                     "path": "test/c.tgz",
                     "compress": true
                 }' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/container_export
+                http://${QIP}:${QPORT}/container-station/api/v1/background/container_export
 
             $ curl -sq -XPOST -b cookies.txt -d \
                 '{
                     "type": "docker",
-                    "id": "a4af24dfe4329015e3adebbc169cbb04bb771f458167b41b07ebf98c882cce59", 
+                    "id": "a4af24dfe4329015e3adebbc169cbb04bb771f458167b41b07ebf98c882cce59",
                     "name": "busybox-6",
                     "path": "test/d.tgz",
                     "compress": true
                 }' \
-                http://${QIP}:${QPORT}/containerstation/api/v1/background/container_export
+                http://${QIP}:${QPORT}/container-station/api/v1/background/container_export
 
 
 
@@ -405,13 +503,13 @@ List tasks
 
     :query category: (optional) Task category
 
-    :resjson int id: unique task id 
+    :resjson int id: unique task id
     :resjson int init: time of initial request
     :resjson int start: time of starting in epoch
     :resjson int end: time of completion in epoch
     :resjson int result: 0 means success
     :resjson boolean deletable: It can be delete or not during running state
-    :resjson string category: background task category, the same as :http:post:`/api/v1/background/(string:category)` 
+    :resjson string category: background task category, the same as :http:post:`/api/v1/background/(string:category)`
     :resjson string state: one of ``waiting``, ``running``, ``completed``, ``error``
     :resjson string detail_state: Detail of task progress
     :resjson string user: request user name
@@ -422,47 +520,45 @@ List tasks
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/background/?category=image_remove"
+            "http://${QIP}:${QPORT}/container-station/api/v1/background/?category=image_remove"
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/background/
-
-    **Example response of all tasks**
-
-    .. runcode:: json
-
-        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/?category=image_remove" | python -m json.tool
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/background/
 
     **Example response of all tasks**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/background/ | python -m json.tool
+        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/?category=image_remove" | python -m json.tool
 
-    
+    **Example response of all tasks**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/background/ | python -m json.tool
+
+
 Delete tasks
 ------------
 
-.. http:delete:: /api/v1/background/
-.. http:delete:: /api/v1/background/(string:task_id)
 .. http:delete:: /api/v1/background/(string:category)
 
     It can delete completed and error tasks. Also can delete task with specific task ID or task category.
-    
+
     If task is is running state, it cannot be delete unless this task with deletable capability.
 
     :param task_id: task ID
     :resjson array object: task ID which have been deleted.
-    
+
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/background/
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/background/
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/background/ | python -m json.tool
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/background/ | python -m json.tool
 
 

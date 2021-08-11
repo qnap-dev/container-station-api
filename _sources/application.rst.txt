@@ -4,7 +4,7 @@ Application
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -60,14 +60,14 @@ Template
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/template/gitlab/wizard?lang=eng"
+            "http://${QIP}:${QPORT}/container-station/api/v1/template/gitlab/wizard?lang=eng"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/template/gitlab/wizard?lang=eng" | python -m json.tool
+            "http://${QIP}:${QPORT}/container-station/api/v1/template/gitlab/wizard?lang=eng" | python -m json.tool
 
 
 User's application
@@ -81,7 +81,7 @@ User's application
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/apps"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/apps"
 
     **Example response**
 
@@ -92,10 +92,10 @@ User's application
             "template": "joomla",
             "name": "joomla"
         }'
-        http://${QIP}:${QPORT}/containerstation/api/v1/background/application -o /dev/null;
+        http://${QIP}:${QPORT}/container-station/api/v1/background/application -o /dev/null;
         sleep 180;
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps" | python -m json.tool
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps" | python -m json.tool
 
 
 .. http:get:: /api/v1/apps/(string:name)
@@ -109,14 +109,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla"
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla" | python -m json.tool
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/restart
@@ -130,14 +130,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/restart"
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/restart"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/restart" | python -m json.tool
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/restart" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/kill
@@ -151,14 +151,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/kill"
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/kill"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/kill" | python -m json.tool
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/kill" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/start
@@ -172,14 +172,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/start"
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/start"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/start" | python -m json.tool
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/start" | python -m json.tool
 
 
 .. http:put:: /api/v1/apps/(string:name)/stop
@@ -193,14 +193,14 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/stop"
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/stop"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla/stop" | python -m json.tool
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla/stop" | python -m json.tool
 
 
 .. http:delete:: /api/v1/apps/(string:name)
@@ -214,80 +214,11 @@ User's application
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla"
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/apps/joomla" | python -m json.tool
-
-Reverse proxy
-------------------
-
-.. http:post:: /api/v1/proxypass
-
-    :reqjson string virtual_path: 
-    :reqjson int port: 
-
-
-    **Example request**
-
-    .. sourcecode:: bash
-
-        $ curl -sq -XPOST -b cookies.txt -d \
-            '{"virtual_path": "test", "port": 5566}' \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass"
-
-    **Example response**
-
-    .. runcode:: json
-
-        curl -sq -XPOST -b cookies.txt -d
-            '{"virtual_path": "test", "port": 5566}'
-            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass" | python -m json.tool
-
-
-.. http:get:: /api/v1/proxypass/(string:virtual_path)
-
-    Check virtual path is used or not by other container applications.
-
-    :param virtual_path: 
-
-    :resjson boolean used: Used or not
-
-    **Example request**
-
-    .. sourcecode:: bash
-
-        $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass/test"
-
-    **Example response**
-
-    .. runcode:: json
-
-        curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass/test" | python -m json.tool
-
-
-.. http:delete:: /api/v1/proxypass/(string:virtual_path)
-
-    :param virtual_path: 
-
-    **Example request**
-
-    .. sourcecode:: bash
-
-        $ curl -sq -XDELETE -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass/test"
-
-    **Example response**
-
-    .. runcode:: json
-
-        curl -sq -XDELETE -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/proxypass/test" | python -m json.tool
-
-
+            "http://${QIP}:${QPORT}/container-station/api/v1/apps/joomla" | python -m json.tool

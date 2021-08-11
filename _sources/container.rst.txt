@@ -4,7 +4,7 @@ Container
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -128,11 +128,11 @@ Create a container
                         }
                     }
                 }
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/container
+            }' http://${QIP}:${QPORT}/container-station/api/v1/container
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container
+            http://${QIP}:${QPORT}/container-station/api/v1/container
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{
@@ -151,29 +151,29 @@ Create a container
                     }
                 }
             }' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container
+            http://${QIP}:${QPORT}/container-station/api/v1/container
 
 **Example response of LXC**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/" -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/" -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "repository": "qnap", "image": "ubuntu-bionic", "tag": "latest"}'
-            "http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download" -o /dev/null;
+            "http://${QIP}:${QPORT}/container-station/api/v1/background/image_download" -o /dev/null;
 
-        while :; 
-        do 
-            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/" | python -c 
+        while :;
+        do
+            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/" | python -c
                 "import json, sys; r = sys.stdin.read(); d=json.loads(r); sys.exit(0 if d[0]['state']=='completed' else 1)";
 
-            if [ "$?" -eq "0" ]; then 
-                break; 
-            fi; 
-            sleep 5; 
-        done; 
+            if [ "$?" -eq "0" ]; then
+                break;
+            fi;
+            sleep 5;
+        done;
 
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/stop -o /dev/null; 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest -o /dev/null;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/stop -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d
             '{
                 "type": "lxc",
@@ -217,19 +217,19 @@ Create a container
                         }
                     }
                 }
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/container
+            }' http://${QIP}:${QPORT}/container-station/api/v1/container
             | python -m json.tool;
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/stop -o /dev/null;
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest -o /dev/null;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/stop -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d
             '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}'
-            http://${QIP}:${QPORT}/containerstation/api/v1/container
+            http://${QIP}:${QPORT}/container-station/api/v1/container
             | python -m json.tool;
 
 **Example request of Docker**
 
     .. sourcecode:: bash
-        
+
         $ curl -sq -XPOST -b cookies.txt -d \
             '{
                 "type": "docker",
@@ -241,7 +241,7 @@ Create a container
                 "entrypoint": "cat",
                 "command": "/etc/passwd",
                 "environment": [
-                    "QPORT=90", 
+                    "QPORT=90",
                     "QIP=1.2.3.4"
                 ],
                 "network": {
@@ -273,11 +273,11 @@ Create a container
                         }
                     }
                 }
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/container
+            }' http://${QIP}:${QPORT}/container-station/api/v1/container
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"type": "docker", "name": "DockerTestAPI2", "image": "ubuntu", "tag": "latest"}' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container
+            http://${QIP}:${QPORT}/container-station/api/v1/container
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{
@@ -299,30 +299,30 @@ Create a container
                 "repository":"local",
                 "command":"/bin/bash"
             }' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container
+            http://${QIP}:${QPORT}/container-station/api/v1/container
 
 **Example response of Docker**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/" -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/" -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d '{"type": "docker", "repository": "dockerhub", "image": "ubuntu", "tag": "latest"}'
-            "http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download" -o /dev/null;
+            "http://${QIP}:${QPORT}/container-station/api/v1/background/image_download" -o /dev/null;
 
-        while :; 
-        do 
-            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/" | python -c 
+        while :;
+        do
+            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/" | python -c
                 "import json, sys; r = sys.stdin.read(); d=json.loads(r); sys.exit(0 if d[0]['state']=='completed' else 1)";
 
-            if [ "$?" -eq "0" ]; then 
-                break; 
-            fi; 
-            sleep 5; 
-        done; 
+            if [ "$?" -eq "0" ]; then
+                break;
+            fi;
+            sleep 5;
+        done;
 
-        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/DockerTestAPI`;
-        echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop -o /dev/null;
-        echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id} -o /dev/null;
+        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/getid/DockerTestAPI`;
+        echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/stop -o /dev/null;
+        echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id} -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d
             '{
                 "type": "docker",
@@ -334,7 +334,7 @@ Create a container
                 "entrypoint": "cat",
                 "command": "/etc/passwd",
                 "environment": [
-                    "QPORT=90", 
+                    "QPORT=90",
                     "QIP=1.2.3.4"
                 ],
                 "network": {
@@ -366,16 +366,16 @@ Create a container
                         }
                     }
                 }
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/container
+            }' http://${QIP}:${QPORT}/container-station/api/v1/container
             | python -m json.tool;
-        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/DockerTestAPI2`;
-        echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop -o /dev/null;
-        echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id} -o /dev/null;
-        curl -sq -XPOST -b cookies.txt -d 
+        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/getid/DockerTestAPI2`;
+        echo $id | grep -q error || curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/stop -o /dev/null;
+        echo $id | grep -q error || curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id} -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d
             '{"type": "docker", "name": "DockerTestAPI2", "image": "ubuntu", "tag": "latest"}'
-            http://${QIP}:${QPORT}/containerstation/api/v1/container
+            http://${QIP}:${QPORT}/container-station/api/v1/container
             | python -m json.tool;
-    
+
 List containers
 ------------------
 
@@ -388,15 +388,15 @@ List containers
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/start -o /dev/null;
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/event/wait/lxc/utest/running?duration=20 -o /dev/null;
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container | python -mjson.tool
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/start -o /dev/null;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/event/wait/lxc/utest/running?duration=20 -o /dev/null;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container | python -mjson.tool
 
 Inspect a container
 ---------------------
@@ -405,18 +405,46 @@ Inspect a container
 
     Return low-level information on a container.
 
+    **Example request of LXD**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/<container_id>/inspect
+
+    **Example response of LXD**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/" -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d '{"type": "lxd", "name": "lxdTest", "image": "ubuntu", "tag": "bionic", "repository": "lxd", "resource": {"limit": {}},"volume": {}}'
+            "http://${QIP}:${QPORT}/container-station/api/v1/background/create" -o /dev/null;
+
+        while :;
+        do
+            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/" | python -c
+                "import json, sys; r = sys.stdin.read(); d=json.loads(r); sys.exit(0 if d[0]['state']=='completed' else 1)";
+
+            if [ "$?" -eq "0" ]; then
+                break;
+            fi;
+            sleep 5;
+        done;
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/inspect | python -mjson.tool
+
     **Example request of Docker**
 
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/<container_id>/inspect
+            http://${QIP}:${QPORT}/container-station/api/v1/container/docker/<container_id>/inspect
 
     **Example response of Docker**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/DockerTestAPI/inspect | python -mjson.tool
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/DockerTestAPI/inspect | python -mjson.tool
 
 Fetch the logs
 --------------
@@ -424,24 +452,37 @@ Fetch the logs
 .. http:get:: /api/v1/container/(string:container_type)/(string:container_id)/logs
 
     Fetch the logs of a container. Support Docker container only.
-    
+
     :query tail: (optional) Output the specified number of lines at the end of logs. **Default is 100.**
 
     :resjson string logs: logs string
     :resjson int tail: the last N line of output
+
+    **Example request of LXD**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt \
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/<container_id>/logs
+
+    **Example response of LXD**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/logs | python -mjson.tool
 
     **Example request of Docker**
 
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/<container_id>/logs
+            http://${QIP}:${QPORT}/container-station/api/v1/container/docker/<container_id>/logs
 
     **Example response of Docker**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/DockerTestAPI/logs | python -mjson.tool
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/DockerTestAPI/logs | python -mjson.tool
 
 Start a container
 -----------------
@@ -456,29 +497,42 @@ Start a container
 
     .. sourcecode:: bash
 
-        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/start
+        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/start
 
     **Example response of LXC**
 
     .. runcode:: json
 
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/stop -o /dev/null;
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/start | python -mjson.tool
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/stop -o /dev/null;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/start | python -mjson.tool
+
+    **Example request of LXD**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/start
+
+    **Example response of LXD**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/stop -o /dev/null;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/start | python -mjson.tool
 
     **Example request of Docker**
 
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/<container_id>/start
+            http://${QIP}:${QPORT}/container-station/api/v1/container/docker/<container_id>/start
 
     **Example response of Docker**
 
     .. runcode:: json
 
-        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/DockerTestAPI` ;
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop -o /dev/null;
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/start | python -mjson.tool
+        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/getid/DockerTestAPI` ;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/stop -o /dev/null;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/start | python -mjson.tool
 
 Restart a container
 -------------------
@@ -493,27 +547,39 @@ Restart a container
 
     .. sourcecode:: bash
 
-        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/restart
+        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/restart
 
     **Example response of LXC**
 
     .. runcode:: json
 
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/restart | python -mjson.tool
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/restart | python -mjson.tool
+
+    **Example request of LXD**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/restart
+
+    **Example response of LXD**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/restart | python -mjson.tool
 
     **Example request of Docker**
 
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/<container_id>/restart
+            http://${QIP}:${QPORT}/container-station/api/v1/container/docker/<container_id>/restart
 
     **Example response of Docker**
 
     .. runcode:: json
 
-        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/DockerTestAPI` ;
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/restart | python -mjson.tool
+        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/getid/DockerTestAPI` ;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/restart | python -mjson.tool
 
 Basic information
 -----------------
@@ -521,14 +587,14 @@ Basic information
 .. http:get:: /api/v1/container/(string:container_type)/(string:container_id)
 
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
 
     :resjson string id: container ID
     :resjson string name: container name
     :resjson string image: derived from
     :resjson string state: one of ``running``, ``stopped``
-    :resjson string type: one of ``lxc``, ``docker``
+    :resjson string type: one of ``lxc``, ``lxd``, ``docker``
     :resjson float cpu: cpu usage
     :resjson int memory: memory usage
     :resjson int rx: network receive rate
@@ -540,14 +606,14 @@ Basic information
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/event/wait/lxc/utest/running?duration=20 -o /dev/null;
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest | python -mjson.tool
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/event/wait/lxc/utest/running?duration=20 -o /dev/null;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest | python -mjson.tool
 
 Stop a container
 ----------------
@@ -562,55 +628,39 @@ Stop a container
 
     .. sourcecode:: bash
 
-        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/stop
+        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/stop
 
     **Example response of LXC**
 
     .. runcode:: json
 
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/stop | python -mjson.tool
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/stop | python -mjson.tool
+
+    **Example request of LXD**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/stop
+
+    **Example response of LXD**
+
+    .. runcode:: json
+
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest/stop | python -mjson.tool
 
     **Example request of Docker**
 
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/<container_id>/stop
+            http://${QIP}:${QPORT}/container-station/api/v1/container/docker/<container_id>/stop
 
     **Example response of Docker**
 
     .. runcode:: json
 
-        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/DockerTestAPI` ;
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop | python -mjson.tool
-
-Get export container settings
------------------------------
-.. http:get:: /api/v1/import/config
-
-    Given container archive path, query the configure
-
-    :query path: archive file relative parent path in NAS
-    :query name: archive file name
-
-    **Example request**
-
-    .. sourcecode:: bash
-
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/import/config?path=Public&name=c.tgz"
-
-    **Example response**
-
-    .. runcode:: json
-
-        curl -sq -XPOST -d "{\"path\": \"Public/c.tgz\", \"compress\": true}" -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/export -o /dev/null;
-        for i in `seq 10`; do curl -sq -m 5 -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/export/progress -o /dev/null;
-            if [ "$?" -eq "28" ]; then
-                break;
-            fi;
-            sleep 5;
-        done;
-        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/import/config?path=Public&name=c.tgz" | python -mjson.tool;
+        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/getid/DockerTestAPI` ;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/stop | python -mjson.tool
 
 Remove a container
 ------------------
@@ -624,13 +674,25 @@ Remove a container
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/<container_id>
 
     **Example response of LXC**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest | python -mjson.tool
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest | python -mjson.tool
+
+    **Example request of LXD**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/<container_id>
+
+    **Example response of LXD**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/lxd/lxdTest | python -mjson.tool
 
     **Example request of Docker**
 
@@ -639,12 +701,39 @@ Remove a container
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/<container_id>
+            http://${QIP}:${QPORT}/container-station/api/v1/container/docker/<container_id>
 
     **Example response of Docker**
 
     .. runcode:: json
 
-        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/getid/DockerTestAPI2` ;
-        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id}/stop -o /dev/null;
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/container/docker/${id} | python -mjson.tool;
+        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/getid/DockerTestAPI2` ;
+        curl -sq -XPUT -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/stop -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}?remove_volumes=true | python -mjson.tool;
+
+Commit  container
+------------------
+
+.. http:post:: /api/v1/container/docker/(string:container_id)/commit
+
+    Create a new container.
+
+    :reqjson string repository: image name
+    :reqjson string tag: image tag
+    :reqjson string author: author
+    :reqjson string message: commit message
+
+    **Example request of Docker**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -X POST -b cookies.txt -d '{"repository":"aaa","tag":"v1","author":"jj","message":"hi"}' \
+            http://${QIP}:${QPORT}/container-station/api/v1/container/docker/<container_id>/commit
+
+    **Example response of Docker**
+
+    .. runcode:: json
+
+        id=`curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/container/docker/getid/DockerTestAPI`;
+        curl -sq -X POST -b cookies.txt -d '{"repository":"aaa","tag":"v1","author":"jj","message":"hi"}' \
+            http://${QIP}:${QPORT}/container-station/api/v1/container/docker/${id}/commit | python -mjson.tool;

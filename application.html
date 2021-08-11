@@ -87,7 +87,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#template">Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#user-s-application">User&#8217;s application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reverse-proxy">Reverse proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html">Resource</a></li>
@@ -151,7 +150,6 @@
 <li><a class="reference internal" href="#application" id="id2">Application</a><ul>
 <li><a class="reference internal" href="#template" id="id3">Template</a></li>
 <li><a class="reference internal" href="#user-s-application" id="id4">User&#8217;s application</a></li>
-<li><a class="reference internal" href="#reverse-proxy" id="id5">Reverse proxy</a></li>
 </ul>
 </li>
 </ul>
@@ -207,15 +205,15 @@
 </ul>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/template/gitlab/wizard?lang=eng&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/template/gitlab/wizard?lang=eng&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;api_version&quot;</span><span class="p">:</span> <span class="s2">&quot;v1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;http_port&quot;</span><span class="p">:</span> <span class="mi">10080</span><span class="p">,</span>
-        <span class="nt">&quot;ssh_port&quot;</span><span class="p">:</span> <span class="mi">10022</span>
+        <span class="nt">&quot;http_port&quot;</span><span class="p">:</span> <span class="mi">12080</span><span class="p">,</span>
+        <span class="nt">&quot;ssh_port&quot;</span><span class="p">:</span> <span class="mi">12022</span>
     <span class="p">},</span>
     <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;## Prerequisites \nYour docker host needs to have 2 cores CPU and 8GB RAM to run GitLab. Please refer to the GitLab &lt;a href=\&quot;https://docs.gitlab.com/ee/install/requirements.html#hardware-requirements\&quot; target=\&quot;_blank\&quot;&gt;hardware requirements&lt;/a&gt; documentation for additional information.\n\n## Description \n__NOTE__: Please allow a few minutes for the GitLab service to start.\n\nLogin using the default username and password:\n\nUsername: **root**\n\nPassword: **5iveL!fe**\n&quot;</span><span class="p">,</span>
     <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;GitLab&quot;</span><span class="p">,</span>
@@ -227,14 +225,14 @@
             <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="nt">&quot;http_port&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The port of the GitLab server. Defaults to 10080.&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The port of the GitLab server. Defaults to 12080.&quot;</span><span class="p">,</span>
                         <span class="nt">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">65535</span><span class="p">,</span>
                         <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
                         <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP Port&quot;</span><span class="p">,</span>
                         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
                     <span class="p">},</span>
                     <span class="nt">&quot;ssh_port&quot;</span><span class="p">:</span> <span class="p">{</span>
-                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The ssh port number. Defaults to 10022.&lt;div&gt;Please note that HTTP Port and SSH Port must be different.&lt;/div&gt;&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The ssh port number. Defaults to 12022.&lt;div&gt;Please note that HTTP Port and SSH Port must be different.&lt;/div&gt;&quot;</span><span class="p">,</span>
                         <span class="nt">&quot;maximum&quot;</span><span class="p">:</span> <span class="mi">65535</span><span class="p">,</span>
                         <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
                         <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;SSH Port&quot;</span><span class="p">,</span>
@@ -259,7 +257,7 @@
 <code class="descname">GET </code><code class="descname">/api/v1/apps</code><a class="headerlink" href="#get--api-v1-apps" title="Permalink to this definition">¶</a></dt>
 <dd><p>List all custom application information.</p>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/apps&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -294,7 +292,7 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/apps/joomla&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -327,11 +325,13 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla/restart&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/apps/joomla/restart&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;joomla_web_1&quot;</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -353,11 +353,13 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla/kill&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/apps/joomla/kill&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;joomla_web_1&quot;</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -379,11 +381,13 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla/start&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/apps/joomla/start&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;web&quot;</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -405,11 +409,13 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPUT -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla/stop&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/apps/joomla/stop&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;joomla_web_1&quot;</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -431,101 +437,13 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/apps/joomla&quot;</span>
+    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/container-station/api/v1/apps/joomla&quot;</span>
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[]</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="reverse-proxy">
-<h2><a class="toc-backref" href="#id5">Reverse proxy</a><a class="headerlink" href="#reverse-proxy" title="Permalink to this headline">¶</a></h2>
-<dl class="post">
-<dt id="post--api-v1-proxypass">
-<code class="descname">POST </code><code class="descname">/api/v1/proxypass</code><a class="headerlink" href="#post--api-v1-proxypass" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li><strong>virtual_path</strong> (<em>string</em>) &#8211; </li>
-<li><strong>port</strong> (<em>int</em>) &#8211; </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
-    <span class="s1">&#39;{&quot;virtual_path&quot;: &quot;test&quot;, &quot;port&quot;: 5566}&#39;</span> <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/proxypass&quot;</span>
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-v1-proxypass-(string-virtual_path)">
-<code class="descname">GET </code><code class="descname">/api/v1/proxypass/</code><span class="sig-paren">(</span><em class="property">string: </em><em>virtual_path</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-proxypass-(string-virtual_path)" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check virtual path is used or not by other container applications.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>virtual_path</strong> &#8211; </li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li><strong>used</strong> (<em>boolean</em>) &#8211; Used or not</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/proxypass/test&quot;</span>
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;used&quot;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="delete">
-<dt id="delete--api-v1-proxypass-(string-virtual_path)">
-<code class="descname">DELETE </code><code class="descname">/api/v1/proxypass/</code><span class="sig-paren">(</span><em class="property">string: </em><em>virtual_path</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-proxypass-(string-virtual_path)" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>virtual_path</strong> &#8211; </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt <span class="se">\</span>
-    <span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">QIP</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span><span class="s2">/containerstation/api/v1/proxypass/test&quot;</span>
-</pre></div>
-</div>
-<p><strong>Example response</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;joomla_web_1&quot;</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </dd></dl>

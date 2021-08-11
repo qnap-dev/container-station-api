@@ -4,7 +4,7 @@ Log and Event
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -32,31 +32,31 @@ Log
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/log?limit=5&category=image,export"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/log?limit=5&category=image,export"
 
     **Example response**
 
     .. runcode:: json
 
         (echo "import log.log as ctlog\nctlog.info('Hello container station', 'TestUser1', 'container')\nctlog.warn('Hello container station', 'TestUser2', 'container')\nctlog.error('Hello container station', 'TestUser3', 'container')" | sudo VIRTUAL_ENV=$VIRTUAL_ENV PATH=$PATH python -);
-        http_proxy= curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/log?limit=5&category=image,export" | python -mjson.tool
+        http_proxy= curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/log?limit=5&category=image,export" | python -mjson.tool
 
 
 .. http:get:: /api/v1/log/export
 
     Export logs to csv format.
-    
+
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/log/export
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/log/export
 
     **Example response**
 
     .. runcode:: text
 
-        http_proxy= curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/log/export
+        http_proxy= curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/log/export
 
 
 .. http:delete:: /api/v1/log
@@ -64,18 +64,18 @@ Log
     Clear all system logs.
 
     :resjson int records: Returns the number of rows deleted.
-    
+
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/log
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/log
 
     **Example response**
 
     .. runcode:: text
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/log
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/log
 
 
 Event
@@ -87,7 +87,7 @@ Event
     :query offset: the newest one
 
     **Response format**
-    
+
     Category:User:Timestamp:JSON
 
     =========   =====  ==================================
@@ -95,19 +95,19 @@ Event
     =========   =====  ==================================
     image       user   action: ``download``
                           - name: image name
-                          - repository: ``dockerhub``, ``qnap``
-                          - type: ``docker``, ``lxc``
+                          - repository: ``dockerhub``, ``qnap``, ``lxd``
+                          - type: ``docker``, ``lxc``, ``lxd``
                           - state: ``success``, ``error``
                        action: ``delete``
                           - name: image name
-                          - type: ``docker``, ``lxc``
+                          - type: ``docker``, ``lxc``, ``lxd``
                           - state: ``success``, ``error``
                        action: ``update``
                           - category: ``local``
-                          - type: ``docker``, ``lxc``
+                          - type: ``docker``, ``lxc``, ``lxd``
     container   user   - container: container name
                        - id: container ID
-                       - type: ``docker``, ``lxc``
+                       - type: ``docker``, ``lxc``, ``lxd``
                        - state: ``create``, ``start``, ``stop``, ``restart``, ``destroy``, ``pause``, ``unpause``
                        - port: ``add``, ``remove``
     export      user   - type: ``docker``, ``lxc``
@@ -129,13 +129,13 @@ Event
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/event
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/event
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/event | python -mjson.tool
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/event | python -mjson.tool
 
 
 .. http:get:: /api/v1/event/wait/(string:container_type)/(string:container_id)/(string:state)
@@ -149,11 +149,11 @@ Event
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/event/wait/lxc/utest/stopped?duration=5"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/event/wait/lxc/utest/stopped?duration=5"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}' http://${QIP}:${QPORT}/containerstation/api/v1/container  -o /dev/null; 
-        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/event/wait/lxc/utest/stopped?duration=5" | python -mjson.tool
+        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}' http://${QIP}:${QPORT}/container-station/api/v1/container  -o /dev/null;
+        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/event/wait/lxc/utest/stopped?duration=5" | python -mjson.tool

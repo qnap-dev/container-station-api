@@ -4,7 +4,7 @@ Networks
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -24,13 +24,13 @@ List all networks
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks | python -mjson.tool;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks | python -mjson.tool;
 
 Create a network
 ----------------
@@ -56,7 +56,7 @@ Create a network
                 "name": "doc_test_network",
                 "check_duplicate": true
             }' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks
+            http://${QIP}:${QPORT}/container-station/api/v1/networks
 
     **Example response**
 
@@ -67,7 +67,7 @@ Create a network
                 "name": "doc_test_network",
                 "check_duplicate": true
             }'
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks | python -mjson.tool;
+            http://${QIP}:${QPORT}/container-station/api/v1/networks | python -mjson.tool;
 
     **Example response with duplicated network**
 
@@ -78,7 +78,7 @@ Create a network
                 "name": "doc_test_network",
                 "check_duplicate": true
             }'
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks | python -mjson.tool;
+            http://${QIP}:${QPORT}/container-station/api/v1/networks | python -mjson.tool;
 
 Inspect network
 -------------------
@@ -94,13 +94,13 @@ Inspect network
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network/inspect
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network/inspect
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network/inspect | python -mjson.tool;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network/inspect | python -mjson.tool;
 
 Connect container
 -----------------
@@ -118,7 +118,7 @@ Connect container
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"container": "dtest"}' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network/connect
+            http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network/connect
 
     **Example response**
 
@@ -126,13 +126,13 @@ Connect container
 
         curl -sq -XPOST -b cookies.txt -d 
             '{"container": "dtest"}' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network/connect | python -mjson.tool;
+            http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network/connect | python -mjson.tool;
 
     **Inspect result after container connected**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network/inspect | python -mjson.tool;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network/inspect | python -mjson.tool;
 
 Disconnect container
 --------------------
@@ -151,7 +151,7 @@ Disconnect container
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"container": "dtest", "forct": false}' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network/disconnect
+            http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network/disconnect
 
     **Example response**
 
@@ -159,7 +159,7 @@ Disconnect container
 
         curl -sq -XPOST -b cookies.txt -d 
             '{"container": "dtest", "forct": false}' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network/disconnect | python -mjson.tool;
+            http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network/disconnect | python -mjson.tool;
 
 Remove a network
 ----------------
@@ -172,19 +172,19 @@ Remove a network
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network | python -mjson.tool;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network | python -mjson.tool;
 
     **Example response of network not found**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/doc_test_network | python -mjson.tool;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/doc_test_network | python -mjson.tool;
 
 Remove all unused networks
 --------------------------
@@ -195,7 +195,7 @@ Remove all unused networks
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/
 
     **Example response**
 
@@ -206,14 +206,14 @@ Remove all unused networks
                 "name": "doc_test_network_1",
                 "check_duplicate": true
             }'
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks  -o /dev/null;
+            http://${QIP}:${QPORT}/container-station/api/v1/networks  -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d 
             '{
                 "name": "doc_test_network_2",
                 "check_duplicate": true
             }'
-            http://${QIP}:${QPORT}/containerstation/api/v1/networks  -o /dev/null;
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/ | python -mjson.tool;
+            http://${QIP}:${QPORT}/container-station/api/v1/networks  -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/ | python -mjson.tool;
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/networks/ | python -mjson.tool;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/networks/ | python -mjson.tool;
 

@@ -4,7 +4,7 @@ Image
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -13,7 +13,6 @@ Image
         raise Exception('Unauthorized: ' + str(ret))
 
 .. contents::
-
 
 Search images
 -----------------
@@ -25,23 +24,23 @@ Search images
 
     :query category: (optional) one of ``all``, ``local``, ``dockerhub``, ``private``. **Default is all**
     :query filter_text: (optional) filter image name and description or query string for docker search
-    :query type: (optional) one of ``lxc``, ``docker``, ``app``
-    :query registry_name: (optional) Private registry name 
-    
+    :query type: (optional) one of ``lxc``, ``lxd``, ``docker``, ``app``
+    :query registry_name: (optional) Private registry name
+
     From local repository:
 
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/image?category=all"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/image?category=all"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image?category=all"
+            "http://${QIP}:${QPORT}/container-station/api/v1/image?category=all"
             | python -m json.tool
 
 
@@ -51,17 +50,17 @@ Search images
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/image?type=app"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/image?type=app"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image?type=app"
+            "http://${QIP}:${QPORT}/container-station/api/v1/image?type=app"
             | python -m json.tool
-    
-    
+
+
     Search from Docker Hub:
 
     **Example request**
@@ -69,14 +68,14 @@ Search images
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-              "http://${QIP}:${QPORT}/containerstation/api/v1/image?category=dockerhub&filter_text=dorowu"
+              "http://${QIP}:${QPORT}/container-station/api/v1/image?category=dockerhub&filter_text=dorowu"
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image?category=dockerhub&filter_text=dorowu"
+            "http://${QIP}:${QPORT}/container-station/api/v1/image?category=dockerhub&filter_text=dorowu"
             | python -m json.tool
 
 
@@ -97,14 +96,14 @@ Inspect an image
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image/docker/ubuntu/latest/inspect"
+            "http://${QIP}:${QPORT}/container-station/api/v1/image/docker/ubuntu/latest/inspect"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image/docker/ubuntu/latest/inspect" | python -m json.tool
+        curl -sq -XGET -b cookies.txt
+            "http://${QIP}:${QPORT}/container-station/api/v1/image/docker/ubuntu/latest/inspect" | python -m json.tool
 
 
 Get image tags
@@ -112,12 +111,12 @@ Get image tags
 
 .. http:get:: /api/v1/image/(string:image_name)/tags
 
-    Get image tags from specific registry. 
-    
+    Get image tags from specific registry.
+
     :param image_name: image name
     :query registry: Registry name
 
-    :resjson string name: Request image name 
+    :resjson string name: Request image name
     :resjson array installed: tags have been installed in local
     :resjson array tags: all tags of request image
 
@@ -126,21 +125,21 @@ Get image tags
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image/nginx/tags?registry=Docker%20Hub"
+            "http://${QIP}:${QPORT}/container-station/api/v1/image/nginx/tags?registry=Docker%20Hub"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image/nginx/tags?registry=Docker%20Hub" | python -m json.tool
+        curl -sq -XGET -b cookies.txt
+            "http://${QIP}:${QPORT}/container-station/api/v1/image/nginx/tags?registry=Docker%20Hub" | python -m json.tool
 
 
 Download an image
 -----------------
 
 
-.. http:post:: download image 
+.. http:post:: download image
 
     Reference: :http:post:`/api/v1/background/(string:category)`
 
@@ -150,50 +149,51 @@ Download an image
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"type": "docker", "repository": "dockerhub", "image": "busybox", "tag": "latest"}' \
-            "http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download"
+            "http://${QIP}:${QPORT}/container-station/api/v1/background/image_download"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/" -o /dev/null;
-        curl -sq -XPOST -b cookies.txt -d 
+        curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/" -o /dev/null;
+        curl -sq -XPOST -b cookies.txt -d
             '{"type": "docker", "repository": "dockerhub", "image": "busybox", "tag": "latest"}'
-            "http://${QIP}:${QPORT}/containerstation/api/v1/background/image_download" | python -m json.tool;
+            "http://${QIP}:${QPORT}/container-station/api/v1/background/image_download" | python -m json.tool;
 
-        while :; 
-        do 
-            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/background/" | python -c 
+        while :;
+        do
+            curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/background/" | python -c
                 "import json, sys; r = sys.stdin.read(); d=json.loads(r); sys.exit(0 if d[0]['state']=='completed' else 1)";
 
-            if [ "$?" -eq "0" ]; then 
-                break; 
-            fi; 
-            sleep 5; 
-        done; 
+            if [ "$?" -eq "0" ]; then
+                break;
+            fi;
+            sleep 5;
+        done;
 
 
 .. http:delete:: /api/v1/image/(string:repository)/(string:image_type)/(string:image_name)
 
     Remove image function which is only used in ``local`` image.
-    This request will take few seconds to finish. 
+    This request will take few seconds to finish.
 
-    :param repository: ``local`` 
-    :param image_type: ``lxc``, ``docker``
+    :param repository: ``local``
+    :param image_type: ``lxc``, ``lxd``, ``docker``
     :param image_name: image name
+    :param fingerprint: LXD image ID
 
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/image/local/docker/busybox"
+        $ curl -sq -XDELETE -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/image/local/docker/busybox/latest"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt 
-            "http://${QIP}:${QPORT}/containerstation/api/v1/image/local/docker/busybox" | python -m json.tool
+        curl -sq -XDELETE -b cookies.txt
+            "http://${QIP}:${QPORT}/container-station/api/v1/image/local/docker/busybox/latest" | python -m json.tool
 
 
 Registry
@@ -215,19 +215,19 @@ List registries
     :resjson string password: Registry password
     :resjson string version: Registry version
     :resjson object metadata: Other information
-    
+
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/registry
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/registry
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XGET -b cookies.txt
-            http://${QIP}:${QPORT}/containerstation/api/v1/registry
+            http://${QIP}:${QPORT}/container-station/api/v1/registry
             | python -m json.tool
 
 Get default push registry
@@ -238,18 +238,18 @@ Get default push registry
     :resjson string registry: Registry name
     :resjson string username: Registry username
     :resjson string password: Registry password
-    
+
     **Example request**
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/registry/push"
+        $ curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/registry/push"
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/containerstation/api/v1/registry/push"
+        curl -sq -XGET -b cookies.txt "http://${QIP}:${QPORT}/container-station/api/v1/registry/push"
             | python -m json.tool
 
 
@@ -264,7 +264,7 @@ Ping a registry
     :reqjson string password: Registry password
 
     :resjson string version: Registry version
-    
+
     **Example request**
 
     .. sourcecode:: bash
@@ -273,7 +273,7 @@ Ping a registry
             '{
                 "url": "https://registry.hub.docker.com",
                 "tls": true
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping
+            }' http://${QIP}:${QPORT}/container-station/api/v1/registry/ping
 
 
     **Example response**
@@ -284,7 +284,7 @@ Ping a registry
             '{
                 "url": "https://registry.hub.docker.com",
                 "tls": true
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping | python -m json.tool
+            }' http://${QIP}:${QPORT}/container-station/api/v1/registry/ping | python -m json.tool
 
     **Example response when error occurred**
 
@@ -294,7 +294,7 @@ Ping a registry
             '{
                 "url": "https://www.example.com",
                 "tls": true
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/registry/ping | python -m json.tool
+            }' http://${QIP}:${QPORT}/container-station/api/v1/registry/ping | python -m json.tool
 
 Add/Edit a registry
 ^^^^^^^^^^^^^^^^^^^
@@ -315,7 +315,7 @@ Add/Edit a registry
     :reqjson string oldname: Original registry name before edit.
 
     Add a new registry:
-    
+
     **Example request**
 
     .. sourcecode:: bash
@@ -330,15 +330,15 @@ Add/Edit a registry
                 "url": "https://test.registry.com",
                 "username": "my_user",
                 "password": "my_pass"
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/registry
+            }' http://${QIP}:${QPORT}/container-station/api/v1/registry
 
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/registry/test -o /dev/null;
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/registry/new_test -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/registry/test -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/registry/new_test -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d
             '{
                 "method": "add",
@@ -350,11 +350,11 @@ Add/Edit a registry
                 "username": "my_user",
                 "password": "my_pass"
             }'
-            http://${QIP}:${QPORT}/containerstation/api/v1/registry
+            http://${QIP}:${QPORT}/container-station/api/v1/registry
             | python -m json.tool;
 
     Edit registry:
-    
+
     **Example request**
 
     .. sourcecode:: bash
@@ -369,7 +369,7 @@ Add/Edit a registry
                 "url": "https://new_test.registry.com",
                 "username": "my_new_user",
                 "password": "my_new_pass"
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/registry
+            }' http://${QIP}:${QPORT}/container-station/api/v1/registry
 
 
     **Example response**
@@ -387,7 +387,7 @@ Add/Edit a registry
                 "username": "my_new_user",
                 "password": "my_new_pass"
             }'
-            http://${QIP}:${QPORT}/containerstation/api/v1/registry
+            http://${QIP}:${QPORT}/container-station/api/v1/registry
             | python -m json.tool
 
 Remove a registry
@@ -401,12 +401,123 @@ Remove a registry
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/registry/new_test
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/registry/new_test
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt
-            http://${QIP}:${QPORT}/containerstation/api/v1/registry/new_test
+            http://${QIP}:${QPORT}/container-station/api/v1/registry/new_test
+            | python -m json.tool
+
+List LXD registries
+^^^^^^^^^^^^^^^^^^^
+
+.. http:get:: /api/v1/lxd_registry
+
+    :resjson string name: LXD Registry name
+    :resjson string url: LXD Registry URL
+    :resjson boolean default: Is default LXD Registry or not
+    :resjson boolean static: Is static LXD Registry or not (if =true you cannot edit/remove it)
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/lxd_registry
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XGET -b cookies.txt
+            http://${QIP}:${QPORT}/container-station/api/v1/lxd_registry
+            | python -m json.tool
+
+Add a LXD registry
+^^^^^^^^^^^^^^^^^^^
+
+.. http:post:: /api/v1/lxd_registry
+
+    :reqjson string name: LXD Registry name
+    :reqjson string url: LXD Registry URL
+    :reqjson boolean setToDefault: Is default LXD Registry or not
+    :reqjson string password: private LXD Registry password
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPOST -b cookies.txt -d \
+            '{
+                "name": "test",
+                "url": "https://images.linuxcontainers.org",
+                "setToDefault": true,
+                "password": "password"
+            }' http://${QIP}:${QPORT}/container-station/api/v1/lxd_registry
+
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPOST -b cookies.txt -d
+            '{
+                "name": "test",
+                "url": "https://images.linuxcontainers.org",
+                "setToDefault": true,
+                "password": "password"
+            }'
+            http://${QIP}:${QPORT}/container-station/api/v1/lxd_registry
+            | python -m json.tool;
+
+Edit a LXD registry
+^^^^^^^^^^^^^^^^^^^
+
+.. http:patch:: /api/v1/lxd_registry/(string:registry_name)
+
+    :reqjson string url: LXD Registry URL
+    :reqjson boolean setToDefault: Is default LXD Registry or not
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XPATCH -b cookies.txt -d \
+            '{
+                "url": "https://images.linuxcontainers.org",
+                "setToDefault": true
+            }' http://${QIP}:${QPORT}/container-station/api/v1/lxd_registry/test
+
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XPATCH -b cookies.txt -d
+            '{
+                "url": "https://images.linuxcontainers.org",
+                "setToDefault": true
+            }'
+            http://${QIP}:${QPORT}/container-station/api/v1/lxd_registry/images
+            | python -m json.tool
+
+Remove a registry
+^^^^^^^^^^^^^^^^^
+
+.. http:delete:: /api/v1/lxd_registry/(string:registry_name)
+
+    **Example request**
+
+    .. sourcecode:: bash
+
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/lxd_registry/test
+
+    **Example response**
+
+    .. runcode:: json
+
+        curl -sq -XDELETE -b cookies.txt
+            http://${QIP}:${QPORT}/container-station/api/v1/lxd_registry/test
             | python -m json.tool

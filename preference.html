@@ -179,12 +179,12 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPOST -sq -b cookies.txt -d <span class="s1">&#39;{&quot;value&quot;:&quot;I am sphinx&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/doc_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">23</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">51</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -206,16 +206,18 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;cert_enddate&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-02-03&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;cert_md5&quot;</span><span class="p">:</span> <span class="s2">&quot;def95efaf1842a5e7c30ac04b3c37d34&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;cert_outdated_notify&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;cert_startdate&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-18&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cert_enddate&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-07-26&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cert_md5&quot;</span><span class="p">:</span> <span class="s2">&quot;44bfbeb4b81770a474125f2fd0cbe4a4&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cert_outdated_notify&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cert_startdate&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ch_data_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/Container/container-station-data/&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ch_new_network&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.3.1/24&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ch_new_network_lxdbr0&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.7.1/24&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ch_status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ct:image:ai_en-US&quot;</span><span class="p">:</span> <span class="s2">&quot;[{\&quot;qcsVersion\&quot;: \&quot;2.0\&quot;, \&quot;displayName\&quot;: \&quot;CAFFE Demo - GPU\&quot;, \&quot;name\&quot;: \&quot;qnapnas/caffedemo\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;ai\&quot;, \&quot;version\&quot;: \&quot;0.1beta-gpu\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/caffedemo/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ai_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;This is a photo recognition demo version generated using CAFFE deep learning framework.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;2.0\&quot;, \&quot;displayName\&quot;: \&quot;CAFFE - GPU\&quot;, \&quot;name\&quot;: \&quot;bvlc/caffe\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;ai\&quot;, \&quot;version\&quot;: \&quot;gpu\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/bvlc/caffe/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ai_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;CAFFE (Convolutional Architecture for Fast Feature Embedding) is a deep learning framework. This is official CAFFE image.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;2.0\&quot;, \&quot;displayName\&quot;: \&quot;CNTK - GPU\&quot;, \&quot;name\&quot;: \&quot;microsoft/cntk\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;ai\&quot;, \&quot;version\&quot;: \&quot;2.6-gpu-python3.5-cuda9.0-cudnn7.0\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/microsoft/cntk/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ai_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Microsoft Cognitive Toolkit (CNTK) is an open source deep-learning toolkit.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;2.0\&quot;, \&quot;displayName\&quot;: \&quot;MXNet - GPU\&quot;, \&quot;name\&quot;: \&quot;mxnet/python\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;ai\&quot;, \&quot;version\&quot;: \&quot;1.3.1_gpu_cu92_mkl_py3\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/mxnet/python/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ai_mxnet.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;MXNet is a deep learning framework used to train and deploy deep neural networks. This is MXNet with the Python package.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;2.0\&quot;, \&quot;displayName\&quot;: \&quot;TensorFlow - GPU\&quot;, \&quot;name\&quot;: \&quot;tensorflow/tensorflow\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;ai\&quot;, \&quot;version\&quot;: \&quot;1.13.1-gpu-py3\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/tensorflow/tensorflow/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ai_tensorflow.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;TensorFlow is an open-source software library for Machine Intelligence. This is official docker image for deep learning framework TensorFlow.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;2.0\&quot;, \&quot;displayName\&quot;: \&quot;Pytorch - GPU\&quot;, \&quot;name\&quot;: \&quot;pytorch/pytorch\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;ai\&quot;, \&quot;version\&quot;: \&quot;1.0.1-cuda10.0-cudnn7-devel\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/pytorch/pytorch\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ai_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;PyTorch is a deep learning framework that puts Python first. It provides Tensors and Dynamic neural networks in Python with strong GPU acceleration.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;2.0\&quot;, \&quot;displayName\&quot;: \&quot;Chainer - GPU\&quot;, \&quot;name\&quot;: \&quot;chainer/chainer\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;ai\&quot;, \&quot;version\&quot;: \&quot;v6.0.0b1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/chainer/chainer\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/ai_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Chainer is a Python-based deep learning framework aiming at flexibility. This is official Chainer image.\&quot;}]&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ct:image:iot_en-US&quot;</span><span class="p">:</span> <span class="s2">&quot;[{\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Node-RED\&quot;, \&quot;name\&quot;: \&quot;nodered/node-red\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;latest\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/nodered/node-red/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_node_red.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Node-RED visual tool for wiring the Internet of Things\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Ponte\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-ponte_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-ponte_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Ponte is an Internet of Things / Machine to Machine platform that connect Things to Web developers\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;RabbitMQ\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-rabbitmq_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;3.6.6-management\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-rabbitmq_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_rabbit_mq.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;RabbitMQ is a highly reliable enterprise messaging system based on the emerging AMQP standard\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;MQTT\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-mosquitto_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-mosquitto_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_mqtt.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;MQTT Mosquitto 1.5.8 build on ubuntu 14.4\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Dashing\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-dashing_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-dashing_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Run Dashing in a Docker container\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Redis\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-redis_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;3.0.7\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-redis_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_redis.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Redis is an open source key-value store that functions as a data structure server\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Redis Commander\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-redis-commander_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-redis-commander_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Redis management tool written in node.js\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;MongoDB\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-mongodb_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;3.2\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-mongodb_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_mongo.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;MongoDB document databases provide high availability and easy scalability\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;mqtt-spy\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-mqtt-spy_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-mqtt-spy_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;mqtt-spy is an open source utility intended to help you with monitoring activity on MQTT topics\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;freeboard\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-freeboard_amd64\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-freeboard_amd64/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_freeboard.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;A damn-sexy, open source real-time dashboard builder for IOT and other web mashups\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Node-RED\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-node-red_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-node-red_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_node_red.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;Node-RED visual tool for wiring the Internet of Things\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Ponte\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-ponte_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-ponte_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;Ponte is an Internet of Things / Machine to Machine platform that connect Things to Web developers\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;RabbitMQ\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-rabbitmq_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-rabbitmq_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_rabbit_mq.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;RabbitMQ is a highly reliable enterprise messaging system based on the emerging AMQP standard\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;MQTT\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-mosquitto_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-mosquitto_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_mqtt.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;MQTT Mosquitto 1.5.8 build on ubuntu 14.4\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Dashing\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-dashing_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.4\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-dashing_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;Run Dashing in a Docker container\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Redis\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-redis_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;3.0.7\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-redis_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_redis.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;Redis is an open source key-value store that functions as a data structure server\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;Redis Commander\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-redis-commander_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-redis-commander_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_default.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;Redis management tool written in node.js\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;MongoDB\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-mongodb_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;2.4.10\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-mongodb_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_mongo.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;MongoDB document databases provide high availability and easy scalability\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.5\&quot;, \&quot;displayName\&quot;: \&quot;freeboard\&quot;, \&quot;name\&quot;: \&quot;qnapnas/qiot-freeboard_armhf\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.1\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/qnapnas/qiot-freeboard_armhf/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_freeboard.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;A damn-sexy, open source real-time dashboard builder for IOT and other web mashups\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.8\&quot;, \&quot;displayName\&quot;: \&quot;openHAB\&quot;, \&quot;name\&quot;: \&quot;openhab/openhab\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;2.2.0-amd64-debian\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/openhab/openhab/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_openhab.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;A vendor and technology agnostic open source automation software for home.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.8\&quot;, \&quot;displayName\&quot;: \&quot;openHAB\&quot;, \&quot;name\&quot;: \&quot;openhab/openhab\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;2.2.0-armhf-alpine\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/openhab/openhab/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_openhab.png\&quot;, \&quot;arch\&quot;: \&quot;armhf\&quot;, \&quot;description\&quot;: \&quot;A vendor and technology agnostic open source automation software for home.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.8\&quot;, \&quot;displayName\&quot;: \&quot;iFrogLab/LoRaGateway\&quot;, \&quot;name\&quot;: \&quot;ifroglab/loragateway\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;latest\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/ifroglab/loragateway/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_ifroglab.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;LoRaGateWay, PHP, MySQL, myphpadmin, Dashboard\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.8\&quot;, \&quot;displayName\&quot;: \&quot;Home Assistant\&quot;, \&quot;name\&quot;: \&quot;homeassistant/home-assistant\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;0.65.5\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/homeassistant/home-assistant/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_home_assistant.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Open-source home automation platform running on Python 3.\&quot;}, {\&quot;qcsVersion\&quot;: \&quot;1.8\&quot;, \&quot;displayName\&quot;: \&quot;Wio Link\&quot;, \&quot;name\&quot;: \&quot;killingjacky/wio_link\&quot;, \&quot;repository\&quot;: \&quot;dockerhub\&quot;, \&quot;type\&quot;: \&quot;iot\&quot;, \&quot;version\&quot;: \&quot;latest\&quot;, \&quot;location\&quot;: \&quot;https://hub.docker.com/r/killingjacky/wio_link/\&quot;, \&quot;icon\&quot;: \&quot;https://raw.githubusercontent.com/qnap-dev/container-apps/2.0/images/iot_wiolink.png\&quot;, \&quot;arch\&quot;: \&quot;amd64\&quot;, \&quot;description\&quot;: \&quot;Wio Link is designed to simplify your IoT development. It is an ESP8266 based Wi-Fi development board for you to create IoT applications with open-source, plug and play electronics, mobile APPs and RESTful APIs.\&quot;}]&quot;</span><span class="p">,</span>
@@ -229,6 +231,8 @@
     <span class="nt">&quot;repo_from&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
     <span class="nt">&quot;repo_project&quot;</span><span class="p">:</span> <span class="s2">&quot;container-apps&quot;</span><span class="p">,</span>
     <span class="nt">&quot;repo_user&quot;</span><span class="p">:</span> <span class="s2">&quot;qnap-dev&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;set_lxd&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;set_system_docker&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
     <span class="nt">&quot;setfattr&quot;</span><span class="p">:</span> <span class="s2">&quot;done&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -251,7 +255,7 @@
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/doc_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -285,8 +289,8 @@
 </table>
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPUT -sq -b cookies.txt -d <span class="s1">&#39;{&quot;value&quot;:&quot;I am container station&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
-$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/doc_test
+$ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/doc_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -304,7 +308,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 <dt id="delete--api-v1-preference-(string-key)">
 <code class="descname">DELETE </code><code class="descname">/api/v1/preference/</code><span class="sig-paren">(</span><em class="property">string: </em><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-v1-preference-(string-key)" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XDELETE -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/doc_test
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XDELETE -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/doc_test
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -331,7 +335,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/wizard/workspace
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/wizard/workspace
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -359,7 +363,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/wizard/workspace/status
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/wizard/workspace/status
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -398,7 +402,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/repo
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/repo
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -433,7 +437,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPUT -sq -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{&quot;user&quot;:&quot;qnap-dev&quot;,&quot;project&quot;:&quot;container-apps&quot;,&quot;branch&quot;:&quot;master&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/repo
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/repo
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -471,17 +475,18 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/network
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/network
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;LXC_ADDR&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.3.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;LXC_AUTO&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
     <span class="nt">&quot;LXC_BRIDGE&quot;</span><span class="p">:</span> <span class="s2">&quot;lxcbr0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;LXC_DHCP_MAX&quot;</span><span class="p">:</span> <span class="s2">&quot;253&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;LXC_DHCP_RANGE&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.3.239,10.0.3.254&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXC_DHCP_RANGE&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.3.2,10.0.3.240&quot;</span><span class="p">,</span>
     <span class="nt">&quot;LXC_DNS_PRIMARY&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.3.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXC_DNS_SECONDARY&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXC_DNS_SERVERS&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.3.1,0.0.0.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;LXC_NETMASK&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;LXC_NETWORK&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.3.0/24&quot;</span>
 <span class="p">}</span>
@@ -494,7 +499,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 <code class="descname">PUT </code><code class="descname">/api/v1/preference/network</code><a class="headerlink" href="#put--api-v1-preference-network" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPUT -sq -b cookies.txt -d <span class="s1">&#39;{&quot;LXC_NETWORK&quot;:&quot;10.0.4.0/24&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/network
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/network
 </pre></div>
 </div>
 </dd></dl>
@@ -522,7 +527,7 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/network_docker
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/network_docker
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -544,7 +549,59 @@ $ curl -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP<
 <code class="descname">PUT </code><code class="descname">/api/v1/preference/network_docker</code><a class="headerlink" href="#put--api-v1-preference-network_docker" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPUT -sq -b cookies.txt -d <span class="s1">&#39;{&quot;DOCKER_NET_NETWORK&quot;:&quot;10.0.4.0/24&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/preference/network_docker
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/network_docker
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v1-preference-network_lxdbr0">
+<code class="descname">GET </code><code class="descname">/api/v1/preference/network_lxdbr0</code><a class="headerlink" href="#get--api-v1-preference-network_lxdbr0" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Response JSON Object:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>LXD_DHCP_MAX</strong> (<em>string</em>) &#8211; DHCP Max</li>
+<li><strong>LXD_NETMASK</strong> (<em>string</em>) &#8211; Netmask</li>
+<li><strong>LXD_ADDR</strong> (<em>string</em>) &#8211; IP address</li>
+<li><strong>LXD_DHCP_RANGE</strong> (<em>string</em>) &#8211; DHCP range</li>
+<li><strong>LXD_NETWORK</strong> (<em>string</em>) &#8211; Network</li>
+<li><strong>LXD_BRIDGE</strong> (<em>string</em>) &#8211; Bridge name</li>
+<li><strong>LXD_DNS_PRIMARY</strong> (<em>string</em>) &#8211; Primary DNS server</li>
+<li><strong>LXD_DNS_SECONDARY</strong> (<em>string</em>) &#8211; Secondary DNS server</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XGET -sq -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/network_lxdbr0
+</pre></div>
+</div>
+<p><strong>Example response</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;LXD_ADDR&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.7.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXD_BRIDGE&quot;</span><span class="p">:</span> <span class="s2">&quot;lxdbr0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXD_DHCP_MAX&quot;</span><span class="p">:</span> <span class="s2">&quot;253&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXD_DHCP_RANGE&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.7.2,10.0.7.240&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXD_DNS_PRIMARY&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.7.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXD_DNS_SECONDARY&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXD_DNS_SERVERS&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.7.1,0.0.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXD_NETMASK&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LXD_NETWORK&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.7.0/24&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--api-v1-preference-network_lxdbr0">
+<code class="descname">PUT </code><code class="descname">/api/v1/preference/network_lxdbr0</code><a class="headerlink" href="#put--api-v1-preference-network_lxdbr0" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPUT -sq -b cookies.txt -d <span class="s1">&#39;{&quot;LXD_NETWORK&quot;:&quot;10.0.4.0/24&quot;}&#39;</span> <span class="se">\</span>
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/preference/network_lxdbr0
 </pre></div>
 </div>
 </dd></dl>

@@ -4,7 +4,7 @@ Resource
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -17,7 +17,7 @@ Resource
 .. http:get:: /api/v1/container/(string:container_type)/(string:container_id)/all
 
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
 
     resource list
@@ -27,15 +27,15 @@ Resource
     .. sourcecode:: bash
 
         $ curl -sq -XGET -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/all
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/all
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}' http://${QIP}:${QPORT}/containerstation/api/v1/container  -o /dev/null; 
-        curl -sq -XGET -b cookies.txt 
-           http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/all
+        curl -sq -XPOST -b cookies.txt -d '{"type": "lxc", "name": "utest", "image": "ubuntu-bionic", "tag": "latest"}' http://${QIP}:${QPORT}/container-station/api/v1/container  -o /dev/null;
+        curl -sq -XGET -b cookies.txt
+           http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/all
            | python -mjson.tool
 
 Auto start
@@ -45,7 +45,7 @@ Auto start
 
     Update container auto start setting.
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
     :param state: ``on``, ``off``
 
@@ -54,19 +54,19 @@ Auto start
     .. sourcecode:: bash
 
         $ curl -sq -XPUT -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/autostart/on
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/autostart/on
         $ curl -sq -XPUT -b cookies.txt \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/autostart/off
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/autostart/off
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPUT -b cookies.txt
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/autostart/on
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/autostart/on
             | python -mjson.tool;
         curl -sq -XPUT -b cookies.txt
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/autostart/off
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/autostart/off
             | python -mjson.tool;
 
 Port Forwarding
@@ -76,7 +76,7 @@ Port Forwarding
 
     Add port forwarding.
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
 
     **Example request**
@@ -84,21 +84,21 @@ Port Forwarding
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '[12345, 12345, "tcp"]' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/port
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/network/port
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d '[12345, 12345, "tcp"]' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/port
+        curl -sq -XPOST -b cookies.txt -d '[12345, 12345, "tcp"]'
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/network/port
             | python -mjson.tool;
 
 .. http:delete:: /api/v1/container/(string:container_type)/(string:container_id)/network/port
 
     Delete port forwarding.
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
 
     **Example request**
@@ -106,14 +106,14 @@ Port Forwarding
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt -d '[12345, 12345, "tcp"]' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/port
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/network/port
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt -d '[12345, 12345, "tcp"]' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/port
+        curl -sq -XDELETE -b cookies.txt -d '[12345, 12345, "tcp"]'
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/network/port
             | python -mjson.tool;
 
 
@@ -121,7 +121,7 @@ Port Forwarding
 
     Edit port forwarding settings.
 
-    :param container_type: ``lxc``
+    :param container_type: ``lxc``, ``lxd``
     :param container_id: container id
 
     **Example request**
@@ -130,15 +130,15 @@ Port Forwarding
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '[[111, 222, "udp"], [333, 444, "tcp"]]' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/ports
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/network/ports
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d
-            '[[111, 222, "udp"], [333, 444, "tcp"]]' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/ports
+            '[[111, 222, "udp"], [333, 444, "tcp"]]'
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/network/ports
             | python -mjson.tool;
 
     **Example request: remove all settings**
@@ -146,18 +146,18 @@ Port Forwarding
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '[]' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/ports
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/network/ports
 
     **Example response: remove all settings**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d '[]' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/network/ports
+        curl -sq -XPOST -b cookies.txt -d '[]'
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/network/ports
             | python -mjson.tool;
 
 
-Devices 
+Devices
 --------
 
 .. http:get:: /api/v1/resource/device
@@ -170,25 +170,25 @@ Devices
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/resource/device
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/resource/device
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/resource/device | python -mjson.tool;
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/resource/device | python -mjson.tool;
 
 .. http:post:: /api/v1/container/(string:container_type)/(string:container_id)/resource/device
 
     Add device permission with the specified device.
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
-    
-    :access is a sequence of one or more of the following letters: 
-        r — allows tasks to read from the specified device 
 
-        w — allows tasks to write to the specified device 
+    :access is a sequence of one or more of the following letters:
+        r — allows tasks to read from the specified device
+
+        w — allows tasks to write to the specified device
 
         m — allows tasks to create device files that do not yet exist **[required]**
 
@@ -198,21 +198,21 @@ Devices
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '["allow", "Input_(13)", "rwm"]' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/device
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/device
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '["allow", "Input_(13)", "rwm"]'
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/device
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/device
             | python -mjson.tool;
 
 .. http:delete:: /api/v1/container/(string:container_type)/(string:container_id)/resource/device
 
     Delete device permission with the specified device.
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
 
     **Example request**
@@ -220,14 +220,14 @@ Devices
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt -d '["allow", "Input_(13)", "rwm"]' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/device
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/device
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt -d '["allow", "Input_(13)", "rwm"]'
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/device
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/device
             | python -mjson.tool;
 
 
@@ -235,13 +235,13 @@ Devices
 
     Add multiple devices permission in one request. It will automatically remove original settings before add it.
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
-    
-    :access is a sequence of one or more of the following letters: 
-        r — allows tasks to read from the specified device 
 
-        w — allows tasks to write to the specified device 
+    :access is a sequence of one or more of the following letters:
+        r — allows tasks to read from the specified device
+
+        w — allows tasks to write to the specified device
 
         m — allows tasks to create device files that do not yet exist **[required]**
 
@@ -252,14 +252,14 @@ Devices
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '[["allow", "Input_(13)", "rwm"], ["allow", "TTY_(4)", "rwm"]]' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/devices
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/devices
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '[["allow", "Input_(13)", "rwm"], ["allow", "TTY_(4)", "rwm"]]'
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/devices
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/devices
             | python -mjson.tool;
 
     **Example request: remove all settings**
@@ -267,14 +267,14 @@ Devices
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '[]' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/devices
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/devices
 
     **Example response: remove all settings**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '[]'
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/devices
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/devices
             | python -mjson.tool;
 
 CPU and memory limits
@@ -284,7 +284,7 @@ CPU and memory limits
 
     Add CPU and memory limits.
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
     :reqjson int cputime: (optional) [10-999]. cpu usage time in milliseconds(ms)
     :reqjson int cpuweight: (optional) [2-1024]. relative cpu usage
@@ -296,24 +296,24 @@ CPU and memory limits
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{
-                "cputime": 100, 
-                "cpuweight": 600, 
+                "cputime": 100,
+                "cpuweight": 600,
                 "memory": "512m"
-            }' http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/limit
+            }' http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/limit
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d '{"cputime": 100, "cpuweight": 600, "memory": "512m"}'
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/limit
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/limit
             | python -mjson.tool;
 
 .. http:delete:: /api/v1/container/(string:container_type)/(string:container_id)/resource/limit
 
     Delete resource limitation.
 
-    :param container_type: ``lxc``, ``docker``
+    :param container_type: ``lxc``, ``lxd``, ``docker``
     :param container_id: container id
 
     **Example request**
@@ -321,14 +321,14 @@ CPU and memory limits
     .. sourcecode:: bash
 
         $ curl -sq -XDELETE -b cookies.txt -d '{"cputime": 0}' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/limit
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/limit
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XDELETE -b cookies.txt -d '{"cputime": 0}'
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/resource/limit
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/resource/limit
             | python -mjson.tool;
 
 Storage
@@ -338,11 +338,11 @@ Storage
 
     Edit volume from host settings.
 
-    :param container_type: ``lxc``
+    :param container_type: ``lxc``, ``lxd``
     :param container_id: container id
     :reqjson object host_path: Host path
     :reqjson string bind: Mount point in container
-    :reqjson boolean ro: Read-only 
+    :reqjson boolean ro: Read-only
 
     **Example request**
 
@@ -351,23 +351,23 @@ Storage
         $ curl -sq -XPOST -b cookies.txt -d \
             '{
                 "/test": {
-                    "bind": "/test1", 
-                    "ro": false 
+                    "bind": "/test1",
+                    "ro": false
                 },
                 "/test/selenium": {
-                    "bind": "/test2", 
-                    "ro": true 
+                    "bind": "/test2",
+                    "ro": true
                 }
             }' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/volume/host
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/volume/host
 
     **Example response**
 
     .. runcode:: json
 
         curl -sq -XPOST -b cookies.txt -d
-            '{"/test": {"bind": "/test1", "ro": false },"/test/selenium": {"bind": "/test2", "ro": true }}' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/volume/host
+            '{"/test": {"bind": "/test1", "ro": false },"/test/selenium": {"bind": "/test2", "ro": true }}'
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/volume/host
             | python -mjson.tool;
 
     **Example request: remove all settings**
@@ -375,12 +375,12 @@ Storage
     .. sourcecode:: bash
 
         $ curl -sq -XPOST -b cookies.txt -d '{}' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/volume/host
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/volume/host
 
     **Example response: remove all settings**
 
     .. runcode:: json
 
-        curl -sq -XPOST -b cookies.txt -d '{}' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/container/lxc/utest/volume/host
+        curl -sq -XPOST -b cookies.txt -d '{}'
+            http://${QIP}:${QPORT}/container-station/api/v1/container/lxc/utest/volume/host
             | python -mjson.tool;

@@ -183,33 +183,33 @@
 <p><strong>Example request</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{&quot;name&quot;: &quot;test_volume_1&quot;}&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/volumes
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/volumes
 
 $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
     <span class="s1">&#39;{&quot;name&quot;: &quot;test_volume_2&quot;,</span>
 <span class="s1">      &quot;labels&quot;: {&quot;key&quot;:&quot;value&quot;},</span>
 <span class="s1">      &quot;driver_opts&quot;: {&quot;device&quot;:&quot;tmpfs&quot;,&quot;type&quot;:&quot;tmpfs&quot;,&quot;o&quot;:&quot;size=100m,uid=1000&quot;}</span>
 <span class="s1">    }&#39;</span> <span class="se">\</span>
-    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/volumes
+    http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/volumes
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:19:36+08:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11T17:07:34+08:00&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/test_volume_1/_data&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/volumes/test_volume_1/_data&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;test_volume_1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
     <span class="nt">&quot;Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span>
 <span class="p">}</span>
 <span class="p">{</span>
-    <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:19:37+08:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11T17:07:35+08:00&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/test_volume_2/_data&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/volumes/test_volume_2/_data&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;test_volume_2&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;tmpfs&quot;</span><span class="p">,</span>
@@ -229,81 +229,54 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 <dt id="get--api-v1-volumes">
 <code class="descname">GET </code><code class="descname">/api/v1/volumes</code><a class="headerlink" href="#get--api-v1-volumes" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/volumes
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/volumes
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:16:19+08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11T16:55:14+08:00&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/0cea8ac72368fdf284c2e5150c048f654c195a60dbdb671c05397008b3313503/_data&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;0cea8ac72368fdf284c2e5150c048f654c195a60dbdb671c05397008b3313503&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/volumes/3e31fb43e8e87e3cf1ba3c439962eec5dfb3c8ccac21f0a50510aa27aaa23ecd/_data&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;3e31fb43e8e87e3cf1ba3c439962eec5dfb3c8ccac21f0a50510aa27aaa23ecd&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:19:31+08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11T16:55:13+08:00&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/8230c2cac9aab5fbd8be3386b6a917ffb33e3bbcda4f15361869dddb0d17b706/_data&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;8230c2cac9aab5fbd8be3386b6a917ffb33e3bbcda4f15361869dddb0d17b706&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/volumes/7761c374c0ec3b260d25bfd9fabcddc297b5a05b3e18a4affd600286674a64c2/_data&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;7761c374c0ec3b260d25bfd9fabcddc297b5a05b3e18a4affd600286674a64c2&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:14:59+08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11T16:50:57+08:00&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/d7cbf9d4fc5c81caf036792e2d56025fe22f4de6649a0cc72f489f5748994e65/_data&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;d7cbf9d4fc5c81caf036792e2d56025fe22f4de6649a0cc72f489f5748994e65&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/volumes/bc1b89da45ffec81e0a1a07411758842886083ccbbc1a930bc02d32098eb01df/_data&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;bc1b89da45ffec81e0a1a07411758842886083ccbbc1a930bc02d32098eb01df&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:15:12+08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11T17:07:34+08:00&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/e15c1501e5518c06d8c13e5760704c760804b667c520343f4ea0da2094d6b9f1/_data&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;e15c1501e5518c06d8c13e5760704c760804b667c520343f4ea0da2094d6b9f1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:13:08+08:00&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/e59ddd16a60c62ec023d3852b864703db297d7e40d592b10a731ae83adb1b7ab/_data&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;e59ddd16a60c62ec023d3852b864703db297d7e40d592b10a731ae83adb1b7ab&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:19:32+08:00&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/f56e4054a723153deff9709284b4f2603ab69f99f7b7fddc8c83d077f7ba7db6/_data&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;f56e4054a723153deff9709284b4f2603ab69f99f7b7fddc8c83d077f7ba7db6&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:19:36+08:00&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/test_volume_1/_data&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/volumes/test_volume_1/_data&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;test_volume_1&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:19:37+08:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11T17:07:35+08:00&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span>
         <span class="p">},</span>
-        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/test_volume_2/_data&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/volumes/test_volume_2/_data&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;test_volume_2&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;tmpfs&quot;</span><span class="p">,</span>
@@ -335,17 +308,17 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/volumes/test_volume_2/inspect
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XGET -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/volumes/test_volume_2/inspect
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-19T10:19:37+08:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;CreatedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-11T17:07:35+08:00&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Labels&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes/test_volume_2/_data&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Mountpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/share/CACHEDEV3_DATA/Container/container-station-data/lib/docker/volumes/test_volume_2/_data&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;test_volume_2&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Options&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;tmpfs&quot;</span><span class="p">,</span>
@@ -376,7 +349,7 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 </tbody>
 </table>
 <p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/volumes/test_volume_2
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/volumes/test_volume_2
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
@@ -392,19 +365,16 @@ $ curl -sq -XPOST -b cookies.txt -d <span class="se">\</span>
 <dt id="delete--api-v1-volumes-">
 <code class="descname">DELETE </code><code class="descname">/api/v1/volumes/</code><a class="headerlink" href="#delete--api-v1-volumes-" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Example request</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/containerstation/api/v1/volumes/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sq -XDELETE -b cookies.txt http://<span class="si">${</span><span class="nv">QIP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">QPORT</span><span class="si">}</span>/container-station/api/v1/volumes/
 </pre></div>
 </div>
 <p><strong>Example response</strong></p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;SpaceReclaimed&quot;</span><span class="p">:</span> <span class="mi">119690001</span><span class="p">,</span>
+    <span class="nt">&quot;SpaceReclaimed&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="nt">&quot;VolumesDeleted&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;test_volume_3&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;e59ddd16a60c62ec023d3852b864703db297d7e40d592b10a731ae83adb1b7ab&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;e15c1501e5518c06d8c13e5760704c760804b667c520343f4ea0da2094d6b9f1&quot;</span><span class="p">,</span>
         <span class="s2">&quot;test_volume_1&quot;</span><span class="p">,</span>
         <span class="s2">&quot;test_volume_2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;d7cbf9d4fc5c81caf036792e2d56025fe22f4de6649a0cc72f489f5748994e65&quot;</span>
+        <span class="s2">&quot;test_volume_3&quot;</span>
     <span class="p">]</span>
 <span class="p">}</span>
 <span class="p">{</span>

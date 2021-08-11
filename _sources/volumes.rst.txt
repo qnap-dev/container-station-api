@@ -4,7 +4,7 @@ Volumes
 .. exec::
     import subprocess as sp
     import json
-    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d "username=admin&password=${QPASSWORD}" http://${QIP}:${QPORT}/containerstation/api/v1/login', shell=True)
+    ret = sp.check_output('curl -sq -XPOST -c cookies.txt -d \'{{"username": "admin", "password": "{}"}}\' http://{}:{}/container-station/api/v1/login'.format(os.environ['QPASSWORD'], os.environ['QIP'], os.environ['QPORT']), shell=True)
     try:
         auth = json.loads(ret)
         if 'error' in auth:
@@ -30,14 +30,14 @@ Create a volume
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"name": "test_volume_1"}' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/volumes
+            http://${QIP}:${QPORT}/container-station/api/v1/volumes
 
         $ curl -sq -XPOST -b cookies.txt -d \
             '{"name": "test_volume_2",
               "labels": {"key":"value"},
               "driver_opts": {"device":"tmpfs","type":"tmpfs","o":"size=100m,uid=1000"}
             }' \
-            http://${QIP}:${QPORT}/containerstation/api/v1/volumes
+            http://${QIP}:${QPORT}/container-station/api/v1/volumes
 
     **Example response**
 
@@ -45,14 +45,14 @@ Create a volume
 
         curl -sq -XPOST -b cookies.txt -d 
             '{"name": "test_volume_1"}' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/volumes | python -mjson.tool;
+            http://${QIP}:${QPORT}/container-station/api/v1/volumes | python -mjson.tool;
 
         curl -sq -XPOST -b cookies.txt -d 
             '{"name": "test_volume_2",
               "labels": {"key":"value"},
               "driver_opts": {"device":"tmpfs","type":"tmpfs","o":"size=100m,uid=1000"}
             }' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/volumes | python -mjson.tool;
+            http://${QIP}:${QPORT}/container-station/api/v1/volumes | python -mjson.tool;
 
 List volumes
 -------------
@@ -64,13 +64,13 @@ List volumes
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes | python -mjson.tool
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes | python -mjson.tool
 
 Inspect a volume
 ------------------
@@ -83,13 +83,13 @@ Inspect a volume
 
     .. sourcecode:: bash
 
-        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/test_volume_2/inspect
+        $ curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes/test_volume_2/inspect
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/test_volume_2/inspect | python -mjson.tool
+        curl -sq -XGET -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes/test_volume_2/inspect | python -mjson.tool
 
 Remove a volume
 ---------------
@@ -102,13 +102,13 @@ Remove a volume
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/test_volume_2
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes/test_volume_2
 
     **Example response**
 
     .. runcode:: json
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/test_volume_2 | python -mjson.tool
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes/test_volume_2 | python -mjson.tool
 
 Remove all unused volumes
 -------------------------
@@ -119,7 +119,7 @@ Remove all unused volumes
 
     .. sourcecode:: bash
 
-        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/
+        $ curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes/
 
     **Example response**
 
@@ -127,13 +127,13 @@ Remove all unused volumes
 
         curl -sq -XPOST -b cookies.txt -d 
             '{"name": "test_volume_1"}' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/volumes -o /dev/null;
+            http://${QIP}:${QPORT}/container-station/api/v1/volumes -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d 
             '{"name": "test_volume_2"}' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/volumes -o /dev/null;
+            http://${QIP}:${QPORT}/container-station/api/v1/volumes -o /dev/null;
         curl -sq -XPOST -b cookies.txt -d 
             '{"name": "test_volume_3"}' 
-            http://${QIP}:${QPORT}/containerstation/api/v1/volumes -o /dev/null;
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/ | python -mjson.tool;
+            http://${QIP}:${QPORT}/container-station/api/v1/volumes -o /dev/null;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes/ | python -mjson.tool;
 
-        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/containerstation/api/v1/volumes/ | python -mjson.tool;
+        curl -sq -XDELETE -b cookies.txt http://${QIP}:${QPORT}/container-station/api/v1/volumes/ | python -mjson.tool;
