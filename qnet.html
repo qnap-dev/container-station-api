@@ -187,7 +187,7 @@ Click <strong>Network</strong> on the left side bar and select <strong>Bridge</s
 <p><strong>DHCP mode</strong></p>
 <p>Create a new network named qnet-dhcp-eth0.</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker network create -d qnet --ipam-driver<span class="o">=</span>qnet --ipam-opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 qnet-dhcp-eth0
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker network create -d qnet --opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 --ipam-driver<span class="o">=</span>qnet --ipam-opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 qnet-dhcp-eth0
 9e3b67877569d6da0f5587c736c4981b3206c7f31bd22e7acdfe1a347e41122c
 </pre></div>
 </div>
@@ -195,7 +195,7 @@ Click <strong>Network</strong> on the left side bar and select <strong>Bridge</s
 <p><strong>Static mode</strong></p>
 <p>Create a new network named qnet-static-eth0.</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker network create -d qnet --ipam-driver<span class="o">=</span>qnet --ipam-opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 <span class="se">\</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker network create -d qnet --opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 --ipam-driver<span class="o">=</span>qnet --ipam-opt<span class="o">=</span><span class="nv">iface</span><span class="o">=</span>eth0 <span class="se">\</span>
       --subnet<span class="o">=</span><span class="m">192</span>.168.80.0/23 --gateway<span class="o">=</span><span class="m">192</span>.168.80.254 qnet-static-eth0
 85fbe06a66d82ba8109d304e1b891598d7c21e9f6c9a99a34f586250c7d8b92d
 </pre></div>
@@ -271,6 +271,8 @@ services:
 networks:
   qnet-dhcp:
     driver: qnet
+    driver_opts:
+      iface: "eth0"
     ipam:
       driver: qnet
       options:
@@ -278,6 +280,8 @@ networks:
 
   qnet-static:
     driver: qnet
+    driver_opts:
+      iface: "eth0"
     ipam:
       driver: qnet
       options:
